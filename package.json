@@ -1,0 +1,41 @@
+{
+  "name": "rocky",
+  "description": "My personal site",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "precommit": "lint-staged",
+    "develop": "gatsby develop",
+    "format": "prettier --write 'src/**/*.js'",
+    "min": "node ./scripts/minifyImages.js",
+    "serve": "gatsby serve"
+  },
+  "dependencies": {
+    "gatsby": "^1.9.259",
+    "gatsby-plugin-google-analytics": "^1.0.31",
+    "gatsby-plugin-netlify": "^1.0.19",
+    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-styled-components": "^2.0.11",
+    "react-helmet": "^5.2.0",
+    "react-inlinesvg": "^0.8.1",
+    "styled-components": "^3.2.6",
+    "typeface-open-sans": "0.0.54"
+  },
+  "devDependencies": {
+    "compression-webpack-plugin": "^1.1.11",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.0",
+    "prettier": "^1.12.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
