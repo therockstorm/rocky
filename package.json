@@ -9,7 +9,9 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "min": "node ./scripts/minifyImages.js",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "gatsby": "^1.9.259",
@@ -20,7 +22,8 @@
     "react-helmet": "^5.2.0",
     "react-inlinesvg": "^0.8.1",
     "styled-components": "^3.2.6",
-    "typeface-open-sans": "0.0.54"
+    "typeface-open-sans": "0.0.54",
+    "snyk": "^1.88.2"
   },
   "devDependencies": {
     "compression-webpack-plugin": "^1.1.11",
@@ -37,5 +40,6 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
-  }
+  },
+  "snyk": true
 }
