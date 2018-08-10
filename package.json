@@ -12,21 +12,21 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "gatsby": "^1.9.259",
+    "gatsby": "^1.9.277",
     "gatsby-plugin-google-analytics": "^1.0.31",
-    "gatsby-plugin-netlify": "^1.0.19",
+    "gatsby-plugin-netlify": "^1.0.21",
     "gatsby-plugin-react-helmet": "^2.0.11",
     "gatsby-plugin-styled-components": "^2.0.11",
     "react-helmet": "^5.2.0",
     "react-inlinesvg": "^0.8.1",
-    "styled-components": "^3.2.6",
+    "styled-components": "^3.4.2",
     "typeface-open-sans": "0.0.54"
   },
   "devDependencies": {
     "compression-webpack-plugin": "^1.1.11",
     "husky": "^0.14.3",
-    "lint-staged": "^7.1.0",
-    "prettier": "^1.12.1"
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.14.2"
   },
   "lint-staged": {
     "*.js": [
