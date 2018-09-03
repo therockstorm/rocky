@@ -1,13 +1,17 @@
-import React from 'react'
+import * as React from 'react'
 import Helmet from 'react-helmet'
 import './global'
 
-const Head = ({ siteMetadata: { title, description, siteUrl } }) => (
+const Head = ({
+  siteMetadata: { title, description, siteUrl }
+}: {
+  siteMetadata: Metadata
+}) => (
   <Helmet>
     <html lang="en" />
     <meta name="description" content={description} />
-    <meta itemprop="name" content={title} />
-    <meta itemprop="description" content={description} />
+    <meta itemProp="name" content={title} />
+    <meta itemProp="description" content={description} />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />

@@ -1,11 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import Svg from 'react-inlinesvg'
-import background from '../img/x.jpg'
-import instagram from '../img/instagram.svg'
-import twitter from '../img/twitter.svg'
-import github from '../img/github.svg'
-import linkedIn from '../img/linkedin.svg'
+const background = require('../img/x.jpg') as string
+const instagram = require('../img/instagram.svg') as string
+const twitter = require('../img/twitter.svg') as string
+const github = require('../img/github.svg') as string
+const linkedIn = require('../img/linkedin.svg') as string
 
 const Image = styled.div`
   background-size: cover;
