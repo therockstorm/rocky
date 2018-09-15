@@ -22,7 +22,6 @@ const Head = ({
     <title>{title}</title>
 
     <link rel="canonical" href={siteUrl} />
-    <link rel="shortcut icon" href={`${siteUrl}icons/icon-48x48.png`} />
   </Helmet>
 )
 

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Svg from 'react-inlinesvg'
 const background = require('../img/x.jpg') as string
 const instagram = require('../img/instagram.svg') as string
-const twitter = require('../img/twitter.svg') as string
 const github = require('../img/github.svg') as string
 const linkedIn = require('../img/linkedin.svg') as string
 
@@ -68,9 +67,6 @@ export default () => (
         and co-founder of Crucible Commodities. I do other stuff too.
       </Lead>
       <Nav>
-        <NavItem href={'https://twitter.com/therockstorm'} target={'_blank'}>
-          <Svg src={twitter} />
-        </NavItem>
         <NavItem href={'https://github.com/therockstorm'} target={'_blank'}>
           <Svg src={github} />
         </NavItem>

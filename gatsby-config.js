@@ -10,17 +10,6 @@ module.exports = {
       options: { trackingId: `UA-64259036-1` }
     },
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Rocky Warren`,
-        start_url: `/`,
-        background_color: `#892b00`,
-        theme_color: `#892b00`,
-        display: `standalone`,
-        icon: `src/img/icon.png`
-      }
-    },
-    {
       resolve: `gatsby-plugin-netlify`,
       options: {
         headers: {
