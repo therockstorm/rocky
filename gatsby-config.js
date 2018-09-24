@@ -1,9 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: `Rocky Warren`,
-    description: `Rocky Warren's Personal Website.`,
-    siteUrl: `https://www.rockywarren.com/`
-  },
   plugins: [
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -16,7 +11,7 @@ module.exports = {
           '/*': [
             'Referrer-Policy: strict-origin',
             //https://csp-evaluator.withgoogle.com/
-            "Content-Security-Policy: default-src 'none';script-src 'self' https://www.google-analytics.com 'unsafe-inline' data:;style-src 'unsafe-inline';img-src 'self' https://www.google-analytics.com data:;font-src 'self';manifest-src 'self';"
+            "Content-Security-Policy: default-src 'none';script-src 'self' https://www.google-analytics.com 'unsafe-inline' data:;style-src 'unsafe-inline';img-src 'self' https://www.google-analytics.com data:;font-src 'self';connect-src 'self';"
           ]
         }
       }

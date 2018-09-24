@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import Svg from 'react-inlinesvg'
+import Layout from '../components/Layout'
 const background = require('../img/x.jpg') as string
 const instagram = require('../img/instagram.svg') as string
 const github = require('../img/github.svg') as string
@@ -48,14 +49,14 @@ const Nav = styled.nav`
 const NavItem = styled.a`
   fill: currentColor;
   opacity: 0.8;
-  padding: 0 0.5rem
+  padding: 0 0.5rem;
   margin: 0.25rem;
   width: 30px;
   height: 30px;
 `
 
 export default () => (
-  <div>
+  <Layout>
     <Image />
     <Container>
       <Rocky>Rocky Warren</Rocky>
@@ -84,5 +85,5 @@ export default () => (
         </NavItem>
       </Nav>
     </Container>
-  </div>
+  </Layout>
 )
