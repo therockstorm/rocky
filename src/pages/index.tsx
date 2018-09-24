@@ -62,23 +62,29 @@ export default () => (
       <Rocky>Rocky Warren</Rocky>
       <Lead>
         Software engineer at{' '}
-        <a href="https://www.dwolla.com/" target="_blank">
+        <a href="https://www.dwolla.com/" rel="noopener" target="_blank">
           Dwolla
         </a>{' '}
         and co-founder of Crucible Commodities. I do other stuff too.
       </Lead>
       <Nav>
-        <NavItem href={'https://github.com/therockstorm'} target={'_blank'}>
+        <NavItem
+          href={'https://github.com/therockstorm'}
+          rel="noopener"
+          target={'_blank'}
+        >
           <Svg src={github} />
         </NavItem>
         <NavItem
           href={'https://www.instagram.com/therockstorm/'}
+          rel="noopener"
           target={'_blank'}
         >
           <Svg src={instagram} />
         </NavItem>
         <NavItem
           href={'https://www.linkedin.com/in/rockywarren'}
+          rel="noopener"
           target={'_blank'}
         >
           <Svg src={linkedIn} />
