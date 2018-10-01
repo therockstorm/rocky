@@ -5,14 +5,13 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "precommit": "lint-staged",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.+(js|json|md|ts|tsx)'",
     "min": "node ./scripts/minifyImages.js",
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "gatsby": "^2.0.7",
+    "gatsby": "^2.0.14",
     "gatsby-plugin-google-analytics": "^2.0.6",
     "gatsby-plugin-netlify": "^2.0.0",
     "gatsby-plugin-react-helmet": "^3.0.0",
@@ -28,12 +27,12 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.7",
-    "babel-plugin-styled-components": "^1.7.1",
+    "babel-plugin-styled-components": "^1.8.0",
     "compression-webpack-plugin": "^2.0.0",
-    "husky": "^1.0.0-rc.15",
+    "husky": "^1.1.0",
     "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
-    "typescript": "^3.0.3"
+    "typescript": "^3.1.1"
   },
   "lint-staged": {
     "*.{js,json,md,ts,tsx}": [
@@ -44,5 +43,10 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
