@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { createGlobalStyle } from 'styled-components'
-import 'typeface-open-sans'
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -49,6 +48,10 @@ export default ({ children }: { children: any }) => {
         <title>{title}</title>
 
         <link rel="canonical" href={siteUrl} />
+        <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,600"
+          rel="stylesheet"
+        />
       </Helmet>
       {children}
     </div>
