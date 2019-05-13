@@ -1,59 +1,29 @@
-import * as React from 'react'
-import Helmet from 'react-helmet'
-import { createGlobalStyle } from 'styled-components'
+import React from "react"
+import { ILocation } from ".."
+import { rhythm } from "../utils/typography"
+import Footer from "./Footer"
+import Header from "./Header"
 
-const GlobalStyle = createGlobalStyle`
-html {
-  font-family: 'Open Sans', sans-serif;
+interface IProps {
+  location: ILocation
+  title: string
+  children: React.ReactNode
 }
 
-body {
-  position: relative;
-  min-height: 100%;
-  margin: 0;
-  color: rgba(0, 0, 0, 0.8);
-  background-color: #F2F2F2;
-}
-
-a {
-  text-decoration: none;
-  color: #892b00;
-}
-
-a:active,
-a:hover {
-  color: #ff4f00;
-}
-`
-
-export default ({ children }: { children: any }) => {
-  const title = `Rocky Warren`
-  const description = `Rocky Warren's Personal Website.`
-  const siteUrl = `https://www.rockywarren.com/`
-  return (
-    <div>
-      <GlobalStyle />
-      <Helmet>
-        <html lang="en" />
-        <meta name="description" content={description} />
-        <meta itemProp="name" content={title} />
-        <meta itemProp="description" content={description} />
-        <meta property="og:url" content={siteUrl} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-
-        <title>{title}</title>
-
-        <link rel="canonical" href={siteUrl} />
-        <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans:300,600"
-          rel="stylesheet"
-        />
-      </Helmet>
-      {children}
-    </div>
-  )
-}
+export default ({ children, title, location }: IProps) => (
+  <div
+    style={{
+      backgroundColor: "var(--bg)",
+      color: "var(--textNormal)",
+      marginLeft: `auto`,
+      marginRight: `auto`,
+      maxWidth: rhythm(27.5),
+      padding: `${rhythm(1.7)} ${rhythm(0.85)}`,
+      transition: "color 0.2s ease-out"
+    }}
+  >
+    <Header location={location} title={title} />
+    {children}
+    <Footer />
+  </div>
+)

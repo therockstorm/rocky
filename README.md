@@ -1,6 +1,6 @@
 # rocky
 
-My personal site available at https://www.rockywarren.com.
+My personal blog available at https://rocky.dev.
 
 ## Installation
 
