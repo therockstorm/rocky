@@ -44,7 +44,7 @@ export default () => (
       aria-label="Link to RSS Feed"
       href={"/rss.xml"}
       src={rss}
-      style={{ ...icon, marginLeft: `auto` }}
+      style={{ ...icon, marginLeft: `auto`, marginRight: 0 }}
     />
   </footer>
 )

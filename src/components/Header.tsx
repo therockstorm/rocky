@@ -7,10 +7,14 @@ import { ILocation } from ".."
 import moon from "../img/moon.svg"
 import sun from "../img/sun.svg"
 import { rhythm } from "../utils/typography"
-import Toggle from "./Toggle"
 
 // @ts-ignore
 const rootPath = `${__PATH_PREFIX__}/`
+
+interface ITheme {
+  theme: string
+  toggleTheme: (t: string) => void
+}
 
 interface IProps {
   location: ILocation
@@ -38,28 +42,18 @@ export default ({ location, title }: IProps) => (
       </h3>
     )}
     <ThemeToggler>
-      {({
-        theme,
-        toggleTheme
-      }: {
-        theme: string
-        toggleTheme: (t: string) => void
-      }) =>
-        theme !== null ? (
-          <Toggle
-            icons={{
-              checked: <Svg src={moon} className={"toggle"} />,
-              unchecked: <Svg src={sun} className={"toggle"} />
-            }}
-            checked={theme === "dark"}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              toggleTheme(e.target.checked ? "dark" : "light")
-            }
-          />
-        ) : (
-          <div style={{ height: "24px" }} />
+      {({ theme, toggleTheme }: ITheme) => {
+        if (theme === null) return <div style={{ height: "20px" }} />
+        const isDark = theme === "dark"
+        return (
+          <div
+            style={{ height: "20px", width: "20px", cursor: "pointer" }}
+            onClick={() => toggleTheme(isDark ? "light" : "dark")}
+          >
+            <Svg src={isDark ? moon : sun} className={"toggle"} />
+          </div>
         )
-      }
+      }}
     </ThemeToggler>
   </header>
 )
