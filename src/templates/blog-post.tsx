@@ -1,6 +1,5 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
-import { ILocation, INode, IPageContext, ISite } from ".."
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"

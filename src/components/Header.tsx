@@ -1,20 +1,13 @@
 import { Link } from "gatsby"
-// @ts-ignore
-import { ThemeToggler } from "gatsby-plugin-dark-mode"
+import { ITheme, ThemeToggler } from "gatsby-plugin-dark-mode"
 import React from "react"
 import Svg from "react-inlinesvg"
-import { ILocation } from ".."
 import moon from "../img/moon.svg"
 import sun from "../img/sun.svg"
 import { rhythm } from "../utils/typography"
 
-// @ts-ignore
+declare const __PATH_PREFIX__: string
 const rootPath = `${__PATH_PREFIX__}/`
-
-interface ITheme {
-  theme: string
-  toggleTheme: (t: string) => void
-}
 
 interface IProps {
   location: ILocation

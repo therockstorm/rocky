@@ -1,7 +1,7 @@
 ---
 title: Lessons Learned From Sending Millions of Serverless Webhooks
 description: Using a serverless architecture to send Dwolla's webhooks faster and at a lower cost.
-date: "2019-05-13T00:00:00.000Z"
+date: "2019-05-21"
 ---
 
 ![Serverless Webhooks](./serverless-webhooks.png)
@@ -28,7 +28,7 @@ After sending millions of webhooks on the new architecture, we've learned valuab
 
 5. **Follow AWS Best Practices.** The [Lambda](https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html) and [Using Lambda with SQS](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html) Best Practices helps avoid Lambda throttles, understand SQS message batches (they succeed or fail together) and configure redrive policies high enough to prevent prematurely sending messages to dead-letter queues.
 
-6. **Structure your logs to ease alert creation and debugging.** As an example, we preface errors with “[error]” allowing us to create a [Log Metric Filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html) and get alerts anytime they occur. Consistently including high cardinality values in log messages (think account or transaction ID) is another good habit, allowing you to more easily track specific requests through the system.
+6. **Structure your logs to ease alert creation and debugging.** As an example, we preface errors with `[error]` allowing us to create a [Log Metric Filter](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html) and get alerts anytime they occur. Consistently including high cardinality values in log messages (think account or transaction ID) is another good habit, allowing you to more easily track specific requests through the system.
 
 7. **Lambda errors can be elusive, but CloudWatch Insights helps.** When a Lambda Error alert triggers, it’s not immediately clear what happened, especially if there are lots of logs to search through. Only through experience do you find timeouts log “timed out” and out-of-memory errors log “process exited.” CloudWatch Insights provides query capabilities to easily search Log Groups for these messages:
 

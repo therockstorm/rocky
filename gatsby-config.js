@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     author: `Rocky Warren`,
     description: `Rocky Warren's personal blog.`,
-    siteUrl: `https://rockywarren.com/`,
+    siteUrl: `https://rocky.dev/`,
     social: { twitter: "@therockstorm" },
     title: `really rocky`
   },
@@ -28,12 +28,6 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: { maxWidth: 624 }
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
-            }
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
@@ -128,8 +122,8 @@ module.exports = {
             `Content-Security-Policy: default-src 'none';script-src 'self' https://www.google-analytics.com 'unsafe-inline' data:;style-src 'unsafe-inline';img-src 'self' https://www.google-analytics.com data:;font-src 'self' https://fonts.gstatic.com;connect-src 'self' https://www.google-analytics.com;manifest-src 'self';prefetch-src 'self' https://*.google.com https://www.google-analytics.com;`,
             // https://github.com/WICG/feature-policy/blob/master/features.md
             `Feature-Policy: accelerometer 'none';ambient-light-sensor 'none';autoplay 'none';camera 'none';encrypted-media 'none';fullscreen 'none';geolocation 'none';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'none';picture-in-picture 'none';speaker 'none';usb 'none';vr 'none';`,
-            `Referrer-Policy: no-referrer`
-            // `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
+            `Referrer-Policy: same-origin`,
+            `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
           ]
         }
       }
@@ -150,6 +144,7 @@ module.exports = {
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-typography`,

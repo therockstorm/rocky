@@ -1,8 +1,8 @@
-export interface ILocation {
+interface ILocation {
   pathname: string
 }
 
-export interface INode {
+interface INode {
   excerpt: string
   fields: {
     slug: string
@@ -15,20 +15,20 @@ export interface INode {
   html: string
 }
 
-export interface IEdge {
+interface IEdge {
   node: INode
 }
 
-export interface IMarkdown {
+interface IMarkdown {
   edges: IEdge[]
 }
 
-export interface IPageContext {
+interface IPageContext {
   previous: INode
   next: INode
 }
 
-export interface ISite {
+interface ISite {
   siteMetadata: {
     author: string
     description: string

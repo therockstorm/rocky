@@ -1,6 +1,5 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
-import { IEdge, ILocation, IMarkdown, ISite } from ".."
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
@@ -18,7 +17,7 @@ export default ({ data, location }: IProps) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
-        title="All posts"
+        title="Rocky Warren"
         keywords={[
           `blog`,
           `typescript`,

@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Helmet from "react-helmet"
-import { ISite } from ".."
 
 interface IProps {
   description?: string
@@ -40,31 +39,29 @@ export default ({
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const metaImage = image ? `${site.siteMetadata.siteUrl}/${image}` : null
+  const desc = description || site.siteMetadata.description
+  const img = image ? `${site.siteMetadata.siteUrl}/${image}` : null
   const url = `${site.siteMetadata.siteUrl}${slug}`
   return (
     <Helmet
       htmlAttributes={{ lang }}
-      {...(title
-        ? { title, titleTemplate: `%s — ${site.siteMetadata.title}` }
-        : { title: `${site.siteMetadata.title} — A blog by Rocky Warren` })}
+      {...{ title, titleTemplate: `%s - ${site.siteMetadata.title}` }}
       meta={[
-        { name: `description`, content: metaDescription },
+        { name: `description`, content: desc },
         { property: "og:url", content: url },
         { property: `og:title`, content: title || site.siteMetadata.title },
-        { property: `og:description`, content: metaDescription },
+        { property: `og:description`, content: desc },
         { property: `og:type`, content: `website` },
         { name: `twitter:card`, content: `summary` },
         { name: `twitter:creator`, content: site.siteMetadata.social.twitter },
         { name: `twitter:title`, content: title || site.siteMetadata.title },
-        { name: `twitter:description`, content: metaDescription }
+        { name: `twitter:description`, content: desc }
       ]
         .concat(
-          metaImage
+          img
             ? [
-                { content: metaImage, property: "og:image" },
-                { content: metaImage, name: "twitter:image" }
+                { content: img, property: "og:image" },
+                { content: img, name: "twitter:image" }
               ]
             : []
         )

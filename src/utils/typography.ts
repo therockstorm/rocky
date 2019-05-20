@@ -1,5 +1,4 @@
 import Typography from "typography"
-// @ts-ignore
 import Bootstrap from "typography-theme-bootstrap"
 import "../global.css"
 

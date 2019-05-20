@@ -1,5 +1,4 @@
 import React from "react"
-import { ILocation } from ".."
 import { rhythm } from "../utils/typography"
 import Footer from "./Footer"
 import Header from "./Header"
