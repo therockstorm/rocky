@@ -1,8 +1,8 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
-import Bio from "../components/Bio"
-import Layout from "../components/Layout"
-import SEO from "../components/Seo"
+import Bio from "../components/bio"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
 interface IProps {
@@ -13,20 +13,22 @@ interface IProps {
 
 export default ({ data, location, pageContext }: IProps) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
+  const fm = post.frontmatter
+  const title = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={title}>
       <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={fm.title}
+        description={fm.description || post.excerpt}
         slug={post.fields.slug}
+        image={fm.image.childImageSharp.fixed.src}
       />
       <main>
         <article>
           <header>
-            <h1>{post.frontmatter.title}</h1>
+            <h1>{fm.title}</h1>
             <p
               style={{
                 ...scale(-0.2),
@@ -35,7 +37,7 @@ export default ({ data, location, pageContext }: IProps) => {
                 marginTop: rhythm(-1)
               }}
             >
-              {post.frontmatter.date}
+              {fm.date}
             </p>
           </header>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -91,6 +93,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        image {
+          childImageSharp {
+            fixed(width: 600, height: 600, cropFocus: CENTER) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
       fields {
         slug

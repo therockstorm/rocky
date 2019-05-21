@@ -11,6 +11,16 @@ interface INode {
     date: string
     title: string
     description: string
+    image: {
+      childImageSharp: {
+        resize: {
+          src: string
+        }
+        fixed: {
+          src: string
+        }
+      }
+    }
   }
   html: string
 }

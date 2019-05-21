@@ -1,6 +1,7 @@
 ---
-title: Lessons Learned From Sending Millions of Serverless Webhooks
+title: 10 Lessons Learned From Sending Millions of Serverless Webhooks
 description: Using a serverless architecture to send Dwolla's webhooks faster and at a lower cost.
+image: serverless-webhooks.png
 date: "2019-05-21"
 ---
 
@@ -46,7 +47,7 @@ fields @timestamp, @message
 
 Moving to a serverless architecture improved the timeliness, configurability, cost and reliability of our webhooks. Taken together, they make the Dwolla Platform even more valuable to our customers. We hope these lessons ease adoption of Serverless on your projects.
 
-For more details, check out the open-sourced code detailed below and the [slides presented at Des Moines’s JavaScript meetup](https://gitpitch.com/dwolla/webhook-handler#/).
+For more details, check out the open-sourced code detailed below and the [dsmJS talk](../serverless-webhooks-dsmjs-talk).
 
 - [webhook-provisioner](https://github.com/Dwolla/webhook-provisioner) - Create, update and delete customer-specific AWS resources
 - [webhook-handler](https://github.com/dwolla/webhook-handler) - POST webhooks to APIs

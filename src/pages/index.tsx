@@ -1,8 +1,8 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
-import Bio from "../components/Bio"
-import Layout from "../components/Layout"
-import SEO from "../components/Seo"
+import Bio from "../components/bio"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
 interface IProps {
@@ -16,18 +16,7 @@ export default ({ data, location }: IProps) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title="Rocky Warren"
-        keywords={[
-          `blog`,
-          `typescript`,
-          `javascript`,
-          `aws`,
-          `lambda`,
-          `serverless`,
-          `dwolla`
-        ]}
-      />
+      <SEO title="Rocky Warren" />
       <Bio />
       {posts.map(({ node }: IEdge) => {
         const title = node.frontmatter.title || node.fields.slug

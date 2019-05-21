@@ -7,7 +7,6 @@ interface IProps {
   image?: string
   lang?: string
   meta?: Array<{ content: string; property: string; name: undefined }>
-  keywords?: string[]
   title: string
   slug?: string
 }
@@ -18,7 +17,6 @@ export default ({
   description,
   slug,
   meta = [],
-  keywords = [],
   lang = "en"
 }: IProps) => {
   const { site }: { site: ISite } = useStaticQuery(
@@ -40,7 +38,9 @@ export default ({
   )
 
   const desc = description || site.siteMetadata.description
-  const img = image ? `${site.siteMetadata.siteUrl}/${image}` : null
+  const img = image
+    ? `${site.siteMetadata.siteUrl}${image.replace("/", "")}`
+    : null
   const url = `${site.siteMetadata.siteUrl}${slug}`
   return (
     <Helmet
@@ -63,11 +63,6 @@ export default ({
                 { content: img, property: "og:image" },
                 { content: img, name: "twitter:image" }
               ]
-            : []
-        )
-        .concat(
-          keywords.length > 0
-            ? { name: `keywords`, content: keywords.join(`, `) }
             : []
         )
         .concat(meta)}
