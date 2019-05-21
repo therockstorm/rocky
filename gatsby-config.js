@@ -150,7 +150,7 @@ module.exports = {
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-advanced-sitemap`,
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-typography`,

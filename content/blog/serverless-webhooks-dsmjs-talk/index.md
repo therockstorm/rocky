@@ -2,7 +2,7 @@
 title: Serverless Webhooks Talk
 description: My dsmJS talk detailing Dwolla’s updated webhook notifications architecture.
 image: preview.jpg
-date: "2019-05-21"
+date: "2019-05-22T00:00:00Z"
 ---
 
 In March, Dwolla updated its webhooks to a serverless architecture, improving their timeliness, configurability, cost and reliability. Watch the talk I gave at [dsmJS](https://twitter.com/desmoinesjs) to learn more about how we did it.

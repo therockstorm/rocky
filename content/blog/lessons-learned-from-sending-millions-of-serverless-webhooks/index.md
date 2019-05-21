@@ -2,7 +2,7 @@
 title: 10 Lessons Learned From Sending Millions of Serverless Webhooks
 description: Using a serverless architecture to send Dwolla's webhooks faster and at a lower cost.
 image: serverless-webhooks.png
-date: "2019-05-21"
+date: "2019-05-22T00:00:01Z"
 ---
 
 ![Serverless Webhooks](./serverless-webhooks.png)
