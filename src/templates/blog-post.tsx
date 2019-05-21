@@ -20,10 +20,10 @@ export default ({ data, location, pageContext }: IProps) => {
   return (
     <Layout location={location} title={title}>
       <SEO
-        title={fm.title}
         description={fm.description || post.excerpt}
-        slug={post.fields.slug}
         image={fm.image.childImageSharp.fixed.src}
+        title={fm.title}
+        slug={post.fields.slug}
       />
       <main>
         <article>

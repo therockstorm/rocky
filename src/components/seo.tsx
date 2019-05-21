@@ -5,20 +5,11 @@ import Helmet from "react-helmet"
 interface IProps {
   description?: string
   image?: string
-  lang?: string
-  meta?: Array<{ content: string; property: string; name: undefined }>
   title: string
   slug?: string
 }
 
-export default ({
-  image,
-  title,
-  description,
-  slug,
-  meta = [],
-  lang = "en"
-}: IProps) => {
+export default ({ description, image, title, slug }: IProps) => {
   const { site }: { site: ISite } = useStaticQuery(
     graphql`
       query {
@@ -44,7 +35,7 @@ export default ({
   const url = `${site.siteMetadata.siteUrl}${slug}`
   return (
     <Helmet
-      htmlAttributes={{ lang }}
+      htmlAttributes={{ lang: "en" }}
       {...{ title, titleTemplate: `%s - ${site.siteMetadata.title}` }}
       meta={[
         { name: `description`, content: desc },
@@ -56,16 +47,14 @@ export default ({
         { name: `twitter:creator`, content: site.siteMetadata.social.twitter },
         { name: `twitter:title`, content: title || site.siteMetadata.title },
         { name: `twitter:description`, content: desc }
-      ]
-        .concat(
-          img
-            ? [
-                { content: img, property: "og:image" },
-                { content: img, name: "twitter:image" }
-              ]
-            : []
-        )
-        .concat(meta)}
+      ].concat(
+        img
+          ? [
+              { content: img, property: "og:image" },
+              { content: img, name: "twitter:image" }
+            ]
+          : []
+      )}
     />
   )
 }
