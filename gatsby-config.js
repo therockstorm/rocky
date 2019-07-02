@@ -1,3 +1,9 @@
+const analytics = `https://www.google-analytics.com`
+const none = `'none'`
+const self = `'self'`
+const unsafe = `'unsafe-inline'`
+const vimeo = `https://player.vimeo.com`
+
 module.exports = {
   siteMetadata: {
     author: `Rocky Warren`,
@@ -125,9 +131,9 @@ module.exports = {
         headers: {
           "/*": [
             //https://csp-evaluator.withgoogle.com/
-            `Content-Security-Policy: default-src 'none';script-src 'self' https://www.google-analytics.com 'unsafe-inline' data:;style-src 'unsafe-inline';img-src 'self' https://www.google-analytics.com data:;font-src 'self' https://fonts.gstatic.com;connect-src 'self' https://www.google-analytics.com;manifest-src 'self';frame-src https://player.vimeo.com;prefetch-src 'self' https://*.google.com https://www.google-analytics.com;`,
+            `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} data:;style-src ${unsafe};img-src ${self} ${analytics} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${vimeo};`,
             // https://github.com/WICG/feature-policy/blob/master/features.md
-            `Feature-Policy: accelerometer 'none';ambient-light-sensor 'none';autoplay 'none';camera 'none';encrypted-media 'none';fullscreen 'self' https://player.vimeo.com;geolocation 'none';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'none';picture-in-picture 'self' https://player.vimeo.com;speaker 'none';usb 'none';vr 'none';`,
+            `Feature-Policy: accelerometer ${none};ambient-light-sensor ${none};autoplay ${none};camera ${none};encrypted-media ${none};fullscreen ${self} ${vimeo};geolocation ${none};gyroscope ${none};magnetometer ${none};microphone ${none};midi ${none};payment ${none};picture-in-picture ${self} ${vimeo};speaker ${none};usb ${none};vr ${none};`,
             `Referrer-Policy: same-origin`,
             `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
           ]
