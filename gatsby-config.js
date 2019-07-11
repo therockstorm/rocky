@@ -79,9 +79,7 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
                 const siteUrl = site.siteMetadata.siteUrl
-                const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${siteUrl}${
-                  edge.node.fields.slug
-                }">Click here</a> to read it.)</div>`
+                const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${siteUrl}${edge.node.fields.slug}">Click here</a> to read it.)</div>`
                 let html = edge.node.html
                 // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
                 html = html
