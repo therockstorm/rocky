@@ -43,7 +43,7 @@ export default ({ location, title }: IProps) => (
             style={{ height: "20px", width: "20px", cursor: "pointer" }}
             onClick={() => toggleTheme(isDark ? "light" : "dark")}
           >
-            <Svg src={isDark ? moon : sun} className={"toggle"} />
+            <Svg src={isDark ? sun : moon} className={"toggle"} />
           </div>
         )
       }}

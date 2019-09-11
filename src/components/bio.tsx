@@ -53,7 +53,7 @@ export default () => {
         >
           {author}
         </a>
-        's blog. Principal Engineer at Dwolla and creator of{" "}
+        's blog. Engineering at Vertex Software and creator of{" "}
         <a href={"https://www.watchtower.dev/"} rel={rel} target={"_blank"}>
           Watchtower
         </a>
