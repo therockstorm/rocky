@@ -5,9 +5,11 @@ image: unplug.jpg
 date: "2019-10-07T00:00:00Z"
 ---
 
-One of the cons of working from home is deciding when enough is enough. It’s all too easy to get into a problem, lose track of time, and let hours slip away.
+One of the cons of working from home is deciding when enough is enough. It’s all too easy to get sucked into a problem, lose track of time, and let hours slip away.
 
-I find that even after I decide to close my text editor, I see messages in Slack I should read. I close this window and notice unread emails in my inbox. I came up with a simple solution, create a script that closes all work-related applications,
+You bring yourself to close your text editor only to get tempted by unread Slack messages. After too long, you close Slack and find unread emails in your inbox. And on it goes.
+
+This script is a simple solution, it closes all work-related applications at once,
 
 ```
 pgrep com.docker.hyperkit && docker-compose down
@@ -17,12 +19,16 @@ osascript -e 'quit app "Google Chrome"'
 osascript -e 'quit app "iTerm"'
 ```
 
-I alias this in `~/.zshrc` with `alias down=~/dev/down.sh` so at the end of the day, I decide once that I'm done and run `down`. The next morning, I run `up`,
+You can alias it in `~/.zshrc` or `~/.bash_profile` with `alias down="~/dev/down.sh"` so, at the end of the day, you decide once that you're done and run `down`. The next morning, run `up` and you're ready to go,
 
 ```
-open -a Slack
 open -a Docker
+open -a Slack
 open -a "Google Chrome"
+osascript -e 'tell application "Google Chrome"
+  activate
+  open location "https://console.aws.amazon.com"
+end tell'
 ```
 
-If you've created similar scripts, let me know what I'm missing in mine, [@therockstorm](https://twitter.com/therockstorm).
+If you've created similar scripts, let me know what else you have in yours, [@therockstorm](https://twitter.com/therockstorm).
