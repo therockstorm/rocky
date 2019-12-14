@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import { ITheme, ThemeToggler } from "gatsby-plugin-dark-mode"
+import { Theme, ThemeToggler } from "gatsby-plugin-dark-mode"
 import React from "react"
 import Svg from "react-inlinesvg"
 import moon from "../img/moon.svg"
@@ -9,12 +9,12 @@ import { rhythm } from "../utils/typography"
 declare const __PATH_PREFIX__: string
 const rootPath = `${__PATH_PREFIX__}/`
 
-interface IProps {
-  location: ILocation
+interface Props {
+  location: Location
   title: string
 }
 
-export default ({ location, title }: IProps) => (
+const Header = ({ location, title }: Props): React.ReactElement => (
   <header
     style={{
       alignItems: "center",
@@ -35,13 +35,13 @@ export default ({ location, title }: IProps) => (
       </h3>
     )}
     <ThemeToggler>
-      {({ theme, toggleTheme }: ITheme) => {
+      {({ theme, toggleTheme }: Theme): React.ReactElement => {
         if (theme === null) return <div style={{ height: "20px" }} />
         const isDark = theme === "dark"
         return (
           <div
             style={{ height: "20px", width: "20px", cursor: "pointer" }}
-            onClick={() => toggleTheme(isDark ? "light" : "dark")}
+            onClick={(): void => toggleTheme(isDark ? "light" : "dark")}
           >
             <Svg src={isDark ? sun : moon} className={"toggle"} />
           </div>
@@ -50,3 +50,5 @@ export default ({ location, title }: IProps) => (
     </ThemeToggler>
   </header>
 )
+
+export default Header

@@ -1,8 +1,8 @@
-interface ILocation {
+interface Location {
   pathname: string
 }
 
-interface INode {
+interface Node {
   excerpt: string
   fields: {
     slug: string
@@ -25,20 +25,20 @@ interface INode {
   html: string
 }
 
-interface IEdge {
-  node: INode
+interface Edge {
+  node: Node
 }
 
-interface IMarkdown {
-  edges: IEdge[]
+interface Markdown {
+  edges: Edge[]
 }
 
-interface IPageContext {
-  previous: INode
-  next: INode
+interface PageContext {
+  previous: Node
+  next: Node
 }
 
-interface ISite {
+interface Site {
   siteMetadata: {
     author: string
     description: string

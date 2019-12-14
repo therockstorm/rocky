@@ -2,7 +2,7 @@ import Typography from "typography"
 import Bootstrap from "typography-theme-bootstrap"
 import "../global.css"
 
-Bootstrap.overrideThemeStyles = () => ({
+Bootstrap.overrideThemeStyles = (): unknown => ({
   ".footer-icon": {
     color: "var(--textNormal)"
   },

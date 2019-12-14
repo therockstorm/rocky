@@ -2,7 +2,7 @@ const analytics = `https://www.google-analytics.com`
 const none = `'none'`
 const self = `'self'`
 const unsafe = `'unsafe-inline'`
-const vimeo = `https://player.vimeo.com`
+const youtube = `https://www.youtube.com`
 
 module.exports = {
   siteMetadata: {
@@ -93,6 +93,7 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: `${siteUrl}${edge.node.fields.slug}`,
                   guid: `${siteUrl}${edge.node.fields.slug}`,
+                  // eslint-disable-next-line
                   custom_elements: [{ "content:encoded": html + postText }]
                 })
               })
@@ -129,9 +130,9 @@ module.exports = {
         headers: {
           "/*": [
             //https://csp-evaluator.withgoogle.com/
-            `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} data:;style-src ${unsafe};img-src ${self} ${analytics} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${vimeo};`,
+            `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} data:;style-src ${unsafe};img-src ${self} ${analytics} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${youtube};`,
             // https://github.com/WICG/feature-policy/blob/master/features.md
-            `Feature-Policy: accelerometer ${none};ambient-light-sensor ${none};autoplay ${none};camera ${none};encrypted-media ${none};fullscreen ${self} ${vimeo};geolocation ${none};gyroscope ${none};magnetometer ${none};microphone ${none};midi ${none};payment ${none};picture-in-picture ${self} ${vimeo};speaker ${none};usb ${none};vr ${none};`,
+            `Feature-Policy: accelerometer ${none};ambient-light-sensor ${none};autoplay ${none};camera ${none};encrypted-media ${none};fullscreen ${self} ${youtube};geolocation ${none};gyroscope ${none};magnetometer ${none};microphone ${none};midi ${none};payment ${none};picture-in-picture ${self} ${youtube};speaker ${none};usb ${none};vr ${none};`,
             `Referrer-Policy: same-origin`,
             `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
           ]
@@ -142,9 +143,13 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `really rocky`,
+        // eslint-disable-next-line
         short_name: `really rocky`,
+        // eslint-disable-next-line
         start_url: `/`,
+        // eslint-disable-next-line
         background_color: `#ffffff`,
+        // eslint-disable-next-line
         theme_color: `#3b5fcc`,
         display: `minimal-ui`,
         icon: `content/assets/icon-512x512.png`

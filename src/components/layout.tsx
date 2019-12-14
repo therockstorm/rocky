@@ -3,13 +3,13 @@ import { rhythm } from "../utils/typography"
 import Footer from "./footer"
 import Header from "./header"
 
-interface IProps {
-  location: ILocation
+interface Props {
+  location: Location
   title: string
   children: React.ReactNode
 }
 
-export default ({ children, title, location }: IProps) => (
+const Layout = ({ children, title, location }: Props): React.ReactElement => (
   <div
     style={{
       backgroundColor: "var(--bg)",
@@ -26,3 +26,5 @@ export default ({ children, title, location }: IProps) => (
     <Footer />
   </div>
 )
+
+export default Layout

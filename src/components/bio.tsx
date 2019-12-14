@@ -3,9 +3,7 @@ import Image from "gatsby-image"
 import React from "react"
 import { rhythm } from "../utils/typography"
 
-const rel = "noopener noreferrer"
-
-export default () => {
+const Bio = (): React.ReactElement => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -48,13 +46,17 @@ export default () => {
         {" "}
         <a
           href={`https://twitter.com/${social.twitter}`}
-          rel={rel}
+          rel="noopener noreferrer"
           target={"_blank"}
         >
           {author}
         </a>
-        's blog. Engineering at Vertex Software and creator of{" "}
-        <a href={"https://www.watchtower.dev/"} rel={rel} target={"_blank"}>
+        &#39;s blog. Engineering at Vertex Software and creator of{" "}
+        <a
+          href={"https://www.watchtower.dev/"}
+          rel="noopener noreferrer"
+          target={"_blank"}
+        >
           Watchtower
         </a>
         . I do other stuff too.
@@ -62,3 +64,5 @@ export default () => {
     </div>
   )
 }
+
+export default Bio
