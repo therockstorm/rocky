@@ -12,13 +12,15 @@ const icon = { marginRight: rhythm(1), width: 25 }
 const IconLink = ({
   src,
   ...other
-}: { src: string } & React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+}: { src: string } & React.AnchorHTMLAttributes<
+  HTMLAnchorElement
+>): React.ReactElement => (
   <a rel={"noopener noreferrer"} style={icon} target={"_blank"} {...other}>
     <Svg src={src} className={"footer-icon"} />
   </a>
 )
 
-export default () => (
+const Footer = (): React.ReactElement => (
   <footer style={{ display: `flex`, marginTop: rhythm(2.5) }}>
     <IconLink
       aria-label="Link to Twitter Profile"
@@ -48,3 +50,5 @@ export default () => (
     />
   </footer>
 )
+
+export default Footer

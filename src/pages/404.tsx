@@ -3,12 +3,12 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-interface IProps {
-  data: { site: ISite }
-  location: ILocation
+interface Props {
+  data: { site: Site }
+  location: Location
 }
 
-export default ({ data, location }: IProps) => (
+const Error = ({ data, location }: Props): React.ReactElement => (
   <Layout location={location} title={data.site.siteMetadata.title}>
     <SEO title="404: Not Found" />
     <h1>Not Found</h1>
@@ -25,3 +25,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default Error

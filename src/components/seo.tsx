@@ -2,15 +2,20 @@ import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Helmet from "react-helmet"
 
-interface IProps {
+interface Props {
   description?: string
   image?: string
   title: string
   slug?: string
 }
 
-export default ({ description, image, title, slug }: IProps) => {
-  const { site }: { site: ISite } = useStaticQuery(
+const Seo = ({
+  description,
+  image,
+  title,
+  slug
+}: Props): React.ReactElement => {
+  const { site }: { site: Site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -58,3 +63,5 @@ export default ({ description, image, title, slug }: IProps) => {
     />
   )
 }
+
+export default Seo

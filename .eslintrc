@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "./node_modules/skripts/.eslintrc",
+    "plugin:react/recommended"
+  ],
+  "settings": { "react": { "version": "detect" } }
+}

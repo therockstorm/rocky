@@ -5,13 +5,13 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
-interface IProps {
-  data: { site: ISite; markdownRemark: INode }
-  location: ILocation
-  pageContext: IPageContext
+interface Props {
+  data: { site: Site; markdownRemark: Node }
+  location: Location
+  pageContext: PageContext
 }
 
-export default ({ data, location, pageContext }: IProps) => {
+const Post = ({ data, location, pageContext }: Props): React.ReactElement => {
   const post = data.markdownRemark
   const fm = post.frontmatter
   const title = data.site.siteMetadata.title
@@ -77,6 +77,8 @@ export default ({ data, location, pageContext }: IProps) => {
     </Layout>
   )
 }
+
+export default Post
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
