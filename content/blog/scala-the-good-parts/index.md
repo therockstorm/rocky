@@ -1,7 +1,7 @@
 ---
 title: "Scala: The Good Parts"
 description: Scala allows you to accomplish tasks in different ways. I recently gave a talk explaining some of the more readable, maintainable approaches.
-date: "2020-02-22T00:00:00Z"
+date: "2020-03-02T00:00:00Z"
 ---
 
 Scala allows you to accomplish tasks in different ways. I recently gave a talk explaining some of the more readable, maintainable approaches while attempting to add detail so the slides could stand on their own. The excellent [reveal.js](https://github.com/hakimel/reveal.js) framework lets you create presentations in Markdown. This blog is also in Markdown, so through the power of copy/paste, here it is.
