@@ -9,8 +9,7 @@ module.exports = {
     author: `Rocky Warren`,
     description: `Rocky Warren's personal blog.`,
     siteUrl: `https://rocky.dev/`,
-    social: { twitter: "@therockstorm" },
-    title: `really rocky`
+    title: `sudo README`
   },
   plugins: [
     {
@@ -142,9 +141,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `really rocky`,
+        name: `sudo README`,
         // eslint-disable-next-line
-        short_name: `really rocky`,
+        short_name: `sudo README`,
         // eslint-disable-next-line
         start_url: `/`,
         // eslint-disable-next-line
