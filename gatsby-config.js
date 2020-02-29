@@ -3,6 +3,8 @@ const none = `'none'`
 const self = `'self'`
 const unsafe = `'unsafe-inline'`
 const youtube = `https://www.youtube.com`
+const scalaOrg = `https://*.scala-lang.org`
+const horstmann = `https://www.horstmann.com`
 
 module.exports = {
   siteMetadata: {
@@ -129,7 +131,7 @@ module.exports = {
         headers: {
           "/*": [
             //https://csp-evaluator.withgoogle.com/
-            `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} data:;style-src ${unsafe};img-src ${self} ${analytics} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${youtube};`,
+            `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} data:;style-src ${unsafe};img-src ${self} ${analytics} ${scalaOrg} ${horstmann} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${youtube};`,
             // https://github.com/WICG/feature-policy/blob/master/features.md
             `Feature-Policy: accelerometer ${none};ambient-light-sensor ${none};autoplay ${none};camera ${none};encrypted-media ${none};fullscreen ${self} ${youtube};geolocation ${none};gyroscope ${none};magnetometer ${none};microphone ${none};midi ${none};payment ${none};picture-in-picture ${self} ${youtube};speaker ${none};usb ${none};vr ${none};`,
             `Referrer-Policy: same-origin`,

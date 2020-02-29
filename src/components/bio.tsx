@@ -35,7 +35,7 @@ const Bio = (): React.ReactElement => {
         alt={author}
         style={{
           borderRadius: `50%`,
-          marginRight: rhythm(1.5),
+          marginRight: rhythm(1),
           minWidth: 100
         }}
       />
