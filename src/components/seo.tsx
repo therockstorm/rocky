@@ -24,9 +24,6 @@ const Seo = ({
             description
             author
             siteUrl
-            social {
-              twitter
-            }
           }
         }
       }
@@ -49,7 +46,7 @@ const Seo = ({
         { property: `og:description`, content: desc },
         { property: `og:type`, content: `website` },
         { name: `twitter:card`, content: `summary` },
-        { name: `twitter:creator`, content: site.siteMetadata.social.twitter },
+        { name: `twitter:creator`, content: `@therockstorm` },
         { name: `twitter:title`, content: title || site.siteMetadata.title },
         { name: `twitter:description`, content: desc }
       ].concat(

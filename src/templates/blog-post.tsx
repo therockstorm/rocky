@@ -21,7 +21,7 @@ const Post = ({ data, location, pageContext }: Props): React.ReactElement => {
     <Layout location={location} title={title}>
       <SEO
         description={fm.description || post.excerpt}
-        image={fm.image.childImageSharp.fixed.src}
+        image={fm.image ? fm.image.childImageSharp.fixed.src : undefined}
         title={fm.title}
         slug={post.fields.slug}
       />

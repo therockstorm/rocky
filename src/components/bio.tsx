@@ -6,9 +6,9 @@ import { rhythm } from "../utils/typography"
 const Bio = (): React.ReactElement => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/profile.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 100, height: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -16,20 +16,18 @@ const Bio = (): React.ReactElement => {
       site {
         siteMetadata {
           author
-          social {
-            twitter
-          }
         }
       }
     }
   `)
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata
 
   return (
     <div
       style={{
         display: `flex`,
-        marginBottom: rhythm(2)
+        marginBottom: rhythm(2),
+        alignItems: "center"
       }}
     >
       <Image
@@ -37,29 +35,31 @@ const Bio = (): React.ReactElement => {
         alt={author}
         style={{
           borderRadius: `50%`,
-          marginBottom: 0,
-          marginRight: rhythm(0.5),
-          minWidth: 50
+          marginRight: rhythm(1.5),
+          minWidth: 100
         }}
       />
-      <p>
+      <p style={{ marginBottom: 0 }}>
         {" "}
         <a
-          href={`https://twitter.com/${social.twitter}`}
+          href={`https://twitter.com/therockstorm`}
           rel="noopener noreferrer"
           target={"_blank"}
         >
           {author}
         </a>
-        &#39;s blog. Engineering at Vertex Software and creator of{" "}
+        &#39;s blog.
+        <br />
+        Data Engineering at Vertex Software.
+        <br />I do{" "}
         <a
-          href={"https://www.watchtower.dev/"}
+          href={`https://www.instagram.com/therockstorm/`}
           rel="noopener noreferrer"
           target={"_blank"}
         >
-          Watchtower
-        </a>
-        . I do other stuff too.
+          other stuff
+        </a>{" "}
+        too.
       </p>
     </div>
   )
