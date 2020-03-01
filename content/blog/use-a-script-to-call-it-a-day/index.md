@@ -1,7 +1,6 @@
 ---
 title: Use a Script to Call It a Day
 description: Ending the day can be tough, especially when you work from home. Script it so you can make one decision instead of many.
-image: unplug.jpg
 date: "2019-10-07T00:00:00Z"
 ---
 
