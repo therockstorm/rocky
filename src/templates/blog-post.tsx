@@ -16,6 +16,7 @@ const Post = ({ data, location, pageContext }: Props): React.ReactElement => {
   const fm = post.frontmatter
   const title = data.site.siteMetadata.title
   const { previous, next } = pageContext
+  const date = `${fm.date}${fm.updated ? `, last updated ${fm.updated}` : ""}`
 
   return (
     <Layout location={location} title={title}>
@@ -37,7 +38,7 @@ const Post = ({ data, location, pageContext }: Props): React.ReactElement => {
                 marginTop: rhythm(-1)
               }}
             >
-              {fm.date}
+              {date}
             </p>
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -95,6 +96,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        updated(formatString: "MMMM DD, YYYY")
         description
         image {
           childImageSharp {

@@ -2,6 +2,7 @@
 title: When IntelliJ Loses Its Mind, Run This
 description: Occasionally, IntelliJ goes haywire and won't run your project or tests. Here's a script to get you back up and running.
 date: "2020-03-01T00:00:00Z"
+updated: "2020-03-09T00:00:00Z"
 ---
 
 Occasionally, IntelliJ goes haywire and won't run your project or tests. Next time this happens, close IntelliJ, run the script below in your project directory, and then open IntelliJ and reimport the project.
@@ -11,17 +12,16 @@ The script copies your `.idea` folder to `/tmp`, runs `git clean -xdf` to remove
 ```bash
 #!/bin/bash
 
-if ! $(git diff-index --quiet HEAD); then
+if ! git diff-index --quiet HEAD; then
   echo "Uncommited files detected, commit them and try again. Exiting."
   exit 1
 fi
 
-set -e # exit immediately on error
+set -o errexit -o noclobber -o nounset
 
 idea="./.idea"
 tmpIdea="/tmp/.idea"
-dirs=($tmpIdea/dataSources $tmpIdea/dictionaries $tmpIdea/inspectionProfiles)
-files=($tmpIdea/dataSources*.xml $tmpIdea/workspace.xml)
+items=("$tmpIdea"/codeStyles "$tmpIdea"/dataSources "$tmpIdea"/dictionaries "$tmpIdea"/inspectionProfiles "$tmpIdea"/dataSources*.xml "$tmpIdea"/workspace.xml)
 
 rm -rf $tmpIdea
 mkdir $tmpIdea
@@ -29,11 +29,8 @@ mv $idea /tmp
 git clean -xdf
 mkdir $idea
 
-for d in ${dirs[*]}; do
-  [ -d $d ] && cp -r $d $idea
-done
-
-for f in ${files[*]}; do
-  [ -f $f ] && cp $f $idea
+for i in ${items[*]}; do
+  if [ -d "$i" ]; then cp -r "$i" $idea; fi
+  if [ -f "$i" ]; then cp "$i" $idea; fi
 done
 ```
