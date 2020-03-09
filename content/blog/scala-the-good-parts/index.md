@@ -41,7 +41,7 @@ Scala Overview, Benefits Over Java
       public boolean equals() { ... }
       public int hashCode() { ... }
   }
-  Map<String, Int> map  = new HashMap<String, Int>() {{
+  Map<String, Integer> map  = new HashMap<String, Integer>() {{
       put("a", 0);
       put("b", 2);
   }};

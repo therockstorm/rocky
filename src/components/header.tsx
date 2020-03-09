@@ -14,6 +14,9 @@ interface Props {
   title: string
 }
 
+const monospace =
+  "Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif"
+
 const Header = ({ location, title }: Props): React.ReactElement => (
   <header
     style={{
@@ -25,12 +28,19 @@ const Header = ({ location, title }: Props): React.ReactElement => (
   >
     {location.pathname === rootPath ? (
       <h1 style={{ marginBottom: 0, marginTop: 0 }}>
-        <Link style={{ color: `inherit` }} to={`/`}>
+        <Link style={{ color: `inherit`, fontFamily: monospace }} to={`/`}>
           {title}
         </Link>
       </h1>
     ) : (
-      <h3 style={{ lineHeight: rhythm(2), marginBottom: 0, marginTop: 0 }}>
+      <h3
+        style={{
+          lineHeight: rhythm(2),
+          marginBottom: 0,
+          marginTop: 0,
+          fontFamily: monospace
+        }}
+      >
         <Link to={`/`}>{title}</Link>
       </h3>
     )}

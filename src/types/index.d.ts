@@ -9,6 +9,7 @@ interface Node {
   }
   frontmatter: {
     date: string
+    updated: string
     title: string
     description: string
     image: {
