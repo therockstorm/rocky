@@ -14,8 +14,7 @@ interface Props {
   title: string
 }
 
-const monospace =
-  "Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif"
+const monospace = "Consolas,Menlo,Monaco,source-code-pro,Courier New,monospace"
 
 const Header = ({ location, title }: Props): React.ReactElement => (
   <header

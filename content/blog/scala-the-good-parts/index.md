@@ -319,7 +319,7 @@ Scala's Immutable Collections Hierarchy
     // Looping over map, also shows string interpolation
     myMap.foreach{ case (k, v) => println(s"$k -> $v") }
   ```
-- `Tuple`: aggregates of values, useful for multiple returns in classes private methods. Prefer `case class` return types for public methods for readability.
+- `Tuple`: aggregates of values, useful for multiple returns in class's private methods. Prefer `case class` return types for public methods for readability.
   ```scala
     val myTuple = (1, 3.14, "Fred")
     myTuple._2 // 3.14
