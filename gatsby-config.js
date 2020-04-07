@@ -11,22 +11,22 @@ module.exports = {
     author: `Rocky Warren`,
     description: `Rocky Warren's personal blog.`,
     siteUrl: `https://rocky.dev/`,
-    title: `sudo README`
+    title: `sudo README`,
   },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
-        name: `blog`
-      }
+        name: `blog`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/assets`,
-        name: `assets`
-      }
+        name: `assets`,
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -34,13 +34,13 @@ module.exports = {
         plugins: [
           {
             resolve: `gatsby-remark-images`,
-            options: { maxWidth: 624 }
+            options: { maxWidth: 624 },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
-            }
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
@@ -48,17 +48,17 @@ module.exports = {
           {
             resolve: "gatsby-remark-external-links",
             options: {
-              target: "_blank"
-            }
-          }
-        ]
-      }
+              target: "_blank",
+            },
+          },
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
-      options: { trackingId: `UA-64259036-1` }
+      options: { trackingId: `UA-64259036-1` },
     },
     {
       resolve: `gatsby-plugin-feed`,
@@ -78,7 +78,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 const siteUrl = site.siteMetadata.siteUrl
                 const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${siteUrl}${edge.node.fields.slug}">Click here</a> to read it.)</div>`
                 let html = edge.node.html
@@ -95,7 +95,7 @@ module.exports = {
                   url: `${siteUrl}${edge.node.fields.slug}`,
                   guid: `${siteUrl}${edge.node.fields.slug}`,
                   // eslint-disable-next-line
-                  custom_elements: [{ "content:encoded": html + postText }]
+                  custom_elements: [{ "content:encoded": html + postText }],
                 })
               })
             },
@@ -120,10 +120,10 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Rocky Warren's Blog RSS Feed"
-          }
-        ]
-      }
+            title: "Rocky Warren's Blog RSS Feed",
+          },
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-netlify`,
@@ -135,10 +135,10 @@ module.exports = {
             // https://github.com/WICG/feature-policy/blob/master/features.md
             `Feature-Policy: accelerometer ${none};ambient-light-sensor ${none};autoplay ${none};camera ${none};encrypted-media ${none};fullscreen ${self} ${youtube};geolocation ${none};gyroscope ${none};magnetometer ${none};microphone ${none};midi ${none};payment ${none};picture-in-picture ${self} ${youtube};speaker ${none};usb ${none};vr ${none};`,
             `Referrer-Policy: same-origin`,
-            `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
-          ]
-        }
-      }
+            `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`,
+          ],
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -153,8 +153,8 @@ module.exports = {
         // eslint-disable-next-line
         theme_color: `#3b5fcc`,
         display: `minimal-ui`,
-        icon: `content/assets/icon-512x512.png`
-      }
+        icon: `content/assets/icon-512x512.png`,
+      },
     },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-dark-mode`,
@@ -164,8 +164,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`
-      }
-    }
-  ]
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
 }

@@ -13,7 +13,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "gatsby": "^2.20.12",
+    "gatsby": "^2.20.13",
     "gatsby-image": "^2.3.1",
     "gatsby-plugin-advanced-sitemap": "^1.5.2",
     "gatsby-plugin-catch-links": "^2.2.1",
@@ -50,7 +50,7 @@
     "@types/typography": "^0.16.3",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.3",
-    "skripts": "0.5.0",
+    "skripts": "0.5.1",
     "typescript": "^3.8.3"
   },
   "husky": {

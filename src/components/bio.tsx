@@ -27,7 +27,7 @@ const Bio = (): React.ReactElement => {
       style={{
         display: `flex`,
         marginBottom: rhythm(2),
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
       <Image
@@ -36,7 +36,7 @@ const Bio = (): React.ReactElement => {
         style={{
           borderRadius: `50%`,
           marginRight: rhythm(1),
-          minWidth: 100
+          minWidth: 100,
         }}
       />
       <p style={{ marginBottom: 0 }}>

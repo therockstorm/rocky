@@ -18,7 +18,7 @@ const Layout = ({ children, title, location }: Props): React.ReactElement => (
       marginRight: `auto`,
       maxWidth: rhythm(27.5),
       padding: `${rhythm(1.7)} ${rhythm(0.85)}`,
-      transition: "color 0.2s ease-out"
+      transition: "color 0.2s ease-out",
     }}
   >
     <Header location={location} title={title} />

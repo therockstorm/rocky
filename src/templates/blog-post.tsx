@@ -35,7 +35,7 @@ const Post = ({ data, location, pageContext }: Props): React.ReactElement => {
                 ...scale(-0.2),
                 display: `block`,
                 marginBottom: rhythm(1),
-                marginTop: rhythm(-1)
+                marginTop: rhythm(-1),
               }}
             >
               {date}
@@ -56,7 +56,7 @@ const Post = ({ data, location, pageContext }: Props): React.ReactElement => {
             flexWrap: `wrap`,
             justifyContent: `space-between`,
             listStyle: `none`,
-            padding: 0
+            padding: 0,
           }}
         >
           <li>
