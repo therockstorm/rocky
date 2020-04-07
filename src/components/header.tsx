@@ -22,7 +22,7 @@ const Header = ({ location, title }: Props): React.ReactElement => (
       alignItems: "center",
       display: "flex",
       justifyContent: "space-between",
-      marginBottom: rhythm(2)
+      marginBottom: rhythm(2),
     }}
   >
     {location.pathname === rootPath ? (
@@ -37,7 +37,7 @@ const Header = ({ location, title }: Props): React.ReactElement => (
           lineHeight: rhythm(2),
           marginBottom: 0,
           marginTop: 0,
-          fontFamily: monospace
+          fontFamily: monospace,
         }}
       >
         <Link to={`/`}>{title}</Link>

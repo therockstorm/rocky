@@ -4,12 +4,12 @@ import "../global.css"
 
 Bootstrap.overrideThemeStyles = (): unknown => ({
   ".footer-icon": {
-    color: "var(--textNormal)"
+    color: "var(--textNormal)",
   },
   a: {
     color: "var(--textLink)",
-    textDecoration: "none"
-  }
+    textDecoration: "none",
+  },
 })
 const typography = new Typography(Bootstrap)
 if (process.env.NODE_ENV !== `production`) typography.injectStyles()

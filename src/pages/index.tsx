@@ -31,7 +31,7 @@ const Index = ({ data, location }: Props): React.ReactElement => {
             <section>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt
+                  __html: node.frontmatter.description || node.excerpt,
                 }}
               />
             </section>

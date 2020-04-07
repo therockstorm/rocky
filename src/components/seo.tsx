@@ -13,7 +13,7 @@ const Seo = ({
   description,
   image,
   title,
-  slug
+  slug,
 }: Props): React.ReactElement => {
   const { site }: { site: Site } = useStaticQuery(
     graphql`
@@ -48,12 +48,12 @@ const Seo = ({
         { name: `twitter:card`, content: `summary` },
         { name: `twitter:creator`, content: `@therockstorm` },
         { name: `twitter:title`, content: title || site.siteMetadata.title },
-        { name: `twitter:description`, content: desc }
+        { name: `twitter:description`, content: desc },
       ].concat(
         img
           ? [
               { content: img, property: "og:image" },
-              { content: img, name: "twitter:image" }
+              { content: img, name: "twitter:image" },
             ]
           : []
       )}
