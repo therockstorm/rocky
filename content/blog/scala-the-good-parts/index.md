@@ -217,7 +217,7 @@ println(r == r.copy()) // true
 
 Scala's Class Hierarchy
 
-![Scala's class hierarchy](https://www.scala-lang.org/files/archive/spec/2.12/public/images/classhierarchy.png)
+![Scala's class hierarchy](./scala-class-hierarchy.png)
 
 ---
 
@@ -309,7 +309,7 @@ implicit class FromEither[T](future: Future[Either[NotFoundError, T]]) {
 
 Scala's Immutable Collections Hierarchy
 
-![Scala immutable collections](https://docs.scala-lang.org/resources/images/tour/collections-immutable-diagram-213.svg)
+![Scala immutable collections](./scala-collections-hierarchy.png)
 
 - Prefer immutable, they're safer and still performant
 - `Map`: key/value pairs, similar to Java's `HashMap`
@@ -368,7 +368,7 @@ person match { // Case class/Option matching
 
 Additional Reading
 
-[![Scala for the Impatient: Second Edition - Cay S. Horstmann](https://www.horstmann.com/scala/images/cover2.jpg)](http://amzn.com/0134540565)
+[![Scala for the Impatient: Second Edition - Cay S. Horstmann](./scala-for-the-impatient.jpg)](http://amzn.com/0134540565)
 
 ---
 
