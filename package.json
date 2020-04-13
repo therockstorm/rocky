@@ -13,8 +13,8 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "gatsby": "^2.20.13",
-    "gatsby-image": "^2.3.1",
+    "gatsby": "^2.20.18",
+    "gatsby-image": "^2.3.2",
     "gatsby-plugin-advanced-sitemap": "^1.5.2",
     "gatsby-plugin-catch-links": "^2.2.1",
     "gatsby-plugin-dark-mode": "^1.1.1",
@@ -22,7 +22,7 @@
     "gatsby-plugin-google-analytics": "^2.2.2",
     "gatsby-plugin-manifest": "^2.3.3",
     "gatsby-plugin-netlify": "^2.2.1",
-    "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-react-helmet": "^3.2.2",
     "gatsby-plugin-sharp": "^2.5.4",
     "gatsby-plugin-typescript": "^2.3.1",
     "gatsby-plugin-typography": "^2.4.1",
@@ -38,7 +38,7 @@
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.0.0",
     "react-inlinesvg": "^1.2.0",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19",
@@ -49,7 +49,7 @@
     "@types/react-inlinesvg": "^1.0.0",
     "@types/typography": "^0.16.3",
     "eslint-plugin-react": "^7.19.0",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "skripts": "0.5.1",
     "typescript": "^3.8.3"
   },
