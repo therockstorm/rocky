@@ -23,14 +23,14 @@ interface Node {
       }
     }
   }
-  html: string
+  body: string
 }
 
 interface Edge {
   node: Node
 }
 
-interface Markdown {
+interface Mdx {
   edges: Edge[]
 }
 

@@ -22,7 +22,6 @@ const Seo = ({
           siteMetadata {
             title
             description
-            author
             siteUrl
           }
         }
@@ -35,6 +34,7 @@ const Seo = ({
     ? `${site.siteMetadata.siteUrl}${image.replace("/", "")}`
     : null
   const url = `${site.siteMetadata.siteUrl}${slug}`
+  const siteTitle = title || site.siteMetadata.title
   return (
     <Helmet
       htmlAttributes={{ lang: "en" }}
@@ -42,12 +42,12 @@ const Seo = ({
       meta={[
         { name: `description`, content: desc },
         { property: "og:url", content: url },
-        { property: `og:title`, content: title || site.siteMetadata.title },
+        { property: `og:title`, content: siteTitle },
         { property: `og:description`, content: desc },
         { property: `og:type`, content: `website` },
         { name: `twitter:card`, content: `summary` },
         { name: `twitter:creator`, content: `@therockstorm` },
-        { name: `twitter:title`, content: title || site.siteMetadata.title },
+        { name: `twitter:title`, content: siteTitle },
         { name: `twitter:description`, content: desc },
       ].concat(
         img

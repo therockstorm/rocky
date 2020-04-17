@@ -8,34 +8,40 @@ I played around with Kotlin recently and was pretty impressed. It seems like the
 
 - Expression bodied functions
   ```kotlin
-    fun sum(a: Int, b: Int) = a + b
+  fun sum(a: Int, b: Int) = a + b
   ```
+
 - Immutable variables with type inference
   ```kotlin
-    val b = 2
+  val b = 2
   ```
+
 - String templates
   ```kotlin
-    val s2 = "${s1.replace("is", "was")}, but now is $a"
+  val s2 = "${s1.replace("is", "was")}, but now is $a"
   ```
+
 - Type checks and automatic casts
   ```kotlin
-    if (obj is String && obj.length > 0) // obj casted to a string
+  if (obj is String && obj.length > 0) // obj casted to a string
   ```
+
 - Pattern matching,
   ```kotlin
-    when (obj) {
-      1          -> "One"
-      "Hello"    -> "Greeting"
-      is Long    -> "Long"
-      !is String -> "Not a string"
-      else       -> "Unknown"
-    }
+  when (obj) {
+    1          -> "One"
+    "Hello"    -> "Greeting"
+    is Long    -> "Long"
+    !is String -> "Not a string"
+    else       -> "Unknown"
+  }
   ```
+
 - Ranges
   ```kotlin
-    for (x in 1..5) ...
+  for (x in 1..5) ...
   ```
+
 - Immutable collections with lambdas
   ```kotlin
   val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
@@ -45,42 +51,51 @@ I played around with Kotlin recently and was pretty impressed. It seems like the
   .map { it.toUpperCase() }
   .forEach { println(it) }
   ```
+
 - DTOs with equals, copy, toString; can be created without new
   ```kotlin
-    data class Customer(val name: String, val email: String)
+  data class Customer(val name: String, val email: String)
   ```
+
 - Default parameter values
   ```kotlin
-    fun foo(a: Int = 0, b: String = "")
+  fun foo(a: Int = 0, b: String = "")
   ```
+
 - Extension functions
   ```kotlin
-    fun String.spaceToCamelCase() { ... }
-    "Convert this to camelcase".spaceToCamelCase()
-    Singletons,
-    object Resource {
-      val name = "Name"
-    }
+  fun String.spaceToCamelCase() { ... }
+  "Convert this to camelcase".spaceToCamelCase()
+  Singletons,
+  object Resource {
+    val name = "Name"
+  }
   ```
+
 - Elvis operator aka "if not null" shorthand
   ```kotlin
-    println(files?.size)
+  println(files?.size)
   ```
+
 - "If not null and else" shorthand
   ```kotlin
-    println(files?.size ?: "empty")
+  println(files?.size ?: "empty")
   ```
+
 - Get item of possibly empty list
   ```kotlin
-    emails.firstOrNull() ?: ""
+  emails.firstOrNull() ?: ""
   ```
+
 - `if` expressions
   ```kotlin
-    val result = if (param == 1) "one" else "other"
+  val result = if (param == 1) "one" else "other"
   ```
+
 - Nullables without the `.Get` and `.HasValue` in C#
   ```kotlin
-    val b: Boolean? = ...
-    if (b == true) { ... } else { /* b is false or null */ }
+  val b: Boolean? = ...
+  if (b == true) { ... } else { /* b is false or null */ }
   ```
+
 - The main Go influence seems to be coroutines (lightweight threads) for async code. They also reminded me of C#'s `async`/`await`, [here's a good explanation](https://kotlinlang.org/docs/reference/coroutines/basics.html).

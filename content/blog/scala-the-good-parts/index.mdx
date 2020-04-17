@@ -14,36 +14,36 @@ Scala Overview, Benefits Over Java
 - Runs of the JVM
 - Can create Java objects, call their methods, and inherit from them in Scala and vice versa
 - Java collection interop
-
   ```scala
-    import scala.jdk.CollectionConverters._
+  import scala.jdk.CollectionConverters._
 
-    val javaList = java.util.Arrays.asList("Hi")
-    val scalaList = javaList.asScala
-    scalaList.foreach(println(_)) // Use any Scala collection methods
-    val backToJava = scalaList.asJava
+  val javaList = java.util.Arrays.asList("Hi")
+  val scalaList = javaList.asScala
+  scalaList.foreach(println(_)) // Use any Scala collection methods
+  val backToJava = scalaList.asJava
   ```
 
 - Type inference
   ```java
-    List<String> msgs = Arrays.asList("Hi"); // This Java code...
+  List<String> msgs = Arrays.asList("Hi"); // This Java code...
   ```
   ```scala
-    val msgs = List("Hi") // ..becomes this Scala code
+  val msgs = List("Hi") // ..becomes this Scala code
   ```
+
 - Concise
   ```java
   // This Java code...
   public class Person {
-      private String name;
-      public String getName() { return name; }
-      public String toString() { ... }
-      public boolean equals() { ... }
-      public int hashCode() { ... }
+    private String name;
+    public String getName() { return name; }
+    public String toString() { ... }
+    public boolean equals() { ... }
+    public int hashCode() { ... }
   }
   Map<String, Integer> map  = new HashMap<String, Integer>() {{
-      put("a", 0);
-      put("b", 2);
+    put("a", 0);
+    put("b", 2);
   }};
   ```
   ```scala
@@ -51,6 +51,7 @@ Scala Overview, Benefits Over Java
   case class Person(name: String)
   val map = Map("a" -> 0, "b" -> 1)
   ```
+
 - Concurrency
   - Immutability by default enables safe concurrency and parallelism
   - Parallel collections, concurrent distribution with actors, asynchrony with futures
@@ -65,26 +66,27 @@ Scala Overview, Benefits Over Java
   - `map`, `flatMap`, `filter`, `head`, `headOption`, `isEmpty`, `foreach`, `contains`, `find`, `zip`, `zipWithIndex`, `reduce`, `fold`, `sum`, `count`, `groupBy`, `mkString`, `sortBy`
 - Automatically returns last statement without explicit `return`, no semicolons
   ```scala
-    def doubleIt(n: Int) = n * 2 // Returns `n * 2`, infers return Int type
+  def doubleIt(n: Int) = n * 2 // Returns `n * 2`, infers return Int type
   ```
+
 - `if` statements are expressions, can have results
   ```scala
-    // Java's ternary (`int x = condition ? result : defaultVal`) in Scala
-    val x = if (condition) result else defaultVal
+  // Java's ternary (`int x = condition ? result : defaultVal`) in Scala
+  val x = if (condition) result else defaultVal
   ```
+
 - Powerful imports
-
   ```scala
-    // Rename import
-    import java.util.{HashMap => JavaHashMap}
-    // Ignore HashMap, import everything else
-    import java.util.{HashMap => _, _}
+  // Rename import
+  import java.util.{HashMap => JavaHashMap}
+  // Ignore HashMap, import everything else
+  import java.util.{HashMap => _, _}
 
-    // Follows scoping rules
-    def someFn() = {
-        import cats.implicits.toShow
-        ??? // Aside: This is valid Scala, throws NotImplementedError if hit
-    }
+  // Follows scoping rules
+  def someFn() = {
+      import cats.implicits.toShow
+      ??? // Aside: This is valid Scala, throws NotImplementedError if hit
+  }
   ```
 
 ---
@@ -314,26 +316,29 @@ Scala's Immutable Collections Hierarchy
 - Prefer immutable, they're safer and still performant
 - `Map`: key/value pairs, similar to Java's `HashMap`
   ```scala
-    val myMap = Map("a" -> 0, "b" -> 1)
-    myMap("b") // 1
-    // Looping over map, also shows string interpolation
-    myMap.foreach{ case (k, v) => println(s"$k -> $v") }
+  val myMap = Map("a" -> 0, "b" -> 1)
+  myMap("b") // 1
+  // Looping over map, also shows string interpolation
+  myMap.foreach{ case (k, v) => println(s"$k -> $v") }
   ```
+
 - `Tuple`: aggregates of values, useful for multiple returns in class's private methods. Prefer `case class` return types for public methods for readability.
   ```scala
-    val myTuple = (1, 3.14, "Fred")
-    myTuple._2 // 3.14
+  val myTuple = (1, 3.14, "Fred")
+  myTuple._2 // 3.14
   ```
+
 - `Seq`: general purpose, similar to Java's `List`
   ```scala
-    val mySeq = Seq(3, 2, 1)
-    mySeq
-      .filter(_ > 1)
-      .sorted
-      .zipWithIndex
-      .foreach { case (v, idx) =>  print(s"$v at $idx ") }
-      // 2 at 0 3 at 1
+  val mySeq = Seq(3, 2, 1)
+  mySeq
+    .filter(_ > 1)
+    .sorted
+    .zipWithIndex
+    .foreach { case (v, idx) =>  print(s"$v at $idx ") }
+    // 2 at 0 3 at 1
   ```
+
 - `Set`: distinct elements, similar to Java's `HashSet`
 - `IndexedSeq`: fast random access and count, similar to Java's `Array`
 - `List`: fast beginning and end operations, similar to Java's `LinkedList`
