@@ -2,7 +2,7 @@ const analytics = `https://www.google-analytics.com`
 const none = `'none'`
 const self = `'self'`
 const unsafe = `'unsafe-inline'`
-const youtube = `https://www.youtube.com`
+const youTube = `https://www.youtube.com`
 
 module.exports = {
   siteMetadata: {
@@ -27,9 +27,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: { maxWidth: 624 },
@@ -46,6 +47,7 @@ module.exports = {
           {
             resolve: "gatsby-remark-external-links",
             options: {
+              rel: "noopener noreferrer",
               target: "_blank",
             },
           },
@@ -59,7 +61,7 @@ module.exports = {
       options: { trackingId: `UA-64259036-1` },
     },
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: `gatsby-plugin-feed-mdx`,
       options: {
         query: `
           {
@@ -75,12 +77,12 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map((edge) => {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map((edge) => {
                 const siteUrl = site.siteMetadata.siteUrl
                 const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${siteUrl}${edge.node.fields.slug}">Click here</a> to read it.)</div>`
                 let html = edge.node.html
-                // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
+                // Workaround for https://github.com/gaearon/overreacted.io/issues/65
                 html = html
                   .replace(/href="\//g, `href="${siteUrl}/`)
                   .replace(/src="\//g, `src="${siteUrl}/`)
@@ -99,7 +101,7 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(
+                allMdx(
                   limit: 1000,
                   sort: { order: DESC, fields: [frontmatter___date] }
                 ) {
@@ -129,9 +131,9 @@ module.exports = {
         headers: {
           "/*": [
             //https://csp-evaluator.withgoogle.com/
-            `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} data:;style-src ${unsafe};img-src ${self} ${analytics} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${youtube};`,
+            `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} 'unsafe-eval' data:;style-src ${unsafe};img-src ${self} ${analytics} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${youTube};`,
             // https://github.com/WICG/feature-policy/blob/master/features.md
-            `Feature-Policy: accelerometer ${youtube};ambient-light-sensor ${none};autoplay ${youtube};camera ${none};encrypted-media ${youtube};fullscreen ${self} ${youtube};geolocation ${none};gyroscope ${youtube};magnetometer ${none};microphone ${none};midi ${none};payment ${none};picture-in-picture ${self} ${youtube};speaker ${none};usb ${none};vr ${none};`,
+            `Feature-Policy: accelerometer ${youTube};ambient-light-sensor ${none};autoplay ${youTube};camera ${none};encrypted-media ${youTube};fullscreen ${self} ${youTube};geolocation ${none};gyroscope ${youTube};magnetometer ${none};microphone ${none};midi ${none};payment ${none};picture-in-picture ${self} ${youTube};speaker ${none};usb ${none};vr ${none};`,
             `Referrer-Policy: same-origin`,
             `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`,
           ],

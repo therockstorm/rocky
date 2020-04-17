@@ -3,23 +3,23 @@ import React from "react"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 interface Props {
-  data: { site: Site; markdownRemark: Node }
+  data: { site: Site; mdx: Node }
   location: Location
   pageContext: PageContext
 }
 
 const Post = ({ data, location, pageContext }: Props): React.ReactElement => {
-  const post = data.markdownRemark
+  const post = data.mdx
   const fm = post.frontmatter
-  const title = data.site.siteMetadata.title
-  const { previous, next } = pageContext
   const date = `${fm.date}${fm.updated ? `, last updated ${fm.updated}` : ""}`
+  const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={title}>
+    <Layout location={location} title={data.site.siteMetadata.title}>
       <SEO
         description={fm.description || post.excerpt}
         image={fm.image ? fm.image.childImageSharp.fixed.src : undefined}
@@ -29,19 +29,14 @@ const Post = ({ data, location, pageContext }: Props): React.ReactElement => {
       <main>
         <article>
           <header>
-            <h1>{fm.title}</h1>
-            <p
-              style={{
-                ...scale(-0.2),
-                display: `block`,
-                marginBottom: rhythm(1),
-                marginTop: rhythm(-1),
-              }}
-            >
-              {date}
+            <h1 style={{ marginTop: rhythm(1), marginBottom: 0 }}>
+              {fm.title}
+            </h1>
+            <p>
+              <small>{date}</small>
             </p>
           </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+          <MDXRenderer>{post.body}</MDXRenderer>
           <hr style={{ marginBottom: rhythm(1) }} />
           <footer>
             <Bio />
@@ -86,13 +81,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
