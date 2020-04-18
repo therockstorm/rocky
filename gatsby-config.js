@@ -1,7 +1,7 @@
-const analytics = `https://www.google-analytics.com`
+// const analytics = `https://www.google-analytics.com`
 const none = `'none'`
 const self = `'self'`
-const unsafe = `'unsafe-inline'`
+// const unsafe = `'unsafe-inline'`
 const youTube = `https://www.youtube.com`
 
 module.exports = {
@@ -131,7 +131,7 @@ module.exports = {
         headers: {
           "/*": [
             //https://csp-evaluator.withgoogle.com/
-            `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} 'unsafe-eval' data:;style-src ${unsafe};img-src ${self} ${analytics} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${youTube};`,
+            // `Content-Security-Policy: default-src ${none};prefetch-src ${self} https://*.google.com ${analytics};script-src ${self} ${analytics} ${unsafe} 'unsafe-eval' data:;style-src ${unsafe};img-src ${self} ${analytics} data:;font-src ${self} https://fonts.gstatic.com;connect-src ${self} ${analytics};manifest-src ${self};frame-src ${youTube};`,
             // https://github.com/WICG/feature-policy/blob/master/features.md
             `Feature-Policy: accelerometer ${youTube};ambient-light-sensor ${none};autoplay ${youTube};camera ${none};encrypted-media ${youTube};fullscreen ${self} ${youTube};geolocation ${none};gyroscope ${youTube};magnetometer ${none};microphone ${none};midi ${none};payment ${none};picture-in-picture ${self} ${youTube};speaker ${none};usb ${none};vr ${none};`,
             `Referrer-Policy: same-origin`,
