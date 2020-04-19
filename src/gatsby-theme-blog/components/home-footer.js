@@ -4,7 +4,7 @@ import { css, jsx, Styled } from "theme-ui"
 import github from "../../../content/assets/github.svg"
 import instagram from "../../../content/assets/instagram.svg"
 import linkedIn from "../../../content/assets/linkedin.svg"
-import rss from "../../../content/assets/rss.svg"
+// import rss from "../../../content/assets/rss.svg"
 import twitter from "../../../content/assets/twitter.svg"
 
 const icon = { mr: 3, width: 25 }
@@ -44,12 +44,12 @@ const Footer = () => (
       href={"https://github.com/therockstorm"}
       src={github}
     />
-    <IconLink
+    {/* <IconLink
       aria-label="Link to RSS Feed"
       href={"/rss.xml"}
       src={rss}
       css={css({ ...icon, ml: `auto`, mr: 0 })}
-    />
+    /> */}
   </footer>
 )
 
