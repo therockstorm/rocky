@@ -1,54 +1,39 @@
-import React from "react"
+/** @jsx jsx */
 import { Link } from "gatsby"
 import Svg from "react-inlinesvg"
-import { css, useColorMode, Styled } from "theme-ui"
+import { css, jsx, useColorMode, Styled } from "theme-ui"
 import moon from "../../../content/assets/moon.svg"
 import sun from "../../../content/assets/sun.svg"
 import Bio from "../components/bio"
 
 const rootPath = `${__PATH_PREFIX__}/`
 const monospace = `Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`
+const height = 42
+const lineHeight = `2.625rem`
 
-const Title = ({ children, location }) => {
-  if (location.pathname === rootPath) {
-    return (
-      <Styled.h1 css={css({ my: 0 })}>
-        <Styled.a
-          as={Link}
-          css={css({
-            color: `inherit`,
-            fontFamily: monospace,
-          })}
-          to={`/`}
-        >
-          {children}
-        </Styled.a>
-      </Styled.h1>
-    )
-  } else {
-    return (
-      <Styled.h3 as="p" css={css({ my: 0 })}>
-        <Styled.a
-          as={Link}
-          css={css({
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `primary`,
-            fontFamily: monospace,
-          })}
-          to={`/`}
-        >
-          {children}
-        </Styled.a>
-      </Styled.h3>
-    )
-  }
-}
+const Title = ({ children, location }) =>
+  location.pathname === rootPath ? (
+    <Styled.h1 css={css({ my: 0, height, lineHeight })}>
+      <Styled.a
+        as={Link}
+        css={css({ color: `inherit`, fontFamily: monospace })}
+        to={`/`}
+      >
+        {children}
+      </Styled.a>
+    </Styled.h1>
+  ) : (
+    <Styled.h3 css={css({ my: 0, height, lineHeight })}>
+      <Styled.a as={Link} css={css({ fontFamily: monospace })} eade to={`/`}>
+        {children}
+      </Styled.a>
+    </Styled.h3>
+  )
 
 export default ({ children, title, ...props }) => {
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === `dark`
-  const toggleColorMode = (e) => {
+  const toggleColorMode = () => {
     setColorMode(isDark ? `light` : `dark`)
   }
 
