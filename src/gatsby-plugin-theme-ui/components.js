@@ -3,7 +3,7 @@ import ThemeUIPrism from "@theme-ui/prism"
 import headings from "gatsby-theme-blog/src/components/headings"
 import { preToCodeBlock } from "mdx-utils"
 import PrismCore from "prismjs/components/prism-core"
-import { jsx } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 
 // Additional languages, https://theme-ui.com/packages/prism/#additional-languages
 import "prismjs/components/prism-bash"
@@ -18,11 +18,11 @@ export default {
     if (props) {
       const { codeString, ...rest } = props
       return (
-        <div sx={{ mb: 2 }}>
+        <Styled.div sx={{ mb: 2 }}>
           <ThemeUIPrism {...rest} Prism={PrismCore}>
             {codeString}
           </ThemeUIPrism>
-        </div>
+        </Styled.div>
       )
     } else return <pre {...preProps} />
   },

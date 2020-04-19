@@ -4,9 +4,8 @@ import defaultThemeColors from "gatsby-theme-blog/src/gatsby-plugin-theme-ui/col
 const whiteSmoke = `#f5f5f5`
 const gray9 = `#171717`
 const dark = `#282c35`
-/* http://www.html-color-names.com/royalblue.php */
-const royalBlueDark = `#3b5fcc`
-const royalBlueLight = `#6384e6`
+const royalBlueDark = `#2f4ca3` // http://www.html-color-names.com/royalblue.php
+const royalBlueLight = `#97adee`
 
 export default merge(defaultThemeColors, {
   background: whiteSmoke,
