@@ -5,7 +5,6 @@ const youTube = `https://www.youtube.com`
 module.exports = {
   plugins: [
     `gatsby-plugin-advanced-sitemap`,
-    `gatsby-plugin-feed-mdx`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: { trackingId: `UA-64259036-1` },
