@@ -28,7 +28,7 @@ const Bio = () => {
           })}
         />
       ) : (
-        <div
+        <Styled.div
           css={css({
             mr: 2,
             mb: 0,

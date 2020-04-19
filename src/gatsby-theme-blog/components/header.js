@@ -54,7 +54,7 @@ export default ({ children, title, ...props }) => {
 
   return (
     <header>
-      <div
+      <Styled.div
         css={css({
           maxWidth: `container`,
           mx: `auto`,
@@ -62,7 +62,7 @@ export default ({ children, title, ...props }) => {
           pt: 4,
         })}
       >
-        <div
+        <Styled.div
           css={css({
             display: `flex`,
             justifyContent: `space-between`,
@@ -72,7 +72,7 @@ export default ({ children, title, ...props }) => {
         >
           <Title {...props}>{title}</Title>
           {children}
-          <div
+          <Styled.div
             css={css({
               height: "20px",
               width: "20px",
@@ -83,10 +83,10 @@ export default ({ children, title, ...props }) => {
             role="presentation"
           >
             <Svg src={isDark ? sun : moon} />
-          </div>
-        </div>
+          </Styled.div>
+        </Styled.div>
         {props.location.pathname === rootPath && <Bio />}
-      </div>
+      </Styled.div>
     </header>
   )
 }
