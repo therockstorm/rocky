@@ -1,6 +1,5 @@
 ---
 title: "Kotlin: First Impressions"
-description: Kotlin has seemingly taken the best parts of C#, Scala, and Go. The result is impressive.
 date: "2020-03-03T00:00:00Z"
 ---
 
@@ -46,10 +45,10 @@ I played around with Kotlin recently and was pretty impressed. It seems like the
   ```kotlin
   val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
   fruits
-  .filter { it.startsWith("a") }
-  .sortedBy { it }
-  .map { it.toUpperCase() }
-  .forEach { println(it) }
+    .filter { it.startsWith("a") }
+    .sortedBy { it }
+    .map { it.toUpperCase() }
+    .forEach { println(it) }
   ```
 
 - DTOs with equals, copy, toString; can be created without new
