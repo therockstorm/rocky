@@ -6,58 +6,24 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "develop": "gatsby develop",
-    "format": "skripts format",
-    "lint": "skripts lint",
-    "start": "npm run develop",
-    "serve": "gatsby serve"
+    "start": "gatsby develop"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.5.8",
-    "@mdx-js/react": "^1.5.8",
     "gatsby": "^2.20.25",
-    "gatsby-image": "^2.3.4",
     "gatsby-plugin-advanced-sitemap": "^1.5.2",
-    "gatsby-plugin-catch-links": "^2.2.3",
-    "gatsby-plugin-dark-mode": "^1.1.1",
     "gatsby-plugin-feed-mdx": "^1.0.1",
     "gatsby-plugin-google-analytics": "^2.2.4",
     "gatsby-plugin-manifest": "^2.3.5",
-    "gatsby-plugin-mdx": "^1.1.9",
     "gatsby-plugin-netlify": "^2.2.3",
-    "gatsby-plugin-react-helmet": "^3.2.4",
-    "gatsby-plugin-sharp": "^2.5.6",
-    "gatsby-plugin-typescript": "^2.3.3",
-    "gatsby-plugin-typography": "^2.4.3",
-    "gatsby-remark-copy-linked-files": "^2.2.3",
     "gatsby-remark-external-links": "0.0.4",
-    "gatsby-remark-images": "^3.2.4",
-    "gatsby-remark-prismjs": "^3.4.3",
     "gatsby-remark-responsive-iframe": "^2.3.3",
-    "gatsby-remark-smartypants": "^2.2.3",
-    "gatsby-source-filesystem": "^2.2.4",
-    "gatsby-transformer-sharp": "^2.4.6",
+    "gatsby-theme-blog": "^1.4.26",
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^6.0.0",
     "react-inlinesvg": "^1.2.0",
-    "react-typography": "^0.16.19",
-    "typography": "^0.16.19",
     "typography-theme-bootstrap": "^0.16.19"
-  },
-  "devDependencies": {
-    "@types/react-helmet": "^5.0.15",
-    "@types/react-inlinesvg": "^1.0.0",
-    "@types/typography": "^0.16.3",
-    "eslint-plugin-react": "^7.19.0",
-    "husky": "^4.2.5",
-    "skripts": "0.5.1",
-    "typescript": "^3.8.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "skripts pre-commit"
-    }
   }
 }

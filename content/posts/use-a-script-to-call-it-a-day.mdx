@@ -1,6 +1,5 @@
 ---
 title: Use a Script to Call It a Day
-description: Ending the day can be tough, especially when you work from home. Script it so you can make one decision instead of many.
 date: "2019-10-07T00:00:00Z"
 ---
 
@@ -10,7 +9,7 @@ You bring yourself to close your text editor only to get tempted by unread Slack
 
 This script is a simple solution, it closes all work-related applications at once,
 
-```
+```bash
 pgrep com.docker.hyperkit && docker-compose down
 osascript -e 'quit app "Docker"'
 osascript -e 'quit app "Slack"'
@@ -20,7 +19,7 @@ osascript -e 'quit app "iTerm"'
 
 You can alias it in `~/.zshrc` or `~/.bash_profile` with `alias down="~/dev/down.sh"` so, at the end of the day, you decide once that you're done and run `down`. The next morning, run `up` and you're ready to go,
 
-```
+```bash
 open -a Docker
 open -a Slack
 open -a "Google Chrome"
