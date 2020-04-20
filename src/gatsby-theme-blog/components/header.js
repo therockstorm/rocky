@@ -1,29 +1,28 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
-import { css, jsx, useColorMode, Styled } from "theme-ui"
+import { jsx, useColorMode, Styled } from "theme-ui"
 import Moon from "../../components/Moon"
 import Sun from "../../components/Sun"
 import Bio from "../components/bio"
 
 const rootPath = `${__PATH_PREFIX__}/`
-const monospace = `Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`
 const height = 42
 const lineHeight = `2.625rem`
 
 const Title = ({ children, location }) =>
   location.pathname === rootPath ? (
-    <Styled.h1 css={css({ my: 0, height, lineHeight })}>
+    <Styled.h1 sx={{ my: 0, height, lineHeight }}>
       <Styled.a
         as={Link}
-        css={css({ color: `inherit`, fontFamily: monospace })}
+        sx={{ color: `inherit`, fontFamily: "monospace" }}
         to={`/`}
       >
         {children}
       </Styled.a>
     </Styled.h1>
   ) : (
-    <Styled.h3 css={css({ my: 0, height, lineHeight })}>
-      <Styled.a as={Link} css={css({ fontFamily: monospace })} eade to={`/`}>
+    <Styled.h3 sx={{ my: 0, height, lineHeight }}>
+      <Styled.a as={Link} sx={{ fontFamily: "monospace" }} eade to={`/`}>
         {children}
       </Styled.a>
     </Styled.h3>
@@ -38,31 +37,24 @@ export default ({ children, title, ...props }) => {
 
   return (
     <header>
-      <Styled.div
-        css={css({
-          maxWidth: `container`,
-          mx: `auto`,
-          px: 3,
-          pt: 4,
-        })}
-      >
+      <Styled.div sx={{ maxWidth: `container`, mx: `auto`, px: 3, pt: 4 }}>
         <Styled.div
-          css={css({
+          sx={{
             display: `flex`,
             justifyContent: `space-between`,
             alignItems: `center`,
             mb: 4,
-          })}
+          }}
         >
           <Title {...props}>{title}</Title>
           {children}
           <Styled.div
-            css={css({
+            sx={{
               height: "20px",
               width: "20px",
               cursor: "pointer",
               color: `#ffd700`,
-            })}
+            }}
             onClick={() => toggleColorMode()}
             role="presentation"
           >
