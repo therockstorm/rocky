@@ -1,6 +1,6 @@
 {
   "name": "rocky",
-  "description": "My personal blog",
+  "description": "My blog!",
   "version": "1.0.0",
   "author": "Rocky Warren",
   "license": "MIT",
@@ -11,14 +11,14 @@
     "start": "gatsby develop"
   },
   "dependencies": {
-    "gatsby": "^2.20.25",
-    "gatsby-plugin-advanced-sitemap": "^1.5.2",
+    "gatsby": "^2.20.26",
+    "gatsby-plugin-advanced-sitemap": "^1.5.4",
     "gatsby-plugin-google-analytics": "^2.2.4",
     "gatsby-plugin-manifest": "^2.3.5",
     "gatsby-plugin-netlify": "^2.2.3",
     "gatsby-remark-external-links": "0.0.4",
     "gatsby-remark-responsive-iframe": "^2.3.3",
-    "gatsby-theme-blog": "^1.4.26",
+    "gatsby-theme-blog": "^1.4.27",
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

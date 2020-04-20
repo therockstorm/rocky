@@ -69,9 +69,14 @@ module.exports = {
   ],
   siteMetadata: {
     author: `Rocky Warren`,
-    description: `Rocky Warren's personal blog.`,
+    description: `Rocky Warren's blog.`,
     siteUrl: `https://rocky.dev/`,
-    social: [],
+    social: [
+      {
+        name: `twitter`,
+        url: `https://twitter.com/therockstorm`,
+      },
+    ],
     title: `sudo README`,
   },
 }
