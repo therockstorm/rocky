@@ -1,22 +1,19 @@
 /** @jsx jsx */
-import Svg from "react-inlinesvg"
 import { css, jsx, Styled } from "theme-ui"
 import { Fragment } from "react"
-import github from "../../../content/assets/github.svg"
-import instagram from "../../../content/assets/instagram.svg"
-import linkedIn from "../../../content/assets/linkedin.svg"
-import twitter from "../../../content/assets/twitter.svg"
+import GitHub from "../../components/GitHub"
+import Instagram from "../../components/Instagram"
+import LinkedIn from "../../components/LinkedIn"
+import Twitter from "../../components/Twitter"
 
-const IconLink = ({ src, ...other }) => (
+const IconLink = ({ icon, ...other }) => (
   <Styled.a
     rel={"noopener noreferrer"}
-    css={css({ mr: 3, width: 20 })}
+    sx={{ color: "text", mr: 3, width: 20 }}
     target={"_blank"}
     {...other}
   >
-    <Styled.div sx={{ color: "text" }}>
-      <Svg src={src} />
-    </Styled.div>
+    {icon}
   </Styled.a>
 )
 
@@ -30,22 +27,22 @@ export default () => (
       <IconLink
         aria-label="Link to Twitter Profile"
         href={"https://twitter.com/therockstorm"}
-        src={twitter}
+        icon={<Twitter />}
       />
       <IconLink
         aria-label="Link to Instagram Profile"
         href={"https://www.instagram.com/therockstorm/"}
-        src={instagram}
+        icon={<Instagram />}
       />
       <IconLink
         aria-label="Link to LinkedIn Profile"
         href={"https://www.linkedin.com/in/rockywarren"}
-        src={linkedIn}
+        icon={<LinkedIn />}
       />
       <IconLink
+        icon={<GitHub />}
         aria-label="Link to GitHub Profile"
         href={"https://github.com/therockstorm"}
-        src={github}
       />
     </Styled.div>
   </Fragment>
