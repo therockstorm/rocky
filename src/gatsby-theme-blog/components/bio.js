@@ -5,13 +5,12 @@ import { Styled, css, Flex } from "theme-ui"
 import BioContent from "./bio-content"
 
 const Bio = () => {
-  const data = useStaticQuery(bioQuery)
   const {
     site: {
       siteMetadata: { author },
     },
     avatar,
-  } = data
+  } = useStaticQuery(bioQuery)
 
   return (
     <Flex css={css({ mb: 2, alignItems: `center` })}>

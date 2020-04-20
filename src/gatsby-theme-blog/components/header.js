@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
-import Svg from "react-inlinesvg"
 import { css, jsx, useColorMode, Styled } from "theme-ui"
-import moon from "../../../content/assets/moon.svg"
-import sun from "../../../content/assets/sun.svg"
+import Moon from "../../components/Moon"
+import Sun from "../../components/Sun"
 import Bio from "../components/bio"
 
 const rootPath = `${__PATH_PREFIX__}/`
@@ -67,7 +66,7 @@ export default ({ children, title, ...props }) => {
             onClick={() => toggleColorMode()}
             role="presentation"
           >
-            <Svg src={isDark ? sun : moon} />
+            {isDark ? <Sun /> : <Moon />}
           </Styled.div>
         </Styled.div>
         {props.location.pathname === rootPath && <Bio />}
