@@ -1,7 +1,7 @@
-import React from "react"
+/** @jsx jsx */
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-import { Styled, css, Flex } from "theme-ui"
+import { Flex, jsx, Styled } from "theme-ui"
 import BioContent from "./bio-content"
 
 const Bio = () => {
@@ -13,28 +13,28 @@ const Bio = () => {
   } = useStaticQuery(bioQuery)
 
   return (
-    <Flex css={css({ mb: 2, alignItems: `center` })}>
+    <Flex sx={{ mb: 2, alignItems: `center` }}>
       {avatar ? (
         <Image
           fixed={avatar.childImageSharp.fixed}
           alt={author}
-          css={css({
+          sx={{
             mr: 2,
             mb: 0,
             width: 100,
             minWidth: 100,
             borderRadius: 99999,
-          })}
+          }}
         />
       ) : (
         <Styled.div
-          css={css({
+          sx={{
             mr: 2,
             mb: 0,
             width: 100,
             minWidth: 100,
             borderRadius: 99999,
-          })}
+          }}
           role="presentation"
         />
       )}

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { css, jsx, Styled } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { Fragment } from "react"
 import GitHub from "../../components/GitHub"
 import Instagram from "../../components/Instagram"
@@ -23,7 +23,7 @@ export default () => (
     <br />
     Staff Software Engineer at Vertex Software. I do other stuff too.
     <br />
-    <Styled.div css={css({ display: `flex`, mt: 2 })}>
+    <Styled.div sx={{ display: `flex`, mt: 2 }}>
       <IconLink
         aria-label="Link to Twitter Profile"
         href={"https://twitter.com/therockstorm"}
