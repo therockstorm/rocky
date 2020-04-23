@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
-import { jsx, useColorMode, Styled } from "theme-ui"
+import { Flex, jsx, useColorMode, Styled } from "theme-ui"
+import Bio from "../components/bio"
+import Search from "../../components/search/index"
 import Moon from "../../components/Moon"
 import Sun from "../../components/Sun"
-import Bio from "../components/bio"
 
 const rootPath = `${__PATH_PREFIX__}/`
 const height = 42
@@ -38,29 +39,30 @@ export default ({ children, title, ...props }) => {
   return (
     <header>
       <Styled.div sx={{ maxWidth: `container`, mx: `auto`, px: 3, pt: 4 }}>
-        <Styled.div
-          sx={{
-            display: `flex`,
-            justifyContent: `space-between`,
-            alignItems: `center`,
-            mb: 4,
-          }}
+        <Flex
+          sx={{ justifyContent: `space-between`, alignItems: `center`, mb: 4 }}
         >
           <Title {...props}>{title}</Title>
           {children}
-          <Styled.div
-            sx={{
-              height: "20px",
-              width: "20px",
-              cursor: "pointer",
-              color: `#ffd700`,
-            }}
-            onClick={() => toggleColorMode()}
-            role="presentation"
-          >
-            {isDark ? <Sun /> : <Moon />}
-          </Styled.div>
-        </Styled.div>
+          <Flex>
+            <Search
+              collapse
+              indices={[{ name: `Posts`, title: `Blog Posts` }]}
+            />
+            <Styled.div
+              sx={{
+                height: "1.25em",
+                width: "1.25em",
+                cursor: "pointer",
+                color: `#ffd700`,
+              }}
+              onClick={() => toggleColorMode()}
+              role="presentation"
+            >
+              {isDark ? <Sun /> : <Moon />}
+            </Styled.div>
+          </Flex>
+        </Flex>
         {props.location.pathname === rootPath && <Bio />}
       </Styled.div>
     </header>

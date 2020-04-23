@@ -3,9 +3,12 @@ import React from "react"
 const GitHub = (props) => (
   <svg
     aria-hidden="true"
+    focusable="false"
     data-prefix="fab"
     data-icon="github"
     className="svg-inline--fa fa-github fa-w-16"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 496 512"
     {...props}
   >
