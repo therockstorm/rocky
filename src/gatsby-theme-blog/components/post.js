@@ -25,7 +25,9 @@ const Post = ({
           <PostTitle>{post.title}</PostTitle>
           <PostDate>{post.date}</PostDate>
         </header>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <section>
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </section>
       </article>
     </main>
     <PostFooter {...{ previous, next }} />
