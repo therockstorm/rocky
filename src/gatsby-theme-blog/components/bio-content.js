@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Fragment } from "react"
-import { jsx, Styled } from "theme-ui"
+import { Flex, jsx, Styled } from "theme-ui"
 import GitHub from "../../components/GitHub"
 import Instagram from "../../components/Instagram"
 import LinkedIn from "../../components/LinkedIn"
@@ -23,7 +23,7 @@ export default () => (
     <br />
     Staff Software Engineer at Vertex Software. I do other stuff too.
     <br />
-    <Styled.div sx={{ display: `flex`, mt: 2 }}>
+    <Flex sx={{ mt: 2 }}>
       <IconLink
         aria-label="Link to Twitter Profile"
         href={"https://twitter.com/therockstorm"}
@@ -44,6 +44,6 @@ export default () => (
         aria-label="Link to GitHub Profile"
         href={"https://github.com/therockstorm"}
       />
-    </Styled.div>
+    </Flex>
   </Fragment>
 )

@@ -52,7 +52,6 @@ export default function Search({ indices, collapse }) {
           display: query.length > 0 && focus ? `grid` : `none`,
           bg: "background",
           position: "absolute",
-          left: "50%",
           top: "100px",
           zIndex: 2,
           width: "80vw",
