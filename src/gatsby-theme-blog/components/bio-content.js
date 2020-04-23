@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
 import { Fragment } from "react"
+import { Flex, jsx, Styled } from "theme-ui"
 import GitHub from "../../components/GitHub"
 import Instagram from "../../components/Instagram"
 import LinkedIn from "../../components/LinkedIn"
@@ -9,7 +9,7 @@ import Twitter from "../../components/Twitter"
 const IconLink = ({ icon, ...other }) => (
   <Styled.a
     rel={"noopener noreferrer"}
-    sx={{ color: "text", mr: 3, width: 20 }}
+    sx={{ color: "text", mr: 3, width: `1.25em` }}
     target={"_blank"}
     {...other}
   >
@@ -23,7 +23,7 @@ export default () => (
     <br />
     Staff Software Engineer at Vertex Software. I do other stuff too.
     <br />
-    <Styled.div sx={{ display: `flex`, mt: 2 }}>
+    <Flex sx={{ mt: 2 }}>
       <IconLink
         aria-label="Link to Twitter Profile"
         href={"https://twitter.com/therockstorm"}
@@ -44,6 +44,6 @@ export default () => (
         aria-label="Link to GitHub Profile"
         href={"https://github.com/therockstorm"}
       />
-    </Styled.div>
+    </Flex>
   </Fragment>
 )
