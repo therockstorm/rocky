@@ -1,10 +1,16 @@
 /** @jsx jsx */
 import { connectSearchBox } from "react-instantsearch-dom"
-import { Flex, jsx, Styled } from "theme-ui"
+import { Box, jsx, Styled } from "theme-ui"
 import Search from "../Search"
 
 export const Input = connectSearchBox(({ refine, ...rest }) => (
-  <Flex as={"form"} sx={{ flexDirection: `row-reverse` }}>
+  <Box
+    as={"form"}
+    sx={{
+      display: ["none", "flex"],
+      flexDirection: `row-reverse`,
+    }}
+  >
     <Styled.div
       as="input"
       type="text"
@@ -17,9 +23,11 @@ export const Input = connectSearchBox(({ refine, ...rest }) => (
         fontSize: "0.9em",
         color: "text",
         background: "transparent",
+        mr: 2,
+        width: 100,
       }}
       {...rest}
     />
     <Search sx={{ width: "1.25em", mr: 2 }} />
-  </Flex>
+  </Box>
 ))
