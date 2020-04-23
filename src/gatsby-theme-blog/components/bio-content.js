@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
 import { Fragment } from "react"
+import { jsx, Styled } from "theme-ui"
 import GitHub from "../../components/GitHub"
 import Instagram from "../../components/Instagram"
 import LinkedIn from "../../components/LinkedIn"
@@ -9,7 +9,7 @@ import Twitter from "../../components/Twitter"
 const IconLink = ({ icon, ...other }) => (
   <Styled.a
     rel={"noopener noreferrer"}
-    sx={{ color: "text", mr: 3, width: 20 }}
+    sx={{ color: "text", mr: 3, width: `1.25em` }}
     target={"_blank"}
     {...other}
   >

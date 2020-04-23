@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
 import { jsx, useColorMode, Styled } from "theme-ui"
+import Bio from "../components/bio"
+import Search from "../../components/search/index"
 import Moon from "../../components/Moon"
 import Sun from "../../components/Sun"
-import Bio from "../components/bio"
 
 const rootPath = `${__PATH_PREFIX__}/`
 const height = 42
@@ -48,10 +49,11 @@ export default ({ children, title, ...props }) => {
         >
           <Title {...props}>{title}</Title>
           {children}
+          <Search collapse indices={[{ name: `Posts`, title: `Blog Posts` }]} />
           <Styled.div
             sx={{
-              height: "20px",
-              width: "20px",
+              height: "1.25em",
+              width: "1.25em",
               cursor: "pointer",
               color: `#ffd700`,
             }}
