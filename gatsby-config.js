@@ -75,6 +75,13 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-source-instagram",
+      options: {
+        access_token: process.env.ACCESS_TOKEN,
+        instagram_id: process.env.BUSINESS_ID,
+      },
+    },
+    {
       resolve: `gatsby-theme-blog`,
       options: { mdxOtherwiseConfigured: true },
     },

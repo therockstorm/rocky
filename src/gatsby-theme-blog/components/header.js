@@ -51,8 +51,8 @@ export default ({ children, title, ...props }) => {
             />
             <Styled.div
               sx={{
-                height: "1.25em",
-                width: "1.25em",
+                height: "1.25rem",
+                width: "1.25rem",
                 cursor: "pointer",
                 color: `#ffd700`,
               }}
