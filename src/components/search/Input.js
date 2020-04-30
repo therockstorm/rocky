@@ -28,6 +28,6 @@ export const Input = connectSearchBox(({ refine, ...rest }) => (
       }}
       {...rest}
     />
-    <Search sx={{ width: "1.25em", mr: 2 }} />
+    <Search sx={{ width: "1.25rem", mr: 2 }} />
   </Box>
 ))
