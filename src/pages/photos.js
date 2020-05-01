@@ -21,7 +21,6 @@ const Photos = ({
     from: { opacity: 0 },
     to: { opacity: 1 },
   })
-
   const trail = useTrail(instagram.length, {
     config: {
       mass: 1,
@@ -33,111 +32,113 @@ const Photos = ({
   })
 
   return (
-    <Layout location={location} title={title}>
+    <Layout location={location} hideHeader maxWidth={1600} title={title}>
       <SEO title="Photos" />
-      <animated.div
-        style={pageAnimation}
-        sx={{
-          display: `grid`,
-          gridTemplateColumns: [`1fr`, `1fr 1fr`, `1fr 1fr 1fr`],
-        }}
-      >
-        {trail.map((style, index) => {
-          const post = instagram[index]
-          const title = post.caption ? post.caption.split("#")[0] : ""
-          const date = new Date(post.timestamp * 1000).toLocaleDateString(
-            "en-US"
-          )
+      <main>
+        <animated.div
+          style={pageAnimation}
+          sx={{
+            display: `grid`,
+            gridTemplateColumns: [`1fr`, `1fr 1fr`, `1fr 1fr 1fr`],
+          }}
+        >
+          {trail.map((style, index) => {
+            const post = instagram[index]
+            const title = post.caption ? post.caption.split("#")[0] : ""
+            const date = new Date(post.timestamp * 1000).toLocaleDateString(
+              "en-US"
+            )
 
-          return (
-            <animated.a
-              style={style}
-              href={`https://www.instagram.com/p/${post.id}/`}
-              key={post.id}
-              rel={"noopener noreferrer"}
-              sx={{
-                position: `relative`,
-                overflow: `hidden`,
-                "> div img": {
-                  transition: `all 0.3s ease 0s !important`,
-                },
-                "&:hover": {
-                  div: {
-                    transform: `translateY(0)`,
-                    opacity: 1,
+            return (
+              <animated.a
+                style={style}
+                href={`https://www.instagram.com/p/${post.id}/`}
+                key={post.id}
+                rel={"noopener noreferrer"}
+                sx={{
+                  position: `relative`,
+                  overflow: `hidden`,
+                  "> div img": {
+                    transition: `all 0.3s ease 0s !important`,
                   },
-                },
-              }}
-            >
-              <Styled.div
-                sx={{
-                  position: `absolute`,
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: `rgba(0, 0, 0, 0.6)`,
-                  zIndex: 2,
-                  opacity: 0,
-                  transition: `all 0.3s ease 0s`,
-                }}
-              />
-              <Image fluid={post.localFile.childImageSharp.fluid} />
-              <Flex
-                sx={{
-                  flexDirection: "column",
-                  flexWrap: "nowrap",
-                  justifyContent: "space-between",
-                  zIndex: 10,
-                  position: `absolute`,
-                  left: 0,
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  padding: 2,
+                  "&:hover": {
+                    div: {
+                      transform: `translateY(0)`,
+                      opacity: 1,
+                    },
+                  },
                 }}
               >
                 <Styled.div
                   sx={{
-                    color: `white`,
-                    fontWeight: 700,
+                    position: `absolute`,
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: `rgba(0, 0, 0, 0.6)`,
+                    zIndex: 2,
                     opacity: 0,
-                    textShadow: `0 1px 3px rgba(0, 0, 0, 0.1)`,
-                    transform: `translateY(-45px)`,
-                    transition: `all 0.4s ease 0s`,
+                    transition: `all 0.3s ease 0s`,
                   }}
-                >
-                  {title}
-                </Styled.div>
+                />
+                <Image fluid={post.localFile.childImageSharp.fluid} />
                 <Flex
                   sx={{
-                    flexDirection: "row",
+                    flexDirection: "column",
                     flexWrap: "nowrap",
                     justifyContent: "space-between",
-                    color: `white`,
-                    opacity: 0,
-                    transform: `translateY(45px)`,
-                    transition: `all 0.4s ease 0s`,
+                    zIndex: 10,
+                    position: `absolute`,
+                    left: 0,
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    p: 2,
                   }}
                 >
-                  <span>
-                    <Heart
-                      sx={{
-                        position: `relative`,
-                        top: `4px`,
-                        height: `1.25rem`,
-                        width: `1.25rem`,
-                      }}
-                    />{" "}
-                    {post.likes}
-                  </span>
-                  <span>{date}</span>
+                  <Styled.div
+                    sx={{
+                      color: `white`,
+                      fontWeight: 700,
+                      opacity: 0,
+                      textShadow: `0 1px 3px rgba(0, 0, 0, 0.1)`,
+                      transform: `translateY(-45px)`,
+                      transition: `all 0.4s ease 0s`,
+                    }}
+                  >
+                    {title}
+                  </Styled.div>
+                  <Flex
+                    sx={{
+                      flexDirection: "row",
+                      flexWrap: "nowrap",
+                      justifyContent: "space-between",
+                      color: `white`,
+                      opacity: 0,
+                      transform: `translateY(45px)`,
+                      transition: `all 0.4s ease 0s`,
+                    }}
+                  >
+                    <span>
+                      <Heart
+                        sx={{
+                          position: `relative`,
+                          top: `4px`,
+                          height: `1.25rem`,
+                          width: `1.25rem`,
+                        }}
+                      />{" "}
+                      {post.likes}
+                    </span>
+                    <span>{date}</span>
+                  </Flex>
                 </Flex>
-              </Flex>
-            </animated.a>
-          )
-        })}
-      </animated.div>
+              </animated.a>
+            )
+          })}
+        </animated.div>
+      </main>
     </Layout>
   )
 }
@@ -148,7 +149,7 @@ export const query = graphql`
   query Photos {
     instagram: allInstaNode(
       sort: { fields: timestamp, order: DESC }
-      limit: 30
+      limit: 90
     ) {
       nodes {
         caption
