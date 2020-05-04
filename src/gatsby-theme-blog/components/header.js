@@ -23,7 +23,7 @@ const Title = ({ children, location }) =>
     </Styled.h1>
   ) : (
     <Styled.h3 sx={{ my: 0, height, lineHeight }}>
-      <Styled.a as={Link} sx={{ fontFamily: "monospace" }} eade to={`/`}>
+      <Styled.a as={Link} sx={{ fontFamily: "monospace" }} to={`/`}>
         {children}
       </Styled.a>
     </Styled.h3>
