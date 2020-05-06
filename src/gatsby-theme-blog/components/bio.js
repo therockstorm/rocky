@@ -13,7 +13,7 @@ const Bio = () => {
   } = useStaticQuery(bioQuery)
 
   return (
-    <Flex sx={{ mb: 2, alignItems: `center` }}>
+    <Flex sx={{ mb: 4, alignItems: `center` }}>
       {avatar ? (
         <Image
           fixed={avatar.childImageSharp.fixed}

@@ -22,7 +22,7 @@ export default () => (
   <Fragment>
     Rocky Warren&#39;s blog.
     <br />
-    Staff Software Engineer at Vertex Software.{" "}
+    Principal Engineer and Architect at Vertex Software.{" "}
     <Styled.a as={Link} to="/photos">
       I do other stuff too
     </Styled.a>
