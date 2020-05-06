@@ -11,6 +11,7 @@ export default ({ children, hideHeader, maxWidth, ...props }) => (
           maxWidth: maxWidth || `container`,
           mx: `auto`,
           px: 3,
+          mb: 4,
         }}
       >
         {children}
