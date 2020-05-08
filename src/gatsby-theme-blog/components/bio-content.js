@@ -46,6 +46,9 @@ export default () => (
         aria-label="Link to GitHub Profile"
         href={"https://github.com/therockstorm"}
       />
+      <Styled.a as={Link} to="/resume">
+        Resume
+      </Styled.a>
     </Flex>
   </Fragment>
 )
