@@ -2,20 +2,17 @@
 import { Link } from "gatsby"
 import { Fragment } from "react"
 import { Flex, jsx, Styled } from "theme-ui"
-import GitHub from "../../components/GitHub"
-import Instagram from "../../components/Instagram"
-import LinkedIn from "../../components/LinkedIn"
-import Twitter from "../../components/Twitter"
+import ExternalLink from "../../components/ExternalLink"
+import GitHub from "../../components/icons/GitHub"
+import Instagram from "../../components/icons/Instagram"
+import LinkedIn from "../../components/icons/LinkedIn"
+import Twitter from "../../components/icons/Twitter"
+import Icon from "../../components/Icon"
 
 const IconLink = ({ icon, ...other }) => (
-  <Styled.a
-    rel={"noopener noreferrer"}
-    sx={{ color: "text", mr: 3, width: `1.25rem` }}
-    target={"_blank"}
-    {...other}
-  >
-    {icon}
-  </Styled.a>
+  <ExternalLink {...other}>
+    <Icon sx={{ mr: 3 }}>{icon}</Icon>
+  </ExternalLink>
 )
 
 export default () => (

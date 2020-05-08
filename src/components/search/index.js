@@ -8,7 +8,7 @@ import {
   InstantSearch,
 } from "react-instantsearch-dom"
 import { jsx, Styled } from "theme-ui"
-import SearchByAlgolia from "../SearchByAlgolia"
+import SearchByAlgolia from "../icons/SearchByAlgolia"
 import { PostHit } from "./PostHit"
 import { Input } from "./Input"
 
