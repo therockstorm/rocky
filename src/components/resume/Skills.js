@@ -2,7 +2,7 @@
 import React from "react"
 import { jsx, Styled } from "theme-ui"
 import Badge from "../Badge"
-import NoBullet from "./NoBullet"
+import NoBullet from "../NoBullet"
 import Section from "./Section"
 
 export default () => (

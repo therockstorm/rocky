@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from "react"
 import { Flex, jsx, Styled } from "theme-ui"
-import NoBullet from "./NoBullet"
+import NoBullet from "../NoBullet"
 
 export default ({ company, positions }) => (
   <>

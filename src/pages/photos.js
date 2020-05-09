@@ -149,7 +149,7 @@ export const query = graphql`
   query Photos {
     instagram: allInstaNode(
       sort: { fields: timestamp, order: DESC }
-      limit: 90
+      limit: 60
     ) {
       nodes {
         caption
