@@ -19,14 +19,14 @@ export default () => (
         database languages and lead teams as a Principal Engineer, Architect,
         and Startup Co-founder.
       </Styled.p>
-      <Flex sx={{ justifyContent: `space-between` }}>
-        <Flex>
+      <Flex sx={{ justifyContent: `space-between`, flexWrap: `wrap` }}>
+        <Flex sx={{ pb: 1 }}>
           <Icon children={<Link />} />
           <ExternalLink href="https://www.rocky.dev">
             https://rocky.dev
           </ExternalLink>
         </Flex>
-        <Flex>
+        <Flex sx={{ pb: 1 }}>
           <Icon children={<LinkedIn />} />
           <ExternalLink href="https://www.linkedin.com/in/rockywarren">
             linkedin.com/in/rockywarren

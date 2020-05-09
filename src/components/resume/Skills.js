@@ -29,11 +29,11 @@ export default () => (
       <Skill>gRPC</Skill>
       {/* Miscellaneous */}
       <Skill>REST APIs</Skill>
+      <Skill>Software Architecture</Skill>
       <Skill>React</Skill>
       <Skill>GraphQL</Skill>
-      <Skill>Docker</Skill>
-      <Skill>Software Architecture</Skill>
       <Skill>Test-Driven Development</Skill>
+      <Skill>Docker</Skill>
       <Skill>Continuous Delivery</Skill>
     </Styled.ul>
   </Section>
