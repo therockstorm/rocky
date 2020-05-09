@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react"
 import { jsx, Styled } from "theme-ui"
 import Badge from "../Badge"
 import NoBullet from "../NoBullet"
@@ -34,7 +33,6 @@ export default () => (
       <Skill>GraphQL</Skill>
       <Skill>Test-Driven Development</Skill>
       <Skill>Docker</Skill>
-      <Skill>Continuous Delivery</Skill>
     </Styled.ul>
   </Section>
 )

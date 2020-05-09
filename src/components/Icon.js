@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
 
 export default ({ children, ...other }) => (
-  <Styled.div
+  <span
     sx={{ color: "text", height: `1.25rem`, width: `1.25rem`, mr: 2 }}
     {...other}
   >
     {children}
-  </Styled.div>
+  </span>
 )

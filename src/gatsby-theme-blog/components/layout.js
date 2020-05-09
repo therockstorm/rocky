@@ -5,7 +5,7 @@ import Header from "./header"
 export default ({ children, maxWidth, ...props }) => (
   <Styled.root>
     <Header {...props} />
-    <div
+    <Styled.div
       sx={{
         maxWidth: maxWidth || `container`,
         mx: `auto`,
@@ -14,6 +14,6 @@ export default ({ children, maxWidth, ...props }) => (
       }}
     >
       {children}
-    </div>
+    </Styled.div>
   </Styled.root>
 )

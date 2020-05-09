@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react"
 import { jsx, Styled } from "theme-ui"
 import Position from "./Position"
 import Section from "./Section"

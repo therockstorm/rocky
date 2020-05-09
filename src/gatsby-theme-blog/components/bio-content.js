@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
-import React from "react"
+import { Fragment } from "react"
 import { Flex, jsx, Styled } from "theme-ui"
 
 export default () => (
-  <>
+  <Fragment>
     <Styled.p sx={{ mb: 1 }}>Rocky Warren&#39;s blog.</Styled.p>
     <Styled.p sx={{ mb: 1 }}>
       Principal Engineer and Architect at Vertex. I do other stuff too.
@@ -19,5 +19,5 @@ export default () => (
         </Styled.a>
       </Styled.p>
     </Flex>
-  </>
+  </Fragment>
 )

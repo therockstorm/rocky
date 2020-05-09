@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import { Flex, jsx, Styled } from "theme-ui"
-import React from "react"
+import { Fragment } from "react"
 import ExternalLink from "../ExternalLink"
 import Icon from "../Icon"
 import Link from "../icons/Link"
 import LinkedIn from "../icons/LinkedIn"
 
 export default () => (
-  <>
+  <Fragment>
     <Styled.h1>Rocky Warren</Styled.h1>
     <Styled.div>
       <Styled.p>
@@ -34,5 +34,5 @@ export default () => (
         </Flex>
       </Flex>
     </Styled.div>
-  </>
+  </Fragment>
 )
