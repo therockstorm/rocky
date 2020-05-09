@@ -3,8 +3,9 @@ import { Link } from "gatsby"
 import { Flex, jsx, useColorMode, Styled } from "theme-ui"
 import Bio from "../components/bio"
 import Search from "../../components/search/index"
-import Moon from "../../components/Moon"
-import Sun from "../../components/Sun"
+import Moon from "../../components/icons/Moon"
+import Sun from "../../components/icons/Sun"
+import Icon from "../../components/Icon"
 
 const rootPath = `${__PATH_PREFIX__}/`
 const height = 42
@@ -37,7 +38,7 @@ export default ({ children, title, ...props }) => {
   }
 
   return (
-    <header>
+    <header sx={{ "@media print": { display: `none` } }}>
       <Styled.div sx={{ maxWidth: `container`, mx: `auto`, px: 3, pt: 4 }}>
         <Flex
           sx={{ justifyContent: `space-between`, alignItems: `center`, mb: 4 }}
@@ -49,18 +50,13 @@ export default ({ children, title, ...props }) => {
               collapse
               indices={[{ name: `Posts`, title: `Blog Posts` }]}
             />
-            <Styled.div
-              sx={{
-                height: "1.25rem",
-                width: "1.25rem",
-                cursor: "pointer",
-                color: `#ffd700`,
-              }}
+            <Icon
+              sx={{ cursor: "pointer", color: `#ffd700`, mr: 0 }}
               onClick={() => toggleColorMode()}
               role="presentation"
             >
               {isDark ? <Sun /> : <Moon />}
-            </Styled.div>
+            </Icon>
           </Flex>
         </Flex>
         {props.location.pathname === rootPath && <Bio />}

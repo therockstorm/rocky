@@ -15,10 +15,12 @@ export default merge(defaultColors, {
       background: dark,
       heading: whiteSmoke,
       highlight: `hsl(222, 14%, 25%)`,
+      muted: `hsla(0, 0%, 100%, 0.5)`,
       primary: royalBlueLight,
       text: whiteSmoke,
     },
   },
+  muted: `hsla(0, 0%, 0%, 0.5)`,
   primary: royalBlueDark,
   text: gray9,
 })

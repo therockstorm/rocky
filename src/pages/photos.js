@@ -3,9 +3,9 @@ import { Flex, jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import { config, animated, useSpring, useTrail } from "react-spring"
-import Layout from "gatsby-theme-blog/src/components/layout"
+import Layout from "../gatsby-theme-blog/components/layout"
 import SEO from "gatsby-theme-blog/src/components/seo"
-import Heart from "../components/Heart"
+import Heart from "../components/icons/Heart"
 
 const Photos = ({
   data: {
@@ -32,7 +32,7 @@ const Photos = ({
   })
 
   return (
-    <Layout location={location} hideHeader maxWidth={1600} title={title}>
+    <Layout location={location} maxWidth={1600} title={title}>
       <SEO title="Photos" />
       <main>
         <animated.div
@@ -149,7 +149,7 @@ export const query = graphql`
   query Photos {
     instagram: allInstaNode(
       sort: { fields: timestamp, order: DESC }
-      limit: 90
+      limit: 60
     ) {
       nodes {
         caption

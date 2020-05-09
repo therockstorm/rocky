@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import { Styled } from "theme-ui"
 import React from "react"
-import Layout from "gatsby-theme-blog/src/components/layout"
+import Layout from "../gatsby-theme-blog/components/layout"
 import SEO from "gatsby-theme-blog/src/components/seo"
 
 const Error = ({ data, location }) => (

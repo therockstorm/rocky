@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { connectSearchBox } from "react-instantsearch-dom"
 import { Box, jsx, Styled } from "theme-ui"
-import Search from "../Search"
+import Search from "../icons/Search"
+import Icon from "../Icon"
 
 export const Input = connectSearchBox(({ refine, ...rest }) => (
   <Box
@@ -28,6 +29,8 @@ export const Input = connectSearchBox(({ refine, ...rest }) => (
       }}
       {...rest}
     />
-    <Search sx={{ width: "1.25rem", mr: 2 }} />
+    <Icon>
+      <Search />
+    </Icon>
   </Box>
 ))

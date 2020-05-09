@@ -1,4 +1,6 @@
 .DS_Store
+scripts/*.pdf
+scripts/*.txt
 
 .cache
 .env
