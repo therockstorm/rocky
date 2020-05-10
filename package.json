@@ -8,7 +8,9 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
-    "start": "gatsby develop"
+    "start": "gatsby develop",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "algoliasearch": "^4.2.0",
@@ -28,6 +30,8 @@
     "react-dom": "^16.13.1",
     "react-instantsearch-dom": "^6.4.0",
     "react-spring": "^8.0.27",
-    "typography-theme-bootstrap": "^0.16.19"
-  }
+    "typography-theme-bootstrap": "^0.16.19",
+    "snyk": "^1.319.2"
+  },
+  "snyk": true
 }
