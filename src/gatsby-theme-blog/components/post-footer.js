@@ -6,8 +6,8 @@ import NoBullet from "../../components/NoBullet"
 import Bio from "../components/bio"
 
 const Footer = ({ previous, next }) => (
-  <footer sx={{ mt: 4 }}>
-    <Styled.hr />
+  <footer>
+    <Styled.hr sx={{ my: 4 }} />
     <Bio />
     {(previous || next) && (
       <Flex

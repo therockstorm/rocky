@@ -1,9 +1,10 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "gatsby-theme-blog/src/components/layout"
 import SEO from "gatsby-theme-blog/src/components/seo"
-import PostTitle from "gatsby-theme-blog/src/components/post-title"
 import PostDate from "gatsby-theme-blog/src/components/post-date"
+import PostTitle from "gatsby-theme-blog/src/components/post-title"
 import PostFooter from "./post-footer"
 
 const Post = ({

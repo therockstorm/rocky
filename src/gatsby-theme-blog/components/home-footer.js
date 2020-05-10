@@ -14,8 +14,8 @@ const IconLink = ({ icon, ...other }) => (
 )
 
 const Footer = () => (
-  <footer sx={{ mt: 4 }}>
-    <Styled.hr sx={{ mb: 3 }} />
+  <footer>
+    <Styled.hr sx={{ my: 4 }} />
     <Flex>
       <IconLink
         aria-label="Link to Twitter Profile"

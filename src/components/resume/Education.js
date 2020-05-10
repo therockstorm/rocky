@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import Position from "./Position"
-import Section from "./Section"
+import Section from "../Section"
 
 export default () => (
   <Section title="Education">

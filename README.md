@@ -1,3 +1,3 @@
 # rocky
 
-My blog available at https://rocky.dev.
+My personal site available at https://rocky.dev.

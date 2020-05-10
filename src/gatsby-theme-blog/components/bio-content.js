@@ -17,6 +17,9 @@ export default () => (
         <Styled.a as={Link} sx={{ mr: 2 }} to="/resume">
           Resume
         </Styled.a>
+        <Styled.a as={Link} sx={{ mr: 2 }} to="/using">
+          Using
+        </Styled.a>
       </Styled.p>
     </Flex>
   </Fragment>

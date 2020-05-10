@@ -2,7 +2,7 @@
 import { jsx, Styled } from "theme-ui"
 import Badge from "../Badge"
 import NoBullet from "../NoBullet"
-import Section from "./Section"
+import Section from "../Section"
 
 export default () => (
   <Section title="Skills">

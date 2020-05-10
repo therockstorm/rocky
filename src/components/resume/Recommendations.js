@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
 import NoBullet from "../NoBullet"
-import Section from "./Section"
+import Section from "../Section"
 
 export default () => (
   <Section title="Recommendations">
