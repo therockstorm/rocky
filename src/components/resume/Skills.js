@@ -38,7 +38,7 @@ export default () => (
 )
 
 const Skill = ({ children }) => (
-  <NoBullet sx={{ display: `inline`, mr: 2 }}>
+  <NoBullet sx={{ display: `inline`, mr: 1 }}>
     <Badge>{children}</Badge>
   </NoBullet>
 )

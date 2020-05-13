@@ -10,7 +10,7 @@ const Error = ({ data, location }) => (
   <Layout location={location} title={data.site.siteMetadata.title}>
     <SEO title="Using" />
     <Styled.h1>Using</Styled.h1>
-    <Section title="Computer">
+    <Section title="Hardware">
       <Styled.ul>
         <Styled.li>
           15" 2019 MacBook Pro, 2.4 GHz 8-Core i9, 32 GB RAM
@@ -40,7 +40,7 @@ const Error = ({ data, location }) => (
           </ExternalLink>{" "}
           for Scala
           <Styled.ul>
-            <Styled.li>Material Theme UI</Styled.li>
+            <Styled.li>Rainbow Brackets</Styled.li>
           </Styled.ul>
         </Styled.li>
         <Styled.li>
@@ -63,7 +63,6 @@ const Error = ({ data, location }) => (
                 Oh My Zsh
               </ExternalLink>
             </Styled.li>
-            <Styled.li>Tmux</Styled.li>
             <Styled.li>
               <ExternalLink href="https://starship.rs/">Starship</ExternalLink>{" "}
               theme
@@ -83,8 +82,7 @@ const Error = ({ data, location }) => (
         <Styled.li>
           <ExternalLink href="https://apprywhere.com/copy-em-paste.html">
             Copy 'Em Paste
-          </ExternalLink>{" "}
-          Clipboard Manager
+          </ExternalLink>
         </Styled.li>
         <Styled.li>
           <ExternalLink href="https://insomnia.rest/">Insomnia</ExternalLink>

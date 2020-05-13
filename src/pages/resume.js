@@ -6,6 +6,7 @@ import Layout from "../gatsby-theme-blog/components/layout"
 import Certifications from "../components/resume/Certifications"
 import Education from "../components/resume/Education"
 import Experience from "../components/resume/Experience"
+import Featured from "../components/resume/Featured"
 import Header from "../components/resume/Header"
 import Recommendations from "../components/resume/Recommendations"
 import Skills from "../components/resume/Skills"
@@ -21,6 +22,7 @@ export default ({ data, location }) => (
       <Recommendations />
       <Experience />
       <Education />
+      <Featured />
       <Certifications />
     </main>
   </Layout>
