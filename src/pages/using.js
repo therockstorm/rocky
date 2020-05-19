@@ -12,9 +12,7 @@ const Error = ({ data, location }) => (
     <Styled.h1>Using</Styled.h1>
     <Section title="Hardware">
       <Styled.ul>
-        <Styled.li>
-          15" 2019 MacBook Pro, 2.4 GHz 8-Core i9, 32 GB RAM
-        </Styled.li>
+        <Styled.li>MacBook Pro 15", 2.4 GHz 8-Core i9, 32 GB RAM</Styled.li>
         <Styled.li>LG 27" 4K UHD LED Monitor</Styled.li>
         <Styled.li>
           Das Keyboard 4 Professional, Cherry MX Blue Clicky Keys
