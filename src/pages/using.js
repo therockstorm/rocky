@@ -78,12 +78,12 @@ const Error = ({ data, location }) => (
           </Styled.ul>
         </Styled.li>
         <Styled.li>
-          <ExternalLink href="https://apprywhere.com/copy-em-paste.html">
-            Copy 'Em Paste
-          </ExternalLink>
+          <ExternalLink href="https://insomnia.rest/">Insomnia</ExternalLink>
         </Styled.li>
         <Styled.li>
-          <ExternalLink href="https://insomnia.rest/">Insomnia</ExternalLink>
+          <ExternalLink href="https://github.com/beekeeper-studio/beekeeper-studio">
+            Beekeeper Studio
+          </ExternalLink>
         </Styled.li>
         <Styled.li>
           <ExternalLink href="https://github.com/uw-labs/bloomrpc">
@@ -91,8 +91,8 @@ const Error = ({ data, location }) => (
           </ExternalLink>
         </Styled.li>
         <Styled.li>
-          <ExternalLink href="https://github.com/plotly/falcon">
-            Falcon
+          <ExternalLink href="https://apprywhere.com/copy-em-paste.html">
+            Copy 'Em Paste
           </ExternalLink>
         </Styled.li>
         <Styled.li>
