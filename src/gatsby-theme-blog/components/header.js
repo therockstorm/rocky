@@ -48,7 +48,10 @@ export default ({ children, title, ...props }) => {
           <Flex>
             <Search
               collapse
-              indices={[{ name: `Posts`, title: `Blog Posts` }]}
+              indices={[
+                { name: `Posts`, title: `Blog Posts` },
+                { name: `Notes`, title: `Notes` },
+              ]}
             />
             <Icon
               sx={{ cursor: "pointer", color: `#ffd700`, mr: 0 }}

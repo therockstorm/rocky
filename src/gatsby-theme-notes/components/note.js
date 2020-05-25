@@ -4,7 +4,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import PostDate from "gatsby-theme-blog/src/components/post-date"
 import PostTitle from "gatsby-theme-blog/src/components/post-title"
 import SEO from "gatsby-theme-blog/src/components/seo"
-import Breadcrumbs from "gatsby-theme-notes/src/components/breadcrumbs"
 import Layout from "../../gatsby-theme-blog/components/layout"
 
 export default ({
@@ -25,7 +24,7 @@ export default ({
         <article>
           <header>
             <PostTitle>{title}</PostTitle>
-            <PostDate>{date}</PostDate>
+            <PostDate sx={{ mt: -2 }}>{date}</PostDate>
           </header>
           <section>
             <MDXRenderer>{body}</MDXRenderer>
