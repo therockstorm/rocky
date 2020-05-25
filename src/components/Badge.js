@@ -2,7 +2,7 @@
 import React from "react"
 import { Box, jsx, useColorMode } from "theme-ui"
 
-const Badge = React.forwardRef((props, ref) => {
+export default React.forwardRef((props, ref) => {
   const [colorMode] = useColorMode()
   const isDark = colorMode === `dark`
   return (
@@ -23,5 +23,3 @@ const Badge = React.forwardRef((props, ref) => {
     />
   )
 })
-
-export default Badge

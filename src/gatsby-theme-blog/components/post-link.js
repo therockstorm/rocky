@@ -2,7 +2,7 @@
 import { Styled, jsx } from "theme-ui"
 import { Link } from "gatsby"
 
-const PostLink = ({ title, slug, date, excerpt }) => (
+export default ({ title, slug, date, excerpt }) => (
   <article>
     <header>
       <Styled.h2 sx={{ mb: 1 }}>
@@ -17,5 +17,3 @@ const PostLink = ({ title, slug, date, excerpt }) => (
     </section>
   </article>
 )
-
-export default PostLink

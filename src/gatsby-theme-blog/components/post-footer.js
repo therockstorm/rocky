@@ -5,7 +5,7 @@ import NoBullet from "../../components/NoBullet"
 
 import Bio from "../components/bio"
 
-const Footer = ({ previous, next }) => (
+export default ({ previous, next }) => (
   <footer>
     <Styled.hr sx={{ my: 4 }} />
     <Bio />
@@ -37,5 +37,3 @@ const Footer = ({ previous, next }) => (
     )}
   </footer>
 )
-
-export default Footer

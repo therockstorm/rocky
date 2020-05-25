@@ -4,7 +4,7 @@ import Image from "gatsby-image"
 import { Flex, jsx, Styled } from "theme-ui"
 import BioContent from "./bio-content"
 
-const Bio = () => {
+export default () => {
   const {
     site: {
       siteMetadata: { author },
@@ -61,5 +61,3 @@ const bioQuery = graphql`
     }
   }
 `
-
-export default Bio

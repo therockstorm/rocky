@@ -7,7 +7,7 @@ import Layout from "../gatsby-theme-blog/components/layout"
 import SEO from "gatsby-theme-blog/src/components/seo"
 import Heart from "../components/icons/Heart"
 
-const Photos = ({
+export default ({
   data: {
     instagram: { nodes: instagram },
     site: {
@@ -142,8 +142,6 @@ const Photos = ({
     </Layout>
   )
 }
-
-export default Photos
 
 export const query = graphql`
   query Photos {

@@ -1,38 +1,34 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Main } from "theme-ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Layout from "gatsby-theme-blog/src/components/layout"
-import SEO from "gatsby-theme-blog/src/components/seo"
 import PostDate from "gatsby-theme-blog/src/components/post-date"
 import PostTitle from "gatsby-theme-blog/src/components/post-title"
+import SEO from "gatsby-theme-blog/src/components/seo"
+import Layout from "./layout"
 import PostFooter from "./post-footer"
 
-const Post = ({
+export default ({
   data: {
-    post,
-    site: {
-      siteMetadata: { title },
-    },
+    post: { body, date, excerpt, title },
+    site: { siteMetadata },
   },
   location,
   previous,
   next,
 }) => (
-  <Layout location={location} title={title}>
-    <SEO title={post.title} description={post.excerpt} />
-    <main>
+  <Layout location={location} title={siteMetadata.title}>
+    <SEO title={title} description={excerpt} />
+    <Main>
       <article>
         <header>
-          <PostTitle>{post.title}</PostTitle>
-          <PostDate>{post.date}</PostDate>
+          <PostTitle>{title}</PostTitle>
+          <PostDate>{date}</PostDate>
         </header>
         <section>
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXRenderer>{body}</MDXRenderer>
         </section>
       </article>
-    </main>
+    </Main>
     <PostFooter {...{ previous, next }} />
   </Layout>
 )
-
-export default Post

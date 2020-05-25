@@ -4,7 +4,7 @@ import React from "react"
 import Layout from "../gatsby-theme-blog/components/layout"
 import SEO from "gatsby-theme-blog/src/components/seo"
 
-const Error = ({ data, location }) => (
+export default ({ data, location }) => (
   <Layout location={location} title={data.site.siteMetadata.title}>
     <SEO title="404: Not Found" />
     <Styled.h1>Not Found</Styled.h1>
@@ -21,5 +21,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-export default Error

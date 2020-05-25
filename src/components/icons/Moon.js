@@ -1,6 +1,6 @@
 import React from "react"
 
-const Moon = (props) => (
+export default (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -18,5 +18,3 @@ const Moon = (props) => (
     />
   </svg>
 )
-
-export default Moon

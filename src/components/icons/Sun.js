@@ -1,6 +1,6 @@
 import React from "react"
 
-const Sun = (props) => (
+export default (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -18,5 +18,3 @@ const Sun = (props) => (
     />
   </svg>
 )
-
-export default Sun

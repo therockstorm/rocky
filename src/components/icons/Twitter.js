@@ -1,6 +1,6 @@
 import React from "react"
 
-const Twitter = (props) => (
+export default (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -18,5 +18,3 @@ const Twitter = (props) => (
     />
   </svg>
 )
-
-export default Twitter

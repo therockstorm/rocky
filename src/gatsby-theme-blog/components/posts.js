@@ -1,10 +1,10 @@
 import React from "react"
-import Footer from "gatsby-theme-blog/src/components/home-footer"
-import Layout from "gatsby-theme-blog/src/components/layout"
+import Footer from "./home-footer"
+import Layout from "./layout"
 import PostList from "gatsby-theme-blog/src/components/post-list"
 import SEO from "gatsby-theme-blog/src/components/seo"
 
-const Posts = ({ location, posts, siteTitle }) => (
+export default ({ location, posts, siteTitle }) => (
   <Layout location={location} title={siteTitle}>
     <SEO title="Rocky Warren" />
     <main>
@@ -13,5 +13,3 @@ const Posts = ({ location, posts, siteTitle }) => (
     <Footer />
   </Layout>
 )
-
-export default Posts

@@ -6,7 +6,7 @@ import SEO from "gatsby-theme-blog/src/components/seo"
 import Section from "../components/Section"
 import ExternalLink from "../components/ExternalLink"
 
-const Error = ({ data, location }) => (
+export default ({ data, location }) => (
   <Layout location={location} title={data.site.siteMetadata.title}>
     <SEO title="Using" />
     <Styled.h1>Using</Styled.h1>
@@ -119,5 +119,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-export default Error

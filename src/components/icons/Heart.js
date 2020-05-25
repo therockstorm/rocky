@@ -1,6 +1,6 @@
 import React from "react"
 
-const Heart = (props) => (
+export default (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -27,5 +27,3 @@ const Heart = (props) => (
     </g>
   </svg>
 )
-
-export default Heart
