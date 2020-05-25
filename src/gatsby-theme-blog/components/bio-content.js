@@ -20,6 +20,9 @@ export default () => (
         <Styled.a as={Link} sx={{ mr: 2 }} to="/using">
           Using
         </Styled.a>
+        <Styled.a as={Link} sx={{ mr: 2 }} to="/notes">
+          Notes
+        </Styled.a>
       </Styled.p>
     </Flex>
   </Fragment>

@@ -1,0 +1,45 @@
+---
+title: Simple Storage Service (S3)
+date: 2020-05-25
+---
+
+# Simple Storage Service (S3)
+
+- Object storage, in contrast to EBS
+- Bucket names must be globally unique
+- Limits
+  - Each object can range from zero bytes to five TB bytes with unlimited overall storage
+  - Each account has a soft limit of 100 and hard limit of 1000 buckets
+- Consistency
+  - Read after write for new objects
+  - Eventual for updates and deletes
+- Security
+  - Buckets are private by default
+  - Bucket-level access is controlled via Bucket Policies
+  - Object-level access is controlled via Access Control Lists (ACLs)
+  - Cross-account object sharing via Bucket Policies, ACLs, or cross-account IAM roles. The latter is preferred, it enables API and Console access instead of only API access.
+  - TLS encryption in-transit
+  - At rest aka server-side encryption (SSE)
+    - S3-managed keys (SSE-S3)
+    - Customer master keys stored in Key Management Service (SSE-KMS)
+    - Customer-provided keys (SSE-C)
+    - Client-side encryption
+- Cross or same-region replication
+  - Versioning must be enabled on both source and destination buckets
+  - Only new/updated files are replicated after enabling
+  - Deletes are not replicated
+- Lifecycle Policies automate moving objects and/or object versions between storage classes
+- S3 Transfer Acceleration uploads files first to CloudFront edge locations (Amazon's content delivery network or CDN) and then over AWS's backbone network to your bucket (or origin in CloudFront language)
+
+## S3 Storage Classes
+
+| Name                 | Availability | Use Case                                                                       | Retrieval Fee | Minimum Duration Charge | First-Byte Latency            |
+| -------------------- | ------------ | ------------------------------------------------------------------------------ | ------------- | ----------------------- | ----------------------------- |
+| Standard             | 99.99%       | General purpose                                                                | N/a           | N/a                     | Milliseconds                  |
+| Intelligent Tiering  | 99.9%        | Unknown or changing access, AWS moves between storage classes saving you money | N/a           | 30 days                 | Milliseconds                  |
+| Standard-IA          | 99.9%        | Infrequent access                                                              | Per GB        | 30 days                 | Milliseconds                  |
+| One Zone-IA          | 99.5%        | Infrequent access, lower-cost, reproducible data                               | Per GB        | 30 days                 | Milliseconds                  |
+| Glacier              | 99.99%       | Archive, low-cost                                                              | Per GB        | 90 days                 | Configurable minutes to hours |
+| Glacier Deep Archive | 99.99%       | Archive, lowest-cost                                                           | Per GB        | 180 days                | < 12 hours                    |
+
+Note: All storage classes provide 99.999999999% durability (11 9s)

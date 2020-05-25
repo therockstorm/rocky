@@ -1,0 +1,69 @@
+---
+title: Elastic Compute Cloud (EC2)
+date: 2020-05-25
+---
+
+# Elastic Compute Cloud (EC2)
+
+- Pricing models
+  - On-Demand: fixed-rate by hour or second, no commitments
+  - Spot: bid on spare compute for up to 90% off On-Demand prices, can be interrupted
+  - Reserved: capacity reservation for one to three year term providing up to 75% off On-Demand prices
+  - Dedicated Hosts: physical server dedicated to you, useful for server-bound licenses, purchased On-Demand or Reserved
+- Instance Store volumes are ephemeral, they can be restarted, but cannot be stopped, will lose data if the underlying host fails, and cannot be kept after termination. Prefer EBS.
+- Security Groups
+  - By default, all inbound traffic is blocked and all outbound traffic is allowed
+  - They are stateful, if you send a request from your instance, response traffic for request is allowed regardless of inbound rules. Similarly, responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
+  - Only support allow rules, not deny
+- Instance metadata available at [http://169.254.169.254/latest/meta-data/](http://169.254.169.254/latest/meta-data/) and user data at [http://169.254.169.254/latest/user-data/](http://169.254.169.254/latest/user-data/)
+- Placement Groups
+  - Clustered: low latency and high throughput networking, each is in close proximity in the same AZ
+  - Spread: individual critical instances, each is on separate racks and can be multi-AZ
+  - Partitioned: large distributed and replicated workloads with multiple instances, each partition is on separate racks and can be multi-AZ
+- Networking
+  - Elastic Network Interface (ENI) for basic networking
+  - Enhanced Network Adapter (ENA) for speeds between 10 and 100 Gbps
+  - Elastic Fabric Adapter (EFA) for high-performance computing (HPC), machine learning (ML), or OS bypass
+
+## Elastic Block Store (EBS)
+
+- By default, root volumes are deleted when the instance is terminated but additional volumes are not
+- Always in the same availability zone (AZ) as the running instance
+- Volume Types
+  - SSD
+    - General Purpose (gp2), balances price and performance, max 16,000 IOPS
+    - Provisioned IOPS (io1), high performance designed for databases
+  - HDD
+    - Throughput Optimized (st1), frequently accessed big data, data warehouses, and log processing
+    - Cold (sc1), lowest cost for less frequency accessed data
+- Snapshots
+  - Preferably taken on stopped instances, but not required
+  - Stored on S3 and incremental, only blocks changed since last snapshot are saved
+  - Automatically encrypted if volume is encrypted
+  - Can only share snapshots with other accounts or make public if unencrypted
+- To move a volume from one AZ or Region to another
+  1. Create a snapshot
+  2. If unencrypted, optionally copy snapshot as encrypted
+  3. Create an AMI from the snapshot
+  4. If moving to a new region, copy AMI to desired region
+  5. Use the AMI to launch an instance in desired AZ
+
+## Elastic Load Balancer (ELB)
+
+- Use to distribute traffic across multiple targets in a single and across multiple AZs (if enabled)
+- To use in a VPC, need a minimum of two public subnets
+- 504 means there's likely an issue with your application
+- Instance health checks are shown as either `InService` or `OutOfService`
+- Get client IP using `X-Forwarded-For` header
+- Types
+  - Application Load Balancer (ALB)
+    - Layer 7, allowing for things like path-based traffic routing
+    - Preferred for most applications
+    - Given DNS name, not IP
+  - Network Load Balancer (NLB)
+    - Layer 4
+    - High performance
+    - Can assign a static IP
+  - Classic Load Balancer
+    - Lower cost, legacy solution
+    - Given DNS name, not IP

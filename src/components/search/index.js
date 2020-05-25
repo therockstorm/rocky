@@ -53,6 +53,7 @@ export default function Search({ indices, collapse }) {
           bg: "background",
           position: "absolute",
           top: "100px",
+          left: [4, 4, "35%"],
           zIndex: 2,
           width: "80vw",
           maxWidth: "30em",

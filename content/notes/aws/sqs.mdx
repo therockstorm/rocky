@@ -1,0 +1,15 @@
+---
+title: Simple Queue Service (SQS)
+date: 2020-05-25
+---
+
+# Simple Queue Service (SQS)
+
+- Pull-based queue used to decouple infrastructure
+- 256 KB message size limit, buy can use Java SDK to send larger payloads to S3
+- Retention period from one min to 14 days, defaults to four days
+- Visibility timeout is time message is invisible once read, limit of 12 hours
+- Long polling can reduce costs by not returning until a message arrives or timeout is reached
+- Types
+  - Standard: no ordering guarantees, at-least-once delivery
+  - FIFO: strong ordering, exactly-once delivery

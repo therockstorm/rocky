@@ -1,0 +1,42 @@
+---
+title: Virtual Private Cloud (VPC)
+date: 2020-05-25
+---
+
+# Virtual Private Cloud (VPC)
+
+![](../../assets/vpc-diagram.png)
+
+- Logical datacenter within AWS
+- Consist of Subnets, Route Tables, Internet Gateway (IGW, limit one per VPC), NAT Gateway, VPC Endpoints, Network Access Control Lists (NACLs), and Security Groups (cannot span VPCs)
+- By default, creating VPCs in console creates Route Table, NACL, and Security Group
+- Cannot transitively peer VPCs
+- AZs are randomly assigned letters, `us-west-2a` in one account isn't necessarily the same as `us-west-2a` in another
+- Subnets
+  - AWS reserves first four and last IP addresses in each subnet CIDR block
+  - Each must be associated with only one NACL, defaults to default NACL
+- NACLs
+  - Stateless, responses to allowed inbound traffic are subject to outbound rules and vice versa
+  - List of inbound and outbound allow and deny rules evaluated in order starting with lowest number, put deny rules first
+  - Default created with VPC allows all in and outbound traffic
+  - Newly created disallow all in and outbound traffic
+  - Can block specific IPs, unlike Security Groups
+- NATs
+  - Provide internet traffic to instances in private subnets
+  - Prefer Gateways to Instances for management and scaling benefits
+  - Create in multiple AZs for high availability
+  - Must be in public subnet with private subnet route to cooresponding NAT
+  - Must disable source/destination checks on Instances and increase instance size for performance
+- Bastion Host/Jump Box
+  - Provide SSH and RDP connections to instances in private subnet
+  - Must be in public subnet
+- VPC Endpoints
+  - Provide private subnet connections to AWS services and PrivateLink services without leaving AWS network
+  - Horizontally scaled, highly-available virtual devices
+  - Interface and Gateway Endpoints (S3 and DynamoDB)
+- Flow Logs
+  - Cannot enable across accounts
+  - Cannot change configuration after creation
+  - Traffic to reserved IPs, 169.354.169.254, Amazon DNS, Amazon Windows license activation, and DHCP is not monitored
+- Direct Connect
+  - Connects your datacenter to AWS for high-throughput and/or reliable connections
