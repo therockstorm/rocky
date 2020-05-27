@@ -24,7 +24,6 @@ export default ({
         <article>
           <header>
             <PostTitle>{title}</PostTitle>
-            <PostDate sx={{ mt: -2 }}>{date}</PostDate>
           </header>
           <section>
             <MDXRenderer>{body}</MDXRenderer>
