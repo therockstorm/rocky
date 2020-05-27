@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, Main } from "theme-ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import PostDate from "gatsby-theme-blog/src/components/post-date"
 import PostTitle from "gatsby-theme-blog/src/components/post-title"
 import SEO from "gatsby-theme-blog/src/components/seo"
 import Layout from "../../gatsby-theme-blog/components/layout"

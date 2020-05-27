@@ -82,11 +82,8 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-theme-notes`,
-      options: {
-        basePath: `/notes`,
-        mdxOtherwiseConfigured: true,
-      },
+      resolve: `gatsby-source-filesystem`,
+      options: { path: `content/notes`, name: `content/notes` },
     },
     {
       // Last theme overrides theme-ui context

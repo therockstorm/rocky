@@ -2,9 +2,9 @@
 import { Flex, jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import isPresent from "is-present"
-import NoBullet from "../../components/NoBullet"
-import Folder from "../../components/icons/Folder"
-import Icon from "../../components/Icon"
+import NoBullet from "../NoBullet"
+import Folder from "../icons/Folder"
+import Icon from "../Icon"
 
 export default ({ directories }) =>
   isPresent(directories) ? (
@@ -20,7 +20,7 @@ export default ({ directories }) =>
             <Styled.ul style={{ marginTop: `6px`, marginLeft: `1.6rem` }}>
               {directories[d].map(({ url }) => (
                 <NoBullet key={url} sx={{ mb: 1 }}>
-                  <Styled.a as={Link} to={url}>
+                  <Styled.a as={Link} to={`${url}`}>
                     {url.replace(`/notes/${d}/`, "")}
                   </Styled.a>
                 </NoBullet>
