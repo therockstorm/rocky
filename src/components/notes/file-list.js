@@ -18,13 +18,16 @@ export default ({ directories }) =>
               {`${d}/`}
             </Flex>
             <Styled.ul style={{ marginTop: `6px`, marginLeft: `1.6rem` }}>
-              {directories[d].map(({ url }) => (
-                <NoBullet key={url} sx={{ mb: 1 }}>
-                  <Styled.a as={Link} to={`${url}`}>
-                    {url.replace(`/notes/${d}/`, "")}
-                  </Styled.a>
-                </NoBullet>
-              ))}
+              {directories[d]
+                .map((d) => d.url)
+                .sort()
+                .map((url) => (
+                  <NoBullet key={url} sx={{ mb: 1 }}>
+                    <Styled.a as={Link} to={`${url}`}>
+                      {url.replace(`/notes/${d}/`, "")}
+                    </Styled.a>
+                  </NoBullet>
+                ))}
             </Styled.ul>
           </NoBullet>
         ))}
