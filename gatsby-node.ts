@@ -1,19 +1,24 @@
-const fs = require(`fs`)
-const path = require(`path`)
-const mkdirp = require(`mkdirp`)
-const { urlResolve, createContentDigest, slash } = require(`gatsby-core-utils`)
-const {
-  createFilePath,
-  createRemoteFileNode,
-} = require(`gatsby-source-filesystem`)
-const notesTemplate = require.resolve(`./src/templates/notes-query`)
+import fs from "fs"
+import path from "path"
+import mkdirp from "mkdirp"
+import { urlResolve, createContentDigest, slash } from "gatsby-core-utils"
+import { createFilePath, createRemoteFileNode } from "gatsby-source-filesystem"
+import {
+  Actions,
+  CreateNodeArgs,
+  CreatePagesArgs,
+  CreateSchemaCustomizationArgs,
+  GatsbyNode,
+  Node,
+  Reporter,
+} from "gatsby"
 
-const basePostsPath = `/`
-const baseNotesPath = `/notes`
-const postsPath = `content/posts`
-const notesPath = `content/notes`
+const basePostsPath = "/"
+const baseNotesPath = "/notes"
+const postsPath = "content/posts"
+const notesPath = "content/notes"
 
-exports.onPreBootstrap = ({ store }) => {
+export const onPreBootstrap: GatsbyNode["onPreBootstrap"] = ({ store }) => {
   const progDir = store.getState().program.directory
   ;[`content/assets`, notesPath, postsPath].forEach((dir) => {
     const d = path.join(progDir, dir)
@@ -21,18 +26,49 @@ exports.onPreBootstrap = ({ store }) => {
   })
 }
 
-exports.createPages = async ({
+interface MdxNode {
+  id: string
+  parent: {
+    name: string
+    base: string
+    relativePath: string
+    sourceInstanceName: string
+  }
+}
+
+interface SiteMetadata {
+  title: string
+}
+
+interface NotesQuery {
+  site: {
+    siteMetadata: SiteMetadata
+  }
+  mdxPages: {
+    edges: [
+      {
+        node: MdxNode
+      }
+    ]
+  }
+}
+
+interface Accumulator {
+  [key: string]: Array<MdxNode & { pagePath: string; url: string }>
+}
+
+export const createPages: GatsbyNode["createPages"] = async ({
   graphql,
   actions: { createPage },
   reporter,
 }) => {
   await createBlogPages(graphql, createPage, reporter)
 
-  const toNotesPath = (node) => {
+  const toNotesPath = (node: MdxNode) => {
     const { dir } = path.parse(node.parent.relativePath)
     return urlResolve(baseNotesPath, dir, node.parent.name)
   }
-  const result = await graphql(`
+  const result = await graphql<NotesQuery>(`
     {
       site {
         siteMetadata {
@@ -57,10 +93,7 @@ exports.createPages = async ({
     }
   `)
 
-  if (result.errors) {
-    console.log(result.errors)
-    throw new Error(`Could not query notes`, result.errors)
-  }
+  if (result.errors || !result.data) return reporter.panic(result.errors)
 
   const { mdxPages, site } = result.data
   const siteTitle = site.siteMetadata.title
@@ -80,7 +113,7 @@ exports.createPages = async ({
   })
 
   const notesUrls = notes.map(({ node }) => toNotesPath(node))
-  const groupedNotes = notes.reduce((acc, { node }) => {
+  const groupedNotes = notes.reduce((acc: Accumulator, { node }) => {
     const { dir } = path.parse(node.parent.relativePath)
     if (!dir) return acc
 
@@ -94,11 +127,12 @@ exports.createPages = async ({
     return acc
   }, {})
 
+  const notesTemplate = require.resolve("./src/templates/notes-query")
   Object.entries(groupedNotes).map(([key, value]) => {
     const breadcrumbs = key
       .split(path.sep)
       .reduce(
-        (acc, dir) => [
+        (acc: unknown[], dir) => [
           ...acc,
           { name: dir, url: urlResolve(baseNotesPath, dir) },
         ],
@@ -119,8 +153,14 @@ exports.createPages = async ({
   })
 }
 
-const createBlogPages = async (graphql, createPage, reporter) => {
-  const result = await graphql(`
+const createBlogPages = async (
+  graphql: CreatePagesArgs["graphql"],
+  createPage: Actions["createPage"],
+  reporter: Reporter
+) => {
+  const result = await graphql<{
+    allBlogPost: { edges: [{ node: { id: string; slug: string } }] }
+  }>(`
     {
       allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
         edges {
@@ -132,7 +172,7 @@ const createBlogPages = async (graphql, createPage, reporter) => {
       }
     }
   `)
-  if (result.errors) reporter.panic(result.errors)
+  if (result.errors || !result.data) return reporter.panic(result.errors)
 
   const posts = result.data.allBlogPost.edges
   posts.forEach(({ node: { id, slug } }, idx) => {
@@ -156,7 +196,10 @@ const createBlogPages = async (graphql, createPage, reporter) => {
   })
 }
 
-exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = async ({
+  actions: { createTypes },
+  schema,
+}: CreateSchemaCustomizationArgs) => {
   createTypes(`interface BlogPost @nodeInterface {
       id: ID!
       title: String!
@@ -188,14 +231,18 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
         image: {
           type: `File`,
           resolve: async (source, _args, context) => {
-            if (source.image___NODE)
+            if (source.image___NODE) {
               return context.nodeModel.getNodeById({ id: source.image___NODE })
-            else if (source.image)
+            } else if (source.image) {
               return processRelativeImage(source, context, "image")
+            }
           },
         },
         imageAlt: { type: `String` },
-        body: { type: `String!`, resolve: mdxResolverPassthrough(`body`) },
+        body: {
+          type: `String!`,
+          resolve: mdxResolverPassthrough(`body`),
+        },
       },
       interfaces: [`Node`, `BlogPost`],
       extensions: { infer: false },
@@ -203,47 +250,57 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
   )
 }
 
-const processRelativeImage = (source, context, type) => {
-  const fileNode = context.nodeModel.findRootNodeAncestor(
-    source,
-    (node) => node.internal && node.internal.type === `File`
-  )
-  if (!fileNode) return
-
-  for (let file of context.nodeModel.getAllNodes({ type: `File` }))
-    if (file.absolutePath === slash(path.join(fileNode.dir, source[type])))
-      return file
+interface FieldData {
+  title?: string
+  tags: string[]
+  slug: string
+  date?: string
+  keywords: string[]
+  image?: string
+  image___NODE?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any
 }
 
-exports.onCreateNode = async ({
+export const onCreateNode = async ({
   node,
   actions: { createNode, createParentChildLink },
   getNode,
   createNodeId,
   store,
   cache,
-}) => {
+  reporter,
+}: CreateNodeArgs<{
+  frontmatter: {
+    date?: string
+    image?: string
+    keywords?: string[]
+    slug?: string
+    title?: string
+    tags?: string[]
+  }
+}>): Promise<void> => {
   const { id, internal, frontmatter, parent } = node
   if (internal.type !== `Mdx`) return
 
   const fileNode = getNode(parent)
   if (fileNode.sourceInstanceName !== postsPath) return
 
-  const fieldData = {
+  const fieldData: FieldData = {
     title: frontmatter.title,
     tags: frontmatter.tags || [],
     slug: getSlug(
       basePostsPath,
       postsPath,
-      frontmatter.slug,
       getNode,
-      fileNode
+      fileNode,
+      frontmatter.slug
     ),
     date: frontmatter.date,
     keywords: frontmatter.keywords || [],
     image: frontmatter.image,
   }
-  if (validUrl(frontmatter.image)) {
+  if (frontmatter.image && validUrl(frontmatter.image)) {
     const remoteFileNode = await createRemoteFileNode({
       url: frontmatter.image,
       parentNodeId: id,
@@ -251,6 +308,7 @@ exports.onCreateNode = async ({
       createNodeId,
       cache,
       store,
+      reporter,
     })
     if (remoteFileNode) fieldData.image___NODE = remoteFileNode.id
   }
@@ -271,18 +329,40 @@ exports.onCreateNode = async ({
   createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) })
 }
 
-const mdxResolverPassthrough = (fieldName) => async (
-  source,
-  args,
-  context,
-  info
+const processRelativeImage = (
+  source: FieldData,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  context: any,
+  type: string
+) => {
+  const fileNode = context.nodeModel.findRootNodeAncestor(
+    source,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (node: any) => node.internal && node.internal.type === `File`
+  )
+  if (!fileNode) return
+
+  for (const file of context.nodeModel.getAllNodes({ type: `File` })) {
+    if (file.absolutePath === slash(path.join(fileNode.dir, source[type]))) {
+      return file
+    }
+  }
+}
+
+const mdxResolverPassthrough = (fieldName: string) => async (
+  source: FieldData,
+  args: unknown,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  context: any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  info: any
 ) => {
   const mdxNode = context.nodeModel.getNodeById({ id: source.parent })
   const resolver = info.schema.getType(`Mdx`).getFields()[fieldName].resolve
   return await resolver(mdxNode, args, context, { fieldName })
 }
 
-const validUrl = (str) => {
+const validUrl = (str: string) => {
   try {
     new URL(str)
     return true
@@ -291,7 +371,14 @@ const validUrl = (str) => {
   }
 }
 
-const getSlug = (baseUrl, basePath, slug, getNode, node) =>
+const getSlug = (
+  baseUrl: string,
+  basePath: string,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  getNode: Function,
+  node: Node,
+  slug?: string
+) =>
   (slug
     ? path.isAbsolute(slug)
       ? slug
