@@ -6,22 +6,17 @@ const {
   createFilePath,
   createRemoteFileNode,
 } = require(`gatsby-source-filesystem`)
-const NoteTemplate = require.resolve(`./src/templates/note-query`)
-const NotesTemplate = require.resolve(`./src/templates/notes-query`)
-const PostTemplate = require.resolve(`./src/templates/post-query`)
-const PostsTemplate = require.resolve(`./src/templates/posts-query`)
+const notesTemplate = require.resolve(`./src/templates/notes-query`)
 
 const basePostsPath = `/`
 const baseNotesPath = `/notes`
-const assetsPath = `content/assets`
 const postsPath = `content/posts`
 const notesPath = `content/notes`
 
 exports.onPreBootstrap = ({ store }) => {
-  const { program } = store.getState()
-  const dirs = [assetsPath, notesPath, postsPath]
-  dirs.forEach((dir) => {
-    const d = path.join(program.directory, dir)
+  const progDir = store.getState().program.directory
+  ;[`content/assets`, notesPath, postsPath].forEach((dir) => {
+    const d = path.join(progDir, dir)
     if (!fs.existsSync(d)) mkdirp.sync(d)
   })
 }
@@ -73,7 +68,6 @@ exports.createPages = async ({
     ({ node }) => node.parent.sourceInstanceName === notesPath
   )
 
-  // Create notes pages
   notes.forEach(({ node }) => {
     createPage({
       path: toNotesPath(node),
@@ -81,18 +75,14 @@ exports.createPages = async ({
         ...node,
         title: node.parent.name,
       },
-      component: NoteTemplate,
+      component: require.resolve(`./src/templates/note-query`),
     })
   })
 
   const notesUrls = notes.map(({ node }) => toNotesPath(node))
-
   const groupedNotes = notes.reduce((acc, { node }) => {
     const { dir } = path.parse(node.parent.relativePath)
-
-    if (!dir) {
-      return acc
-    }
+    if (!dir) return acc
 
     acc[dir] = acc[dir] || []
     acc[dir].push({
@@ -105,36 +95,27 @@ exports.createPages = async ({
   }, {})
 
   Object.entries(groupedNotes).map(([key, value]) => {
-    const breadcrumbs = key.split(path.sep).reduce(
-      (acc, dir) => [
-        ...acc,
-        {
-          name: dir,
-          url: urlResolve(baseNotesPath, dir),
-        },
-      ],
-      []
-    )
+    const breadcrumbs = key
+      .split(path.sep)
+      .reduce(
+        (acc, dir) => [
+          ...acc,
+          { name: dir, url: urlResolve(baseNotesPath, dir) },
+        ],
+        []
+      )
 
     createPage({
       path: urlResolve(baseNotesPath, key),
-      context: {
-        breadcrumbs,
-        siteTitle,
-        urls: value.map((v) => v.url),
-      },
-      component: NotesTemplate,
+      context: { breadcrumbs, siteTitle, urls: value.map((v) => v.url) },
+      component: notesTemplate,
     })
   })
 
   createPage({
     path: baseNotesPath,
-    context: {
-      urls: notesUrls,
-      groupedNotes,
-      siteTitle,
-    },
-    component: NotesTemplate,
+    context: { urls: notesUrls, groupedNotes, siteTitle },
+    component: notesTemplate,
   })
 }
 
@@ -151,21 +132,18 @@ const createBlogPages = async (graphql, createPage, reporter) => {
       }
     }
   `)
-
   if (result.errors) reporter.panic(result.errors)
 
-  const { allBlogPost } = result.data
-  const posts = allBlogPost.edges
-  posts.forEach(({ node: post }, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1]
-    const next = index === 0 ? null : posts[index - 1]
-    const { slug } = post
+  const posts = result.data.allBlogPost.edges
+  posts.forEach(({ node: { id, slug } }, idx) => {
+    const prev = idx === posts.length - 1 ? null : posts[idx + 1]
+    const next = idx === 0 ? null : posts[idx - 1]
     createPage({
       path: slug,
-      component: PostTemplate,
+      component: require.resolve(`./src/templates/post-query`),
       context: {
-        id: post.id,
-        previousId: previous ? previous.node.id : undefined,
+        id,
+        previousId: prev ? prev.node.id : undefined,
         nextId: next ? next.node.id : undefined,
       },
     })
@@ -173,7 +151,7 @@ const createBlogPages = async (graphql, createPage, reporter) => {
 
   createPage({
     path: basePostsPath,
-    component: PostsTemplate,
+    component: require.resolve(`./src/templates/posts-query`),
     context: {},
   })
 }
@@ -190,7 +168,6 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
       excerpt: String!
       image: File
       imageAlt: String
-      socialImage: File
   }`)
 
   createTypes(
@@ -211,30 +188,14 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
         image: {
           type: `File`,
           resolve: async (source, _args, context) => {
-            if (source.image___NODE) {
+            if (source.image___NODE)
               return context.nodeModel.getNodeById({ id: source.image___NODE })
-            } else if (source.image) {
+            else if (source.image)
               return processRelativeImage(source, context, "image")
-            }
           },
         },
         imageAlt: { type: `String` },
-        socialImage: {
-          type: "File",
-          resolve: async (source, args, context, info) => {
-            if (source.socialImage___NODE) {
-              return context.nodeModel.getNodeById({
-                id: source.socialImage___NODE,
-              })
-            } else if (source.socialImage) {
-              return processRelativeImage(source, context, "socialImage")
-            }
-          },
-        },
-        body: {
-          type: `String!`,
-          resolve: mdxResolverPassthrough(`body`),
-        },
+        body: { type: `String!`, resolve: mdxResolverPassthrough(`body`) },
       },
       interfaces: [`Node`, `BlogPost`],
       extensions: { infer: false },
@@ -243,29 +204,15 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
 }
 
 const processRelativeImage = (source, context, type) => {
-  // Image is a relative path - find a corresponding file
-  const mdxFileNode = context.nodeModel.findRootNodeAncestor(
+  const fileNode = context.nodeModel.findRootNodeAncestor(
     source,
     (node) => node.internal && node.internal.type === `File`
   )
-  if (!mdxFileNode) return
+  if (!fileNode) return
 
-  const imagePath = slash(path.join(mdxFileNode.dir, source[type]))
-  const fileNodes = context.nodeModel.getAllNodes({ type: `File` })
-  for (let file of fileNodes) {
-    if (file.absolutePath === imagePath) {
+  for (let file of context.nodeModel.getAllNodes({ type: `File` }))
+    if (file.absolutePath === slash(path.join(fileNode.dir, source[type])))
       return file
-    }
-  }
-}
-
-const validURL = (str) => {
-  try {
-    new URL(str)
-    return true
-  } catch {
-    return false
-  }
 }
 
 exports.onCreateNode = async ({
@@ -276,93 +223,78 @@ exports.onCreateNode = async ({
   store,
   cache,
 }) => {
-  if (node.internal.type !== `Mdx`) return
+  const { id, internal, frontmatter, parent } = node
+  if (internal.type !== `Mdx`) return
 
-  const fileNode = getNode(node.parent)
-  if (fileNode.sourceInstanceName === postsPath) {
-    let slug
-    if (node.frontmatter.slug) {
-      if (path.isAbsolute(node.frontmatter.slug)) {
-        // absolute paths take precedence
-        slug = node.frontmatter.slug
-      } else {
-        // otherwise a relative slug gets turned into a sub path
-        slug = urlResolve(basePostsPath, node.frontmatter.slug)
-      }
-    } else {
-      // otherwise use the filepath function from gatsby-source-filesystem
-      const filePath = createFilePath({
-        node: fileNode,
-        getNode,
-        basePath: postsPath,
-      })
+  const fileNode = getNode(parent)
+  if (fileNode.sourceInstanceName !== postsPath) return
 
-      slug = urlResolve(basePostsPath, filePath)
-    }
-    slug = slug.replace(/\/*$/, `/`)
-
-    const fieldData = {
-      title: node.frontmatter.title,
-      tags: node.frontmatter.tags || [],
-      slug,
-      date: node.frontmatter.date,
-      keywords: node.frontmatter.keywords || [],
-      image: node.frontmatter.image,
-      socialImage: node.frontmatter.socialImage,
-    }
-
-    if (validURL(node.frontmatter.image)) {
-      // create a file node for image URLs
-      const remoteFileNode = await createRemoteFileNode({
-        url: node.frontmatter.image,
-        parentNodeId: node.id,
-        createNode,
-        createNodeId,
-        cache,
-        store,
-      })
-      // if the file was created, attach the new node to the parent node
-      if (remoteFileNode) fieldData.image___NODE = remoteFileNode.id
-    }
-
-    if (validURL(node.frontmatter.socialImage)) {
-      // create a file node for image URLs
-      const remoteFileNode = await createRemoteFileNode({
-        url: node.frontmatter.socialImage,
-        parentNodeId: node.id,
-        createNode,
-        createNodeId,
-        cache,
-        store,
-      })
-      // if the file was created, attach the new node to the parent node
-      if (remoteFileNode) fieldData.socialImage___NODE = remoteFileNode.id
-    }
-
-    const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`)
-    await createNode({
-      ...fieldData,
-      id: mdxBlogPostId,
-      parent: node.id,
-      children: [],
-      internal: {
-        type: `MdxBlogPost`,
-        contentDigest: createContentDigest(fieldData),
-        content: JSON.stringify(fieldData),
-        description: `Mdx implementation of the BlogPost interface`,
-      },
-    })
-    createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) })
+  const fieldData = {
+    title: frontmatter.title,
+    tags: frontmatter.tags || [],
+    slug: getSlug(
+      basePostsPath,
+      postsPath,
+      frontmatter.slug,
+      getNode,
+      fileNode
+    ),
+    date: frontmatter.date,
+    keywords: frontmatter.keywords || [],
+    image: frontmatter.image,
   }
+  if (validUrl(frontmatter.image)) {
+    const remoteFileNode = await createRemoteFileNode({
+      url: frontmatter.image,
+      parentNodeId: id,
+      createNode,
+      createNodeId,
+      cache,
+      store,
+    })
+    if (remoteFileNode) fieldData.image___NODE = remoteFileNode.id
+  }
+
+  const mdxBlogPostId = createNodeId(`${id} >>> MdxBlogPost`)
+  await createNode({
+    ...fieldData,
+    id: mdxBlogPostId,
+    parent: id,
+    children: [],
+    internal: {
+      type: `MdxBlogPost`,
+      contentDigest: createContentDigest(fieldData),
+      content: JSON.stringify(fieldData),
+      description: `Mdx implementation of the BlogPost interface`,
+    },
+  })
+  createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) })
 }
 
 const mdxResolverPassthrough = (fieldName) => async (
-  { source: { parent } },
+  source,
   args,
   context,
-  { info: { schema } }
+  info
 ) => {
-  const mdxNode = context.nodeModel.getNodeById({ id: parent })
-  const resolver = schema.getType(`Mdx`).getFields()[fieldName].resolve
+  const mdxNode = context.nodeModel.getNodeById({ id: source.parent })
+  const resolver = info.schema.getType(`Mdx`).getFields()[fieldName].resolve
   return await resolver(mdxNode, args, context, { fieldName })
 }
+
+const validUrl = (str) => {
+  try {
+    new URL(str)
+    return true
+  } catch {
+    return false
+  }
+}
+
+const getSlug = (baseUrl, basePath, slug, getNode, node) =>
+  (slug
+    ? path.isAbsolute(slug)
+      ? slug
+      : urlResolve(baseUrl, slug)
+    : urlResolve(baseUrl, createFilePath({ node, getNode, basePath }))
+  ).replace(/\/*$/, `/`)
