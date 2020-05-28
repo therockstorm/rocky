@@ -2,8 +2,7 @@
 import { Link } from "gatsby"
 import { Flex, jsx, Styled } from "theme-ui"
 import NoBullet from "../../components/NoBullet"
-
-import Bio from "../components/bio"
+import Bio from "../bio"
 
 export default ({ previous, next }) => (
   <footer>

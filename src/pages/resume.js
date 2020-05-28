@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { graphql } from "gatsby"
 import { jsx } from "theme-ui"
-import SEO from "gatsby-theme-blog/src/components/seo"
-import Layout from "../gatsby-theme-blog/components/layout"
+import SEO from "../components/posts/seo"
+import Layout from "../components/layout"
 import Certifications from "../components/resume/Certifications"
 import Education from "../components/resume/Education"
 import Experience from "../components/resume/Experience"

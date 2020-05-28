@@ -86,10 +86,18 @@ module.exports = {
       options: { path: `content/notes`, name: `content/notes` },
     },
     {
-      // Last theme overrides theme-ui context
-      resolve: `gatsby-theme-blog`,
-      options: { mdxOtherwiseConfigured: true },
+      resolve: `gatsby-source-filesystem`,
+      options: { path: `content/posts`, name: `content/posts` },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { path: `content/assets`, name: `content/assets` },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-theme-ui`,
   ],
   siteMetadata: {
     author: `Rocky Warren`,

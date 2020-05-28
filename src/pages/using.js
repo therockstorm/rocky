@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { graphql } from "gatsby"
 import { jsx, Styled } from "theme-ui"
-import Layout from "../gatsby-theme-blog/components/layout"
-import SEO from "gatsby-theme-blog/src/components/seo"
+import Layout from "../components/layout"
+import SEO from "../components/posts/seo"
 import Section from "../components/Section"
 import ExternalLink from "../components/ExternalLink"
 

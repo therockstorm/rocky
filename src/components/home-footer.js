@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { Flex, jsx, Styled } from "theme-ui"
-import ExternalLink from "../../components/ExternalLink"
-import GitHub from "../../components/icons/GitHub"
-import Instagram from "../../components/icons/Instagram"
-import LinkedIn from "../../components/icons/LinkedIn"
-import Twitter from "../../components/icons/Twitter"
-import Icon from "../../components/Icon"
+import ExternalLink from "./ExternalLink"
+import GitHub from "./icons/GitHub"
+import Instagram from "./icons/Instagram"
+import LinkedIn from "./icons/LinkedIn"
+import Twitter from "./icons/Twitter"
+import Icon from "./Icon"
 
 const IconLink = ({ icon, ...other }) => (
   <ExternalLink {...other}>

@@ -3,8 +3,8 @@ import { Flex, jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import { config, animated, useSpring, useTrail } from "react-spring"
-import Layout from "../gatsby-theme-blog/components/layout"
-import SEO from "gatsby-theme-blog/src/components/seo"
+import Layout from "../components/layout"
+import SEO from "../components/posts/seo"
 import Heart from "../components/icons/Heart"
 
 export default ({

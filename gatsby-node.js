@@ -1,29 +1,42 @@
 const fs = require(`fs`)
 const path = require(`path`)
 const mkdirp = require(`mkdirp`)
-const { urlResolve, createContentDigest } = require(`gatsby-core-utils`)
+const { urlResolve, createContentDigest, slash } = require(`gatsby-core-utils`)
+const {
+  createFilePath,
+  createRemoteFileNode,
+} = require(`gatsby-source-filesystem`)
 
 // These templates are simply data-fetching wrappers that import components
 const NoteTemplate = require.resolve(`./src/templates/note-query`)
 const NotesTemplate = require.resolve(`./src/templates/notes-query`)
-const basePath = `/notes`
-const contentPath = `content/notes`
+const PostTemplate = require.resolve(`./src/templates/post-query`)
+const PostsTemplate = require.resolve(`./src/templates/posts-query`)
+const basePostsPath = `/`
+const baseNotesPath = `/notes`
+const assetsPath = `content/assets`
+const postsPath = `content/posts`
+const notesPath = `content/notes`
 
 exports.onPreBootstrap = ({ store }) => {
   const { program } = store.getState()
-  const dirs = [path.join(program.directory, contentPath)]
+  const dirs = [assetsPath, notesPath, postsPath]
   dirs.forEach((dir) => {
-    if (!fs.existsSync(dir)) {
-      mkdirp.sync(dir)
-    }
+    const d = path.join(program.directory, dir)
+    if (!fs.existsSync(d)) mkdirp.sync(d)
   })
 }
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+exports.createPages = async ({
+  graphql,
+  actions: { createPage },
+  reporter,
+}) => {
+  await createBlogPages(graphql, createPage, reporter)
+
   const toNotesPath = (node) => {
     const { dir } = path.parse(node.parent.relativePath)
-    return urlResolve(basePath, dir, node.parent.name)
+    return urlResolve(baseNotesPath, dir, node.parent.name)
   }
   const result = await graphql(`
     {
@@ -58,7 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { mdxPages, site } = result.data
   const siteTitle = site.siteMetadata.title
   const notes = mdxPages.edges.filter(
-    ({ node }) => node.parent.sourceInstanceName === contentPath
+    ({ node }) => node.parent.sourceInstanceName === notesPath
   )
 
   // Create notes pages
@@ -84,7 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     acc[dir] = acc[dir] || []
     acc[dir].push({
-      pagePath: urlResolve(basePath, dir),
+      pagePath: urlResolve(baseNotesPath, dir),
       url: toNotesPath(node),
       ...node,
     })
@@ -98,14 +111,14 @@ exports.createPages = async ({ graphql, actions }) => {
         ...acc,
         {
           name: dir,
-          url: urlResolve(basePath, dir),
+          url: urlResolve(baseNotesPath, dir),
         },
       ],
       []
     )
 
     createPage({
-      path: urlResolve(basePath, key),
+      path: urlResolve(baseNotesPath, key),
       context: {
         breadcrumbs,
         siteTitle,
@@ -116,7 +129,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   createPage({
-    path: basePath,
+    path: baseNotesPath,
     context: {
       urls: notesUrls,
       groupedNotes,
@@ -126,49 +139,50 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 }
 
-/*
-const { createFilePath, createRemoteFileNode } = require(`gatsby-source-filesystem`)
-const { urlResolve, createContentDigest, slash } = require(`gatsby-core-utils`)
-
-const withDefaults = require(`./utils/default-options`)
-
-// Ensure that content directories exist at site-level
-exports.onPreBootstrap = ({ store }, themeOptions) => {
-  const { program } = store.getState()
-  const { contentPath, assetPath } = withDefaults(themeOptions)
-
-  const dirs = [
-    path.join(program.directory, contentPath),
-    path.join(program.directory, assetPath),
-  ]
-
-  dirs.forEach(dir => {
-    if (!fs.existsSync(dir)) {
-      mkdirp.sync(dir)
+const createBlogPages = async (graphql, createPage, reporter) => {
+  const result = await graphql(`
+    {
+      allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
     }
+  `)
+
+  if (result.errors) reporter.panic(result.errors)
+
+  // Create Posts and Post pages.
+  const { allBlogPost } = result.data
+  const posts = allBlogPost.edges
+
+  // Create a page for each Post
+  posts.forEach(({ node: post }, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1]
+    const next = index === 0 ? null : posts[index - 1]
+    const { slug } = post
+    createPage({
+      path: slug,
+      component: PostTemplate,
+      context: {
+        id: post.id,
+        previousId: previous ? previous.node.id : undefined,
+        nextId: next ? next.node.id : undefined,
+      },
+    })
+  })
+
+  createPage({
+    path: basePostsPath,
+    component: PostsTemplate,
+    context: {},
   })
 }
 
-const mdxResolverPassthrough = fieldName => async (
-  source,
-  args,
-  context,
-  info
-) => {
-  const type = info.schema.getType(`Mdx`)
-  const mdxNode = context.nodeModel.getNodeById({
-    id: source.parent,
-  })
-  const resolver = type.getFields()[fieldName].resolve
-  const result = await resolver(mdxNode, args, context, {
-    fieldName,
-  })
-  return result
-}
-
-exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
-  const {excerptLength} = withDefaults(themeOptions)
-  const { createTypes } = actions
+exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
   createTypes(`interface BlogPost @nodeInterface {
       id: ID!
       title: String!
@@ -202,7 +216,7 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
           args: {
             pruneLength: {
               type: `Int`,
-              defaultValue: excerptLength,
+              defaultValue: 140,
             },
           },
           resolve: mdxResolverPassthrough(`excerpt`),
@@ -221,10 +235,12 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
           type: `String`,
         },
         socialImage: {
-          type: 'File',
+          type: "File",
           resolve: async (source, args, context, info) => {
             if (source.socialImage___NODE) {
-              return context.nodeModel.getNodeById({ id: source.socialImage___NODE })
+              return context.nodeModel.getNodeById({
+                id: source.socialImage___NODE,
+              })
             } else if (source.socialImage) {
               return processRelativeImage(source, context, "socialImage")
             }
@@ -238,33 +254,31 @@ exports.createSchemaCustomization = ({ actions, schema }, themeOptions) => {
       interfaces: [`Node`, `BlogPost`],
       extensions: {
         infer: false,
-      }
+      },
     })
   )
 }
 
-function processRelativeImage(source, context, type) {
-                // Image is a relative path - find a corresponding file
-                const mdxFileNode = context.nodeModel.findRootNodeAncestor(
-                  source,
-                  node => node.internal && node.internal.type === `File`
-                )
-                if (!mdxFileNode) {
-                  return
-                }
-                const imagePath = slash(
-                  path.join(mdxFileNode.dir, source[type])
-                )
+const processRelativeImage = (source, context, type) => {
+  // Image is a relative path - find a corresponding file
+  const mdxFileNode = context.nodeModel.findRootNodeAncestor(
+    source,
+    (node) => node.internal && node.internal.type === `File`
+  )
+  if (!mdxFileNode) {
+    return
+  }
+  const imagePath = slash(path.join(mdxFileNode.dir, source[type]))
 
-                const fileNodes = context.nodeModel.getAllNodes({ type: `File` })
-                for (let file of fileNodes) {
-                  if (file.absolutePath === imagePath) {
-                    return file
-                  }
-                }
+  const fileNodes = context.nodeModel.getAllNodes({ type: `File` })
+  for (let file of fileNodes) {
+    if (file.absolutePath === imagePath) {
+      return file
+    }
+  }
 }
 
-function validURL(str) {
+const validURL = (str) => {
   try {
     new URL(str)
     return true
@@ -274,26 +288,18 @@ function validURL(str) {
 }
 
 // Create fields for post slugs and source
-// This will change with schema customization with work
-exports.onCreateNode = async (
-  { node, actions, getNode, createNodeId,
-    store,
-    cache},
-  themeOptions
-) => {
-  const { createNode, createParentChildLink } = actions
-  const { contentPath, basePath } = withDefaults(themeOptions)
+exports.onCreateNode = async ({
+  node,
+  actions: { createNode, createParentChildLink },
+  getNode,
+  createNodeId,
+  store,
+  cache,
+}) => {
+  if (node.internal.type !== `Mdx`) return
 
-  // Make sure it's an MDX node
-  if (node.internal.type !== `Mdx`) {
-    return
-  }
-
-  // Create source field (according to contentPath)
   const fileNode = getNode(node.parent)
-  const source = fileNode.sourceInstanceName
-
-  if (node.internal.type === `Mdx` && source === contentPath) {
+  if (fileNode.sourceInstanceName === postsPath) {
     let slug
     if (node.frontmatter.slug) {
       if (path.isAbsolute(node.frontmatter.slug)) {
@@ -301,19 +307,18 @@ exports.onCreateNode = async (
         slug = node.frontmatter.slug
       } else {
         // otherwise a relative slug gets turned into a sub path
-        slug = urlResolve(basePath, node.frontmatter.slug)
+        slug = urlResolve(basePostsPath, node.frontmatter.slug)
       }
     } else {
       // otherwise use the filepath function from gatsby-source-filesystem
       const filePath = createFilePath({
         node: fileNode,
         getNode,
-        basePath: contentPath,
+        basePath: postsPath,
       })
 
-      slug = urlResolve(basePath, filePath)
+      slug = urlResolve(basePostsPath, filePath)
     }
-    // normalize use of trailing slash
     slug = slug.replace(/\/*$/, `/`)
 
     const fieldData = {
@@ -323,37 +328,35 @@ exports.onCreateNode = async (
       date: node.frontmatter.date,
       keywords: node.frontmatter.keywords || [],
       image: node.frontmatter.image,
-      socialImage: node.frontmatter.socialImage
+      socialImage: node.frontmatter.socialImage,
     }
 
-    if (validURL(node.frontmatter.image)) { // create a file node for image URLs
+    if (validURL(node.frontmatter.image)) {
+      // create a file node for image URLs
       const remoteFileNode = await createRemoteFileNode({
         url: node.frontmatter.image,
         parentNodeId: node.id,
         createNode,
         createNodeId,
         cache,
-        store
+        store,
       })
       // if the file was created, attach the new node to the parent node
-      if (remoteFileNode) {
-        fieldData.image___NODE = remoteFileNode.id
-      }
+      if (remoteFileNode) fieldData.image___NODE = remoteFileNode.id
     }
 
-    if (validURL(node.frontmatter.socialImage)) { // create a file node for image URLs
+    if (validURL(node.frontmatter.socialImage)) {
+      // create a file node for image URLs
       const remoteFileNode = await createRemoteFileNode({
         url: node.frontmatter.socialImage,
         parentNodeId: node.id,
         createNode,
         createNodeId,
         cache,
-        store
+        store,
       })
       // if the file was created, attach the new node to the parent node
-      if (remoteFileNode) {
-        fieldData.socialImage___NODE = remoteFileNode.id
-      }
+      if (remoteFileNode) fieldData.socialImage___NODE = remoteFileNode.id
     }
 
     const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`)
@@ -374,56 +377,19 @@ exports.onCreateNode = async (
   }
 }
 
-// These templates are simply data-fetching wrappers that import components
-const PostTemplate = require.resolve(`./src/templates/post-query`)
-const PostsTemplate = require.resolve(`./src/templates/posts-query`)
-
-exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
-  const { createPage } = actions
-  const { basePath } = withDefaults(themeOptions)
-
-  const result = await graphql(`
-    {
-      allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
-        edges {
-          node {
-            id
-            slug
-          }
-        }
-      }
-    }
-  `)
-
-  if (result.errors) {
-    reporter.panic(result.errors)
-  }
-
-  // Create Posts and Post pages.
-  const { allBlogPost } = result.data
-  const posts = allBlogPost.edges
-
-  // Create a page for each Post
-  posts.forEach(({ node: post }, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1]
-    const next = index === 0 ? null : posts[index - 1]
-    const { slug } = post
-    createPage({
-      path: slug,
-      component: PostTemplate,
-      context: {
-        id: post.id,
-        previousId: previous ? previous.node.id : undefined,
-        nextId: next ? next.node.id : undefined,
-      },
-    })
+const mdxResolverPassthrough = (fieldName) => async (
+  source,
+  args,
+  context,
+  info
+) => {
+  const type = info.schema.getType(`Mdx`)
+  const mdxNode = context.nodeModel.getNodeById({
+    id: source.parent,
   })
-
-  // // Create the Posts page
-  createPage({
-    path: basePath,
-    component: PostsTemplate,
-    context: {},
+  const resolver = type.getFields()[fieldName].resolve
+  const result = await resolver(mdxNode, args, context, {
+    fieldName,
   })
+  return result
 }
-*/

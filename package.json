@@ -30,6 +30,7 @@
     "gatsby-plugin-netlify": "^2.3.3",
     "gatsby-plugin-react-helmet": "^3.3.2",
     "gatsby-plugin-sharp": "^2.6.9",
+    "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-remark-copy-linked-files": "^2.3.3",
     "gatsby-remark-external-links": "0.0.4",
     "gatsby-remark-images": "^3.3.8",
@@ -37,10 +38,9 @@
     "gatsby-remark-smartypants": "^2.3.2",
     "gatsby-source-filesystem": "^2.3.8",
     "gatsby-source-instagram": "^0.7.0",
-    "gatsby-theme-blog": "^1.6.27",
-    "gatsby-theme-blog-core": "^1.5.27",
     "gatsby-transformer-sharp": "^2.5.3",
     "is-present": "^1.0.0",
+    "mdx-utils": "^0.2.0",
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -48,6 +48,7 @@
     "react-instantsearch-dom": "^6.5.0",
     "react-spring": "^8.0.27",
     "remark-slug": "^6.0.0",
+    "theme-ui": "^0.3.1",
     "typography-theme-bootstrap": "^0.16.19"
   }
 }

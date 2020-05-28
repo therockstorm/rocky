@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { jsx, Main } from "theme-ui"
+import { jsx } from "theme-ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import PostTitle from "gatsby-theme-blog/src/components/post-title"
-import SEO from "gatsby-theme-blog/src/components/seo"
-import Layout from "../../gatsby-theme-blog/components/layout"
+import PostTitle from "../posts/post-title.js"
+import SEO from "../posts/seo"
+import Layout from "../layout"
 
 export default ({
   data: {
@@ -18,17 +18,15 @@ export default ({
 }) => (
   <Layout {...props} title={siteMetadata.title}>
     <SEO title={title} description={excerpt} />
-    <Main>
-      <Main>
-        <article>
-          <header>
-            <PostTitle>{title}</PostTitle>
-          </header>
-          <section>
-            <MDXRenderer>{body}</MDXRenderer>
-          </section>
-        </article>
-      </Main>
-    </Main>
+    <main>
+      <article>
+        <header>
+          <PostTitle>{title}</PostTitle>
+        </header>
+        <section>
+          <MDXRenderer>{body}</MDXRenderer>
+        </section>
+      </article>
+    </main>
   </Layout>
 )

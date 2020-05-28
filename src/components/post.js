@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, Main } from "theme-ui"
+import { jsx } from "theme-ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import PostDate from "gatsby-theme-blog/src/components/post-date"
-import PostTitle from "gatsby-theme-blog/src/components/post-title"
-import SEO from "gatsby-theme-blog/src/components/seo"
+import PostDate from "../components/posts/post-date"
+import PostTitle from "../components/posts/post-title"
+import SEO from "../components/posts/seo"
 import Layout from "./layout"
-import PostFooter from "./post-footer"
+import PostFooter from "./posts/post-footer"
 
 export default ({
   data: {
@@ -18,7 +18,7 @@ export default ({
 }) => (
   <Layout location={location} title={siteMetadata.title}>
     <SEO title={title} description={excerpt} />
-    <Main>
+    <main>
       <article>
         <header>
           <PostTitle>{title}</PostTitle>
@@ -28,7 +28,7 @@ export default ({
           <MDXRenderer>{body}</MDXRenderer>
         </section>
       </article>
-    </Main>
+    </main>
     <PostFooter {...{ previous, next }} />
   </Layout>
 )

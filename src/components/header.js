@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
 import { Flex, jsx, useColorMode, Styled } from "theme-ui"
-import Bio from "../components/bio"
-import Search from "../../components/search/index"
-import Moon from "../../components/icons/Moon"
-import Sun from "../../components/icons/Sun"
-import Icon from "../../components/Icon"
+import Bio from "./bio"
+import Search from "./search/index"
+import Moon from "./icons/Moon"
+import Sun from "./icons/Sun"
+import Icon from "./Icon"
 
 const rootPath = `${__PATH_PREFIX__}/`
 const height = 42
