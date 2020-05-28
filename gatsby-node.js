@@ -6,12 +6,11 @@ const {
   createFilePath,
   createRemoteFileNode,
 } = require(`gatsby-source-filesystem`)
-
-// These templates are simply data-fetching wrappers that import components
 const NoteTemplate = require.resolve(`./src/templates/note-query`)
 const NotesTemplate = require.resolve(`./src/templates/notes-query`)
 const PostTemplate = require.resolve(`./src/templates/post-query`)
 const PostsTemplate = require.resolve(`./src/templates/posts-query`)
+
 const basePostsPath = `/`
 const baseNotesPath = `/notes`
 const assetsPath = `content/assets`
@@ -155,11 +154,8 @@ const createBlogPages = async (graphql, createPage, reporter) => {
 
   if (result.errors) reporter.panic(result.errors)
 
-  // Create Posts and Post pages.
   const { allBlogPost } = result.data
   const posts = allBlogPost.edges
-
-  // Create a page for each Post
   posts.forEach(({ node: post }, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1]
     const next = index === 0 ? null : posts[index - 1]
@@ -202,28 +198,19 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
       name: `MdxBlogPost`,
       fields: {
         id: { type: `ID!` },
-        title: {
-          type: `String!`,
-        },
-        slug: {
-          type: `String!`,
-        },
+        title: { type: `String!` },
+        slug: { type: `String!` },
         date: { type: `Date!`, extensions: { dateformat: {} } },
         tags: { type: `[String]!` },
         keywords: { type: `[String]!` },
         excerpt: {
           type: `String!`,
-          args: {
-            pruneLength: {
-              type: `Int`,
-              defaultValue: 140,
-            },
-          },
+          args: { pruneLength: { type: `Int`, defaultValue: 140 } },
           resolve: mdxResolverPassthrough(`excerpt`),
         },
         image: {
           type: `File`,
-          resolve: async (source, args, context, info) => {
+          resolve: async (source, _args, context) => {
             if (source.image___NODE) {
               return context.nodeModel.getNodeById({ id: source.image___NODE })
             } else if (source.image) {
@@ -231,9 +218,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
             }
           },
         },
-        imageAlt: {
-          type: `String`,
-        },
+        imageAlt: { type: `String` },
         socialImage: {
           type: "File",
           resolve: async (source, args, context, info) => {
@@ -252,9 +237,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
         },
       },
       interfaces: [`Node`, `BlogPost`],
-      extensions: {
-        infer: false,
-      },
+      extensions: { infer: false },
     })
   )
 }
@@ -265,11 +248,9 @@ const processRelativeImage = (source, context, type) => {
     source,
     (node) => node.internal && node.internal.type === `File`
   )
-  if (!mdxFileNode) {
-    return
-  }
-  const imagePath = slash(path.join(mdxFileNode.dir, source[type]))
+  if (!mdxFileNode) return
 
+  const imagePath = slash(path.join(mdxFileNode.dir, source[type]))
   const fileNodes = context.nodeModel.getAllNodes({ type: `File` })
   for (let file of fileNodes) {
     if (file.absolutePath === imagePath) {
@@ -287,7 +268,6 @@ const validURL = (str) => {
   }
 }
 
-// Create fields for post slugs and source
 exports.onCreateNode = async ({
   node,
   actions: { createNode, createParentChildLink },
@@ -362,7 +342,6 @@ exports.onCreateNode = async ({
     const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`)
     await createNode({
       ...fieldData,
-      // Required fields.
       id: mdxBlogPostId,
       parent: node.id,
       children: [],
@@ -378,18 +357,12 @@ exports.onCreateNode = async ({
 }
 
 const mdxResolverPassthrough = (fieldName) => async (
-  source,
+  { source: { parent } },
   args,
   context,
-  info
+  { info: { schema } }
 ) => {
-  const type = info.schema.getType(`Mdx`)
-  const mdxNode = context.nodeModel.getNodeById({
-    id: source.parent,
-  })
-  const resolver = type.getFields()[fieldName].resolve
-  const result = await resolver(mdxNode, args, context, {
-    fieldName,
-  })
-  return result
+  const mdxNode = context.nodeModel.getNodeById({ id: parent })
+  const resolver = schema.getType(`Mdx`).getFields()[fieldName].resolve
+  return await resolver(mdxNode, args, context, { fieldName })
 }
