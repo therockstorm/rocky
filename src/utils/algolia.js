@@ -1,6 +1,6 @@
 const settings = { attributesToSnippet: [`excerpt:20`] }
 
-module.exports = [
+export default [
   {
     query: `{
       items: allMdx(filter: {fileAbsolutePath: {regex: "/notes/"}}) {

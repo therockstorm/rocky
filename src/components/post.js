@@ -7,7 +7,7 @@ import SEO from "../components/posts/seo"
 import Layout from "./layout"
 import PostFooter from "./posts/post-footer"
 
-export default ({
+const Post = ({
   data: {
     post: { body, date, excerpt, title },
     site: { siteMetadata },
@@ -32,3 +32,5 @@ export default ({
     <PostFooter {...{ previous, next }} />
   </Layout>
 )
+
+export default Post

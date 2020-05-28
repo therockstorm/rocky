@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/posts/seo"
 import Heart from "../components/icons/Heart"
 
-export default ({
+const Photos = ({
   data: {
     instagram: { nodes: instagram },
     site: {
@@ -142,6 +142,8 @@ export default ({
     </Layout>
   )
 }
+
+export default Photos
 
 export const query = graphql`
   query Photos {

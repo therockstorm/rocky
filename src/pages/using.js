@@ -6,14 +6,14 @@ import SEO from "../components/posts/seo"
 import Section from "../components/Section"
 import ExternalLink from "../components/ExternalLink"
 
-export default ({ data, location }) => (
+const Using = ({ data, location }) => (
   <Layout location={location} title={data.site.siteMetadata.title}>
     <SEO title="Using" />
     <Styled.h1>Using</Styled.h1>
     <Section title="Hardware">
       <Styled.ul>
-        <Styled.li>MacBook Pro 15", 2.4 GHz 8-Core i9, 32 GB RAM</Styled.li>
-        <Styled.li>LG 27" 4K UHD LED Monitor</Styled.li>
+        <Styled.li>MacBook Pro 15&#34;, 2.4 GHz 8-Core i9, 32 GB RAM</Styled.li>
+        <Styled.li>LG 27&#34; 4K UHD LED Monitor</Styled.li>
         <Styled.li>
           Das Keyboard 4 Professional, Cherry MX Blue Clicky Keys
         </Styled.li>
@@ -92,7 +92,7 @@ export default ({ data, location }) => (
         </Styled.li>
         <Styled.li>
           <ExternalLink href="https://apprywhere.com/copy-em-paste.html">
-            Copy 'Em Paste
+            Copy &#39;Em Paste
           </ExternalLink>
         </Styled.li>
         <Styled.li>
@@ -109,6 +109,8 @@ export default ({ data, location }) => (
     </Section>
   </Layout>
 )
+
+export default Using
 
 export const pageQuery = graphql`
   query {

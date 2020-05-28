@@ -4,13 +4,15 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/posts/seo"
 
-export default ({ data, location }) => (
+const NotFound = ({ data, location }) => (
   <Layout location={location} title={data.site.siteMetadata.title}>
     <SEO title="404: Not Found" />
     <Styled.h1>Not Found</Styled.h1>
     <Styled.p>Whoops, this page doesn&#39;t exist.</Styled.p>
   </Layout>
 )
+
+export default NotFound
 
 export const pageQuery = graphql`
   query {

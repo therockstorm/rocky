@@ -4,7 +4,7 @@ import { Box, jsx, Styled } from "theme-ui"
 import Search from "../icons/Search"
 import Icon from "../Icon"
 
-export const Input = connectSearchBox(({ refine, ...rest }) => (
+const Input = connectSearchBox(({ refine, ...rest }) => (
   <Box
     as={"form"}
     sx={{
@@ -34,3 +34,5 @@ export const Input = connectSearchBox(({ refine, ...rest }) => (
     </Icon>
   </Box>
 ))
+
+export default Input

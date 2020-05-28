@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import ExternalLink from "../ExternalLink"
 import Section from "../Section"
 
-export default () => (
+const Featured = () => (
   <Section title="Talks and Articles">
     {[
       {
@@ -33,3 +33,5 @@ const Post = ({ title, href, desc }) => (
     <Styled.p>{desc}</Styled.p>
   </Styled.div>
 )
+
+export default Featured

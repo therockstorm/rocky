@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { Fragment } from "react"
 import { Flex, jsx, Styled } from "theme-ui"
 
-export default () => (
+const BioContent = () => (
   <Fragment>
     <Styled.p sx={{ mb: 1 }}>Rocky Warren&#39;s blog.</Styled.p>
     <Styled.p sx={{ mb: 1 }}>
@@ -27,3 +27,5 @@ export default () => (
     </Flex>
   </Fragment>
 )
+
+export default BioContent

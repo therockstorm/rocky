@@ -4,7 +4,7 @@ import Layout from "./layout"
 import PostList from "./posts/post-list"
 import SEO from "./posts/seo"
 
-export default ({ location, posts, siteTitle }) => (
+const Posts = ({ location, posts, siteTitle }) => (
   <Layout location={location} title={siteTitle}>
     <SEO title="Rocky Warren" />
     <main>
@@ -13,3 +13,5 @@ export default ({ location, posts, siteTitle }) => (
     <Footer />
   </Layout>
 )
+
+export default Posts

@@ -13,7 +13,7 @@ const IconLink = ({ icon, ...other }) => (
   </ExternalLink>
 )
 
-export default () => (
+const HomeFooter = () => (
   <footer>
     <Styled.hr sx={{ my: 4 }} />
     <Flex>
@@ -40,3 +40,5 @@ export default () => (
     </Flex>
   </footer>
 )
+
+export default HomeFooter

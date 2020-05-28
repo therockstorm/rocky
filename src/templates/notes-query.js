@@ -1,8 +1,7 @@
 import React from "react"
-
 import Notes from "../components/notes/notes"
 
-export default ({
+const NotesPage = ({
   pageContext: { groupedNotes, urls, breadcrumbs, siteTitle },
   ...props
 }) => (
@@ -14,3 +13,5 @@ export default ({
     {...props}
   />
 )
+
+export default NotesPage

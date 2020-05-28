@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import NoBullet from "../NoBullet"
 import Section from "../Section"
 
-export default () => (
+const Recommendations = () => (
   <Section title="Recommendations">
     <Styled.ul sx={{ ml: 0 }}>
       <NoBullet>
@@ -33,3 +33,5 @@ export default () => (
     </Styled.ul>
   </Section>
 )
+
+export default Recommendations

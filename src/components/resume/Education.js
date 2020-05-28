@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 import Position from "./Position"
 import Section from "../Section"
 
-export default () => (
+const Education = () => (
   <Section title="Education">
     <Position
       company={"University of Iowa"}
@@ -19,3 +19,5 @@ export default () => (
     />
   </Section>
 )
+
+export default Education

@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { Highlight, Snippet } from "react-instantsearch-dom"
 import { jsx, Styled } from "theme-ui"
 
-export const PostHit = (clickHandler) => ({ hit }) => (
+const PostHit = (clickHandler) => ({ hit }) => (
   <div>
     <Styled.h4 sx={{ mb: 1 }}>
       <Styled.a as={Link} to={hit.slug} onClick={clickHandler}>
@@ -19,3 +19,5 @@ export const PostHit = (clickHandler) => ({ hit }) => (
     <Styled.hr />
   </div>
 )
+
+export default PostHit

@@ -3,7 +3,7 @@ import { Fragment } from "react"
 import { Flex, jsx, Styled } from "theme-ui"
 import NoBullet from "../NoBullet"
 
-export default ({ company, positions }) => (
+const Position = ({ company, positions }) => (
   <Fragment>
     <Styled.h3 sx={{ fontWeight: "bold", mb: 2 }}>{company}</Styled.h3>
     {positions.map(({ title, start, end, location, desc }, idx) => {
@@ -26,3 +26,5 @@ export default ({ company, positions }) => (
     })}
   </Fragment>
 )
+
+export default Position

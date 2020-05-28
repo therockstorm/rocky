@@ -4,7 +4,7 @@ import Badge from "../Badge"
 import NoBullet from "../NoBullet"
 import Section from "../Section"
 
-export default () => (
+const Skills = () => (
   <Section title="Skills">
     <Styled.ul sx={{ ml: 0 }}>
       {/* Languages */}
@@ -42,3 +42,5 @@ const Skill = ({ children }) => (
     <Badge>{children}</Badge>
   </NoBullet>
 )
+
+export default Skills
