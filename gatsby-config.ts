@@ -1,11 +1,13 @@
 import queries from "./src/utils/algolia"
+import { SiteMetadata } from "./types"
+
 require("dotenv").config()
 
 const none = `'none'`
 const self = `'self'`
 const youTube = `https://www.youtube.com`
 
-export const siteMetadata = {
+export const siteMetadata: SiteMetadata = {
   author: `Rocky Warren`,
   description: `Rocky Warren's blog.`,
   siteUrl: `https://rocky.dev/`,

@@ -11,7 +11,7 @@ import Header from "../components/resume/Header"
 import Recommendations from "../components/resume/Recommendations"
 import Skills from "../components/resume/Skills"
 
-export default ({ data, location }) => (
+const Resume = ({ data, location }) => (
   <Layout location={location} title={data.site.siteMetadata.title}>
     <SEO title="Rocky Warren Resume" />
     <main
@@ -27,6 +27,8 @@ export default ({ data, location }) => (
     </main>
   </Layout>
 )
+
+export default Resume
 
 export const pageQuery = graphql`
   query {

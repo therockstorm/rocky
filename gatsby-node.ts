@@ -12,6 +12,7 @@ import {
   Node,
   Reporter,
 } from "gatsby"
+import { Frontmatter, MdxNode, NotesQuery } from "./types"
 
 const basePostsPath = "/"
 const baseNotesPath = "/notes"
@@ -24,37 +25,6 @@ export const onPreBootstrap: GatsbyNode["onPreBootstrap"] = ({ store }) => {
     const d = path.join(progDir, dir)
     if (!fs.existsSync(d)) mkdirp.sync(d)
   })
-}
-
-interface MdxNode {
-  id: string
-  parent: {
-    name: string
-    base: string
-    relativePath: string
-    sourceInstanceName: string
-  }
-}
-
-interface SiteMetadata {
-  title: string
-}
-
-interface NotesQuery {
-  site: {
-    siteMetadata: SiteMetadata
-  }
-  mdxPages: {
-    edges: [
-      {
-        node: MdxNode
-      }
-    ]
-  }
-}
-
-interface Accumulator {
-  [key: string]: Array<MdxNode & { pagePath: string; url: string }>
 }
 
 export const createPages: GatsbyNode["createPages"] = async ({
@@ -113,19 +83,22 @@ export const createPages: GatsbyNode["createPages"] = async ({
   })
 
   const notesUrls = notes.map(({ node }) => toNotesPath(node))
-  const groupedNotes = notes.reduce((acc: Accumulator, { node }) => {
-    const { dir } = path.parse(node.parent.relativePath)
-    if (!dir) return acc
+  const groupedNotes = notes.reduce(
+    (acc: { [key: string]: MdxNode[] }, { node }) => {
+      const { dir } = path.parse(node.parent.relativePath)
+      if (!dir) return acc
 
-    acc[dir] = acc[dir] || []
-    acc[dir].push({
-      pagePath: urlResolve(baseNotesPath, dir),
-      url: toNotesPath(node),
-      ...node,
-    })
+      acc[dir] = acc[dir] || []
+      acc[dir].push({
+        pagePath: urlResolve(baseNotesPath, dir),
+        url: toNotesPath(node),
+        ...node,
+      })
 
-    return acc
-  }, {})
+      return acc
+    },
+    {}
+  )
 
   const notesTemplate = require.resolve("./src/templates/notes-query")
   Object.entries(groupedNotes).map(([key, value]) => {
@@ -250,18 +223,6 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
   )
 }
 
-interface FieldData {
-  title?: string
-  tags: string[]
-  slug: string
-  date?: string
-  keywords: string[]
-  image?: string
-  image___NODE?: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any
-}
-
 export const onCreateNode = async ({
   node,
   actions: { createNode, createParentChildLink },
@@ -286,7 +247,7 @@ export const onCreateNode = async ({
   const fileNode = getNode(parent)
   if (fileNode.sourceInstanceName !== postsPath) return
 
-  const fieldData: FieldData = {
+  const fieldData: Frontmatter = {
     title: frontmatter.title,
     tags: frontmatter.tags || [],
     slug: getSlug(
@@ -330,7 +291,7 @@ export const onCreateNode = async ({
 }
 
 const processRelativeImage = (
-  source: FieldData,
+  source: Frontmatter,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   context: any,
   type: string
@@ -350,7 +311,7 @@ const processRelativeImage = (
 }
 
 const mdxResolverPassthrough = (fieldName: string) => async (
-  source: FieldData,
+  source: Frontmatter,
   args: unknown,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   context: any,

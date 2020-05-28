@@ -5,7 +5,7 @@ import PostTitle from "../posts/post-title.js"
 import SEO from "../posts/seo"
 import Layout from "../layout"
 
-export default ({
+const Note = ({
   data: {
     note: {
       body,
@@ -30,3 +30,5 @@ export default ({
     </main>
   </Layout>
 )
+
+export default Note

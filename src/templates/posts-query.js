@@ -1,5 +1,15 @@
 import { graphql } from "gatsby"
-import PostsPage from "../components/posts/posts"
+import React from "react"
+import Posts from "../components/posts"
+
+const PostsPage = ({ location, data: { site, allBlogPost } }) => (
+  <Posts
+    location={location}
+    posts={allBlogPost.edges}
+    siteTitle={site.siteMetadata.title}
+    socialLinks={site.siteMetadata.social}
+  />
+)
 
 export default PostsPage
 

@@ -1,4 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-export default () => <footer />
+const Footer = () => <footer />
+
+export default Footer

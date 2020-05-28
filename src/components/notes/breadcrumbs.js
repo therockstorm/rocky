@@ -1,11 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 import { Styled, css } from "theme-ui"
-
 import BreadcrumbDivider from "./breadcrumb-divider"
 import BreadcrumbHome from "./breadcrumb-home"
 
-export default ({ links }) => (
+const Breadcrumbs = ({ links }) => (
   <nav
     css={css({
       mb: 3,
@@ -26,3 +25,5 @@ export default ({ links }) => (
     ))}
   </nav>
 )
+
+export default Breadcrumbs

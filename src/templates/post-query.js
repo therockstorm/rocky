@@ -1,5 +1,19 @@
 import { graphql } from "gatsby"
-import PostPage from "../components/posts/post"
+import React from "react"
+import Post from "../components/post"
+
+const PostPage = ({ location, data }) => {
+  const { blogPost, previous, next } = data
+
+  return (
+    <Post
+      data={{ ...data, post: blogPost }}
+      location={location}
+      previous={previous}
+      next={next}
+    />
+  )
+}
 
 export default PostPage
 

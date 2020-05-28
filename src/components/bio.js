@@ -4,7 +4,7 @@ import Image from "gatsby-image"
 import { Flex, jsx, Styled } from "theme-ui"
 import BioContent from "./bio-content"
 
-export default () => {
+const Bio = () => {
   const {
     site: {
       siteMetadata: { author },
@@ -44,6 +44,8 @@ export default () => {
     </Flex>
   )
 }
+
+export default Bio
 
 const bioQuery = graphql`
   query BioQueryShadowed {

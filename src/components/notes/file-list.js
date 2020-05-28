@@ -6,7 +6,7 @@ import NoBullet from "../NoBullet"
 import Folder from "../icons/Folder"
 import Icon from "../Icon"
 
-export default ({ directories }) =>
+const FileList = ({ directories }) =>
   isPresent(directories) ? (
     <Styled.ul sx={{ ml: 0 }}>
       {Object.keys(directories)
@@ -33,3 +33,5 @@ export default ({ directories }) =>
         ))}
     </Styled.ul>
   ) : null
+
+export default FileList
