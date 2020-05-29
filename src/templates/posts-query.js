@@ -1,17 +1,31 @@
-import { graphql } from "gatsby"
 import React from "react"
-import Posts from "../components/posts"
+import { graphql } from "gatsby"
+import Footer from "../components/home-footer"
+import Layout from "../components/layout"
+import PostList from "../components/posts/post-list"
+import SEO from "../components/posts/seo"
 
-const PostsPage = ({ location, data: { site, allBlogPost } }) => (
-  <Posts
-    location={location}
-    posts={allBlogPost.edges}
-    siteTitle={site.siteMetadata.title}
-    socialLinks={site.siteMetadata.social}
-  />
-)
+const Posts = ({
+  location,
+  data: {
+    site: {
+      siteMetadata: { title },
+    },
+    allBlogPost: { edges },
+  },
+}) => {
+  return (
+    <Layout location={location} title={title}>
+      <SEO title="Rocky Warren" />
+      <main>
+        <PostList posts={edges} />
+      </main>
+      <Footer />
+    </Layout>
+  )
+}
 
-export default PostsPage
+export default Posts
 
 export const query = graphql`
   query PostsQuery {

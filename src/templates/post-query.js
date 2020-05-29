@@ -1,21 +1,40 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
-import React from "react"
-import Post from "../components/post"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import PostDate from "../components/posts/post-date"
+import PostTitle from "../components/posts/post-title"
+import SEO from "../components/posts/seo"
+import Layout from "../components/layout"
+import PostFooter from "../components/posts/post-footer"
 
-const PostPage = ({ location, data }) => {
-  const { blogPost, previous, next } = data
+const Post = ({
+  data: {
+    blogPost: { body, date, excerpt, title },
+    site: { siteMetadata },
+    previous,
+    next,
+  },
+  location,
+}) => (
+  <Layout location={location} title={siteMetadata.title}>
+    <SEO title={title} description={excerpt} />
+    <main>
+      <article>
+        <header>
+          <PostTitle>{title}</PostTitle>
+          <PostDate sx={{ mt: -2 }}>{date}</PostDate>
+        </header>
+        <section>
+          <MDXRenderer>{body}</MDXRenderer>
+        </section>
+      </article>
+    </main>
+    <PostFooter {...{ previous, next }} />
+  </Layout>
+)
 
-  return (
-    <Post
-      data={{ ...data, post: blogPost }}
-      location={location}
-      previous={previous}
-      next={next}
-    />
-  )
-}
-
-export default PostPage
+export default Post
 
 export const query = graphql`
   query PostPageQuery($id: String!, $previousId: String, $nextId: String) {
