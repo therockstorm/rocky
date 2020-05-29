@@ -1,4 +1,5 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import Footer from "../components/home-footer"
 import Layout from "../components/layout"

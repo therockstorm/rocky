@@ -5,7 +5,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["dom", "esnext"],
-    "module": "esnext",
+    "module": "commonjs",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,

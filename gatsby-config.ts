@@ -1,5 +1,5 @@
 import queries from "./src/utils/algolia"
-import { SiteMetadata } from "./types"
+import { SiteMetadata } from "./types/index.d"
 
 require("dotenv").config()
 

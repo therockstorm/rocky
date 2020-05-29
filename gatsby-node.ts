@@ -12,7 +12,7 @@ import {
   Node,
   Reporter,
 } from "gatsby"
-import { Frontmatter, MdxNode, NotesQuery } from "./types"
+import { Frontmatter, MdxNode, NotesQuery } from "./types/index.d"
 
 const basePostsPath = "/"
 const baseNotesPath = "/notes"
