@@ -34,7 +34,7 @@ export default [
   },
   {
     query: `{
-      items: allMdxBlogPost {
+      items: allMdxPost {
         edges {
           node {
             date(formatString: "MMM D, YYYY")

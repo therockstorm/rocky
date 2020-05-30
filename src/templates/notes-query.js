@@ -10,7 +10,11 @@ const Notes = ({
 }) => (
   <Layout title={siteTitle} {...props}>
     <SEO title="Notes" />
-    <FileList directories={groupedNotes} />
+    <FileList
+      breadcrumbs={breadcrumbs}
+      directories={groupedNotes}
+      files={urls}
+    />
   </Layout>
 )
 

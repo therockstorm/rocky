@@ -132,10 +132,10 @@ const createBlogPages = async (
   reporter: Reporter
 ) => {
   const result = await graphql<{
-    allBlogPost: { edges: [{ node: { id: string; slug: string } }] }
+    allPost: { edges: [{ node: { id: string; slug: string } }] }
   }>(`
     {
-      allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+      allPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
         edges {
           node {
             id
@@ -147,7 +147,7 @@ const createBlogPages = async (
   `)
   if (result.errors || !result.data) return reporter.panic(result.errors)
 
-  const posts = result.data.allBlogPost.edges
+  const posts = result.data.allPost.edges
   posts.forEach(({ node: { id, slug } }, idx) => {
     const prev = idx === posts.length - 1 ? null : posts[idx + 1]
     const next = idx === 0 ? null : posts[idx - 1]
@@ -173,7 +173,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
   actions: { createTypes },
   schema,
 }: CreateSchemaCustomizationArgs) => {
-  createTypes(`interface BlogPost @nodeInterface {
+  createTypes(`interface Post @nodeInterface {
       id: ID!
       title: String!
       body: String!
@@ -188,7 +188,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
 
   createTypes(
     schema.buildObjectType({
-      name: `MdxBlogPost`,
+      name: `MdxPost`,
       fields: {
         id: { type: `ID!` },
         title: { type: `String!` },
@@ -217,7 +217,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
           resolve: mdxResolverPassthrough(`body`),
         },
       },
-      interfaces: [`Node`, `BlogPost`],
+      interfaces: [`Node`, `Post`],
       extensions: { infer: false },
     })
   )
@@ -274,17 +274,17 @@ export const onCreateNode = async ({
     if (remoteFileNode) fieldData.image___NODE = remoteFileNode.id
   }
 
-  const mdxBlogPostId = createNodeId(`${id} >>> MdxBlogPost`)
-  await createNode({
+  const mdxBlogPostId = createNodeId(`${id} >>> MdxPost`)
+  createNode({
     ...fieldData,
     id: mdxBlogPostId,
     parent: id,
     children: [],
     internal: {
-      type: `MdxBlogPost`,
+      type: `MdxPost`,
       contentDigest: createContentDigest(fieldData),
       content: JSON.stringify(fieldData),
-      description: `Mdx implementation of the BlogPost interface`,
+      description: `Mdx implementation of the Post interface`,
     },
   })
   createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) })

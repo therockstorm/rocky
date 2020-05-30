@@ -10,7 +10,7 @@ import PostFooter from "../components/posts/post-footer"
 
 const Post = ({
   data: {
-    blogPost: { body, date, excerpt, title },
+    post: { body, date, excerpt, title },
     site: { siteMetadata },
     previous,
     next,
@@ -47,7 +47,7 @@ export const query = graphql`
         }
       }
     }
-    blogPost(id: { eq: $id }) {
+    post(id: { eq: $id }) {
       id
       excerpt
       body
@@ -65,14 +65,14 @@ export const query = graphql`
       }
       imageAlt
     }
-    previous: blogPost(id: { eq: $previousId }) {
+    previous: post(id: { eq: $previousId }) {
       id
       excerpt
       slug
       title
       date(formatString: "MMMM DD, YYYY")
     }
-    next: blogPost(id: { eq: $nextId }) {
+    next: post(id: { eq: $nextId }) {
       id
       excerpt
       slug
