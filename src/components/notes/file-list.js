@@ -6,8 +6,9 @@ import NoBullet from "../NoBullet"
 import Folder from "../icons/Folder"
 import Icon from "../Icon"
 
-const FileList = ({ directories }) =>
-  isPresent(directories) ? (
+const FileList = ({ directories }) => {
+  console.log(directories)
+  return isPresent(directories) ? (
     <Styled.ul sx={{ ml: 0 }}>
       {Object.keys(directories)
         .sort()
@@ -33,5 +34,6 @@ const FileList = ({ directories }) =>
         ))}
     </Styled.ul>
   ) : null
+}
 
 export default FileList

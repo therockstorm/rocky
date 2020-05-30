@@ -16,7 +16,7 @@ const IconLink = ({ icon, ...other }) => (
 const HomeFooter = () => (
   <footer>
     <Styled.hr sx={{ my: 4 }} />
-    <Flex>
+    <Flex sx={{ justifyContent: "center" }}>
       <IconLink
         aria-label="Link to Twitter Profile"
         href={"https://twitter.com/therockstorm"}
