@@ -8,16 +8,14 @@ import Layout from "../components/layout"
 
 const Note = ({
   data: {
-    note: {
-      body,
-      excerpt,
-      frontmatter: { date, title },
-    },
+    content: { body, date, excerpt, title },
     site: { siteMetadata },
+    previous,
+    next,
   },
-  ...props
+  location,
 }) => (
-  <Layout {...props} title={siteMetadata.title}>
+  <Layout location={location} title={siteMetadata.title}>
     <SEO title={title} description={excerpt} />
     <main>
       <article>
@@ -36,14 +34,23 @@ export default Note
 
 export const pageQuery = graphql`
   query($id: String!) {
-    note: mdx(id: { eq: $id }) {
+    content(id: { eq: $id }) {
       id
+      excerpt
       body
-      excerpt(pruneLength: 5000)
-      frontmatter {
-        date(formatString: "MMM D, YYYY")
-        title
+      slug
+      title
+      tags
+      keywords
+      date(formatString: "MMMM DD, YYYY")
+      image {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
+      imageAlt
     }
     site: site {
       siteMetadata {

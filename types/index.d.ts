@@ -8,19 +8,20 @@ export interface SiteMetadata {
 
 export interface MdxNode {
   id: string
-  parent: {
-    name: string
-    base: string
-    relativePath: string
-    sourceInstanceName: string
-  }
+  slug: string
+  filename: string
+  relativePath: string
   pagePath?: string
   url?: string
 }
 
+export interface MdxContent {
+  edges: [{ node: MdxNode }]
+}
+
 export interface NotesQuery {
   site: { siteMetadata: SiteMetadata }
-  mdxPages: { edges: [{ node: MdxNode }] }
+  mdxContent: MdxContent
 }
 
 export interface Frontmatter {
