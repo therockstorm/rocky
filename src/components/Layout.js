@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import Header from "./header"
+import Header from "./Header"
 
-export default ({ children, maxWidth, ...props }) => (
+const Layout = ({ children, maxWidth, ...props }) => (
   <Styled.root>
     <Header {...props} />
     <Styled.div
@@ -12,3 +12,5 @@ export default ({ children, maxWidth, ...props }) => (
     </Styled.div>
   </Styled.root>
 )
+
+export default Layout

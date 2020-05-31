@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { graphql } from "gatsby"
 import { jsx } from "theme-ui"
-import SEO from "gatsby-theme-blog/src/components/seo"
-import Layout from "../gatsby-theme-blog/components/layout"
+import SEO from "../components/posts/Seo"
+import Layout from "../components/Layout"
 import Certifications from "../components/resume/Certifications"
 import Education from "../components/resume/Education"
 import Experience from "../components/resume/Experience"
@@ -11,7 +11,7 @@ import Header from "../components/resume/Header"
 import Recommendations from "../components/resume/Recommendations"
 import Skills from "../components/resume/Skills"
 
-export default ({ data, location }) => (
+const Resume = ({ data, location }) => (
   <Layout location={location} title={data.site.siteMetadata.title}>
     <SEO title="Rocky Warren Resume" />
     <main
@@ -27,6 +27,8 @@ export default ({ data, location }) => (
     </main>
   </Layout>
 )
+
+export default Resume
 
 export const pageQuery = graphql`
   query {

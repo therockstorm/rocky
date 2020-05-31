@@ -6,7 +6,7 @@ import Icon from "../Icon"
 import Link from "../icons/Link"
 import LinkedIn from "../icons/LinkedIn"
 
-export default () => (
+const Header = () => (
   <Fragment>
     <Styled.h1>Rocky Warren</Styled.h1>
     <Styled.div>
@@ -36,3 +36,5 @@ export default () => (
     </Styled.div>
   </Fragment>
 )
+
+export default Header

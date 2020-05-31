@@ -1,6 +1,6 @@
 import React from "react"
 
-export default (props) => (
+const SearchByAlgolia = (props) => (
   <svg
     focusable="false"
     role="img"
@@ -24,3 +24,5 @@ export default (props) => (
     </g>
   </svg>
 )
+
+export default SearchByAlgolia

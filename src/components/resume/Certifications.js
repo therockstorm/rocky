@@ -3,7 +3,7 @@ import { Flex, jsx, Styled } from "theme-ui"
 import ExternalLink from "../ExternalLink"
 import Section from "../Section"
 
-export default () => (
+const Certifications = () => (
   <Section title="Certifications">
     {[
       {
@@ -37,3 +37,5 @@ const Certification = ({ title, href, start, end }) => (
     </Flex>
   </Styled.div>
 )
+
+export default Certifications

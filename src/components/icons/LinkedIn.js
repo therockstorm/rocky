@@ -1,6 +1,6 @@
 import React from "react"
 
-export default (props) => (
+const LinkedIn = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -18,3 +18,5 @@ export default (props) => (
     ></path>
   </svg>
 )
+
+export default LinkedIn

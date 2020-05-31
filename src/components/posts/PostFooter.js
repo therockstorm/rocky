@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
 import { Flex, jsx, Styled } from "theme-ui"
-import NoBullet from "../../components/NoBullet"
+import NoBullet from "../NoBullet"
+import Bio from "../Bio"
 
-import Bio from "../components/bio"
-
-export default ({ previous, next }) => (
+const PostFooter = ({ previous, next }) => (
   <footer>
     <Styled.hr sx={{ my: 4 }} />
     <Bio />
@@ -37,3 +36,5 @@ export default ({ previous, next }) => (
     )}
   </footer>
 )
+
+export default PostFooter

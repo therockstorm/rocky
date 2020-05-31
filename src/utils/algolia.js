@@ -1,40 +1,27 @@
 const settings = { attributesToSnippet: [`excerpt:20`] }
 
-module.exports = [
+export default [
   {
     query: `{
-      items: allMdx(filter: {fileAbsolutePath: {regex: "/notes/"}}) {
+      items: allMdxContent(filter: {kind: {eq: "note"}}) {
         edges {
           node {
+            date(formatString: "MMM D, YYYY")
             excerpt(pruneLength: 5000)
-            frontmatter {
-              date(formatString: "MMM D, YYYY")
-              title
-            }
             objectID: id
-            parent {
-              ... on File {
-                relativePath
-              }
-            }
+            slug
+            title
           }
         }
       }
     }`,
-    transformer: ({ data }) =>
-      data.items.edges.map(({ node }) => ({
-        date: node.frontmatter.date,
-        excerpt: node.excerpt,
-        objectID: node.objectID,
-        slug: `notes/${node.parent.relativePath.split(".")[0]}`,
-        title: node.frontmatter.title,
-      })),
+    transformer: ({ data }) => data.items.edges.map(({ node }) => node),
     indexName: `Notes`,
     settings,
   },
   {
     query: `{
-      items: allMdxBlogPost {
+      items: allMdxContent(filter: {kind: {eq: "post"}}) {
         edges {
           node {
             date(formatString: "MMM D, YYYY")

@@ -3,7 +3,7 @@ import { jsx, Styled } from "theme-ui"
 import Position from "./Position"
 import Section from "../Section"
 
-export default () => (
+const Experience = () => (
   <Section title="Experience">
     {[
       {
@@ -131,3 +131,5 @@ export default () => (
     ))}
   </Section>
 )
+
+export default Experience

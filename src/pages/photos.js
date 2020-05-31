@@ -3,11 +3,11 @@ import { Flex, jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import { config, animated, useSpring, useTrail } from "react-spring"
-import Layout from "../gatsby-theme-blog/components/layout"
-import SEO from "gatsby-theme-blog/src/components/seo"
+import Layout from "../components/Layout"
+import SEO from "../components/posts/Seo"
 import Heart from "../components/icons/Heart"
 
-export default ({
+const Photos = ({
   data: {
     instagram: { nodes: instagram },
     site: {
@@ -142,6 +142,8 @@ export default ({
     </Layout>
   )
 }
+
+export default Photos
 
 export const query = graphql`
   query Photos {

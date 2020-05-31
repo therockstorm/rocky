@@ -9,8 +9,8 @@ import {
 } from "react-instantsearch-dom"
 import { jsx, Styled } from "theme-ui"
 import SearchByAlgolia from "../icons/SearchByAlgolia"
-import { PostHit } from "./PostHit"
-import { Input } from "./Input"
+import PostHit from "./PostHit"
+import Input from "./Input"
 
 const Results = connectStateResults(
   ({ searchState: state, searchResults: res, children }) =>
@@ -22,16 +22,18 @@ const useClickOutside = (ref, handler, events) => {
   const detectClickOutside = (event) =>
     ref.current && !ref.current.contains(event.target) && handler()
   useEffect(() => {
-    for (const event of events)
+    for (const event of events) {
       document.addEventListener(event, detectClickOutside)
+    }
     return () => {
-      for (const event of events)
+      for (const event of events) {
         document.removeEventListener(event, detectClickOutside)
+      }
     }
   })
 }
 
-export default function Search({ indices, collapse }) {
+const Search = ({ indices, collapse }) => {
   const ref = createRef()
   const [query, setQuery] = useState(``)
   const [focus, setFocus] = useState(false)
@@ -81,3 +83,5 @@ export default function Search({ indices, collapse }) {
     </InstantSearch>
   )
 }
+
+export default Search

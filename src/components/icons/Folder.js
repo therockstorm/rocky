@@ -1,6 +1,6 @@
 import React from "react"
 
-export default (props) => (
+const Folder = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -23,3 +23,5 @@ export default (props) => (
     </g>
   </svg>
 )
+
+export default Folder

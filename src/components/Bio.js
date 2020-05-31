@@ -2,9 +2,9 @@
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { Flex, jsx, Styled } from "theme-ui"
-import BioContent from "./bio-content"
+import BioContent from "./BioContent"
 
-export default () => {
+const Bio = () => {
   const {
     site: {
       siteMetadata: { author },
@@ -38,12 +38,12 @@ export default () => {
           role="presentation"
         />
       )}
-      <Styled.div>
-        <BioContent />
-      </Styled.div>
+      <BioContent />
     </Flex>
   )
 }
+
+export default Bio
 
 const bioQuery = graphql`
   query BioQueryShadowed {
