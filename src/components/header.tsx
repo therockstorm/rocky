@@ -75,7 +75,7 @@ const Header = ({
             <Search
               collapse
               indices={[
-                { name: `Posts`, title: `Blog Posts` },
+                { name: `Posts`, title: `Posts` },
                 { name: `Notes`, title: `Notes` },
               ]}
             />

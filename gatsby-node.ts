@@ -14,17 +14,33 @@ import {
 } from "gatsby"
 import { Frontmatter, MdxNode, NotesQuery } from "./types/index.d"
 
-const basePostsPath = "/"
-const baseNotesPath = "/notes"
-const postsPath = "content/posts"
-const notesPath = "content/notes"
+// const basePostsPath = "/"
+// const postsPath = "content/posts"
+
+interface PathData {
+  kind: string
+  basePath: string
+  filePath: string
+}
+
+const pathData = new Map<string, PathData>()
+pathData.set("posts", {
+  kind: "post",
+  basePath: "/",
+  filePath: "content/posts",
+})
+pathData.set("notes", {
+  kind: "note",
+  basePath: "/notes",
+  filePath: "content/notes",
+})
 
 export const onPreBootstrap: GatsbyNode["onPreBootstrap"] = ({ store }) => {
   const progDir = store.getState().program.directory
-  ;[`content/assets`, notesPath, postsPath].forEach((dir) => {
-    const d = path.join(progDir, dir)
+  for (const v of pathData.values()) {
+    const d = path.join(progDir, v.filePath)
     if (!fs.existsSync(d)) mkdirp.sync(d)
-  })
+  }
 }
 
 export const createPages: GatsbyNode["createPages"] = async ({
@@ -32,11 +48,13 @@ export const createPages: GatsbyNode["createPages"] = async ({
   actions: { createPage },
   reporter,
 }) => {
-  await createBlogPages(graphql, createPage, reporter)
+  const postData = pathData.get("posts") as PathData
+  const noteData = pathData.get("notes") as PathData
+  await createContentPages(graphql, createPage, reporter, postData)
 
   const toNotesPath = (node: MdxNode) => {
     const { dir } = path.parse(node.parent.relativePath)
-    return urlResolve(baseNotesPath, dir, node.parent.name)
+    return urlResolve(noteData.basePath, dir, node.parent.name)
   }
   const result = await graphql<NotesQuery>(`
     {
@@ -68,7 +86,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   const { mdxPages, site } = result.data
   const siteTitle = site.siteMetadata.title
   const notes = mdxPages.edges.filter(
-    ({ node }) => node.parent.sourceInstanceName === notesPath
+    ({ node }) => node.parent.sourceInstanceName === noteData.filePath
   )
 
   notes.forEach(({ node }) => {
@@ -90,7 +108,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 
       acc[dir] = acc[dir] || []
       acc[dir].push({
-        pagePath: urlResolve(baseNotesPath, dir),
+        pagePath: urlResolve(noteData.basePath, dir),
         url: toNotesPath(node),
         ...node,
       })
@@ -107,35 +125,40 @@ export const createPages: GatsbyNode["createPages"] = async ({
       .reduce(
         (acc: unknown[], dir) => [
           ...acc,
-          { name: dir, url: urlResolve(baseNotesPath, dir) },
+          { name: dir, url: urlResolve(noteData.basePath, dir) },
         ],
         []
       )
 
     createPage({
-      path: urlResolve(baseNotesPath, key),
+      path: urlResolve(noteData.basePath, key),
       context: { breadcrumbs, siteTitle, urls: value.map((v) => v.url) },
       component: notesTemplate,
     })
   })
 
   createPage({
-    path: baseNotesPath,
+    path: noteData.basePath,
     context: { urls: notesUrls, groupedNotes, siteTitle },
     component: notesTemplate,
   })
 }
 
-const createBlogPages = async (
+const createContentPages = async (
   graphql: CreatePagesArgs["graphql"],
   createPage: Actions["createPage"],
-  reporter: Reporter
+  reporter: Reporter,
+  pathData: PathData
 ) => {
   const result = await graphql<{
-    allPost: { edges: [{ node: { id: string; slug: string } }] }
+    allMdxContent: { edges: [{ node: { id: string; slug: string } }] }
   }>(`
     {
-      allPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+      allMdxContent(
+        sort: { fields: [date, title], order: DESC }
+        limit: 1000
+        filter: { kind: { eq: "${pathData.kind}" } }
+      ) {
         edges {
           node {
             id
@@ -147,13 +170,13 @@ const createBlogPages = async (
   `)
   if (result.errors || !result.data) return reporter.panic(result.errors)
 
-  const posts = result.data.allPost.edges
-  posts.forEach(({ node: { id, slug } }, idx) => {
-    const prev = idx === posts.length - 1 ? null : posts[idx + 1]
-    const next = idx === 0 ? null : posts[idx - 1]
+  const content = result.data.allMdxContent.edges
+  content.forEach(({ node: { id, slug } }, idx) => {
+    const prev = idx === content.length - 1 ? null : content[idx + 1]
+    const next = idx === 0 ? null : content[idx - 1]
     createPage({
       path: slug,
-      component: require.resolve(`./src/templates/post-query`),
+      component: require.resolve(`./src/templates/${pathData.kind}-query`),
       context: {
         id,
         previousId: prev ? prev.node.id : undefined,
@@ -163,8 +186,8 @@ const createBlogPages = async (
   })
 
   createPage({
-    path: basePostsPath,
-    component: require.resolve(`./src/templates/posts-query`),
+    path: pathData.basePath,
+    component: require.resolve(`./src/templates/${pathData.kind}s-query`),
     context: {},
   })
 }
@@ -173,7 +196,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
   actions: { createTypes },
   schema,
 }: CreateSchemaCustomizationArgs) => {
-  createTypes(`interface Post @nodeInterface {
+  createTypes(`interface Content @nodeInterface {
       id: ID!
       title: String!
       body: String!
@@ -182,13 +205,14 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
       tags: [String]!
       keywords: [String]!
       excerpt: String!
+      kind: String!
       image: File
       imageAlt: String
   }`)
 
   createTypes(
     schema.buildObjectType({
-      name: `MdxPost`,
+      name: `MdxContent`,
       fields: {
         id: { type: `ID!` },
         title: { type: `String!` },
@@ -201,6 +225,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
           args: { pruneLength: { type: `Int`, defaultValue: 140 } },
           resolve: mdxResolverPassthrough(`excerpt`),
         },
+        kind: { type: `String!` },
         image: {
           type: `File`,
           resolve: async (source, _args, context) => {
@@ -217,7 +242,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
           resolve: mdxResolverPassthrough(`body`),
         },
       },
-      interfaces: [`Node`, `Post`],
+      interfaces: [`Node`, `Content`],
       extensions: { infer: false },
     })
   )
@@ -231,28 +256,24 @@ export const onCreateNode = async ({
   store,
   cache,
   reporter,
-}: CreateNodeArgs<{
-  frontmatter: {
-    date?: string
-    image?: string
-    keywords?: string[]
-    slug?: string
-    title?: string
-    tags?: string[]
-  }
-}>): Promise<void> => {
+}: CreateNodeArgs<{ frontmatter: Frontmatter }>): Promise<void> => {
   const { id, internal, frontmatter, parent } = node
   if (internal.type !== `Mdx`) return
 
   const fileNode = getNode(parent)
-  if (fileNode.sourceInstanceName !== postsPath) return
+  if (!pathData.has(fileNode.sourceInstanceName)) return
 
+  const postData = pathData.get("posts") as PathData
+  const pd =
+    fileNode.sourceInstanceName === postData.filePath
+      ? postData
+      : (pathData.get("notes") as PathData)
   const fieldData: Frontmatter = {
     title: frontmatter.title,
     tags: frontmatter.tags || [],
     slug: getSlug(
-      basePostsPath,
-      postsPath,
+      pd.basePath,
+      fileNode.sourceInstanceName,
       getNode,
       fileNode,
       frontmatter.slug
@@ -260,6 +281,7 @@ export const onCreateNode = async ({
     date: frontmatter.date,
     keywords: frontmatter.keywords || [],
     image: frontmatter.image,
+    kind: pd.kind,
   }
   if (frontmatter.image && validUrl(frontmatter.image)) {
     const remoteFileNode = await createRemoteFileNode({
@@ -274,20 +296,20 @@ export const onCreateNode = async ({
     if (remoteFileNode) fieldData.image___NODE = remoteFileNode.id
   }
 
-  const mdxBlogPostId = createNodeId(`${id} >>> MdxPost`)
+  const mdxId = createNodeId(`${id} >>> MdxContent`)
   createNode({
     ...fieldData,
-    id: mdxBlogPostId,
+    id: mdxId,
     parent: id,
     children: [],
     internal: {
-      type: `MdxPost`,
+      type: `MdxContent`,
       contentDigest: createContentDigest(fieldData),
       content: JSON.stringify(fieldData),
-      description: `Mdx implementation of the Post interface`,
+      description: `Implementation of the MdxContent interface`,
     },
   })
-  createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) })
+  createParentChildLink({ parent: node, child: getNode(mdxId) })
 }
 
 const processRelativeImage = (

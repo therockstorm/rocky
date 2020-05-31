@@ -12,7 +12,7 @@ const Posts = ({
     site: {
       siteMetadata: { title },
     },
-    allPost: { edges },
+    allMdxContent: { edges },
   },
 }) => {
   return (
@@ -39,7 +39,11 @@ export const query = graphql`
         }
       }
     }
-    allPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+    allMdxContent(
+      sort: { fields: [date, title], order: DESC }
+      limit: 1000
+      filter: { kind: { eq: "post" } }
+    ) {
       edges {
         node {
           id
