@@ -2,7 +2,7 @@
 import { Link } from "gatsby"
 import { ReactElement, ReactNode } from "react"
 import { Flex, jsx, useColorMode, Styled } from "theme-ui"
-import Bio from "./bio"
+import Bio from "./Bio"
 import Search from "./search/index"
 import Moon from "./icons/Moon"
 import Sun from "./icons/Sun"

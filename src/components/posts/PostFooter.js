@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
 import { Flex, jsx, Styled } from "theme-ui"
-import NoBullet from "../../components/NoBullet"
-import Bio from "../bio"
+import NoBullet from "../NoBullet"
+import Bio from "../Bio"
 
 const PostFooter = ({ previous, next }) => (
   <footer>

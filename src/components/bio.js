@@ -2,7 +2,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { Flex, jsx, Styled } from "theme-ui"
-import BioContent from "./bio-content"
+import BioContent from "./BioContent"
 
 const Bio = () => {
   const {

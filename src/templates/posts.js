@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
-import Footer from "../components/home-footer"
-import Layout from "../components/layout"
-import PostList from "../components/posts/post-list"
-import SEO from "../components/posts/seo"
+import Footer from "../components/HomeFooter"
+import Layout from "../components/Layout"
+import PostList from "../components/posts/PostList"
+import SEO from "../components/posts/Seo"
 
 const Posts = ({
   location,

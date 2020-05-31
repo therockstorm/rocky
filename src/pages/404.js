@@ -1,8 +1,8 @@
 import { graphql } from "gatsby"
 import { Styled } from "theme-ui"
 import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/posts/seo"
+import Layout from "../components/Layout"
+import SEO from "../components/posts/Seo"
 
 const NotFound = ({ data, location }) => (
   <Layout location={location} title={data.site.siteMetadata.title}>

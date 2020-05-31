@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import { Styled, css } from "theme-ui"
-import BreadcrumbDivider from "./breadcrumb-divider"
-import BreadcrumbHome from "./breadcrumb-home"
+import BreadcrumbDivider from "./BreadcrumbDivider"
+import BreadcrumbHome from "./BreadcrumbHome"
 
 const Breadcrumbs = ({ links }) => (
   <nav

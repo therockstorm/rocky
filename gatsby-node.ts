@@ -75,7 +75,7 @@ const createContentPages = async (
   createPage: Actions["createPage"],
   reporter: Reporter,
   pathData: PathData,
-  listContext?: (content: MdxContent) => unknown
+  context?: (content: MdxContent) => unknown
 ) => {
   const result = await graphql<{ mdxContent: MdxContent }>(`
     {
@@ -103,7 +103,7 @@ const createContentPages = async (
     const next = idx === 0 ? null : content[idx - 1]
     createPage({
       path: slug,
-      component: require.resolve(`./src/templates/${pathData.kind}-query`),
+      component: require.resolve(`./src/templates/${pathData.kind}`),
       context: {
         id,
         previousId: prev ? prev.node.id : undefined,
@@ -114,8 +114,8 @@ const createContentPages = async (
 
   createPage({
     path: pathData.basePath,
-    component: require.resolve(`./src/templates/${pathData.kind}s-query`),
-    context: listContext ? listContext(result.data.mdxContent) : undefined,
+    component: require.resolve(`./src/templates/${pathData.kind}s`),
+    context: context ? context(result.data.mdxContent) : undefined,
   })
 }
 

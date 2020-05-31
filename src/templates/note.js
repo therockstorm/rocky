@@ -2,9 +2,9 @@
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import PostTitle from "../components/posts/post-title"
-import SEO from "../components/posts/seo"
-import Layout from "../components/layout"
+import PostTitle from "../components/posts/PostTitle"
+import SEO from "../components/posts/Seo"
+import Layout from "../components/Layout"
 
 const Note = ({
   data: {

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import ThemeUIPrism from "@theme-ui/prism"
-import headings from "../components/posts/headings"
+import headings from "../components/posts/Headings"
 import { preToCodeBlock } from "mdx-utils"
 import PrismCore from "prismjs/components/prism-core"
 import { jsx, Styled } from "theme-ui"

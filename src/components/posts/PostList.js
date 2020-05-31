@@ -1,5 +1,5 @@
 import React from "react"
-import PostLink from "./post-link"
+import PostLink from "./PostLink"
 
 const PostList = ({ posts }) => (
   <>

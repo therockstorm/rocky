@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import FileList from "../components/notes/file-list"
-import Layout from "../components/layout"
-import SEO from "../components/posts/seo"
+import FileList from "../components/notes/FileList"
+import Layout from "../components/Layout"
+import SEO from "../components/posts/Seo"
 
 const Notes = ({
   pageContext: { groupedNotes, urls, breadcrumbs },

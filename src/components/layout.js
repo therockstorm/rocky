@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import Header from "./header"
+import Header from "./Header"
 
 const Layout = ({ children, maxWidth, ...props }) => (
   <Styled.root>
