@@ -21,9 +21,9 @@ const FileList = ({ files, directories }) =>
             </Flex>
             <Styled.ul style={{ marginTop: `6px`, marginLeft: `1.6rem` }}>
               {directories[d]
-                .map((d) => d.url)
+                .map((d) => d.slug)
                 .sort()
-                .map((url) => File(url, url.replace(`/notes/${d}/`, "")))}
+                .map((slug) => File(slug, slug.replace(`/notes/${d}/`, "")))}
             </Styled.ul>
           </NoBullet>
         ))}
@@ -35,9 +35,9 @@ const FileList = ({ files, directories }) =>
 
 export default FileList
 
-const File = (url, name) => (
-  <NoBullet key={url} sx={{ mb: 1 }}>
-    <Styled.a as={Link} to={`${url}`}>
+const File = (slug, name) => (
+  <NoBullet key={slug} sx={{ mb: 1 }}>
+    <Styled.a as={Link} to={`${slug}`}>
       {name}
     </Styled.a>
   </NoBullet>

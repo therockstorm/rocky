@@ -11,17 +11,10 @@ export interface MdxNode {
   slug: string
   filename: string
   relativePath: string
-  pagePath?: string
-  url?: string
 }
 
 export interface MdxContent {
   edges: [{ node: MdxNode }]
-}
-
-export interface NotesQuery {
-  site: { siteMetadata: SiteMetadata }
-  mdxContent: MdxContent
 }
 
 export interface Frontmatter {

@@ -12,10 +12,7 @@ import {
   Node,
   Reporter,
 } from "gatsby"
-import { Frontmatter, MdxContent, MdxNode, NotesQuery } from "./types/index.d"
-
-// const basePostsPath = "/"
-// const postsPath = "content/posts"
+import { Frontmatter, MdxContent, MdxNode } from "./types/index.d"
 
 interface PathData {
   kind: string
@@ -50,99 +47,37 @@ export const createPages: GatsbyNode["createPages"] = async ({
 }) => {
   const postData = pathData.get("posts") as PathData
   const noteData = pathData.get("notes") as PathData
-  await createContentPages(graphql, createPage, reporter, postData)
+  await createContentPages(graphql, createPage, reporter, postData, () => {
+    undefined
+  })
+  await createContentPages(
+    graphql,
+    createPage,
+    reporter,
+    noteData,
+    (mdxContent: MdxContent) => ({
+      urls: mdxContent.edges.map((e) => e.node.slug),
+      groupedNotes: mdxContent.edges.reduce(
+        (acc: { [key: string]: MdxNode[] }, { node }) => {
+          const { dir } = path.parse(node.relativePath)
+          if (!dir) return acc
 
-  const toNotesPath = (node: MdxNode) => {
-    const { dir } = path.parse(node.relativePath)
-    return urlResolve(noteData.basePath, dir, node.filename)
-  }
-  const result = await graphql<NotesQuery>(`
-    {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-      mdxContent: allMdxContent(
-        sort: { fields: [date, title], order: DESC }
-        limit: 1000
-        filter: { kind: { eq: "note" } }
-      ) {
-        edges {
-          node {
-            id
-            slug
-            filename
-            relativePath
-          }
-        }
-      }
-    }
-  `)
-
-  if (result.errors || !result.data) return reporter.panic(result.errors)
-
-  const { mdxContent, site } = result.data
-  const siteTitle = site.siteMetadata.title
-  const notes = mdxContent.edges
-
-  notes.forEach(({ node }) =>
-    createPage({
-      path: toNotesPath(node),
-      context: node,
-      component: require.resolve(`./src/templates/note-query`),
+          acc[dir] = acc[dir] || []
+          acc[dir].push(node)
+          return acc
+        },
+        {}
+      ),
     })
   )
-
-  const notesUrls = notes.map(({ node }) => toNotesPath(node))
-  const groupedNotes = notes.reduce(
-    (acc: { [key: string]: MdxNode[] }, { node }) => {
-      const { dir } = path.parse(node.relativePath)
-      if (!dir) return acc
-
-      acc[dir] = acc[dir] || []
-      acc[dir].push({
-        pagePath: urlResolve(noteData.basePath, dir),
-        url: toNotesPath(node),
-        ...node,
-      })
-
-      return acc
-    },
-    {}
-  )
-
-  const notesTemplate = require.resolve("./src/templates/notes-query")
-  Object.entries(groupedNotes).map(([key, value]) => {
-    const breadcrumbs = key
-      .split(path.sep)
-      .reduce(
-        (acc: unknown[], dir) => [
-          ...acc,
-          { name: dir, url: urlResolve(noteData.basePath, dir) },
-        ],
-        []
-      )
-
-    createPage({
-      path: urlResolve(noteData.basePath, key),
-      context: { breadcrumbs, siteTitle, urls: value.map((v) => v.url) },
-      component: notesTemplate,
-    })
-  })
-
-  createPage({
-    path: noteData.basePath,
-    context: { urls: notesUrls, groupedNotes, siteTitle },
-    component: notesTemplate,
-  })
 }
 
 const createContentPages = async (
   graphql: CreatePagesArgs["graphql"],
   createPage: Actions["createPage"],
   reporter: Reporter,
-  pathData: PathData
+  pathData: PathData,
+  context: (content: MdxContent) => unknown
 ) => {
   const result = await graphql<{ mdxContent: MdxContent }>(`
     {
@@ -182,7 +117,7 @@ const createContentPages = async (
   createPage({
     path: pathData.basePath,
     component: require.resolve(`./src/templates/${pathData.kind}s-query`),
-    context: {},
+    context: context(result.data.mdxContent),
   })
 }
 
@@ -374,4 +309,4 @@ const getSlug = (
       ? slug
       : urlResolve(baseUrl, slug)
     : urlResolve(baseUrl, createFilePath({ node, getNode, basePath }))
-  ).replace(/\/*$/, `/`)
+  ).replace(/\/*$/, "")
