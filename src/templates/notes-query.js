@@ -5,10 +5,10 @@ import Layout from "../components/layout"
 import SEO from "../components/posts/seo"
 
 const Notes = ({
-  pageContext: { groupedNotes, urls, breadcrumbs, siteTitle },
+  pageContext: { groupedNotes, urls, breadcrumbs },
   ...props
 }) => (
-  <Layout title={siteTitle} {...props}>
+  <Layout {...props}>
     <SEO title="Notes" />
     <FileList
       breadcrumbs={breadcrumbs}

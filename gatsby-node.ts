@@ -47,9 +47,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 }) => {
   const postData = pathData.get("posts") as PathData
   const noteData = pathData.get("notes") as PathData
-  await createContentPages(graphql, createPage, reporter, postData, () => {
-    undefined
-  })
+  await createContentPages(graphql, createPage, reporter, postData)
   await createContentPages(
     graphql,
     createPage,
@@ -77,7 +75,7 @@ const createContentPages = async (
   createPage: Actions["createPage"],
   reporter: Reporter,
   pathData: PathData,
-  context: (content: MdxContent) => unknown
+  listContext?: (content: MdxContent) => unknown
 ) => {
   const result = await graphql<{ mdxContent: MdxContent }>(`
     {
@@ -117,7 +115,7 @@ const createContentPages = async (
   createPage({
     path: pathData.basePath,
     component: require.resolve(`./src/templates/${pathData.kind}s-query`),
-    context: context(result.data.mdxContent),
+    context: listContext ? listContext(result.data.mdxContent) : undefined,
   })
 }
 
