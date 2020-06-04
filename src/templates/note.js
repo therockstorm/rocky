@@ -5,13 +5,12 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import PostTitle from "../components/posts/PostTitle"
 import SEO from "../components/posts/Seo"
 import Layout from "../components/Layout"
+import PostFooter from "../components/posts/PostFooter"
 
 const Note = ({
   data: {
     content: { body, date, excerpt, title },
     site: { siteMetadata },
-    previous,
-    next,
   },
   location,
 }) => (
@@ -27,6 +26,7 @@ const Note = ({
         </section>
       </article>
     </main>
+    <PostFooter />
   </Layout>
 )
 
