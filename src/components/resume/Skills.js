@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
-import Badge from "../Badge"
+import { Badge, jsx, Styled } from "theme-ui"
 import NoBullet from "../NoBullet"
 import Section from "../Section"
 
