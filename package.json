@@ -10,8 +10,7 @@
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "type-check": "tsc --noEmit",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "snyk-protect": "snyk protect"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
