@@ -10,7 +10,22 @@ const Bio = () => {
       siteMetadata: { author },
     },
     avatar,
-  } = useStaticQuery(bioQuery)
+  } = useStaticQuery(graphql`
+    query BioQuery {
+      site {
+        siteMetadata {
+          author
+        }
+      }
+      avatar: file(absolutePath: { regex: "/avatar.(jpeg|jpg|gif|png)/" }) {
+        childImageSharp {
+          fixed(width: 100, height: 100) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <Flex sx={{ mb: 4, alignItems: `center` }}>
@@ -44,20 +59,3 @@ const Bio = () => {
 }
 
 export default Bio
-
-const bioQuery = graphql`
-  query BioQueryShadowed {
-    site {
-      siteMetadata {
-        author
-      }
-    }
-    avatar: file(absolutePath: { regex: "/avatar.(jpeg|jpg|gif|png)/" }) {
-      childImageSharp {
-        fixed(width: 100, height: 100) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-  }
-`

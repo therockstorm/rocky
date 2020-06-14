@@ -52,7 +52,7 @@
     "react-rough-notation": "0.0.11",
     "react-spring": "^8.0.27",
     "remark-slug": "^6.0.0",
-    "snyk": "^1.339.1",
+    "snyk": "^1.339.2",
     "theme-ui": "^0.4.0-alpha.3",
     "typography-theme-bootstrap": "^0.16.19"
   },

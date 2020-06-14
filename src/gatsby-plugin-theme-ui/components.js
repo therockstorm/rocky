@@ -11,6 +11,8 @@ import "prismjs/components/prism-clike"
 import "prismjs/components/prism-java"
 import "prismjs/components/prism-kotlin"
 import "prismjs/components/prism-scala"
+import "prismjs/components/prism-clojure"
+import "prismjs/components/prism-csharp"
 
 export default {
   pre: (preProps) => {
