@@ -13,6 +13,7 @@ Scala Overview, Benefits Over Java
 - Runs on the JVM
 - Can create Java objects, call their methods, and inherit from them in Scala and vice versa
 - Java collection interop
+
   ```scala
   import scala.jdk.CollectionConverters._
 
@@ -23,14 +24,17 @@ Scala Overview, Benefits Over Java
   ```
 
 - Type inference
+
   ```java
   List<String> msgs = Arrays.asList("Hi"); // This Java code...
   ```
+
   ```scala
   val msgs = List("Hi") // ..becomes this Scala code
   ```
 
 - Concise
+
   ```java
   // This Java code...
   public class Person {
@@ -45,6 +49,7 @@ Scala Overview, Benefits Over Java
     put("b", 2);
   }};
   ```
+
   ```scala
   // ...becomes this Scala code
   case class Person(name: String)
@@ -64,17 +69,20 @@ Scala Overview, Benefits Over Java
 - Functional paradigms and excellent collection methods
   - `map`, `flatMap`, `filter`, `head`, `headOption`, `isEmpty`, `foreach`, `contains`, `find`, `zip`, `zipWithIndex`, `reduce`, `fold`, `sum`, `count`, `groupBy`, `mkString`, `sortBy`
 - Automatically returns last statement without explicit `return`, no semicolons
+
   ```scala
   def doubleIt(n: Int) = n * 2 // Returns `n * 2`, infers return Int type
   ```
 
 - `if` statements are expressions, can have results
+
   ```scala
   // Java's ternary (`int x = condition ? result : defaultVal`) in Scala
   val x = if (condition) result else defaultVal
   ```
 
 - Powerful imports
+
   ```scala
   // Rename import
   import java.util.{HashMap => JavaHashMap}
@@ -314,6 +322,7 @@ Scala's Immutable Collections Hierarchy
 
 - Prefer immutable, they're safer and still performant
 - `Map`: key/value pairs, similar to Java's `HashMap`
+
   ```scala
   val myMap = Map("a" -> 0, "b" -> 1)
   myMap("b") // 1
@@ -322,12 +331,14 @@ Scala's Immutable Collections Hierarchy
   ```
 
 - `Tuple`: aggregates of values, useful for multiple returns in class's private methods. Prefer `case class` return types for public methods for readability.
+
   ```scala
   val myTuple = (1, 3.14, "Fred")
   myTuple._2 // 3.14
   ```
 
 - `Seq`: general purpose, similar to Java's `List`
+
   ```scala
   val mySeq = Seq(3, 2, 1)
   mySeq

@@ -18,6 +18,7 @@ Running `date` or `date --utc` yields the current system time in local time and 
 To manually sync the hardware clock to the new system clock value (rather than waiting until Linux shuts down), use the [`hwclock`](https://linux.die.net/man/8/hwclock) command, `hwclock --systohc --utc`. The `--utc` option indicates that the hardware clock will be stored in UTC and ensures Daylight Savings time is handled automatically by the OS. If you plan to dual boot with systems that only uses local time (like Windows), you should omit it.
 
 Notes:
+
 - `hwclock` yields the current hardware time in local time even if the `--utc` option is used.
 - When `/sbin/hwclock` is run at OS boot to sync the system clock to the hardware clock, the hardware clock is assumed to be in local time. If you set it using `--utc`, set `UTC=true` in `/etc/sysconfig/clock` (file location is distribution dependent).
 - There is not a C API to accomplish this syncing so you will need to make a direct [`system`](https://linux.die.net/man/3/system) call.

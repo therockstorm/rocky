@@ -13,6 +13,7 @@ import "prismjs/components/prism-kotlin"
 import "prismjs/components/prism-scala"
 import "prismjs/components/prism-clojure"
 import "prismjs/components/prism-csharp"
+import "prismjs/components/prism-go"
 
 export default {
   pre: (preProps) => {
