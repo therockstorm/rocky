@@ -12,7 +12,7 @@ import {
   Node,
   Reporter,
 } from "gatsby"
-import { Frontmatter, MdxContent, MdxNode } from "./types/index.d"
+import { Frontmatter, MdxContent, MdxNode, SiteMetadata } from "./types/index.d"
 
 interface PathData {
   kind: string
@@ -53,7 +53,8 @@ export const createPages: GatsbyNode["createPages"] = async ({
     createPage,
     reporter,
     noteData,
-    (mdxContent: MdxContent) => ({
+    (mdxContent: MdxContent, siteMetadata: SiteMetadata) => ({
+      title: siteMetadata.title,
       urls: mdxContent.edges.map((e) => e.node.slug),
       groupedNotes: mdxContent.edges.reduce(
         (acc: { [key: string]: MdxNode[] }, { node }) => {
@@ -75,10 +76,18 @@ const createContentPages = async (
   createPage: Actions["createPage"],
   reporter: Reporter,
   pathData: PathData,
-  context?: (content: MdxContent) => unknown
+  context?: (content: MdxContent, siteMetadata: SiteMetadata) => unknown
 ) => {
-  const result = await graphql<{ mdxContent: MdxContent }>(`
+  const result = await graphql<{
+    mdxContent: MdxContent
+    site: { siteMetadata: SiteMetadata }
+  }>(`
     {
+      site {
+        siteMetadata {
+          title
+        }
+      }
       mdxContent: allMdxContent(
         sort: { fields: [date, title], order: DESC }
         limit: 1000
@@ -115,7 +124,9 @@ const createContentPages = async (
   createPage({
     path: pathData.basePath,
     component: require.resolve(`./src/templates/${pathData.kind}s`),
-    context: context ? context(result.data.mdxContent) : undefined,
+    context: context
+      ? context(result.data.mdxContent, result.data.site.siteMetadata)
+      : undefined,
   })
 }
 

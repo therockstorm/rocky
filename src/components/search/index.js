@@ -19,8 +19,9 @@ const Results = connectStateResults(
 
 const useClickOutside = (ref, handler, events) => {
   if (!events) events = [`mousedown`, `touchstart`]
-  const detectClickOutside = (event) =>
+  const detectClickOutside = (event) => {
     ref.current && !ref.current.contains(event.target) && handler()
+  }
   useEffect(() => {
     for (const event of events) {
       document.addEventListener(event, detectClickOutside)
@@ -64,6 +65,7 @@ const Search = ({ indices, collapse }) => {
           p: 2,
           ul: { listStyle: "none", p: 0 },
         }}
+        ref={ref}
       >
         {indices.map(({ name, title }) => (
           <Index key={name} indexName={name}>
