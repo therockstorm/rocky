@@ -222,7 +222,6 @@ export const onCreateNode = async ({
     tags: frontmatter.tags || [],
     slug: getSlug(
       pd.basePath,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       fileNode.sourceInstanceName,
       getNode,
@@ -242,7 +241,6 @@ export const onCreateNode = async ({
       parentNodeId: id,
       createNode,
       createNodeId,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       cache,
       store,

@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { Styled, jsx } from "theme-ui"
 import { Link } from "gatsby"
+import { ReactElement } from "react"
+import { Styled, jsx } from "theme-ui"
 
-const PostLink = ({ title, slug, date, excerpt }) => (
+const PostLink = ({ title, slug, date, excerpt }: any): ReactElement => (
   <article>
     <header>
       <Styled.h2 sx={{ mb: 1 }}>

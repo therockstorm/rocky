@@ -27,6 +27,7 @@ module.exports = {
   rules: {
     "react/prop-types": "off",
     "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     curly: ["error", "multi-line"],
   },
   settings: { react: { version: "detect" } },

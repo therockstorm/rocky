@@ -1,6 +1,6 @@
-import React from "react"
+import React, { ReactElement } from "react"
 
-const SearchByAlgolia = (props) => (
+const SearchByAlgolia = (props: unknown): ReactElement => (
   <svg
     focusable="false"
     role="img"

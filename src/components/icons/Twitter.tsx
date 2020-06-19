@@ -1,6 +1,6 @@
-import React from "react"
+import React, { ReactElement } from "react"
 
-const Twitter = (props) => (
+const Twitter = (props: unknown): ReactElement => (
   <svg
     aria-hidden="true"
     focusable="false"

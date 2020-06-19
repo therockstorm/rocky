@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
+import { ReactElement } from "react"
 import { Flex, jsx, Styled } from "theme-ui"
 import NoBullet from "../NoBullet"
 import Bio from "../Bio"
 
-const PostFooter = ({ previous, next }) => (
+const PostFooter = ({ previous, next }: any): ReactElement => (
   <footer>
     <Styled.hr sx={{ my: 4 }} />
     <Bio />
