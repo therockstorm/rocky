@@ -104,30 +104,31 @@ const createContentPages = async (
       }
     }
   `)
-  if (result.errors || !result.data) return reporter.panic(result.errors)
-
-  const content = result.data.mdxContent.edges
-  content.forEach(({ node: { id, slug } }, idx) => {
-    const prev = idx === content.length - 1 ? null : content[idx + 1]
-    const next = idx === 0 ? null : content[idx - 1]
-    createPage({
-      path: slug,
-      component: require.resolve(`./src/templates/${pathData.kind}`),
-      context: {
-        id,
-        previousId: prev ? prev.node.id : undefined,
-        nextId: next ? next.node.id : undefined,
-      },
+  if (result.errors || !result.data) reporter.panic(result.errors)
+  else {
+    const content = result.data.mdxContent.edges
+    content.forEach(({ node: { id, slug } }, idx) => {
+      const prev = idx === content.length - 1 ? null : content[idx + 1]
+      const next = idx === 0 ? null : content[idx - 1]
+      createPage({
+        path: slug,
+        component: require.resolve(`./src/templates/${pathData.kind}`),
+        context: {
+          id,
+          previousId: prev ? prev.node.id : undefined,
+          nextId: next ? next.node.id : undefined,
+        },
+      })
     })
-  })
 
-  createPage({
-    path: pathData.basePath,
-    component: require.resolve(`./src/templates/${pathData.kind}s`),
-    context: context
-      ? context(result.data.mdxContent, result.data.site.siteMetadata)
-      : undefined,
-  })
+    createPage({
+      path: pathData.basePath,
+      component: require.resolve(`./src/templates/${pathData.kind}s`),
+      context: context
+        ? context(result.data.mdxContent, result.data.site.siteMetadata)
+        : undefined,
+    })
+  }
 }
 
 export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] = async ({

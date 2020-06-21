@@ -1,5 +1,5 @@
-import React from "react"
-import { css } from "theme-ui"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 
 // from https://octicons.github.com/icon/link/
 const LinkIcon = (props) => (
@@ -21,24 +21,13 @@ const LinkIcon = (props) => (
 const heading = (Tag) => (props) => (
   <Tag
     {...props}
-    css={css({
-      a: {
-        visibility: `hidden`,
-      },
-      ":hover a": {
-        visibility: `visible`,
-      },
+    sx={{
+      a: { visibility: `hidden` },
+      ":hover a": { visibility: `visible` },
       pointerEvents: `painted`,
-    })}
+    }}
   >
-    <a
-      href={`#${props.id}`}
-      css={css({
-        ml: `-20px`,
-        pr: `4px`,
-        color: `primary`,
-      })}
-    >
+    <a href={`#${props.id}`} jsx={{ ml: `-20px`, pr: `4px`, color: `primary` }}>
       <LinkIcon />
     </a>
     {props.children}
