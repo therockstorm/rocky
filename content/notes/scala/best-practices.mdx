@@ -1,5 +1,5 @@
 ---
-title: Using
+title: Scala Best Practices
 date: 2020-06-19
 ---
 
@@ -33,7 +33,7 @@ Rather than using random examples from Scala projects in the wild, these are mea
     traverseDepthFirst(Set(tree.rootNodeId), Nil, Map[NodeId, Set[NodeId]](), 0)
   }
   ```
-- Do not `throw`. Exceptions aren't documented in function signatures, are inefficient, and violate structured programming principles. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#27-must-not-throw-exceptions-for-validations-of-user-input-or-flow-control).
+- Perfer `Either` to `throw`. Exceptions aren't documented in function signatures, are inefficient, and violate structured programming principles. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#27-must-not-throw-exceptions-for-validations-of-user-input-or-flow-control).
 - Catch `NonFatal` instead of `Throwable` so you don't catch fatal exceptions like out-of-memory errors. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#28-must-not-catch-throwable-when-catching-exceptions).
 - Use `Option` instead of `null` and do not call `Option.get`. `null` isn't documented in function signatures and is error prone since the compiler cannot protect you. Calling `Option.get` defeats the purpose of `Option`, which is to explicitly handle the `None` case. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#29-must-not-use-null).
   - Related: Prefer `Option`'s `.map` to `.isDefined`/`.isEmpty`. It's more idiomatic.
@@ -45,7 +45,7 @@ Rather than using random examples from Scala projects in the wild, these are mea
   somOption.map(v => s"value=$v").getOrElse("Default")
   ```
   - Related: use `Seq.headOption` instead of `Seq.head`. The latter throws a `NoSuchElementException` on an empty list. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#220-must-not-use-seqhead).
-- Avoid `Any`, `AnyRef`, `isInstanceOf`, and `asInstanceOf`. They circumvent the type system that's meant to protect you. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#212-should-not-use-any-or-anyref-or-isinstanceof--asinstanceof).
+- Prefer stronger types and pattern matching to `Any`, `AnyRef`, `isInstanceOf`, and `asInstanceOf`. These circumvent the type system that's meant to protect you. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#212-should-not-use-any-or-anyref-or-isinstanceof--asinstanceof).
 - Use `===` from the Cats library instead of `==`. The latter is syntactic sugar for Java's `.equals`, which accepts an `Object` parameter. This allows comparing values of differing types. [Details](https://typelevel.org/cats/typeclasses/eq.html).
   ```scala
   import cats.instances.string._
@@ -58,7 +58,7 @@ Rather than using random examples from Scala projects in the wild, these are mea
     def value: Int
   }
 
-  object SceneState {
+  object JobStatus {
     def apply(code: Int): JobStatus =
       code match {
         case 1 => Running
@@ -91,7 +91,7 @@ Rather than using random examples from Scala projects in the wild, these are mea
   }
   ```
 - Avoid hard-coding the execution context, pass it as an implicit parameter instead. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/4-concurrency-parallelism.md#411-must-not-hardcode-the-thread-pool--execution-context).
-- Declare dependencies in `project/Dependencies.scala`. If a dependency is failing to resolve, ensure you're using the [proper number of `%`](https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html#Getting+the+right+Scala+version+with). Do not create variables for shared version numbers, instead, use `someLib.revision`.
+- Declare dependencies in `project/Dependencies.scala`. If a dependency is failing to resolve, ensure you're using the [proper number of `%`](https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html#Getting+the+right+Scala+version+with). To make it easier for automated dependency updates, prefer `someLib.revision` for shared version numbers over variables.
   ```scala
   // In Dependencies.scala
   import sbt._
