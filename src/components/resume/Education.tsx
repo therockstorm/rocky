@@ -1,9 +1,10 @@
 /** @jsx jsx */
+import { ReactElement } from "react"
 import { jsx } from "theme-ui"
 import Position from "./Position"
 import Section from "../Section"
 
-const Education = () => (
+const Education = (): ReactElement => (
   <Section title="Education">
     <Position
       company={"University of Iowa"}

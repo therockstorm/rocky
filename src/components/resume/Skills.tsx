@@ -1,9 +1,10 @@
 /** @jsx jsx */
+import { ReactElement, ReactNode } from "react"
 import { Badge, jsx, Styled } from "theme-ui"
 import NoBullet from "../NoBullet"
 import Section from "../Section"
 
-const Skills = () => (
+const Skills = (): ReactElement => (
   <Section title="Skills">
     <Styled.ul sx={{ ml: 0 }}>
       {/* Languages */}
@@ -36,7 +37,7 @@ const Skills = () => (
   </Section>
 )
 
-const Skill = ({ children }) => (
+const Skill = ({ children }: { children: ReactNode }) => (
   <NoBullet sx={{ display: `inline`, mr: 1 }}>
     <Badge>{children}</Badge>
   </NoBullet>

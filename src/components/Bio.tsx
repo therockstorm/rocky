@@ -1,10 +1,11 @@
 /** @jsx jsx */
+import { ReactElement } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { Flex, jsx, Styled } from "theme-ui"
 import BioContent from "./BioContent"
 
-const Bio = () => {
+const Bio = (): ReactElement => {
   const {
     site: {
       siteMetadata: { author },

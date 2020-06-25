@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
-import { Fragment } from "react"
+import { ReactElement } from "react"
 import { Flex, jsx, Styled } from "theme-ui"
 
-const BioContent = () => (
+const BioContent = (): ReactElement => (
   <Styled.div>
     <Styled.p sx={{ mb: 1 }}>Rocky Warren&#39;s blog.</Styled.p>
     <Styled.p sx={{ mb: 1 }}>

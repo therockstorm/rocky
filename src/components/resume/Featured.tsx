@@ -1,9 +1,10 @@
 /** @jsx jsx */
+import { ReactElement } from "react"
 import { jsx, Styled } from "theme-ui"
 import ExternalLink from "../ExternalLink"
 import Section from "../Section"
 
-const Featured = () => (
+const Featured = (): ReactElement => (
   <Section title="Talks and Articles">
     {[
       {
@@ -27,7 +28,15 @@ const Featured = () => (
   </Section>
 )
 
-const Post = ({ title, href, desc }) => (
+const Post = ({
+  title,
+  href,
+  desc,
+}: {
+  title: string
+  href: string
+  desc: string
+}) => (
   <Styled.div>
     <ExternalLink href={href}>{title}</ExternalLink>
     <Styled.p>{desc}</Styled.p>

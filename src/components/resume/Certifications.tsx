@@ -1,9 +1,10 @@
 /** @jsx jsx */
+import { ReactElement } from "react"
 import { Flex, jsx, Styled } from "theme-ui"
 import ExternalLink from "../ExternalLink"
 import Section from "../Section"
 
-const Certifications = () => (
+const Certifications = (): ReactElement => (
   <Section title="Certifications">
     {[
       {
@@ -27,7 +28,17 @@ const Certifications = () => (
   </Section>
 )
 
-const Certification = ({ title, href, start, end }) => (
+const Certification = ({
+  title,
+  href,
+  start,
+  end,
+}: {
+  title: string
+  href: string
+  start: string
+  end: string
+}) => (
   <Styled.div sx={{ mb: 2 }}>
     <Flex sx={{ justifyContent: `space-between` }}>
       <ExternalLink href={href}>{title}</ExternalLink>

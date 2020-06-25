@@ -1,12 +1,12 @@
 /** @jsx jsx */
+import { Fragment, ReactElement } from "react"
 import { Flex, jsx, Styled } from "theme-ui"
-import { Fragment } from "react"
 import ExternalLink from "../ExternalLink"
 import Icon from "../Icon"
 import Link from "../icons/Link"
 import LinkedIn from "../icons/LinkedIn"
 
-const Header = () => (
+const Header = (): ReactElement => (
   <Fragment>
     <Styled.h1>Rocky Warren</Styled.h1>
     <Styled.div>
@@ -21,13 +21,17 @@ const Header = () => (
       </Styled.p>
       <Flex sx={{ justifyContent: `space-between`, flexWrap: `wrap` }}>
         <Flex sx={{ pb: 1 }}>
-          <Icon children={<Link />} />
+          <Icon>
+            <Link />
+          </Icon>
           <ExternalLink href="https://www.rocky.dev">
             https://rocky.dev
           </ExternalLink>
         </Flex>
         <Flex sx={{ pb: 1 }}>
-          <Icon children={<LinkedIn />} />
+          <Icon>
+            <LinkedIn />
+          </Icon>
           <ExternalLink href="https://www.linkedin.com/in/rockywarren">
             linkedin.com/in/rockywarren
           </ExternalLink>

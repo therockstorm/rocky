@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { Flex, jsx, Styled } from "theme-ui"
+import { ReactElement } from "react"
 import ExternalLink from "./ExternalLink"
 import GitHub from "./icons/GitHub"
 import Instagram from "./icons/Instagram"
@@ -7,13 +8,14 @@ import LinkedIn from "./icons/LinkedIn"
 import Twitter from "./icons/Twitter"
 import Icon from "./Icon"
 
-const IconLink = ({ icon, mr, ...other }) => (
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const IconLink = ({ icon, mr, ...other }: any) => (
   <ExternalLink {...other}>
     <Icon sx={{ mr }}>{icon}</Icon>
   </ExternalLink>
 )
 
-const HomeFooter = () => (
+const HomeFooter = (): ReactElement => (
   <footer>
     <Styled.hr sx={{ my: 4 }} />
     <Flex sx={{ justifyContent: "center" }}>

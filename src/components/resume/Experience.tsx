@@ -1,9 +1,10 @@
 /** @jsx jsx */
+import { ReactElement } from "react"
 import { jsx, Styled } from "theme-ui"
 import Position from "./Position"
 import Section from "../Section"
 
-const Experience = () => (
+const Experience = (): ReactElement => (
   <Section title="Experience">
     {[
       {
