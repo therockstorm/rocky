@@ -7,6 +7,7 @@ Rather than using random examples from Scala projects in the wild, these are mea
 
 - Scala returns the last expression in a function. Use this to return things, do not use `return` directly. It's implemented by throwing and catching a `NonLocalReturnException` and is inefficient. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#21-must-not-use-return).
 - Use `val` instead of `var`. Immutable data is easier to reason about and simplifies concurrency.
+- [Scala Collection Performance Characteristics](https://docs.scala-lang.org/overviews/collections-2.13/performance-characteristics.html). Of particular note, `List`/`Seq` has O(n) access (`apply`), update, and append. If often accessing indexes directly, use `Vector`/`IndexedSeq` instead.
 - Use immutable data structures for the same reason as above. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#22-should-use-immutable-data-structures). A recursive depth-first traversal via immutable `Map`,
   ```scala
   def traverseDepthFirst(treeId: TreeId) = {
