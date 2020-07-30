@@ -37,13 +37,13 @@ Rather than using random examples from Scala projects in the wild, these are mea
 - Prefer `Either[SomeError, ExpectedResult]` to `throw`. Exceptions aren't documented in function signatures, are inefficient, and violate structured programming principles. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#27-must-not-throw-exceptions-for-validations-of-user-input-or-flow-control).
 - Catch `NonFatal` instead of `Throwable` to avoid catching fatal exceptions like out-of-memory errors. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#28-must-not-catch-throwable-when-catching-exceptions).
 - Use `Option` instead of `null` and do not call `Option.get`. `null` isn't documented in function signatures and is error prone since the compiler cannot protect you. Calling `Option.get` defeats the purpose of `Option`, which is to explicitly handle the `None` case. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#29-must-not-use-null).
-  - Related: Prefer `Option`'s `.map` to `.isDefined`/`.isEmpty`. It's more idiomatic.
+  - Related: Prefer `Option`'s `.map` and `.fold` to `.isDefined`/`.isEmpty`. They are more idiomatic.
   ```scala
   // 👎
   if (someOption.isDefined) s"value=${someOption.get}" else "Default"
 
   // 👍
-  someOption.map(v => s"value=$v").getOrElse("Default")
+  someOption.fold("Default")(v => s"value=$v")
   ```
   - Related: use `Seq.headOption` instead of `Seq.head`. The latter throws a `NoSuchElementException` on an empty list. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#220-must-not-use-seqhead).
 - Prefer stronger types and pattern matching to `Any`, `AnyRef`, `isInstanceOf`, and `asInstanceOf`. The latter circumvent the type system that is meant to protect you. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#212-should-not-use-any-or-anyref-or-isinstanceof--asinstanceof).
