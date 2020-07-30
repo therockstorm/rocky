@@ -1,14 +1,14 @@
 ---
 title: Scala Best Practices
-date: 2020-06-19
+date: 2020-07-29
 ---
 
-Rather than using random examples from Scala projects in the wild, these are meant as my evolving "best" way of doing things.
+Rather than using random examples from Scala projects in the wild, these are meant as my evolving "best" way of doing things. If you're new to Scala, [start here](./scala-learning-resources).
 
-- Scala returns the last expression in a function. Use this to return things, do not use `return` directly. It's implemented by throwing and catching a `NonLocalReturnException` and is inefficient. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#21-must-not-use-return).
-- Use `val` instead of `var`. Immutable data is easier to reason about and simplifies concurrency.
+- Scala returns the last expression in a function. Use this to return things over using `return` directly. The latter is implemented by throwing and catching a `NonLocalReturnException` and is inefficient. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#21-must-not-use-return).
 - [Scala Collection Performance Characteristics](https://docs.scala-lang.org/overviews/collections-2.13/performance-characteristics.html). Of particular note, `List`/`Seq` has O(n) access (`apply`), update, and append. If often accessing indexes directly, use `Vector`/`IndexedSeq` instead.
-- Use immutable data structures for the same reason as above. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#22-should-use-immutable-data-structures). A recursive depth-first traversal via immutable `Map`,
+- Use `val` instead of `var`. Immutable data is easier to reason about and simplifies concurrency.
+- Use immutable data structures for the same reason as above. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#22-should-use-immutable-data-structures). An example of recursive depth-first traversal via immutable `Map`,
   ```scala
   def traverseDepthFirst(treeId: TreeId) = {
     val tree = getTree(treeId)
@@ -34,8 +34,8 @@ Rather than using random examples from Scala projects in the wild, these are mea
     traverseDepthFirst(Set(tree.rootNodeId), Nil, Map[NodeId, Set[NodeId]](), 0)
   }
   ```
-- Perfer `Either` to `throw`. Exceptions aren't documented in function signatures, are inefficient, and violate structured programming principles. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#27-must-not-throw-exceptions-for-validations-of-user-input-or-flow-control).
-- Catch `NonFatal` instead of `Throwable` so you don't catch fatal exceptions like out-of-memory errors. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#28-must-not-catch-throwable-when-catching-exceptions).
+- Prefer `Either[SomeError, ExpectedResult]` to `throw`. Exceptions aren't documented in function signatures, are inefficient, and violate structured programming principles. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#27-must-not-throw-exceptions-for-validations-of-user-input-or-flow-control).
+- Catch `NonFatal` instead of `Throwable` to avoid catching fatal exceptions like out-of-memory errors. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#28-must-not-catch-throwable-when-catching-exceptions).
 - Use `Option` instead of `null` and do not call `Option.get`. `null` isn't documented in function signatures and is error prone since the compiler cannot protect you. Calling `Option.get` defeats the purpose of `Option`, which is to explicitly handle the `None` case. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#29-must-not-use-null).
   - Related: Prefer `Option`'s `.map` to `.isDefined`/`.isEmpty`. It's more idiomatic.
   ```scala
@@ -43,21 +43,20 @@ Rather than using random examples from Scala projects in the wild, these are mea
   if (someOption.isDefined) s"value=${someOption.get}" else "Default"
 
   // 👍
-  somOption.map(v => s"value=$v").getOrElse("Default")
+  someOption.map(v => s"value=$v").getOrElse("Default")
   ```
   - Related: use `Seq.headOption` instead of `Seq.head`. The latter throws a `NoSuchElementException` on an empty list. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#220-must-not-use-seqhead).
-- Prefer stronger types and pattern matching to `Any`, `AnyRef`, `isInstanceOf`, and `asInstanceOf`. These circumvent the type system that's meant to protect you. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#212-should-not-use-any-or-anyref-or-isinstanceof--asinstanceof).
-- Use `===` from the Cats library instead of `==`. The latter is syntactic sugar for Java's `.equals`, which accepts an `Object` parameter. This allows comparing values of differing types. [Details](https://typelevel.org/cats/typeclasses/eq.html).
+- Prefer stronger types and pattern matching to `Any`, `AnyRef`, `isInstanceOf`, and `asInstanceOf`. The latter circumvent the type system that is meant to protect you. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/2-language-rules.md#212-should-not-use-any-or-anyref-or-isinstanceof--asinstanceof).
+- Use `===` from the [Cats](https://typelevel.org/cats/) library instead of `==`. The latter is syntactic sugar for Java's `.equals`, which accepts an `Object` parameter. This allows comparing values of differing types. [Details](https://typelevel.org/cats/typeclasses/eq.html).
   ```scala
   import cats.instances.string._
   import cats.syntax.eq._
+
   "hi" === "hi"
   ```
 - Use sealed traits for enumerations (until [Scala 3 comes out](https://dotty.epfl.ch/docs/reference/enums/enums.html)). Sealed traits can only be extended in the file they're declared so the compiler knows all subtypes and can issue warnings for non-exhaustive matches. [Details](https://stackoverflow.com/a/11203867).
   ```scala
-  sealed trait JobStatus {
-    def value: Int
-  }
+  sealed trait JobStatus { def value: Int }
 
   object JobStatus {
     def apply(code: Int): JobStatus =
@@ -68,17 +67,9 @@ Rather than using random examples from Scala projects in the wild, these are mea
       }
   }
 
-  case object Invalid extends JobStatus {
-    val value = 0
-  }
-
-  case object Running extends JobStatus {
-    val value = 1
-  }
-
-  case object Complete extends JobStatus {
-    val value = 2
-  }
+  case object Invalid extends JobStatus { val value = 0 }
+  case object Running extends JobStatus { val value = 1 }
+  case object Complete extends JobStatus { val value = 2 }
   ```
 - Use simple constructor arguments for dependency injection instead of a framework.
   ```scala
@@ -88,18 +79,18 @@ Rather than using random examples from Scala projects in the wild, these are mea
   // Service.scala
   object Service {
     def apply(db: DatabaseDef): Service =
-      new Service(Mapper, Validator, new WidgetRepository(db))
+      new Service(Mapper(), Validator(), new WidgetRepository(db))
   }
   ```
-- Avoid hard-coding the execution context, pass it as an implicit parameter instead. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/4-concurrency-parallelism.md#411-must-not-hardcode-the-thread-pool--execution-context).
+- Avoid hard-coding execution contexts, pass them as implicit parameters instead. [Details](https://github.com/alexandru/scala-best-practices/blob/master/sections/4-concurrency-parallelism.md#411-must-not-hardcode-the-thread-pool--execution-context).
 - Declare dependencies in `project/Dependencies.scala`. If a dependency is failing to resolve, ensure you're using the [proper number of `%`](https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html#Getting+the+right+Scala+version+with). To make it easier for automated dependency updates, prefer `someLib.revision` for shared version numbers over variables.
   ```scala
   // In Dependencies.scala
   import sbt._
 
   object Dependencies {
-    lazy val someLib = "com.example" %% "core" % "1.0.0"
-    lazy val otherLib = "com.example" %% "logger" % someLib.revision
+    val someLib = "com.example" %% "core" % "1.0.0"
+    val otherLib = "com.example" %% "logger" % someLib.revision
   }
   ```
 - `for` comprehensions are a simplified way of chaining `flatMap`s. Anything that exposes `flatMap` can be used in `for` comps. This includes `Future[T]`, `Option[T]`, `Either[T]`, etc. Use `<-` if the statement you're calling returns something you want to `flatMap` over. Otherwise, use `=`.

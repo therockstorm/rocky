@@ -5,7 +5,7 @@ import ExternalLink from "../ExternalLink"
 import Section from "../Section"
 
 const Featured = (): ReactElement => (
-  <Section title="Talks and Articles">
+  <Section title="Talks and Publications">
     {[
       {
         title: "Sending Millions of Serverless Webhooks",
