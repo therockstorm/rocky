@@ -27,7 +27,7 @@ const Skills = (): ReactElement => (
       <Skill>Redis</Skill>
       <Skill>gRPC</Skill>
       {/* Miscellaneous */}
-      <Skill>REST APIs</Skill>
+      <Skill>REST API Design</Skill>
       <Skill>Software Architecture</Skill>
       <Skill>React</Skill>
       <Skill>GraphQL</Skill>
