@@ -14,6 +14,8 @@ import "prismjs/components/prism-scala"
 import "prismjs/components/prism-clojure"
 import "prismjs/components/prism-csharp"
 import "prismjs/components/prism-go"
+import "prismjs/components/prism-sql"
+import "prismjs/components/prism-javascript"
 
 export default {
   pre: (preProps) => {
