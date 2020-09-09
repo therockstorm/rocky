@@ -63,6 +63,7 @@ export const plugins = [
           },
         },
         `gatsby-remark-copy-linked-files`,
+        `gatsby-remark-embedder`,
         `gatsby-remark-smartypants`,
         {
           resolve: "gatsby-remark-external-links",
