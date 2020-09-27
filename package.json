@@ -10,7 +10,8 @@
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "type-check": "tsc --noEmit",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
@@ -53,7 +54,7 @@
     "react-rough-notation": "0.1.1",
     "react-spring": "^8.0.27",
     "remark-slug": "^6.0.0",
-    "snyk": "^1.399.1",
+    "snyk": "^1.401.0",
     "theme-ui": "^0.4.0-rc.5",
     "typography-theme-bootstrap": "^0.16.19"
   },
