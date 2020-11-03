@@ -11,9 +11,16 @@ const Experience = (): ReactElement => (
         company: "Vertex Software",
         positions: [
           {
-            title: "Principal Engineer and Architect",
-            start: "Feb 2020",
+            title: "Principal Technical Lead, APIs",
+            start: "Aug 2020",
             end: "Present",
+            location: "Remote",
+            desc: [],
+          },
+          {
+            title: "Principal Engineer, Architect",
+            start: "Feb 2020",
+            end: "Aug 2020",
             location: "Remote",
             desc: [
               "Architect and implement distributed, streaming, event-driven systems capable of sub-second bill of materials and rendering updates on massive CAD models. Exposed through REST APIs built from the ground up to OpenAPI, JSON:API, and CloudEvents specifications. Code coverage >90%.",
