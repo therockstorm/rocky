@@ -6,7 +6,7 @@ date: 2020-11-02
 Delete images from a particular repository,
 
 ```shell
-docker images | awk '{print $1":"$2}' | grep local/metadata-service | xargs -n1 docker rmi
+docker images | awk '{print $1":"$2}' | grep local/my-service | xargs -n1 docker rmi
 ```
 
 Delete containers using a particular image,

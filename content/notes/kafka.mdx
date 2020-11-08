@@ -1,0 +1,18 @@
+---
+title: Kafka
+date: 2020-11-08
+---
+
+Useful Kafka commands,
+
+```shell
+#! /bin/bash
+
+export BOOTSTRAP=localhost:9092
+
+kafka-topics --bootstrap-server $BOOTSTRAP --describe --topic my-events
+
+kafka-console-consumer --bootstrap-server $BOOTSTRAP --topic my-events --from-beginning
+
+kafka-consumer-groups --bootstrap-server $BOOTSTRAP --describe --group my-group
+```
