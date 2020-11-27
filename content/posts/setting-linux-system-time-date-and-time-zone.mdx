@@ -29,6 +29,6 @@ Linux stores time zone information at `/usr/share/zoneinfo` (distribution depend
 
 There are two different ways to set the time zone. The easiest way (that does not require superuser access) is to set the `TZ` environment variable. The downside of this approach is that the time zone change will not be accessible from other shells. It can be accomplished via the C API [`tzset`](https://linux.die.net/man/3/tzset) or from the command line (my time zone used as example), `export TZ=America/Chicago`.
 
-Alternatively, you can create a symbolic link called “/etc/localtime” that points to the appropriate time zone file in the “/usr/share/zoneinfo” directory. This is done with the C API [`symlink`](https://linux.die.net/man/3/symlink) or from the command line, `ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime`. The `-f` option forces the link since it likely already exists.
+Alternatively, you can create a symbolic link called "/etc/localtime" that points to the appropriate time zone file in the "/usr/share/zoneinfo" directory. This is done with the C API [`symlink`](https://linux.die.net/man/3/symlink) or from the command line, `ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime`. The `-f` option forces the link since it likely already exists.
 
 If your application has access to the internet, [rdate](https://linux.die.net/man/1/rdate) can be used to accurately update the system time.
