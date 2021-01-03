@@ -9,7 +9,7 @@ import PostFooter from "../components/posts/PostFooter"
 
 const Note = ({
   data: {
-    content: { body, date, excerpt, title },
+    content: { body, excerpt, title },
     site: { siteMetadata },
   },
   location,

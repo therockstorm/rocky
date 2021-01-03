@@ -1,0 +1,55 @@
+---
+title: Git Fundamentals
+date: 2020-12-01
+---
+
+Git can seem overwhelming, but while performing typical day-to-day tasks, you'll use only about ten commands. If you happen to use [Oh My ZSH](https://ohmyz.sh/), the included [`git` plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) adds many [aliases](./linux-bash-aliases). Below each command, I've included the corresponding alias.
+
+```shell
+# Start a new branch for a new feature
+git checkout -b new-feature
+gcb new-feature
+
+# Commit as you make changes (the --all adds changed files to
+# `staging`)
+git commit --all --message "your commit message"
+gcam "your commit message"
+
+# Add new or deleted files to `staging` (the `git commit
+# --all` above only adds tracked files)
+git add --all
+gaa
+
+# Check the status of your branch/commits
+git status
+gst
+
+# Switch branches
+git checkout branch-name
+gco branch-name
+# Separate `git` plugin alias to switch back to master
+gcm
+
+# See what has changed (maybe done prior to committing, include
+# the `--cached` flag to see what has changed in `staging`)
+git diff
+gd
+
+# Pull new changes down from remote (Github/GitLab/etc.)
+git pull
+gl
+
+# Push changes to remote
+git push --set-upstream origin
+gpsup
+
+# Merge changes from another branch into the current one
+git merge other-branch-name
+gm other-branch-name
+
+# Or, if you prefer rebase,
+git rebase -i other-branch-name
+grbi other-branch-name
+```
+
+And that's it! 95% of the time, you'll use these commands. Google was invented for the remaining 5% 😉

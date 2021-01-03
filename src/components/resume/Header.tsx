@@ -16,8 +16,8 @@ const Header = (): ReactElement => (
         thousand-line microservices moving billions of dollars each year to
         multi-million line GPS guidance systems. I deliver customer value
         utilizing object-oriented, functional, statically-typed, dynamic, and
-        database languages and lead teams as a Principal Engineer, Architect,
-        and Startup Co-founder.
+        database languages and lead teams as a Principal Technical Lead,
+        Architect, Product Manager, and Startup Co-founder.
       </Styled.p>
       <Flex sx={{ justifyContent: `space-between`, flexWrap: `wrap` }}>
         <Flex sx={{ pb: 1 }}>

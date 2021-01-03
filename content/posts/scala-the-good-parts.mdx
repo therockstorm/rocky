@@ -12,7 +12,7 @@ Scala Overview, Benefits Over Java
 - Created by Martin Odersky 17 years ago
 - Runs on the JVM
 - Can create Java objects, call their methods, and inherit from them in Scala and vice versa
-- Java collection interop
+- Java collection interoperability
 
   ```scala
   import scala.jdk.CollectionConverters._
@@ -140,7 +140,7 @@ class Person(val name: String) { // Primary constructor
 Traits
 
 - Like Java interfaces, but can have implementation
-- Only difference between Scala class: cannot have constructor params
+- Only difference between Scala class: cannot have constructor parameters
 
 ```scala
 // Optionally sealed, barring extension outside file, useful for enums
@@ -162,7 +162,7 @@ class Logged(name: String) extends Person(name) with Logger {
 Objects
 
 - Use for Singletons or home for misc values/functions
-- Can extend classes or traits, cannot have constructor params
+- Can extend classes or traits, cannot have constructor parameters
 - Commonly used as "companion object" to classes for static functions
 
 ```scala

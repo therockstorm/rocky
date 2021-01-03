@@ -201,7 +201,7 @@ export const onCreateNode = async ({
   reporter,
 }: CreateNodeArgs<{ frontmatter: Frontmatter }>): Promise<void> => {
   const { id, internal, frontmatter, parent } = node
-  if (internal.type !== `Mdx`) return
+  if (internal.type !== `Mdx` || !parent) return
 
   const fileNode = getNode(parent)
   let found = false

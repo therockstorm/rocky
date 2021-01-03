@@ -21,6 +21,11 @@ const Recommendations = (): ReactElement => (
         our workflow and general technology.&#34; ―Head of Engineering
       </NoBullet>
       <NoBullet>
+        &#34;Rocky is one of our most respected and valuable engineers. His
+        contributions are critical to the success of the company.&#34;
+        ―Engineering Manager
+      </NoBullet>
+      <NoBullet>
         &#34;Rocky created projects and libraries that improve all teams using
         Scala, empowering us to collaborate with higher quality, efficiency, and
         consistency. While typically remote, he&#39;s quick to help anyone who

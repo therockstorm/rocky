@@ -7,7 +7,7 @@ import SEO from "../components/posts/Seo"
 const Notes = ({ pageContext: { groupedNotes, urls, title }, ...props }) => (
   <Layout {...props} title={title}>
     <SEO title="Notes" />
-    <FileList directories={groupedNotes} files={urls} />
+    <FileList directories={groupedNotes} files={urls.sort((a, b) => a > b)} />
   </Layout>
 )
 

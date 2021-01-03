@@ -1,0 +1,16 @@
+---
+title: Docker
+date: 2020-11-02
+---
+
+Delete images from a particular repository,
+
+```shell
+docker images | awk '{print $1":"$2}' | grep local/my-service | xargs -n1 docker rmi
+```
+
+Delete containers using a particular image,
+
+```shell
+docker ps -a | awk '{print $1,$2}' | grep node:12-alpine | awk '{print $1}' | xargs -I {} docker rm {}
+```

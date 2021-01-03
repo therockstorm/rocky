@@ -1,0 +1,51 @@
+---
+title: Shape Up by Ryan Singer
+date: 2020-12-29
+---
+
+- Rating: 5/5
+- [Link to book](https://basecamp.com/shapeup)
+- Shaping: narrow problem and design solution outline that fits constraints of appetite.
+- Appetite: amount of time team is given to complete on project. Estimate starts with design and ends with number, appetite is the opposite, used as creative constraint. Typically either "batch" (six weeks) or "small batch" (one to two weeks).
+- Focus less on estimates and more on appetite. Instead of, "How much time?", ask: "How much time do we want to spend? How much is this idea worth?"
+- Reduce risk while shaping by solving open questions before committing to project, don't give project to team that still has rabbit holes or tangled interdependencies.
+- Reduce risk while planning by capping bets to six weeks. If project runs over, it doesn't get extension. This "circuit breaker" ensures you don't invest multiples of original appetite on concept that needs rethinking first.
+- Reduce risk while building by integrating design and programming early. Build work end-to-end early, then repeat. Sequence work from most unknown to least.
+- Wireframes too concrete. Create rough sketches instead with many details left to designer. Idea, however, is specific, clear how it works, what needs to be built, what's in and what's out. While surprises might happen, rabbit holes we could see up front have been removed. Shaped work also indicates what not to do, tells team where to stop.
+- Setting appetite and outlining solution requires being critical about problem. What are we trying to solve? Why does it matter? What counts as success? Which customers are affected? What is the cost of doing this instead of something else?
+- Shaping steps
+  1. Set boundaries. Figure out how much time idea is worth and how to define problem, giving basic boundaries
+  1. Rough out elements at higher level of abstraction than wireframes to move fast and explore wide range of possibilities. Output is idea that solves problem within appetite but without all details worked out.
+  1. Address risks/rabbit holes. Once we have solution, find holes or unanswered questions that could trip up team, amend solution, cut things, or specify details at tricky spots to prevent team getting stuck or wasting time.
+  1. Write pitch summarizing problem, constraints, solution, rabbit holes, and limitations. Goes to betting table for consideration. If it gets chosen, pitch re-used at kick-off to explain to team.
+- Flip from asking "What could we build?" to "What's really going wrong?" What is driving the request? At what point specifically does someone's current workflow break down without this thing they're asking for?
+- Concrete enough to make progress on specific solution without getting dragged into details. Questions we're trying to answer: Where in current system does new thing fit? How do you get to it? What are key components or interactions? Where does it take you?
+- Breadboard is electrical engineering prototype that has all components and wiring of device but no industrial design. Concept borrowed to design to right level of abstraction.
+- Fat marker sketch made with broad strokes so adding detail is difficult or impossible, done with large tipped Sharpies or iPads with large pen size.
+- At this stage, we can walk away from project. We haven't bet on it or made commitments or promises.
+- Well-shaped work looks like thin-tailed probability distribution in terms of risk. Slight chance it could take an extra week but, beyond that, solution defined enough and familiar enough it shouldn't drag on longer.
+  - Does this require new technical work we haven't done before? Assumptions about how parts fit together or that design solution exists we couldn't come up with ourselves? Is there hard decision we should settle in advance so it doesn't trip up team?
+- At end of this stage, we have elements of solution, patches for potential rabbit holes, and fences around areas we've declared out of bounds. Gone from roughly formed solution with potential risk to solid idea we hope to bet on.
+- Five ingredients to include in pitch:
+  1. Problem — Raw idea, use case, or something we've seen that motivates us to work on this. Diving straight into solution is dangerous. Doesn't establish basis for discussing whether this solution is good or bad without problem. Best problem definition consists specific story showing why status quo doesn't work. This gives baseline to test fitness against. People can weigh solution against this problem—or other solutions if debate ensues—and judge whether story has better outcome with new solution swapped in.
+  1. Appetite — How much time we want to spend and how that constrains the solution.
+  1. Solution — Core elements we came up with, easy for people to immediately understand
+  1. Rabbit holes — Details about solution worth calling out to avoid problems
+  1. No-gos — Anything specifically excluded from concept: functionality or use cases we intentionally aren't covering to fit appetite or make problem tractable
+- No backlog: time spent reviewing, grooming, organizing old ideas prevents moving forward on timely projects that matter. Before each six-week cycle, hold betting table where stakeholders decide what to do in next cycle. At betting table, they look at pitches from last six weeks or any somebody purposefully lobbied for again. Nothing else is on the table.
+- Betting table at Basecamp consists of the CEO (who is last word on product), CTO, senior programmer, and product strategist.
+- With few options and six-week cycle, these meetings are infrequent, short (one to two hours), and intensely productive. If we decide to bet on pitch, it goes into next cycle to build. If we don't, we let it go. There's nothing we need to track or hold on to.
+- Really important ideas will come back to you. When's last time you forgot really great, inspiring idea? If it's not that interesting—maybe bug that customers are running into from time to time—it'll come back to your attention when another complains and you'll be motivated to shape solution for next cycle. If you hear it once and never again, maybe it wasn't a problem.
+- After each six-week cycle, two weeks for cool-down. No scheduled work, we can breathe, meet as needed, consider what to do next. During cool-down, programmers/designers free to work on whatever. After working hard to ship, this time is under their control. Fix bugs, explore new ideas, or try out new technical possibilities.
+- Once in a cycle, teams are uninterrupted. Combine this uninterrupted time with tough but powerful policy. Teams have to ship work within amount of time we bet, project doesn't get extension. Intentionally create risk that project—as pitched—won't happen. Sounds severe but is extremely helpful for everyone involved.
+- Product teams should make something tangible and demoable early—in first week or so. That requires integrating vertically on one small piece of project instead of chipping away at horizontal layers.
+- To expand on this, here are three criteria to think about when choosing what to build first:
+  1. Should be core. Not just "required", but without it, other work wouldn't mean anything.
+  1. Should be small. If not small enough, there isn't much benefit to carving it off from rest. Point is to finish something meaningful in few days and build momentum.
+  1. Should be novel. If two parts of project are both core and small, prefer thing that you've never done before to teach team something and eliminate uncertainty.
+- Break integrated slices into scopes. Break the overall scope (singular) of the project into separate scopes (plural) that can be finished independently of each other. Scopes are by project structure instead of person or role.
+- Track progress with [Hill Charts](https://basecamp.com/features/hill-charts). Uphill phase is full of uncertainty, unknowns, and problem solving. Downhill phase is marked by certainty, confidence, seeing everything, and knowing what to do. It's good to think of first third of uphill as "thought about this," second third as "validated approach," and final third as "far enough with what I've built I don't believe there are other unknowns.". Effective teams sequence their problem solving. They choose most important problems first with most unknowns, get them to top of hill, and leave things that are most routine or least worrisome for last.
+- Instead of comparing project up against ideal, compare down to baseline—current customer reality. Helps to feel good about progress instead of gold plating.
+- As we come up with things to fix, add, improve, or redesign during a project, we ask ourselves:
+  - Is this "must-have" for new feature? Could we ship without? What happens if we don't do it? Is it new problem or a pre-existing one that customers already live with? How likely is this case or condition to occur? When this case occurs, which customers see it? Is it core—used by everyone—or edge case? What's actual impact of it case or condition in event it does happen? When something doesn't work well for particular use case, how aligned is that use case with our intended audience?
+- After launch, we come full circle. Raw ideas that come in from customer feedback aren't actionable yet. They need to be shaped.

@@ -11,7 +11,7 @@ export default merge(typography, {
     heading: `sans-serif`,
     monospace: `Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
   },
-  sizes: { container: 720 },
+  sizes: { container: 760 },
   styles,
   prism,
 })
