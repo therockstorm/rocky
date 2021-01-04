@@ -1,6 +1,6 @@
 ---
 title: Start Local Services Fast in Zero Lines of Code with Docker Compose
-date: 2021-01-05
+date: 2021-01-04
 ---
 
 ...unless YAML counts as code.
@@ -30,7 +30,7 @@ x-interval5-retries45-timeout5
   timeout: 5s
 ```
 
-First, note we use v2.4 syntax instead of v3.x. Ideally, your services are resilient to dependency outages, allowing you to start every service in parallel. If they aren't, `docker-compose` v2.4 syntax allows using `depends_on` `condition`s and `healthcheck` keys together, allowing you to start services in parallel if they're not dependent on each other and in order if they are. If you're using v3.x, [this page](https://docs.docker.com/compose/startup-order/) gives options to accomplish something similar, they're just more work.
+First, note we use v2.4 syntax instead of v3.x. Think of `docker-compose` v2 and v3 more like a fork than an upgrade, with v2 perfectly capable provided you don't need Docker Swarm support. Ideally, your services are resilient to dependencies being down, allowing you to start every service in parallel. If they aren't, `docker-compose` v2.4 syntax allows using `depends_on` `condition`s and `healthcheck` keys together, allowing you to start services in parallel if they're not dependent on each other and in order if they are. If you're using v3.x, [this page](https://docs.docker.com/compose/startup-order/) gives options to accomplish something similar, they're just more work and, sadly, there's no plan to add the v2 functionality back.
 
 Next, we add common configuration using keys that start with `x-` via [YAML merge key types](https://yaml.org/type/merge.html), which [`docker-compose` supports](https://docs.docker.com/compose/compose-file/compose-file-v2/#extension-fields). This example only has two services so not much is shared, but this can lead to a large reduction in duplication for more realistic scenarios.
 

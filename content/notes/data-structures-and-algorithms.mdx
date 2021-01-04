@@ -130,7 +130,7 @@ public class Stack {
   private Node top;
 
   public int pop() throws Exception {
-    if (isEmpty()) throw new Exception(“Stack empty”);
+    if (isEmpty()) throw new Exception("Stack empty");
     int tmp = top.data;
     top = top.next;
     return tmp;
@@ -180,7 +180,7 @@ public class Queue {
   }
 
   public int dequeue() throws Exception {
-    if (isEmpty()) throw new Exception(“Queue empty”);
+    if (isEmpty()) throw new Exception("Queue empty");
 
     int tmp = first.data;
     first = first.next;
