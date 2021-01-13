@@ -1,9 +1,9 @@
 const black80 = `#1B1F23`
 const lightWhite = `rgba(255, 255, 255, 0.86)`
 const opaqueLightYellow = `rgba(255, 229, 100, 0.2)`
-const whiteSmoke = `#f5f5f5`
+const whiteSmoke = `#F6F8FA`
 const gray9 = `#171717`
-const dark = `#282c35`
+const dark = `#202020`
 const royalBlueDark = `#2f4ca3` // http://www.html-color-names.com/royalblue.php
 const royalBlueLight = `#97adee`
 

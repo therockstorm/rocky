@@ -1,7 +1,9 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, useColorMode } from "theme-ui"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Comments from "../components/Comments"
 import PostDate from "../components/posts/PostDate"
 import PostTitle from "../components/posts/PostTitle"
 import SEO from "../components/posts/Seo"
@@ -16,23 +18,47 @@ const Post = ({
     next,
   },
   location,
-}) => (
-  <Layout location={location} title={siteMetadata.title}>
-    <SEO title={title} description={excerpt} />
-    <main>
-      <article>
-        <header>
-          <PostTitle>{title}</PostTitle>
-          <PostDate sx={{ mt: -2 }}>{date}</PostDate>
-        </header>
-        <section>
-          <MDXRenderer>{body}</MDXRenderer>
-        </section>
-      </article>
-    </main>
-    <PostFooter {...{ previous, next }} />
-  </Layout>
-)
+}) => {
+  const [colorMode, setColorMode] = useColorMode()
+  const commentBox = React.createRef()
+
+  useEffect(() => {
+    const color = colorMode === "default" ? "light" : colorMode
+    const scriptEl = document.createElement("script")
+    scriptEl.async = true
+    scriptEl.src = "https://utteranc.es/client.js"
+    scriptEl.setAttribute("repo", "therockstorm/rocky")
+    scriptEl.setAttribute("issue-term", "pathname")
+    scriptEl.setAttribute("label", "blog-comment")
+    scriptEl.setAttribute("id", "utterances")
+    scriptEl.setAttribute("theme", `github-${color}`)
+    scriptEl.setAttribute("crossorigin", "anonymous")
+    if (commentBox && commentBox.current) {
+      const node = commentBox.current
+      while (node.firstChild) node.removeChild(node.lastChild)
+      node.appendChild(scriptEl, scriptEl)
+    } else console.log(`Error adding utterances comments.`)
+  }, [colorMode])
+
+  return (
+    <Layout location={location} title={siteMetadata.title}>
+      <SEO title={title} description={excerpt} />
+      <main>
+        <article>
+          <header>
+            <PostTitle>{title}</PostTitle>
+            <PostDate sx={{ mt: -2 }}>{date}</PostDate>
+          </header>
+          <section>
+            <MDXRenderer>{body}</MDXRenderer>
+          </section>
+        </article>
+        <Comments commentBox={commentBox} />
+      </main>
+      <PostFooter {...{ previous, next }} />
+    </Layout>
+  )
+}
 
 export default Post
 
