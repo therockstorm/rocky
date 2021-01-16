@@ -14,17 +14,15 @@ const Posts = ({
     },
     allMdxContent: { edges },
   },
-}) => {
-  return (
-    <Layout location={location} title={title}>
-      <SEO title="Rocky Warren" />
-      <main>
-        <PostList posts={edges} />
-      </main>
-      <Footer />
-    </Layout>
-  )
-}
+}) => (
+  <Layout location={location} title={title}>
+    <SEO title="Rocky Warren" />
+    <main>
+      <PostList posts={edges} />
+    </main>
+    <Footer />
+  </Layout>
+)
 
 export default Posts
 

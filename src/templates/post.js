@@ -24,19 +24,19 @@ const Post = ({
 
   useEffect(() => {
     const color = colorMode === "default" ? "light" : colorMode
-    const scriptEl = document.createElement("script")
-    scriptEl.async = true
-    scriptEl.src = "https://utteranc.es/client.js"
-    scriptEl.setAttribute("repo", "therockstorm/rocky")
-    scriptEl.setAttribute("issue-term", "pathname")
-    scriptEl.setAttribute("label", "blog-comment")
-    scriptEl.setAttribute("id", "utterances")
-    scriptEl.setAttribute("theme", `github-${color}`)
-    scriptEl.setAttribute("crossorigin", "anonymous")
-    if (commentBox && commentBox.current) {
-      const node = commentBox.current
+    const script = document.createElement("script")
+    script.async = true
+    script.src = "https://utteranc.es/client.js"
+    script.setAttribute("repo", "therockstorm/rocky")
+    script.setAttribute("issue-term", "pathname")
+    script.setAttribute("label", "blog-comment")
+    script.setAttribute("id", "utterances")
+    script.setAttribute("theme", `github-${color}`)
+    script.setAttribute("crossorigin", "anonymous")
+    const node = commentBox.current
+    if (commentBox && node) {
       while (node.firstChild) node.removeChild(node.lastChild)
-      node.appendChild(scriptEl, scriptEl)
+      node.appendChild(script, script)
     } else console.log(`Error adding utterances comments.`)
   }, [colorMode])
 
