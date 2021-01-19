@@ -3,6 +3,13 @@ title: Docker
 date: 2020-11-02
 ---
 
+Stop and remove all Docker containers,
+
+```shell
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
+
 Delete images from a particular repository,
 
 ```shell
