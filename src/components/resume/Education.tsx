@@ -14,7 +14,7 @@ const Education = (): ReactElement => (
           start: "Aug 2003",
           end: "Dec 2007",
           location: "Iowa City, IA",
-          desc: ["Minors in Computer Science, Mathematics, and Business"],
+          desc: ["Minors in Computer Science and Business"],
         },
       ]}
     />

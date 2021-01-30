@@ -16,18 +16,19 @@ const Experience = (): ReactElement => (
             end: "Present",
             location: "Remote",
             desc: [
-              `Perform product discovery, regularly prioritize, and implemented "No Meeting Wednesday" to increase focus time, ensuring team quickly delivers the right products at the right time.`,
+              "Strong focus on customer satisfaction and ease of on-boarding with step-by-step guides, a command-line interface (CLI), and automated, always up-to-date API code samples.",
+              `Perform product discovery and regularly prioritize to ensure team quickly delivers the right products at the right time. Furthered this by implementing "No Meeting Wednesday" and asynchronous stand-ups to increase focus time.`,
               `Created uptime and availability tests with automatic rollback and alerting, confidently enabling continuous delivery of services.`,
             ],
           },
           {
-            title: "Principal Engineer and Architect",
+            title: "Principal Software Architect",
             start: "Feb 2020",
             end: "Aug 2020",
             location: "Remote",
             desc: [
-              "Architect and implement distributed, streaming, event-driven systems capable of sub-second bill of materials and rendering updates on massive CAD models. Exposed through REST APIs built from the ground up to OpenAPI, JSON:API, and CloudEvents specifications. Code coverage >90%.",
-              "Strong focus on customer satisfaction and ease of on-boarding with step-by-step guides, a command-line interface (CLI), and always up-to-date API code samples.",
+              `Architect and implement distributed, streaming, event-driven systems capable of sub-second bill of materials (BOM) and scene updates on CAD models with hundreds of thousands of BOM lines.`,
+              `Public REST APIs built from the ground up to OpenAPI, JSON:API, and CloudEvents specifications. Inter-services communication via gRPC. Code coverage >90%.`,
             ],
           },
           {
@@ -36,8 +37,8 @@ const Experience = (): ReactElement => (
             end: "Feb 2020",
             location: "Remote",
             desc: [
-              "Created and own Scala core libraries and build plugins to reduce duplication, improve security, and multiply engineering team's productivity.",
-              "Regularly audit AWS costs and sped up local development startup times 5x, saving tens of thousands of dollars per year to date.",
+              `Created and own Scala core libraries and build plugins to reduce duplication, improve security, and multiply engineering team's productivity.`,
+              `Regularly audit AWS costs and sped up local development startup times 5x, saving tens of thousands of dollars per year to date.`,
             ],
           },
         ],

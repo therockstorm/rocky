@@ -12,10 +12,10 @@ const Skills = (): ReactElement => (
       <Skill>JavaScript</Skill>
       <Skill>TypeScript</Skill>
       <Skill>C#</Skill>
-      <Skill>Bash</Skill>
+      <Skill>Shell/Bash</Skill>
+      <Skill>Rust</Skill>
       <Skill>Python</Skill>
       <Skill>Java</Skill>
-      <Skill>Ruby</Skill>
       {/* Data */}
       <Skill>PostgreSQL</Skill>
       <Skill>DynamoDB</Skill>
