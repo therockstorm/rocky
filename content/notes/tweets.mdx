@@ -79,20 +79,24 @@ date: 2020-12-29
 - I read these notes for The Effective Engineer and they convinced me to buy the book, highly recommended, https://gist.github.com/rondy/af1dee1d28c02e9a225ae55da2674a6f#file-effective_engineer-md
 - Enjoying the Slack app Clockwise, it encourages having uninterrupted time to focus and can reschedule meetings to increase those time blocks. https://slack.com/apps/A89HZ352N-clockwise
 - Tip to speed up your computer, have Spotlight ignore your code directories. If you actually use Spotlight to open files/folders, this article explains how to be a bit more surgical with what you ignore, https://www.bram.us/2019/08/27/prevent-apple-spotlight-from-slowing-down-your-mac-by-preventing-it-to-index-node_modules-folders/
+- New blog post, "Running Linux GUI Apps in Docker on Mac", https://rocky.dev/running-linux-gui-apps-in-docker-on-mac
+- Great beta GitHub feature letting you decide whether to auto-merge upon PR creation. Once all merge blocking checks pass (GitHub Actions, Jenkins jobs, approvals, etc.), it'll merge for you. https://github.blog/changelog/2020-12-16-pull-request-auto-merge-public-beta/
+- "Don’t stop coding...if you don’t share joy, despair, discovery of software development, you forget what it means to be a developer...have a harder time talking to engineers because you’ll forget how they think and how they become bored."
+https://randsinrepose.com/archives/bored-people-quit/
+- In Slack's Preferences > Messages and media, you can now enable "Show one-click reactions on messages" and pick any three emojis. Thumbs ups to your coworkers messages are now just a click away!
+- https://matthewsaltz.wordpress.com/2020/11/24/a-simple-and-dynamic-method-for-consistent-productivity/
+- Recently used this template for a project with great success, https://betterdev.blog/minimal-safe-bash-script-template/
+- Great comparison of Rust vs Go. Both great languages, with different tradeoffs. https://bitfieldconsulting.com/golang/rust-vs-go
+- Excited about the future of CRDTs, https://josephg.com/blog/crdts-are-the-future/
+- You can search by emoji in Slack. Useful if, for instance, you mark issues with :eyes: and then :white_check_mark: once they're resolved. You can then search "in:#my-channel has::eyes: -has:::white_check_mark:" to see which you still need to look at.
+- I managed to delete a commit with days of changes in it. Through a combination of https://gist.github.com/joseluisq/7f0f1402f05c45bac10814a9e38f81bf and https://stackoverflow.com/questions/34751837/git-can-we-recover-deleted-commits I was able to find and restore it. The lesson? There's still hope when you do something stupid.
+- "Comby makes finding and changing code easier than regex alone allows and avoids pitfalls like escaping parentheses, quotes, or multiline changes." https://comby.dev/
+- GitHub CLI makes creating lots of PRs easy. This command upper-cases the branch name and includes it in the PR title,
+  gh pr create --reviewer therockstorm --title "[$(git_current_branch | tr '[:lower:]' '[:upper:]')]: Revert file upload for now" --body ""
+- A SQL (not just PostgreSQL) anti-pattern that's all too easy to fall into, https://www.2ndquadrant.com/en/blog/postgresql-anti-patterns-read-modify-write-cycles/
+- And for old bloods(?) too, https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/
+- Great article full of SQL tips, https://hakibenita.com/sql-tricks-application-dba
+- Good reminder as you're building developer tools to leave escape hatches, "self-service with guard-rails", https://lethain.com/fail-open-layer-policy/
 
 - Yet to post
-  - https://randsinrepose.com/archives/bored-people-quit/
-  - https://matthewsaltz.wordpress.com/2020/11/24/a-simple-and-dynamic-method-for-consistent-productivity/
-  - https://betterdev.blog/minimal-safe-bash-script-template/
-  - https://aws.amazon.com/blogs/aws/s3-storage-lens/
-  - https://bitfieldconsulting.com/golang/rust-vs-go
-  - Read a good article from an ex-Google Wave developer (https://josephg.com/blog/crdts-are-the-future/) and YouTube video from Martin Kleppmann of Designing Data Intensive Applications fame (https://www.youtube.com/watch?v=x7drE24geUw) on CRDTs, which are used in collaboration apps.
-  - GitHub CLI
-  - comby
-  - `git` commands to delete already merged branches. If you merge PRs, `git branch --merged master | egrep -v "(^\*|master|main)" | xargs git branch -d`. This deletes all local branches that have been merged to master. If you squash merge, `git checkout master && git remote prune origin | egrep -v "(^\*|master|main)" | sed "s/^.*origin\///" | xargs -L1 -J % git branch -D %`. For completeness, to delete REMOTE branches already merged to master, `git branch -r --merged master | egrep -v "(^\*|master|main)" | sed "s/origin\///" | xargs -n 1 git push --delete origin`
-  - Search by emoji in Slack, useful in certain channels if, for instance, you mark issues with :eyes: and then :white_check_mark: once they're resolved. Then, you can search in:#my-channel has::eyes: -has:::white_check_mark: to see which you still need to look at.
-  - https://lethain.com/fail-open-layer-policy/
   - https://lethain.com/productivity-in-the-age-of-hypergrowth/
-  - https://www.2ndquadrant.com/en/blog/postgresql-anti-patterns-read-modify-write-cycles/
-  - https://hakibenita.com/sql-tricks-application-dba
-  - https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/
