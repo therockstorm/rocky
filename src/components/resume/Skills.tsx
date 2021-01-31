@@ -19,10 +19,10 @@ const Skills = (): ReactElement => (
       {/* Data */}
       <Skill>PostgreSQL</Skill>
       <Skill>DynamoDB</Skill>
-      <Skill>RDS</Skill>
-      <Skill>Lambda</Skill>
+      <Skill>AWS Lambda</Skill>
       <Skill>SQS</Skill>
       <Skill>Athena</Skill>
+      <Skill>Akka</Skill>
       <Skill>Kafka</Skill>
       <Skill>Redis</Skill>
       <Skill>gRPC</Skill>
