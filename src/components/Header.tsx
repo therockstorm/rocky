@@ -15,9 +15,9 @@ const height = 42
 const lineHeight = `2.625rem`
 
 interface Props {
-  children: ReactNode
-  location: Location
-  title: string
+  readonly children: ReactNode
+  readonly location: Location
+  readonly title: string
 }
 
 const Title = ({

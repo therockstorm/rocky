@@ -4,11 +4,11 @@ import { Flex, jsx, Styled } from "theme-ui"
 import NoBullet from "../NoBullet"
 
 interface Position {
-  title: string
-  start: string
-  end: string
-  location: string
-  desc: string[]
+  readonly title: string
+  readonly start: string
+  readonly end: string
+  readonly location: string
+  readonly desc: string[]
 }
 
 const Position = ({
