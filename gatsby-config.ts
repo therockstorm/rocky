@@ -1,5 +1,5 @@
 import queries from "./src/utils/algolia"
-import { SiteMetadata } from "./types/index.d"
+import { SiteMetadata, MdxContent } from "./types/index.d"
 
 require("dotenv").config()
 
@@ -29,6 +29,74 @@ export const plugins = [
       apiKey: process.env.ALGOLIA_ADMIN_KEY,
       queries,
       chunkSize: 10000,
+    },
+  },
+  {
+    resolve: `gatsby-plugin-feed-mdx`,
+    options: {
+      query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+      feeds: [
+        {
+          serialize: ({
+            query: { site, allMdx },
+          }: {
+            query: { site: { siteMetadata: SiteMetadata }; allMdx: MdxContent }
+          }) => {
+            return allMdx.edges.map((edge) => {
+              const siteUrl = site.siteMetadata.siteUrl
+              const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${siteUrl}${edge.node.fields.slug}">Click here</a> to read it.)</div>`
+              let html = edge.node.html
+              // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
+              html = html
+                .replace(/href="\//g, `href="${siteUrl}/`)
+                .replace(/src="\//g, `src="${siteUrl}/`)
+                .replace(/"\/static\//g, `"${siteUrl}/static/`)
+                .replace(/,\s*\/static\//g, `,${siteUrl}/static/`)
+
+              return Object.assign({}, edge.node.frontmatter, {
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.date,
+                url: `${siteUrl}${edge.node.fields.slug}`,
+                guid: `${siteUrl}${edge.node.fields.slug}`,
+                custom_elements: [{ "content:encoded": html + postText }],
+              })
+            })
+          },
+          query: `
+              {
+                allMdx(
+                  limit: 1000,
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      excerpt(pruneLength: 250)
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+          output: "/rss.xml",
+          title: "Rocky Warren's Blog RSS Feed",
+        },
+      ],
     },
   },
   {

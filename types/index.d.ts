@@ -8,9 +8,13 @@ export interface SiteMetadata {
 
 export interface MdxNode {
   readonly id: string
-  readonly slug: string
+  readonly excerpt: string
+  readonly fields: { slug: string }
   readonly filename: string
+  readonly frontmatter: Frontmatter
+  readonly html: string
   readonly relativePath: string
+  readonly slug: string
 }
 
 export interface MdxContent {
