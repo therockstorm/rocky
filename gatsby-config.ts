@@ -54,8 +54,9 @@ export const plugins = [
             query: { site: { siteMetadata: SiteMetadata }; allMdx: MdxContent }
           }) => {
             return allMdx.edges.map((edge) => {
+              const slug = edge.node.slug
               const siteUrl = site.siteMetadata.siteUrl
-              const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${siteUrl}${edge.node.fields.slug}">Click here</a> to read it.)</div>`
+              const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${siteUrl}${slug}">Click here</a> to read it.)</div>`
               let html = edge.node.html
               // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
               html = html
@@ -67,27 +68,24 @@ export const plugins = [
               return Object.assign({}, edge.node.frontmatter, {
                 description: edge.node.excerpt,
                 date: edge.node.frontmatter.date,
-                url: `${siteUrl}${edge.node.fields.slug}`,
-                guid: `${siteUrl}${edge.node.fields.slug}`,
+                url: `${siteUrl}${slug}`,
+                guid: `${siteUrl}${slug}`,
                 custom_elements: [{ "content:encoded": html + postText }],
               })
             })
           },
           query: `
               {
-                allMdx(
-                  limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
+                allMdx(limit: 1000, sort: {order: DESC, fields: [frontmatter___date]}) {
                   edges {
                     node {
                       excerpt(pruneLength: 250)
                       html
-                      fields { slug }
                       frontmatter {
-                        title
                         date
+                        title
                       }
+                      slug
                     }
                   }
                 }
