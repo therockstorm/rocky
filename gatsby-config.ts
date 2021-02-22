@@ -56,7 +56,8 @@ export const plugins = [
             return allMdx.edges.map((edge) => {
               const slug = edge.node.slug
               const siteUrl = site.siteMetadata.siteUrl
-              const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${siteUrl}${slug}">Click here</a> to read it.)</div>`
+              const postUrl = `${siteUrl}/${slug}`
+              const postText = `<div style="margin-top=55px; font-style: italic;">(This is an article from my blog at https://rocky.dev. <a href="${postUrl}">Click here</a> to read it.)</div>`
               let html = edge.node.html
               // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
               html = html
@@ -68,15 +69,19 @@ export const plugins = [
               return Object.assign({}, edge.node.frontmatter, {
                 description: edge.node.excerpt,
                 date: edge.node.frontmatter.date,
-                url: `${siteUrl}${slug}`,
-                guid: `${siteUrl}${slug}`,
+                url: postUrl,
+                guid: postUrl,
                 custom_elements: [{ "content:encoded": html + postText }],
               })
             })
           },
           query: `
               {
-                allMdx(limit: 1000, sort: {order: DESC, fields: [frontmatter___date]}) {
+                allMdx(
+                  limit: 1000,
+                  filter: {childMdxContent: {kind: {eq: "post"}}},
+                  sort: {order: DESC, fields: [frontmatter___date]}
+                ) {
                   edges {
                     node {
                       excerpt(pruneLength: 250)
@@ -92,6 +97,7 @@ export const plugins = [
               }
             `,
           output: "/rss.xml",
+          match: "^blog/",
           title: "Rocky Warren's Blog RSS Feed",
         },
       ],
