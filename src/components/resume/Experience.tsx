@@ -28,7 +28,7 @@ const Experience = (): ReactElement => (
             location: "Remote",
             desc: [
               `Architect and implement distributed, streaming, event-driven systems capable of sub-second bill of materials (BOM) and scene updates on CAD models with hundreds of thousands of BOM lines.`,
-              `Public REST APIs built from the ground up to OpenAPI, JSON:API, and CloudEvents specifications. Inter-services communication via gRPC. Code coverage >90%.`,
+              `Public REST APIs built from the ground up to OpenAPI, JSON:API, and CloudEvents specifications. Inter-service communication via gRPC. Code coverage >90%.`,
             ],
           },
           {
@@ -38,7 +38,7 @@ const Experience = (): ReactElement => (
             location: "Remote",
             desc: [
               `Created and own Scala core libraries and build plugins to reduce duplication, improve security, and multiply engineering team's productivity.`,
-              `Regularly audit AWS costs and sped up local development startup times 5x, saving tens of thousands of dollars per year to date.`,
+              `Regularly audit AWS costs and sped up local development startup times 5x, saving tens of thousands of dollars per year.`,
             ],
           },
         ],
