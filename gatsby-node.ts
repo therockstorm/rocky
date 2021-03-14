@@ -135,7 +135,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
   actions: { createTypes },
   schema,
 }: CreateSchemaCustomizationArgs) => {
-  createTypes(`interface Content @nodeInterface {
+  createTypes(`interface Content implements Node {
       id: ID!
       title: String!
       body: String!

@@ -107,6 +107,7 @@ export const plugins = [
     resolve: `gatsby-plugin-google-analytics`,
     options: { trackingId: `UA-64259036-1` },
   },
+  `gatsby-plugin-image`,
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
@@ -180,10 +181,10 @@ export const plugins = [
     resolve: `gatsby-source-filesystem`,
     options: { path: `content/assets`, name: `content/assets` },
   },
-  `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-emotion`,
   `gatsby-plugin-theme-ui`,
   `gatsby-plugin-typescript`,
+  `gatsby-transformer-sharp`,
 ]

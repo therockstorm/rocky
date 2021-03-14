@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Flex, jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { config, animated, useSpring, useTrail } from "react-spring"
 import Layout from "../components/Layout"
 import SEO from "../components/posts/Seo"
@@ -82,7 +82,9 @@ const Photos = ({
                     transition: `all 0.3s ease 0s`,
                   }}
                 />
-                <Image fluid={post.localFile.childImageSharp.fluid} />
+                <GatsbyImage
+                  image={post.localFile.childImageSharp.gatsbyImageData}
+                />
                 <Flex
                   sx={{
                     flexDirection: "column",
@@ -158,9 +160,7 @@ export const query = graphql`
         likes
         localFile {
           childImageSharp {
-            fluid(quality: 100, maxWidth: 600, maxHeight: 600) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(layout: FULL_WIDTH, quality: 100)
           }
         }
       }

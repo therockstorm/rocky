@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { ReactElement } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Flex, jsx, Styled } from "theme-ui"
 import BioContent from "./BioContent"
 
@@ -20,9 +20,7 @@ const Bio = (): ReactElement => {
       }
       avatar: file(absolutePath: { regex: "/avatar.(jpeg|jpg|gif|png)/" }) {
         childImageSharp {
-          fixed(width: 100, height: 100) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(layout: FIXED, width: 100, height: 100)
         }
       }
     }
@@ -31,8 +29,8 @@ const Bio = (): ReactElement => {
   return (
     <Flex sx={{ mb: 4, alignItems: `center` }}>
       {avatar ? (
-        <Image
-          fixed={avatar.childImageSharp.fixed}
+        <GatsbyImage
+          image={avatar.childImageSharp.gatsbyImageData}
           alt={author}
           sx={{
             mr: 2,
