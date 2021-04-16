@@ -9,7 +9,7 @@ const youTube = `https://www.youtube.com`
 
 export const siteMetadata: SiteMetadata = {
   author: `Rocky Warren`,
-  description: `Rocky Warren's blog.`,
+  description: `Rocky Warren's blog. Principal Architect, Tech Lead, and Product Manager at Vertex Software.`,
   siteUrl: `https://rocky.dev/`,
   social: [
     {
