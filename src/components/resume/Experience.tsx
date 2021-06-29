@@ -16,7 +16,7 @@ const Experience = (): ReactElement => (
             end: "Present",
             location: "Remote",
             desc: [
-              "Strong focus on customer satisfaction and ease of on-boarding with step-by-step guides, a command-line interface (CLI), and automated, always up-to-date API code samples.",
+              "Strong focus on customer satisfaction and ease of on-boarding with regular customer calls, step-by-step guides, a command-line interface (CLI), and automated, always up-to-date API code samples.",
               `Perform product discovery and regularly prioritize to ensure team quickly delivers the right products at the right time. Furthered this by implementing "No Meeting Wednesday" and asynchronous stand-ups to increase focus time.`,
               `Created uptime and availability tests with automatic rollback and alerting, confidently enabling continuous delivery of services.`,
             ],
@@ -27,9 +27,9 @@ const Experience = (): ReactElement => (
             end: "Aug 2020",
             location: "Remote",
             desc: [
+              `Hired as Principal Engineer responsible for leading public REST APIs. Built from the ground up to OpenAPI, JSON:API, and CloudEvents specifications. Inter-service communication via Kafka and gRPC. Code coverage >90%.`,
               `Created and own Scala core libraries and build plugins to reduce duplication, improve security, and multiply engineering team's productivity.`,
               `Architect and implement distributed, streaming, event-driven systems capable of sub-second bill of materials (BOM) and scene updates on CAD models with hundreds of thousands of BOM lines.`,
-              `Public REST APIs built from the ground up to OpenAPI, JSON:API, and CloudEvents specifications. Inter-service communication via gRPC. Code coverage >90%.`,
             ],
           },
         ],
