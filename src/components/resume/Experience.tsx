@@ -16,7 +16,7 @@ const Experience = (): ReactElement => (
             end: "Present",
             location: "Remote",
             desc: [
-              "Strong focus on customer satisfaction and ease of on-boarding with regular customer calls, step-by-step guides, a command-line interface (CLI), and automated, always up-to-date API code samples.",
+              "Strong focus on customer satisfaction and ease of on-boarding with regular customer interviews, step-by-step guides, a command-line interface (CLI), and automated, always up-to-date API code samples.",
               `Perform product discovery and regularly prioritize to ensure team quickly delivers the right products at the right time. Furthered this by implementing "No Meeting Wednesday" and asynchronous stand-ups to increase focus time.`,
               `Created uptime and availability tests with automatic rollback and alerting, confidently enabling continuous delivery of services.`,
             ],

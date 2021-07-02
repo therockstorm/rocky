@@ -12,18 +12,12 @@ const Recommendations = (): ReactElement => (
         are with growing our collective knowledge and being a champion for
         training. Thanks for doing this stuff, Rocky. I&#39;ve also been hearing
         great things about your contributions and speed-of-delivery. The
-        leadership team is impressed.&#34; ―VP of Product Development
-      </NoBullet>
-      <NoBullet>
-        &#34;Rocky has incredible optimism and intense dedication to
-        effectiveness, quality, and performance. Every week Rocky would have
-        delivered not only critical changes to our systems but improvements to
-        our workflow and general technology.&#34; ―Head of Engineering
+        leadership team is impressed.&#34; ―VP of Product
       </NoBullet>
       <NoBullet>
         &#34;Rocky is one of our most respected and valuable engineers. His
-        contributions are critical to the success of the company.&#34;
-        ―Engineering Manager
+        contributions are critical to the success of the company.&#34; ―VP of
+        Engineering
       </NoBullet>
       <NoBullet>
         &#34;Rocky created projects and libraries that improve all teams using
