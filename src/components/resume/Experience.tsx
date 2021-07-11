@@ -28,7 +28,7 @@ const Experience = (): ReactElement => (
             location: "Remote",
             desc: [
               `Hired as Principal Engineer responsible for leading public REST APIs. Built from the ground up to OpenAPI, JSON:API, and CloudEvents specifications. Inter-service communication via Kafka and gRPC. Code coverage >90%.`,
-              `Created and own Scala core libraries and build plugins to reduce duplication, improve security, and multiply engineering team's productivity.`,
+              `Created and own a platform of core libraries and build plugins to reduce duplication, improve security, and multiply engineering team's productivity.`,
               `Architect and implement distributed, streaming, event-driven systems capable of sub-second bill of materials (BOM) and scene updates on CAD models with hundreds of thousands of BOM lines.`,
             ],
           },
