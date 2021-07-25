@@ -21,7 +21,7 @@
     "algoliasearch": "^4.8",
     "deepmerge": "^4.2",
     "dotenv": "^8.2",
-    "gatsby": "^3",
+    "gatsby": "^3.10.0",
     "gatsby-core-utils": "^2.2",
     "gatsby-plugin-advanced-sitemap": "^1.6",
     "gatsby-plugin-algolia": "^0.18",
