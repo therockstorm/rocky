@@ -19,8 +19,8 @@ const IconLink = ({ icon, mr, ...other }: Record<string, unknown>) => (
 const BioContent = (): ReactElement => (
   <Styled.div>
     <Styled.p sx={{ mb: 1 }}>
-      Rocky Warren&#39;s blog. Principal Architect, Tech Lead, Product
-      Manager. I{" "}
+      Rocky Warren&#39;s blog. Principal Architect, Tech Lead, Product Manager.
+      I{" "}
       <ExternalLink href={"https://www.rockywarren.com/"}>
         do other stuff
       </ExternalLink>{" "}
@@ -32,9 +32,6 @@ const BioContent = (): ReactElement => (
       </Styled.a>
       <Styled.a as={Link} sx={{ mr: 2 }} to="/notes">
         Notes
-      </Styled.a>
-      <Styled.a as={Link} sx={{ mr: 0 }} to="/photos">
-        Photos
       </Styled.a>
     </Flex>
     <Flex sx={{ flexWrap: `wrap` }}>

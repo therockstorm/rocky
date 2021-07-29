@@ -163,13 +163,6 @@ export const plugins = [
     },
   },
   {
-    resolve: "gatsby-source-instagram",
-    options: {
-      access_token: process.env.ACCESS_TOKEN,
-      instagram_id: process.env.BUSINESS_ID,
-    },
-  },
-  {
     resolve: `gatsby-source-filesystem`,
     options: { path: `content/notes`, name: `content/notes` },
   },
