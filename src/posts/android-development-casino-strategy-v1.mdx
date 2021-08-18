@@ -1,0 +1,93 @@
+---
+title: "Android Development: Casino Strategy v1.0"
+date: "2012-05-14"
+---
+
+Maybe it's because I'm listening to [The Lean Startup](https://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898/ref=sr_1_1?s=books&ie=UTF8&qid=1337048395&sr=1-1), but I decided to create a minimum viable product (MVP) as the first version of my app. I went with the simplest idea that still had some value, displaying a Blackjack strategy card for use in a casino. The goal was to quickly get a feel for Java, Eclipse, and the Android API.
+
+After running through the [Hello, World](https://developer.android.com/training/basics/firstapp) tutorial, I created a simple app with one [Activity](https://developer.android.com/reference/android/app/Activity.html). The layout was just an ImageView that displayed a `png` file I had on my computer.
+
+In `res/layout/main.xml`,
+
+```xml
+<ImageView
+  android:id="@+id/image_view"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:contentDescription="@string/desc"
+/>
+```
+
+In `src/MainActivity.java`,
+
+```java
+@Override
+public void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.main);
+  mImage = (ImageView) findViewById(R.id.image_view);
+  mImage.setImageResource(R.drawable.myImage);
+}
+```
+
+Next, I created a strategy card in Excel and used Paint.NET to save it as a `png` file. I followed the first part of the [Notepad](https://developer.android.com/resources/tutorials/notepad/notepad-ex2.html) tutorial to learn how to insert a menu. It's used to display an [AlertDialog](https://developer.android.com/guide/topics/ui/dialogs.html) with a key showing how to read the card.
+
+In `src/MainActivity.java`,
+
+```java
+public static final int KEY_ID = Menu.FIRST;
+
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+  switch (item.getItemId()) {
+    case KEY_ID:
+      displayKey();
+      return true;
+  }
+  return super.onOptionsItemSelected(item);
+}
+
+private void displayKey() {
+  if (mKey == null) {
+    mKey = new AlertDialog.Builder(this);builder.setMessage(getKeyMessageText()).setPositiveButton("Close",
+      new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {
+          dialog.cancel();
+        }
+      }
+    );
+  }
+  mKey.show();
+}
+```
+
+At about this point, I decided to install [git](https://git-scm.com/) to start version controlling my app so I could quickly revert any changes I didn't like. I also moved my Eclipse workspace to my [Dropbox](https://www.dropbox.com/) folder both for backup and so I could work on it from multiple computers.
+
+Now that my code was protected, I added another AlertDialog with a list to allow the user to select different strategy cards. The method below is called from a new `case` in `onOptionItemSelected()`.
+
+In `src/MainActivity.java`,
+
+```java
+private void displayGameTypes() {
+  if (mGameTypes == null) {
+    final CharSequence[] gameTypes = { "Stands on 17", "Hits on 17" };
+    mGameTypes = new AlertDialog.Builder(this);
+    builder.setTitle(R.string.game_type);
+    builder.setItems(gameTypes, new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int item) {
+        switch (item) {
+          case 0:
+            mImage.setImageResource(R.drawable.stand_on_17);
+            break;
+          case 1:
+            mImage.setImageResource(R.drawable.hit_on_17);
+            break;
+        }
+      }
+    });
+    mGameTypes.show();
+  }
+}
+```
+
+I wanted to be able to swipe between the cards, but instead of adding that extra scope to my MVP, I made a note to investigate it for v2.0. After creating the second card with Excel/Paint.NET, I was ready to publish!

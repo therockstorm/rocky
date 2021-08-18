@@ -1,46 +1,41 @@
-/** @jsx jsx */
-import { Fragment, ReactElement } from "react"
-import { Flex, jsx, Styled } from "theme-ui"
-import NoBullet from "../NoBullet"
+import React from "react";
 
-interface Position {
-  readonly title: string
-  readonly start: string
-  readonly end: string
-  readonly location: string
-  readonly desc: string[]
+interface Props {
+  readonly title: string;
+  readonly start: string;
+  readonly end: string;
+  readonly location: string;
+  readonly desc: string[];
 }
 
-const Position = ({
+export const Position = ({
   company,
   positions,
 }: {
-  company: string
-  positions: Position[]
-}): ReactElement => (
-  <Fragment>
-    <Styled.h3 sx={{ fontWeight: "bold", mb: 2 }}>{company}</Styled.h3>
+  company: string;
+  positions: Props[];
+}): JSX.Element => (
+  <>
+    <h3>{company}</h3>
     {positions.map(
-      ({ title, start, end, location, desc }: Position, idx: number) => {
+      ({ title, start, end, location, desc }: Props, idx: number) => {
         return (
-          <Styled.div key={idx} sx={{ ml: 2 }}>
-            <Styled.h4 sx={{ fontWeight: "bold", mb: 1 }}>{title}</Styled.h4>
-            <Flex sx={{ justifyContent: `space-between`, color: "muted" }}>
-              <Styled.div sx={{ mb: 1 }}>{location}</Styled.div>
-              <Styled.div sx={{ mb: 1 }}>
+          <div key={idx}>
+            <h4>{title}</h4>
+            <div className="flex justify-between text-sm text-gray-500">
+              <div>{location}</div>
+              <div>
                 {start} - {end}
-              </Styled.div>
-            </Flex>
-            <Styled.ul sx={{ ml: 2 }}>
-              {desc.map((d, idx) => (
-                <NoBullet key={idx}>{d}</NoBullet>
+              </div>
+            </div>
+            <ul>
+              {desc.map((d, i) => (
+                <li key={i}>{d}</li>
               ))}
-            </Styled.ul>
-          </Styled.div>
-        )
+            </ul>
+          </div>
+        );
       }
     )}
-  </Fragment>
-)
-
-export default Position
+  </>
+);

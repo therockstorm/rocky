@@ -1,0 +1,37 @@
+---
+title: Command-Line Mercurial
+date: "2012-03-20"
+---
+
+I started using [Mercurial](https://www.mercurial-scm.org/), a distributed source control management tool similar to [Git](https://git-scm.com/), about two years ago. I began interacting with it using [TortoiseHg](https://tortoisehg.bitbucket.io/), a GUI front-end. I understand that some will always prefer a GUI, but after spending some time with the command-line interface, I'll never go back. Here is my typical work-flow:
+
+```bash
+hg status # Determine out-of-date/modified files
+hg commit -message "Check-in comment" # Commit local changes
+hg addremove # Add new and remove deleted files
+hg pull --rebase # Pull, update to tip, and rebase changes on top
+hg push --rev . # Push changes to current branch
+hg pull --update # Update to tip
+hg glog --limit 5 # Graphically print last 5 changesets like so:
+  # o  changeset:   15949:e53d6166ec1b
+  # |  parent:      15936:e8569089e24e<
+  # |  user:        xxx
+  # |  date:        Fri Oct 21 12:22:43 2011 -0500
+  # |  summary: God mode
+  # |
+  # | @  changeset:   15948:e74aa8a1cf01
+  # |/   parent:      15936:e8569089e24e
+  # |    user:        yyy
+  # |    date:        Mon Oct 24 08:56:16 2011 -0500
+  # |    summary: Invisibility
+  # |
+  # | o    changeset:   15947:519186e7d4d1
+  # | |\   parent:      15946:cd44cf7e36f3
+  # | | |  user:        zzz
+  # | | |  date:        Mon Oct 24 19:43:24 2011 +0530
+  # | | |  summary:     100 free lives
+  # | | |
+  # ...
+```
+
+This gets me by 95% of the time and is highly efficient (try creating [aliases](./linux-bash-aliases) for the commands to save even more time). For more involved tasks or to see the full graph, type 'thg' to launch TortoiseHg.

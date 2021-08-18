@@ -1,0 +1,48 @@
+import React from "react";
+
+import { SocialMedia } from "../pages";
+import { Container } from "./container";
+import { ExternalLink } from "./external-link";
+import { GitHub, Instagram, LinkedIn, Twitter } from "./icons";
+
+export function Footer(): JSX.Element {
+  return (
+    <footer className="h-30 flex items-center flex-shrink-0 print:hidden">
+      <Container>
+        <div className="container mx-auto my-5 max-w-3xl text-gray-300">
+          <hr />
+        </div>
+        <div className="flex justify-center md:order-2 my-8">
+          <ExternalLink
+            href={SocialMedia.Twitter}
+            className="text-gray-500 hover:text-gray-600"
+          >
+            <span className="sr-only">Twitter</span>
+            <Twitter />
+          </ExternalLink>
+          <ExternalLink
+            href={SocialMedia.Instagram}
+            className="ml-6 text-gray-500 hover:text-gray-600"
+          >
+            <span className="sr-only">Instagram</span>
+            <Instagram />
+          </ExternalLink>
+          <ExternalLink
+            href={SocialMedia.LinkedIn}
+            className="ml-6 text-gray-500 hover:text-gray-600"
+          >
+            <span className="sr-only">LinkedIn</span>
+            <LinkedIn />
+          </ExternalLink>
+          <ExternalLink
+            href={SocialMedia.Github}
+            className="ml-6 text-gray-500 hover:text-gray-600"
+          >
+            <span className="sr-only">GitHub</span>
+            <GitHub />
+          </ExternalLink>
+        </div>
+      </Container>
+    </footer>
+  );
+}

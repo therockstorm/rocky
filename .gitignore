@@ -1,9 +1,9 @@
 .DS_Store
-scripts/*.pdf
-scripts/*.txt
+.env.development.local
+.env.local
+.env.production.local
+.env.test.local
+yarn-error.log*
 
-.cache
-.env
-.vscode
-/public
-node_modules
+/.next
+/node_modules

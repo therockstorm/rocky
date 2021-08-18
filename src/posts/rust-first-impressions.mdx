@@ -1,0 +1,40 @@
+---
+title: "Rust: First Impressions"
+date: "2021-03-04"
+---
+
+Scala is great for recent microservices I've written, enabling incredible velocity. However, certain scenarios benefit from lower-level languages.
+
+I have five years of (dated) C++ experience. It's a high learning curve and even experts can cause segfaults, undefined behavior, double free errors, array overruns, mishandle concurrency, etc. This prevents novices from jumping into code for fear of breaking things, slowing productivity. Even modern C++ lacks a strong tooling ecosystem, making some things, including AWS Lambdas, a "batteries not included" experience.
+
+For these reasons, I spent time looking at how Rust and Go compare. The key requirements,
+
+- Integrates with existing code, libraries, and tools
+- Increases productivity
+- Reduces bugs by catching preventable ones early and being hard to misuse
+- Negligible performance differences
+- Comparable learning curve (ideally, shorter)
+- Doesn't impact recruiting (ideally, improves)
+- Stable with backward compatibility, meets future needs
+
+Both Rust and Go are great, but have different priorities as [this article describes](https://bitfieldconsulting.com/golang/rust-vs-go). Compared to Go, Rust has better C++ interoperability, no garbage collector (leading to better and more consistent performance), and richer language features (at the cost of additional complexity/higher learning curve). Taken together, these fit my use cases and preferences better.
+
+Addressing the "Key Requirements" above, Rust has
+
+- Great C++ interoperability via the [CXX crate](https://github.com/dtolnay/cxx)
+- an aim to be [faster than C](https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust.html)
+- Excellent tooling
+  - Cargo provides compile, test, format, lint, package management, and workspace/monorepo support
+  - VS Code extensions provide the above along with in-editor line coverage
+- A sophisticated compiler giving non-experts the confidence to make changes since it won't - build code with mistakes easy to make in C++
+- Concurrency via familiar `async`/`await`
+- Zero-cost abstractions around things like generics
+- Functional programming features like iterators and closures
+- A devoted following as Stack Overflow's [Most Loved Language](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved) five years running
+- A bright future. As our front-end apps grow in complexity, Rust's relative approachability and WASM compilation may become important. Other languages have this capability, but at least at this point garbage collection adds client-side baggage.
+
+Additional resources include,
+
+- [A half-hour to learn Rust](https://fasterthanli.me/articles/a-half-hour-to-learn-rust)
+- [The Rust Programming Language](https://doc.rust-lang.org/book/)
+- [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/)

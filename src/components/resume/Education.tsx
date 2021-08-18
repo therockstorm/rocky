@@ -1,10 +1,9 @@
-/** @jsx jsx */
-import { ReactElement } from "react"
-import { jsx } from "theme-ui"
-import Position from "./Position"
-import Section from "../Section"
+import React from "react";
 
-const Education = (): ReactElement => (
+import { Section } from "../section";
+import { Position } from "./Position";
+
+export const Education = (): JSX.Element => (
   <Section title="Education">
     <Position
       company={"University of Iowa"}
@@ -19,6 +18,4 @@ const Education = (): ReactElement => (
       ]}
     />
   </Section>
-)
-
-export default Education
+);

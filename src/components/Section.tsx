@@ -1,19 +1,15 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
-import { ReactElement, ReactNode } from "react"
+import React from "react";
 
-const Section = ({
-  title,
-  children,
-}: {
-  title: string
-  children: ReactNode
-}): ReactElement => (
-  <section>
-    <Styled.h2 sx={{ mb: 2, pt: 2, mt: 2 }}>{title}</Styled.h2>
-    <Styled.hr sx={{ mb: 3 }} />
-    {children}
-  </section>
-)
+interface Props {
+  readonly children: React.ReactNode;
+  readonly title: string;
+}
 
-export default Section
+export function Section({ title, children }: Props): JSX.Element {
+  return (
+    <section>
+      <h2>{title}</h2>
+      {children}
+    </section>
+  );
+}

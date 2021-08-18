@@ -1,10 +1,9 @@
-/** @jsx jsx */
-import { ReactElement } from "react"
-import { jsx, Styled } from "theme-ui"
-import Position from "./Position"
-import Section from "../Section"
+import React from "react";
 
-const Experience = (): ReactElement => (
+import { Section } from "../section";
+import { Position } from "./Position";
+
+export const Experience = (): JSX.Element => (
   <Section title="Experience">
     {[
       {
@@ -129,11 +128,9 @@ const Experience = (): ReactElement => (
         ],
       },
     ].map((p, idx) => (
-      <Styled.div key={idx}>
+      <div key={idx}>
         <Position {...p} />
-      </Styled.div>
+      </div>
     ))}
   </Section>
-)
-
-export default Experience
+);

@@ -1,12 +1,11 @@
-/** @jsx jsx */
-import { ReactElement, ReactNode } from "react"
-import { Badge, jsx, Styled } from "theme-ui"
-import NoBullet from "../NoBullet"
-import Section from "../Section"
+import React from "react";
 
-const Skills = (): ReactElement => (
+import { Badge } from "../badge";
+import { Section } from "../section";
+
+export const Skills = (): JSX.Element => (
   <Section title="Skills">
-    <Styled.ul sx={{ ml: 0 }}>
+    <ul className="list-none">
       {/* Languages */}
       <Skill>Scala</Skill>
       <Skill>JavaScript</Skill>
@@ -35,14 +34,12 @@ const Skills = (): ReactElement => (
       <Skill>GraphQL</Skill>
       <Skill>Test-Driven Development</Skill>
       <Skill>Docker</Skill>
-    </Styled.ul>
+    </ul>
   </Section>
-)
+);
 
-const Skill = ({ children }: { children: ReactNode }) => (
-  <NoBullet sx={{ display: `inline`, mr: 1 }}>
+const Skill = ({ children }: { children: React.ReactNode }) => (
+  <li className="inline mr-1">
     <Badge>{children}</Badge>
-  </NoBullet>
-)
-
-export default Skills
+  </li>
+);

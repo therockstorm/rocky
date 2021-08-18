@@ -1,16 +1,14 @@
-/** @jsx jsx */
-import { ReactElement } from "react"
-import { Flex, jsx, Styled } from "theme-ui"
-import ExternalLink from "../ExternalLink"
-import Section from "../Section"
+import React from "react";
 
-const Certifications = (): ReactElement => (
+import { ExternalLink } from "../external-link";
+import { Section } from "../section";
+
+export const Certifications = (): JSX.Element => (
   <Section title="Certifications">
     {[
       {
         title: "AWS Certified Solutions Architect - Associate",
-        href:
-          "https://www.credly.com/badges/f08cd558-4917-437c-8f3c-4c997d80ddbf/public_url",
+        href: "https://www.credly.com/badges/f08cd558-4917-437c-8f3c-4c997d80ddbf/public_url",
         start: "Apr 2020",
         end: "Apr 2023",
       },
@@ -21,12 +19,12 @@ const Certifications = (): ReactElement => (
         end: "No Expiration",
       },
     ].map((c, idx) => (
-      <Styled.div key={idx}>
+      <div key={idx}>
         <Certification {...c} />
-      </Styled.div>
+      </div>
     ))}
   </Section>
-)
+);
 
 const Certification = ({
   title,
@@ -34,19 +32,17 @@ const Certification = ({
   start,
   end,
 }: {
-  title: string
-  href: string
-  start: string
-  end: string
+  title: string;
+  href: string;
+  start: string;
+  end: string;
 }) => (
-  <Styled.div sx={{ mb: 2 }}>
-    <Flex sx={{ justifyContent: `space-between` }}>
+  <div>
+    <div className="flex justify-between">
       <ExternalLink href={href}>{title}</ExternalLink>
-      <span sx={{ color: "muted" }}>
+      <span className="text-sm text-gray-500">
         {start} - {end}
       </span>
-    </Flex>
-  </Styled.div>
-)
-
-export default Certifications
+    </div>
+  </div>
+);

@@ -1,34 +1,23 @@
 module.exports = {
-  env: { browser: true, node: true, es6: true },
+  env: { browser: true, es2021: true, node: true },
   extends: [
     "eslint:recommended",
-    "plugin:react/recommended",
+    "next",
+    "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-  ],
-  overrides: [
-    {
-      files: ["*.js", "*.jsx"],
-      rules: {
-        "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/explicit-member-accessibility": "off",
-      },
-    },
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: { jsx: true },
-    ecmaVersion: 2020,
+    ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["@typescript-eslint", "react", "simple-import-sort"],
   rules: {
-    "react/prop-types": "off",
-    "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
-    curly: ["error", "multi-line"],
+    "no-await-in-loop": "warn",
+    "no-return-await": "warn",
+    "require-await": "warn",
+    "simple-import-sort/imports": "warn",
   },
   settings: { react: { version: "detect" } },
-}
+};
