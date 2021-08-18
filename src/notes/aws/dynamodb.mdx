@@ -23,6 +23,7 @@ date: "2021-01-05"
   - Cursor-based paging would require either adapter to support limit/offset or new API version
   - No COUNT, must be calculated separately
 - Data Modeling Approach
+
   - Create Entity-Relationship model as usual
   - List all real-time client access patterns
   - Ignore reporting, search, etc., use streams for this
@@ -30,15 +31,21 @@ date: "2021-01-05"
   - Design one table to store your entities with high-cardinality keys, possibly with overloaded indexes and composite sort keys
   - One-To-Many via Composite SK, table can be queried by pk and starts_with, between, >, < etc.
   - Index Overloading
-<Figure caption="" id="ddb-index-overloading" />
-    - One table, one GSI
-    - Table can be queried by ID for accounts and todo entities
-    - GSI can be queried for accounts by status and for todos by account
+
+    <Figure caption="" id="ddb-index-overloading" />
+
+    - One table, one GSI - Table
+      can be queried by ID for accounts and todo entities - GSI can be queried for
+      accounts by status and for todos by account
+
   - Many-To-Many
-<Figure caption="" id="ddb-many-to-many" />
-    - One table, one GSI
-    - Table can be queried by ID for accounts and todo entities and for todos per account
-    - GSI can be queried for accounts by todo
+
+    <Figure caption="" id="ddb-many-to-many" />
+
+    - One table, one GSI - Table can be
+      queried by ID for accounts and todo entities and for todos per account - GSI
+      can be queried for accounts by todo
+
 - Resources
   - [How to switch from RDBMS to DynamoDB in 20 easy steps](https://www.jeremydaly.com/how-to-switch-from-rdbms-to-dynamodb-in-20-easy-steps/), videos linked in article are great
   - [Best Practices](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html)
