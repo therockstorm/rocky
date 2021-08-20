@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Section } from "../section";
-import { Position } from "./Position";
+import { Position } from "./position";
 
 export const Experience = (): JSX.Element => (
   <Section title="Experience">

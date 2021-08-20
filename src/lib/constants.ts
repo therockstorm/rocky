@@ -20,3 +20,5 @@ export const OpenGraph = {
   },
   twitter: { handle: "@therockstorm", cardType: "summary_large_image" },
 };
+export const PostsSearchIndex = "PostsV2";
+export const NotesSearchIndex = "NotesV2";

@@ -5,12 +5,12 @@ import { Avatar } from "./avatar";
 import { Title } from "./title";
 
 interface Props {
-  readonly title: string;
   readonly date: string;
   readonly readingTime: string;
+  readonly title: string;
 }
 
-export function PostHeader({ title, date, readingTime }: Props): JSX.Element {
+export function PostHeader({ date, readingTime, title }: Props): JSX.Element {
   return (
     <div className="mb-6">
       <div className="container mx-auto max-w-3xl flex flex-col flex-grow justify-center px-5 overflow-x-hidden">

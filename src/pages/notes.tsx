@@ -7,8 +7,15 @@ import { Container } from "../components/container";
 import { Folder } from "../components/icons";
 import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
-import { SiteDescription, SiteTitle, SiteUrl } from "../lib/constants";
+import { Search } from "../components/search";
+import {
+  NotesSearchIndex,
+  SiteDescription,
+  SiteTitle,
+  SiteUrl,
+} from "../lib/constants";
 import { getNotesData, NoteData } from "../lib/notes";
+import { buildNotesIndex } from "../lib/search";
 
 interface Props {
   readonly notes: NoteData[];
@@ -42,6 +49,7 @@ function Notes({ notes }: Props): JSX.Element {
       />
       <Navigation />
       <Container>
+        <Search index={NotesSearchIndex} />
         <ul>
           {Object.keys(tree)
             .sort()
@@ -73,5 +81,7 @@ function Notes({ notes }: Props): JSX.Element {
 export default Notes;
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
-  return { props: { notes: await getNotesData() } };
+  const notes = await getNotesData();
+  buildNotesIndex(notes);
+  return { props: { notes } };
 }

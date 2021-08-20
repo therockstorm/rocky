@@ -2,6 +2,8 @@ import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 import { join, resolve } from "path";
 
+import { excerpt } from "./excerpt";
+
 const NotesPath = join(process.cwd(), "src/notes");
 
 export interface Id {
@@ -10,18 +12,19 @@ export interface Id {
 }
 
 export interface FrontMatter {
-  readonly title?: string;
-  readonly date?: string;
+  readonly date: string;
+  readonly excerpt: string;
+  readonly title: string;
 }
 
 export type NoteData = FrontMatter & Id;
 
 export async function getNotesData(): Promise<NoteData[]> {
   return (await getFiles(NotesPath)).map((f) => {
-    const idx = f.indexOf("/notes/");
+    const m = matter(readFileSync(f, "utf8"), { excerpt });
     return {
-      ids: [f.slice(idx + 7)],
-      ...(matter(readFileSync(f, "utf8")).data as FrontMatter),
+      ids: [f.slice(f.indexOf("/notes/") + 7)],
+      ...({ ...m.data, excerpt: m.excerpt } as FrontMatter),
     };
   });
 }

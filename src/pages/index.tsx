@@ -11,9 +11,16 @@ import { Container } from "../components/container";
 import { ExternalLink } from "../components/external-link";
 import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
-import { SiteDescription, SiteTitle, SiteUrl } from "../lib/constants";
+import { Search } from "../components/search";
+import {
+  PostsSearchIndex,
+  SiteDescription,
+  SiteTitle,
+  SiteUrl,
+} from "../lib/constants";
 import { getPostsData, PostData } from "../lib/posts";
 import { generateRSSFeed } from "../lib/rss";
+import { buildPostsIndex } from "../lib/search";
 
 interface Props {
   readonly posts: PostData[];
@@ -51,15 +58,14 @@ function Index({ posts }: Props): JSX.Element {
             </p>
           </div>
         </header>
-        <div className="mt-6">
-          {posts.map((post) => (
-            <Card key={post.title}>
-              <CardTitle href={`/${post.id}`}>{post.title}</CardTitle>
-              <CardDate>{post.date}</CardDate>
-              <CardDescription>{post.excerpt}</CardDescription>
-            </Card>
-          ))}
-        </div>
+        <Search index={PostsSearchIndex} />
+        {posts.map((post) => (
+          <Card key={post.title}>
+            <CardTitle href={`/${post.id}`}>{post.title}</CardTitle>
+            <CardDate>{post.date}</CardDate>
+            <CardDescription>{post.excerpt}</CardDescription>
+          </Card>
+        ))}
       </Container>
     </Layout>
   );
@@ -70,5 +76,6 @@ export default Index;
 export function getStaticProps(): GetStaticPropsResult<Props> {
   const posts = getPostsData();
   generateRSSFeed(posts);
-  return { props: { posts: posts } };
+  buildPostsIndex(posts);
+  return { props: { posts } };
 }
