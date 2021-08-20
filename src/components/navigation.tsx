@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-import { BlogTitle } from "../pages";
+import { BlogTitle } from "../lib/constants";
 import Button from "./button";
 
 export function Navigation(): JSX.Element {

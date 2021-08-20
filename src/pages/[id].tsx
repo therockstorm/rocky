@@ -19,8 +19,8 @@ import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
 import { PostBody } from "../components/post-body";
 import { PostHeader } from "../components/post-header";
+import { Author, OpenGraph, SiteUrl } from "../lib/constants";
 import { FrontMatter, getContent, getPostsData, Id } from "../lib/posts";
-import { Author, OpenGraph, SiteUrl } from ".";
 
 interface Props {
   readonly readTime: { text: string };

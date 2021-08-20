@@ -11,33 +11,9 @@ import { Container } from "../components/container";
 import { ExternalLink } from "../components/external-link";
 import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
+import { SiteDescription, SiteTitle, SiteUrl } from "../lib/constants";
 import { getPostsData, PostData } from "../lib/posts";
-
-export const Author = "Rocky Warren";
-export const SiteTitle = "Rocky Warren | sudo README";
-export const SiteDescription =
-  "Rocky Warren's site. Principal Architect, Tech Lead, and Product Manager at Vertex Software. Previously at Dwolla and John Deere.";
-export const SiteUrl = `${process.env.NEXT_PUBLIC_SITE_URL}`;
-export const BlogTitle = "sudo README";
-export const BlogDescription = "My personal blog.";
-export const SocialMedia = {
-  Twitter: "https://twitter.com/therockstorm",
-  Instagram: "https://www.instagram.com/therockstorm/",
-  LinkedIn: "https://www.linkedin.com/in/rockywarren",
-  Github: "https://github.com/therockstorm",
-};
-export const OpenGraph = {
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://rocky.dev/",
-    site_name: "Rocky Warren",
-  },
-  twitter: {
-    handle: "@therockstorm",
-    cardType: "summary_large_image",
-  },
-};
+import { generateRSSFeed } from "../lib/rss";
 
 interface Props {
   readonly posts: PostData[];
@@ -92,5 +68,7 @@ function Index({ posts }: Props): JSX.Element {
 export default Index;
 
 export function getStaticProps(): GetStaticPropsResult<Props> {
-  return { props: { posts: getPostsData() } };
+  const posts = getPostsData();
+  generateRSSFeed(posts);
+  return { props: { posts: posts } };
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import { Author } from "../pages";
+import { Author } from "../lib/constants";
 import avatar from "./rocky.jpg";
 
 interface Props {

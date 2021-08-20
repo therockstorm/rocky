@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SiteTitle } from "../pages";
+import { SiteTitle } from "../lib/constants";
 import { Footer } from "./footer";
 import { Meta } from "./meta";
 

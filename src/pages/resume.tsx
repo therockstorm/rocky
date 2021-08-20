@@ -10,7 +10,7 @@ import { Featured } from "../components/resume/Featured";
 import { Header } from "../components/resume/Header";
 import { Recommendations } from "../components/resume/Recommendations";
 import { Skills } from "../components/resume/Skills";
-import { SiteDescription, SiteTitle, SiteUrl } from ".";
+import { SiteDescription, SiteTitle, SiteUrl } from "../lib/constants";
 
 function Resume(): JSX.Element {
   return (

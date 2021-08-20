@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SocialMedia } from "../pages";
+import { SocialMedia } from "../lib/constants";
 import { Container } from "./container";
 import { ExternalLink } from "./external-link";
 import { GitHub, Instagram, LinkedIn, Twitter } from "./icons";

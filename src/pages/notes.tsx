@@ -7,8 +7,8 @@ import { Container } from "../components/container";
 import { Folder } from "../components/icons";
 import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
+import { SiteDescription, SiteTitle, SiteUrl } from "../lib/constants";
 import { getNotesData, NoteData } from "../lib/notes";
-import { SiteDescription, SiteTitle, SiteUrl } from ".";
 
 interface Props {
   readonly notes: NoteData[];

@@ -17,8 +17,8 @@ import { Layout } from "../../components/layout";
 import { Navigation } from "../../components/navigation";
 import { PostBody } from "../../components/post-body";
 import { PostHeader } from "../../components/post-header";
+import { Author, SiteUrl } from "../../lib/constants";
 import { FrontMatter, getContent, getNotesData, Id } from "../../lib/notes";
-import { Author, SiteUrl } from "..";
 
 interface Props {
   readonly readTime: { text: string };
