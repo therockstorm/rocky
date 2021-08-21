@@ -34,10 +34,10 @@ function Index({ posts }: Props): JSX.Element {
         description={SiteDescription}
         canonical={SiteUrl}
         openGraph={{
-          url: SiteUrl,
-          title: SiteTitle,
           description: SiteDescription,
+          url: SiteUrl,
           site_name: SiteTitle,
+          title: SiteTitle,
         }}
       />
       <Navigation />

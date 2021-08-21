@@ -32,15 +32,16 @@ interface Props {
 const components = { Figure };
 
 const Post = ({ source, frontMatter, readTime, id }: Props): JSX.Element => {
+  const description = frontMatter.excerpt;
   const url = `${SiteUrl}/${id}`;
-  const title = `Rocky Warren | ${frontMatter.title}`;
+  const title = frontMatter.title;
 
   return (
     <Layout>
       <NextSeo
         title={title}
         canonical={url}
-        openGraph={{ url, title, site_name: title }}
+        openGraph={{ description, url, site_name: title, title }}
       />
       <ArticleJsonLd
         url={url}
@@ -50,7 +51,7 @@ const Post = ({ source, frontMatter, readTime, id }: Props): JSX.Element => {
         authorName={Author}
         publisherName={Author}
         publisherLogo=""
-        description={frontMatter.excerpt}
+        description={description}
       />
       <Navigation />
       <PostHeader
@@ -84,7 +85,7 @@ export async function getStaticProps({
   params,
 }: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
   const id = head(params?.id) as string;
-  const { content, data } = getContent({ id });
+  const { content, data, excerpt } = getContent({ id });
   return {
     props: {
       id,
@@ -96,7 +97,7 @@ export async function getStaticProps({
         },
         scope: data,
       }),
-      frontMatter: data as FrontMatter,
+      frontMatter: { ...data, excerpt } as FrontMatter,
     },
   };
 }

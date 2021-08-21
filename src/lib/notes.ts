@@ -30,7 +30,9 @@ export async function getNotesData(): Promise<NoteData[]> {
 }
 
 export function getContent(ids: string[]): matter.GrayMatterFile<string> {
-  return matter(readFileSync(join(NotesPath, ids.join("/")), "utf8"));
+  return matter(readFileSync(join(NotesPath, ids.join("/")), "utf8"), {
+    excerpt,
+  });
 }
 
 async function getFiles(dir: string): Promise<string[]> {

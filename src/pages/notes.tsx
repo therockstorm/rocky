@@ -38,10 +38,10 @@ function Notes({ notes }: Props): JSX.Element {
         description={SiteDescription}
         canonical={url}
         openGraph={{
-          url,
-          title,
           description: SiteDescription,
+          url,
           site_name: title,
+          title,
         }}
       />
       <Navigation />

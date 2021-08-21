@@ -38,5 +38,5 @@ async function buildIndex(
     date,
   }));
   const res = await idx.saveObjects(transformed);
-  console.log(`Added ${res.objectIDs.length} records to Algolia.`);
+  console.debug(`Added ${res.objectIDs.length} records to Algolia.`);
 }

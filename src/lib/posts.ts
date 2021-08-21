@@ -37,5 +37,7 @@ export function getPostsData(): PostData[] {
 }
 
 export function getContent({ id }: Id): matter.GrayMatterFile<string> {
-  return matter(readFileSync(join(PostsPath, `${id}.mdx`), "utf8"));
+  return matter(readFileSync(join(PostsPath, `${id}.mdx`), "utf8"), {
+    excerpt,
+  });
 }
