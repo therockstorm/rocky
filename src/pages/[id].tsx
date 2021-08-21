@@ -39,9 +39,10 @@ const Post = ({ source, frontMatter, readTime, id }: Props): JSX.Element => {
   return (
     <Layout>
       <NextSeo
-        title={title}
         canonical={url}
+        description={description}
         openGraph={{ description, url, site_name: title, title }}
+        title={title}
       />
       <ArticleJsonLd
         url={url}
