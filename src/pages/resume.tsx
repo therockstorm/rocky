@@ -10,20 +10,23 @@ import { Featured } from "../components/resume/featured";
 import { Header } from "../components/resume/header";
 import { Recommendations } from "../components/resume/recommendations";
 import { Skills } from "../components/resume/skills";
-import { SiteDescription, SiteTitle, SiteUrl } from "../lib/constants";
+import { SiteDescription, SiteUrl } from "../lib/constants";
 
 function Resume(): JSX.Element {
+  const url = `${SiteUrl}/resume`;
+  const title = "Rocky Warren Resume";
+
   return (
     <Layout>
       <NextSeo
-        title="Rocky Warren Resume"
+        title={title}
         description={SiteDescription}
-        canonical={SiteUrl}
+        canonical={url}
         openGraph={{
-          url: SiteUrl,
-          title: SiteTitle,
+          url,
+          title,
           description: SiteDescription,
-          site_name: SiteTitle,
+          site_name: title,
         }}
       />
       <Navigation />

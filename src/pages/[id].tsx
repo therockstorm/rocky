@@ -32,20 +32,19 @@ interface Props {
 const components = { Figure };
 
 const Post = ({ source, frontMatter, readTime, id }: Props): JSX.Element => {
+  const url = `${SiteUrl}/${id}`;
+  const title = `Rocky Warren | ${frontMatter.title}`;
+
   return (
     <Layout>
       <NextSeo
-        title={frontMatter.title}
-        canonical={`${SiteUrl}/${id}`}
-        openGraph={{
-          url: `${SiteUrl}/${id}`,
-          title: frontMatter.title,
-          site_name: frontMatter.title,
-        }}
+        title={title}
+        canonical={url}
+        openGraph={{ url, title, site_name: title }}
       />
       <ArticleJsonLd
-        url={`${SiteUrl}/${id}`}
-        title={frontMatter.title}
+        url={url}
+        title={title}
         images={[]}
         datePublished={frontMatter.date}
         authorName={Author}
@@ -55,7 +54,7 @@ const Post = ({ source, frontMatter, readTime, id }: Props): JSX.Element => {
       />
       <Navigation />
       <PostHeader
-        title={frontMatter.title}
+        title={title}
         date={frontMatter.date}
         readingTime={readTime.text}
       />

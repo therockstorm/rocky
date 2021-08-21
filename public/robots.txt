@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: rocky.dev
+Host: https://rocky.dev
 
 # Sitemaps
-Sitemap: rocky.dev/sitemap.xml
+Sitemap: https://rocky.dev/sitemap.xml

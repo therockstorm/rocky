@@ -30,33 +30,33 @@ interface Props {
 const components = { Figure };
 
 const Note = ({ source, frontMatter, readTime, ids }: Props): JSX.Element => {
-  const date = frontMatter.date || "";
   const id = head(ids) as string;
-  const title = frontMatter.title || id;
+  const title = `Rocky Warren | ${frontMatter.title}`;
+  const url = `${SiteUrl}/notes/${id}`;
 
   return (
     <Layout>
       <NextSeo
         title={title}
-        canonical={`${SiteUrl}/${id}`}
-        openGraph={{
-          url: `${SiteUrl}/${id}`,
-          title: title,
-          site_name: title,
-        }}
+        canonical={url}
+        openGraph={{ url, title, site_name: title }}
       />
       <ArticleJsonLd
-        url={`${SiteUrl}/${id}`}
+        url={url}
         title={title}
         images={[]}
-        datePublished={date}
+        datePublished={frontMatter.date}
         authorName={Author}
         publisherName={Author}
         publisherLogo=""
-        description=""
+        description={frontMatter.excerpt}
       />
       <Navigation />
-      <PostHeader title={title} date={date} readingTime={readTime.text} />
+      <PostHeader
+        title={title}
+        date={frontMatter.date}
+        readingTime={readTime.text}
+      />
       <Container>
         <article>
           <PostBody>

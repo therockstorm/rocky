@@ -8,12 +8,7 @@ import { Folder } from "../components/icons";
 import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
 import { Search } from "../components/search";
-import {
-  NotesSearchIndex,
-  SiteDescription,
-  SiteTitle,
-  SiteUrl,
-} from "../lib/constants";
+import { NotesSearchIndex, SiteDescription, SiteUrl } from "../lib/constants";
 import { getNotesData, NoteData } from "../lib/notes";
 import { buildNotesIndex } from "../lib/search";
 
@@ -33,18 +28,20 @@ function Notes({ notes }: Props): JSX.Element {
     },
     {} as { [k: string]: string[] }
   );
+  const url = `${SiteUrl}/notes`;
+  const title = "Rocky Warren Notes";
 
   return (
     <Layout>
       <NextSeo
-        title={SiteTitle}
+        title={title}
         description={SiteDescription}
-        canonical={SiteUrl}
+        canonical={url}
         openGraph={{
-          url: SiteUrl,
-          title: SiteTitle,
+          url,
+          title,
           description: SiteDescription,
-          site_name: SiteTitle,
+          site_name: title,
         }}
       />
       <Navigation />
