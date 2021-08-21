@@ -3,9 +3,9 @@ import { writeFileSync } from "fs";
 
 import {
   Author,
+  PublicSiteUrl,
   SiteDescription,
   SiteTitle,
-  SiteUrl,
   SocialMedia,
 } from "./constants";
 import { PostData } from "./posts";
@@ -16,17 +16,17 @@ export function generateRSSFeed(posts: PostData[]): void {
     author,
     copyright: `2012-present ${Author}`,
     description: SiteDescription,
-    feedLinks: { rss2: `${SiteUrl}/rss.xml` },
-    id: SiteUrl,
+    feedLinks: { rss2: `${PublicSiteUrl}/rss.xml` },
+    id: PublicSiteUrl,
     language: "en",
-    link: SiteUrl,
+    link: PublicSiteUrl,
     title: SiteTitle,
     updated: new Date(),
   });
 
   posts.forEach((post) => {
     const { date, excerpt, id, title } = post;
-    const url = `${SiteUrl}/${id}`;
+    const url = `${PublicSiteUrl}/${id}`;
 
     feed.addItem({
       title,

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: localhost:3000
+Host: rocky.dev
 
 # Sitemaps
-Sitemap: localhost:3000/sitemap.xml
+Sitemap: rocky.dev/sitemap.xml
