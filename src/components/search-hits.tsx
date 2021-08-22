@@ -1,4 +1,3 @@
-import { format, parseISO } from "date-fns";
 import Link from "next/link";
 import { BasicDoc, SearchResults, SearchState } from "react-instantsearch-core";
 import { connectStateResults } from "react-instantsearch-dom";
@@ -17,14 +16,11 @@ function SearchHits({ searchState, searchResults }: Props) {
       {searchResults?.hits.length > 0 && valid && (
         <ol>
           {searchResults.hits.map((hit) => (
-            <li key={hit.objectID}>
-              <div className="container flex mx-8 my-2">
+            <li className="ml-8 mr-3" key={hit.objectID}>
+              <div className="container flex my-2">
                 <Link href={hit.slug} passHref>
                   {hit.title}
                 </Link>
-                <div className="ml-2 text-base text-gray-700">
-                  {format(parseISO(hit.date), "LLLL d, yyyy")}
-                </div>
               </div>
             </li>
           ))}
