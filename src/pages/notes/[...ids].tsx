@@ -18,6 +18,7 @@ import { Navigation } from "../../components/navigation";
 import { PostBody } from "../../components/post-body";
 import { PostHeader } from "../../components/post-header";
 import { Author, SiteUrl } from "../../lib/constants";
+import { toJsonLdString } from "../../lib/json-ld";
 import { FrontMatter, getContent, getNotesData, Id } from "../../lib/notes";
 
 interface Props {
@@ -45,13 +46,13 @@ const Note = ({ source, frontMatter, readTime, ids }: Props): JSX.Element => {
       />
       <ArticleJsonLd
         url={url}
-        title={title}
+        title={toJsonLdString(title)}
         images={[]}
         datePublished={frontMatter.date}
         authorName={Author}
         publisherName={Author}
         publisherLogo=""
-        description={description}
+        description={toJsonLdString(description)}
       />
       <Navigation />
       <PostHeader
