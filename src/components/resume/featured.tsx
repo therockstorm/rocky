@@ -7,6 +7,11 @@ export const Featured = (): JSX.Element => (
   <Section title="Talks and Publications">
     {[
       {
+        title: "3D Digital Twin Example Applications",
+        href: "https://developer.vertexvis.com/examples",
+        desc: "Open-source examples to get started building interactive 3D applications; no 3D experience required.",
+      },
+      {
         title: "Sending Millions of Serverless Webhooks",
         href: "https://www.youtube.com/watch?v=zpPV8lUxPpE",
         desc: "Talk at the dsmJS Meetup describing my serverless webhooks architecture.",
