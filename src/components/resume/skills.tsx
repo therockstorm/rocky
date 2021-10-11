@@ -11,29 +11,29 @@ export const Skills = (): JSX.Element => (
       <Skill>JavaScript</Skill>
       <Skill>TypeScript</Skill>
       <Skill>C#</Skill>
-      <Skill>Shell/Bash</Skill>
-      <Skill>Rust</Skill>
       <Skill>Python</Skill>
+      <Skill>Shell/Bash</Skill>
       <Skill>Java</Skill>
+      <Skill>Rust</Skill>
       {/* Data */}
       <Skill>PostgreSQL</Skill>
-      <Skill>DynamoDB</Skill>
-      <Skill>AWS Lambda</Skill>
       <Skill>SQS</Skill>
+      <Skill>DynamoDB</Skill>
+      <Skill>Kafka</Skill>
+      <Skill>AWS Lambda</Skill>
       <Skill>Athena</Skill>
       <Skill>Akka</Skill>
-      <Skill>Kafka</Skill>
       <Skill>Redis</Skill>
       <Skill>gRPC</Skill>
       {/* Miscellaneous */}
+      <Skill>React</Skill>
+      <Skill>GraphQL</Skill>
+      <Skill>Docker</Skill>
       <Skill>REST API Design</Skill>
       <Skill>Distributed Systems</Skill>
       <Skill>Continuous Delivery</Skill>
       <Skill>Software Architecture</Skill>
-      <Skill>React</Skill>
-      <Skill>GraphQL</Skill>
       <Skill>Test-Driven Development</Skill>
-      <Skill>Docker</Skill>
     </ul>
   </Section>
 );
