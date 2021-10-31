@@ -6,7 +6,7 @@ const isPublic = !process.env.NEXT_PUBLIC_SITE_URL?.includes("localhost");
 export const SiteUrl = `http${isPublic ? "s" : ""}://${
   process.env.NEXT_PUBLIC_SITE_URL
 }`;
-export const PublicSiteUrl = `https://rocky.dev`;
+export const PublicSiteUrl = `https://www.rocky.dev`;
 export const BlogTitle = "sudo README";
 export const BlogDescription = "My personal blog.";
 export const SocialMedia = {
