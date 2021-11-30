@@ -7,11 +7,11 @@
   "private": true,
   "dependencies": {
     "classnames": "2.3",
-    "date-fns": "2.26",
+    "date-fns": "2.27",
     "next": "12.0",
     "react": "^17.0",
     "react-dom": "^17.0",
-    "react-instantsearch-dom": "^6.15"
+    "react-instantsearch-dom": "^6.16"
   },
   "devDependencies": {
     "@babel/core": "^7.16",
@@ -21,8 +21,8 @@
     "@types/react": "^17.0",
     "@types/react-dom": "^17.0",
     "@types/react-instantsearch-dom": "^6.12",
-    "@typescript-eslint/eslint-plugin": "^5.4",
-    "@typescript-eslint/parser": "^5.4",
+    "@typescript-eslint/eslint-plugin": "^5.5",
+    "@typescript-eslint/parser": "^5.5",
     "algoliasearch": "^4.11",
     "autoprefixer": "^10.4",
     "eslint": "<8.0.0",
@@ -34,9 +34,9 @@
     "next-mdx-remote": "3.0",
     "next-seo": "^4.28",
     "next-sitemap": "^1.6",
-    "postcss": "^8.3",
+    "postcss": "^8.4",
     "postcss-preset-env": "^7.0",
-    "prettier": "^2.4",
+    "prettier": "^2.5",
     "reading-time": "^1.5",
     "rehype": "^12.0",
     "remark-external-links": "^9.0",
