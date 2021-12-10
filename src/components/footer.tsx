@@ -7,7 +7,7 @@ import { GitHub, Instagram, LinkedIn, Twitter } from "./icons";
 
 export function Footer(): JSX.Element {
   return (
-    <footer className="h-30 flex items-center flex-shrink-0 print:hidden">
+    <footer className="h-30 flex items-center shrink-0 print:hidden">
       <Container>
         <div className="container mx-auto my-5 max-w-3xl text-gray-300">
           <hr />

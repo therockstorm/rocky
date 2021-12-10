@@ -9,7 +9,7 @@ interface Props {
 export function CardTitle({ children, href, ...rest }: Props): JSX.Element {
   return (
     <Link href={href} {...rest} passHref>
-      <button className="flex flex-col sm:flex-row flex-grow text-blue-600 font-semibold text-lg sm:text-xl mb-2 text-left">
+      <button className="flex flex-col sm:flex-row grow text-blue-600 font-semibold text-lg sm:text-xl mb-2 text-left">
         {children}
       </button>
     </Link>

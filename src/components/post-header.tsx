@@ -13,7 +13,7 @@ interface Props {
 export function PostHeader({ date, readingTime, title }: Props): JSX.Element {
   return (
     <div className="mb-6">
-      <div className="container mx-auto max-w-3xl flex flex-col flex-grow justify-center px-5 overflow-x-hidden">
+      <div className="container mx-auto max-w-3xl flex flex-col grow justify-center px-5 overflow-x-hidden">
         <Title>{title}</Title>
         <div className="mt-5 flex flex-col sm:flex-row justify-between space-y-2 sm:space-y-0 sm:items-center">
           <Avatar showName />
