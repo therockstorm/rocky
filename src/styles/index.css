@@ -144,12 +144,12 @@ pre[data-line] {
   position: relative;
 }
 
-.post-body code {
+/* .post-body code {
   padding: 0.3em;
   border-radius: 0.125rem;
   background-color: #f8fafc;
   color: rgb(95, 95, 95);
-}
+} */
 
 .prose a {
   text-decoration: none;
