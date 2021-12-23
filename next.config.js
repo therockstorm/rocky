@@ -1,5 +1,5 @@
 module.exports = {
-  async headers() {
+  headers() {
     return [
       {
         source: "/(.*)",
@@ -30,7 +30,7 @@ module.exports = {
           },
           {
             key: "Referrer-Policy",
-            value: "no-referrer-when-downgrade",
+            value: "strict-origin-when-cross-origin",
           },
           {
             key: "Content-Security-Policy",
