@@ -1,0 +1,17 @@
+{
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "matchDatasources": ["npm"],
+      "prCreation": "not-pending",
+      "stabilityDays": 3
+    }
+  ],
+  "schedule": ["before 3am on Tuesday"],
+  "timezone": "America/Denver"
+}
