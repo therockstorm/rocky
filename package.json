@@ -20,7 +20,7 @@
     "@types/node": "^17.0",
     "@types/react": "^17.0",
     "@types/react-dom": "^17.0",
-    "@types/react-instantsearch-dom": "^6.12",
+    "@types/react-instantsearch-dom": "6.12.2",
     "@typescript-eslint/eslint-plugin": "^5.9",
     "@typescript-eslint/parser": "^5.9",
     "algoliasearch": "^4.11",
