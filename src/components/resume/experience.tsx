@@ -7,12 +7,24 @@ export const Experience = (): JSX.Element => (
   <Section title="Experience">
     {[
       {
+        company: "Brale",
+        positions: [
+          {
+            title: "Founding Principal Engineer",
+            start: "Jan 2022",
+            end: "Present",
+            location: "Remote",
+            desc: ["Building a company from scratch."],
+          },
+        ],
+      },
+      {
         company: "Vertex Software",
         positions: [
           {
             title: "Principal Technical Lead and Product Manager, APIs & SDKs",
             start: "Aug 2020",
-            end: "Present",
+            end: "Jan 2022",
             location: "Remote",
             desc: [
               "Manage and mentor developers. Team has strong focus on customer satisfaction and ease of on-boarding with regular customer interviews, step-by-step guides, interactive demos, a command-line interface (CLI), and automated, always up-to-date API code samples.",
