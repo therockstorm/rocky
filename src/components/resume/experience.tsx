@@ -14,7 +14,7 @@ export const Experience = (): JSX.Element => (
             start: "Jan 2022",
             end: "Present",
             location: "Remote",
-            desc: ["Building a company from scratch."],
+            desc: ["Building a company from the ground up."],
           },
         ],
       },
