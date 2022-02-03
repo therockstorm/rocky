@@ -11,7 +11,7 @@ export const Experience = (): JSX.Element => (
         positions: [
           {
             title: "Founding Principal Engineer",
-            start: "Jan 2022",
+            start: "Feb 2022",
             end: "Present",
             location: "Remote",
             desc: ["Building a company from the ground up."],
@@ -24,7 +24,7 @@ export const Experience = (): JSX.Element => (
           {
             title: "Principal Technical Lead and Product Manager, APIs & SDKs",
             start: "Aug 2020",
-            end: "Jan 2022",
+            end: "Feb 2022",
             location: "Remote",
             desc: [
               "Manage and mentor developers. Team has strong focus on customer satisfaction and ease of on-boarding with regular customer interviews, step-by-step guides, interactive demos, a command-line interface (CLI), and automated, always up-to-date API code samples.",

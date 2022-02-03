@@ -46,11 +46,17 @@ function Index({ posts }: Props): JSX.Element {
           <div className="flex space-x-3 items-center">
             <Avatar size="lg" />
             <p className="prose lg:prose-lg prose-blue">
-              Rocky Warren&#39;s blog. Founding Principal Engineer, Tech Lead,
-              Product Manager. I{" "}
+              Rocky Warren&#39;s blog. Founding Principal Engineer at{" "}
               <ExternalLink
                 className="no-underline font-bold text-lg"
-                href={"https://www.rockywarren.com/"}
+                href="https://brale.xyz/"
+              >
+                Brale
+              </ExternalLink>
+              . I{" "}
+              <ExternalLink
+                className="no-underline font-bold text-lg"
+                href="https://www.rockywarren.com/"
               >
                 do other stuff
               </ExternalLink>{" "}

@@ -7,3 +7,4 @@ Host: https://www.rocky.dev
 
 # Sitemaps
 Sitemap: https://www.rocky.dev/sitemap.xml
+Sitemap: https://www.rocky.dev/sitemap-0.xml
