@@ -13,8 +13,8 @@ export const Header = (): JSX.Element => (
         thousand-line microservices moving billions of dollars each year to
         multi-million line GPS guidance systems. I deliver customer value
         utilizing object-oriented, functional, statically-typed, dynamic, and
-        database languages and lead teams as a Principal Technical Lead,
-        Architect, Product Manager, and Startup Co-founder.
+        database languages and lead teams as a Founding Principal Engineer, Tech
+        Lead, Architect, Product Manager, and Startup Co-founder.
       </p>
       <div className="flex justify-between flex-wrap">
         <div className="flex items-center">

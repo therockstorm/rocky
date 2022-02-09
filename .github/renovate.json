@@ -14,5 +14,6 @@
     }
   ],
   "schedule": ["before 4am every weekday"],
-  "timezone": "America/Denver"
+  "timezone": "America/Denver",
+  "vulnerabilityAlerts": { "labels": ["security"] }
 }
