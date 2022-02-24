@@ -122,26 +122,3 @@ Rather than using random examples from Scala projects in the wild, these are mea
     anotherFuture(item, myValue)
   }
   ```
-
-<!-- TODO
-- Unit test with mocking (matchers \*[T] vs eqTo), Async vs Flat spec, well factored
-- Integration test, reducing boilerplate, share fakes from test config
-- Lefthook opt-out
-- Futures, `map`, `flatMap`, `for`, `fallbackTo`, `recover`, `recoverWith`
-- Error handling in repos, services, and across gRPC
-- Alpakka S3, SQS, Kafka
-- Akka streams, error handling, composition
-- gRPC service (PRS for `Request > Service > Validator > [DO WORK] > Mapper > Response`) and endpoint, `protov.json`, protobufs (publishing versions, local publish, prototool)
-- Slick lifted, plain sql, streaming
-- Generics and type bounds
-- Function passing
-- Cats (principles/debugging errors, IO, Validated, Chains)
-- Implicits
-- Database schemas
-- Avoid Unit returns and Await.result, instead, pass result to next function so order dependencies are clear, allows you to see parallelization opportunities
-- pull things out of for comps to run in parallel or
-    import cats.instances.future._
-    import cats.syntax.apply._        (doSomethingAsyncA(), doSomethingAsyncB()).tupled.map {
-      case (resA, resB) => CombinedResponse(resA, resB)
-    }
-END TODO -->

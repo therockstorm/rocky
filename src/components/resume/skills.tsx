@@ -7,9 +7,10 @@ export const Skills = (): JSX.Element => (
   <Section title="Skills">
     <ul className="list-none">
       {/* Languages */}
-      <Skill>Scala</Skill>
       <Skill>JavaScript</Skill>
       <Skill>TypeScript</Skill>
+      <Skill>Elixir</Skill>
+      <Skill>Scala</Skill>
       <Skill>C#</Skill>
       <Skill>Python</Skill>
       <Skill>Shell/Bash</Skill>
@@ -28,6 +29,7 @@ export const Skills = (): JSX.Element => (
       {/* Miscellaneous */}
       <Skill>React</Skill>
       <Skill>GraphQL</Skill>
+      <Skill>Phoenix</Skill>
       <Skill>Docker</Skill>
       <Skill>REST API Design</Skill>
       <Skill>Distributed Systems</Skill>

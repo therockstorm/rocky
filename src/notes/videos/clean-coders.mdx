@@ -46,7 +46,7 @@ date: "2020-12-28"
     - If they're needed, instead of exposing internals like GetGallonsOfGas, use GetPercentFuelRemaining, allows for polymorphism
   - Data Structure: public variables, little to no methods, switch statements, protect from new methods
   - Class: private variables, public methods, polymorphism, protect from new types
-  - Domain <- DB Interface -> DB: Have interfaces in domain that DBI implements
+  - Domain \<- DB Interface -\> DB: Have interfaces in domain that DBI implements
   - Application shouldn't know about views in the same way
 - TDD Part 1
   - Methods with lots of state should likely be classes
