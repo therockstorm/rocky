@@ -1,19 +1,19 @@
 {
-  "extends": ["config:base"],
+  "extends": [
+    ":combinePatchMinorReleases",
+    ":disableRateLimiting",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    ":timezone(America/Denver)",
+    "config:js-app",
+    "group:allNonMajor",
+    "npm:unpublishSafe",
+    "schedule:weekly"
+  ],
   "packageRules": [
     {
       "automerge": true,
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
-    },
-    {
-      "internalChecksFilter": "strict",
-      "matchDatasources": ["npm"],
-      "prCreation": "not-pending",
-      "stabilityDays": 3
     }
-  ],
-  "schedule": ["before 4am every weekday"],
-  "timezone": "America/Denver",
-  "vulnerabilityAlerts": { "labels": ["security"] }
+  ]
 }
