@@ -48,14 +48,14 @@ function Index({ posts }: Props): JSX.Element {
             <p className="prose lg:prose-lg prose-blue">
               Rocky Warren&#39;s blog. Founding Principal Engineer at{" "}
               <ExternalLink
-                className="no-underline font-bold text-lg"
+                className="no-underline text-lg"
                 href="https://brale.xyz/"
               >
                 Brale
               </ExternalLink>
               . I{" "}
               <ExternalLink
-                className="no-underline font-bold text-lg"
+                className="no-underline text-lg"
                 href="https://www.rockywarren.com/"
               >
                 do other stuff
