@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 import alienCoke from "../../assets/alien-coke.jpg";
 import alienStout from "../../assets/alien-stout.jpg";
