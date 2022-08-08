@@ -10,6 +10,7 @@ export const Skills = (): JSX.Element => (
       <Skill>JavaScript</Skill>
       <Skill>TypeScript</Skill>
       <Skill>Elixir</Skill>
+      <Skill>Solidity</Skill>
       <Skill>Scala</Skill>
       <Skill>C#</Skill>
       <Skill>Python</Skill>
@@ -28,14 +29,12 @@ export const Skills = (): JSX.Element => (
       <Skill>gRPC</Skill>
       {/* Miscellaneous */}
       <Skill>React</Skill>
-      <Skill>GraphQL</Skill>
+      <Skill>Cloud SIEM</Skill>
       <Skill>Phoenix</Skill>
       <Skill>Docker</Skill>
       <Skill>REST API Design</Skill>
       <Skill>Distributed Systems</Skill>
-      <Skill>Continuous Delivery</Skill>
-      <Skill>Software Architecture</Skill>
-      <Skill>Test-Driven Development</Skill>
+      <Skill>Threat Modelling</Skill>
     </ul>
   </Section>
 );
