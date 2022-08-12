@@ -29,7 +29,7 @@ export const Experience = (): JSX.Element => (
               `Protect against supply chain attacks with Renovate dependency updates and automated Dependabot and Docker container security alerts.`,
               `Coordinate company-wide phishing training and engineering team OWASP Top 10 awareness.`,
               `Maintain developer and InfoSec onboarding, scripting installation of tools, configuring SSH, and optionally adding useful terminal aliases.`,
-              `Deployed Fleetsmith to gather telemetry and enforce endpoint (laptop and mobile device) security.`,
+              `Deploy Fleetsmith to company endpoints (laptop and mobile devices) to gather telemetry and enforce security rules.`,
               `Use Burp Suite to penetration test applications, GoPhish for phishing simulations, and Slither and Echidna to statically analyze and fuzz smart contracts, reporting on and addressing findings.`,
             ],
           },
