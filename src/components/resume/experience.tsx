@@ -17,7 +17,7 @@ export const Experience = (): JSX.Element => (
             desc: [
               `Drive DevOps culture with automated identity and access management (IAM) and resource provisioning across multiple AWS accounts using AWS Organizations and AWS's Infrastructure as Code (IaC) tool, CDK.`,
               `Build secure by default CDK constructs (e.g., least-privilege policies, private S3 buckets, encryption at rest) to ease development.`,
-              `Encrypt sensitive data client-side using AES-GCM authenticated envelope encryption backed by AWS KMS, random initialization vectors, and tagged ciphertexts for ease of rotation. Searchable fields leverage salted SHA-512 hashes with key stretching.`,
+              `Encrypt sensitive data client-side using 256-bit AES-GCM envelope encryption backed by AWS KMS, random initialization vectors, and tagged ciphertexts for ease of rotation. Searchable fields leverage HMAC SHA-512 hashes.`,
               `Lead regular Threat Model exercises to determine and create mitigation plans for threat sources and events leveraging NIST SP 800-30 and MITRE ATT&CK.`,
               `Author ERC-20 compatible Solidity smart contracts, coordinate external code audits, and build automated multi-blockchain deployment infrastructure.`,
               `Set up ingestion of application, CloudTrail, GuardDuty, VPC flow, and load balancer access logs into Datadog. Mitigate PCI, SOC 2, and GDPR rule findings and use Cloud SIEM to alert on new findings and anomalous activity.`,
