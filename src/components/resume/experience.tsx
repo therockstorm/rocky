@@ -29,7 +29,7 @@ export const Experience = (): JSX.Element => (
               `Protect against supply chain attacks with Renovate dependency updates and automated Dependabot and Docker container security alerts.`,
               `Coordinate company-wide security training and engineering team OWASP Top 10 and SANS Top 25 vulnerability demonstrations.`,
               `Maintain employee onboarding and offboarding, scripting application install, SSH configuration, and IAM provisioning/deprovisioning.`,
-              `Deploy Fleetsmith to company endpoints (laptop and mobile devices) to gather telemetry, manage software patches, and enforce security rules such as disk encryption and malware protection.`,
+              `Deploy Fleetsmith to company endpoints to gather telemetry, manage software patches, and enforce security rules such as disk encryption and malware protection.`,
               `Use Burp Suite to scan for vulnerabilities and penetration test applications, GoPhish for phishing simulations, and Slither and Echidna to statically analyze and fuzz smart contracts, reporting on and addressing findings.`,
               `Perform manual secure code reviews with an eye toward authentication, authorization, session management, data validation, error handling, logging, and encryption.`,
               `Implemented and maintain Cloudflare Access and Gateway for zero trust application access and internet browsing for both office and remote employees.`,
