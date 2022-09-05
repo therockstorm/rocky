@@ -28,7 +28,7 @@
     "autoprefixer": "10.4.8",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
-    "eslint-plugin-simple-import-sort": "7.0.0",
+    "eslint-plugin-simple-import-sort": "8.0.0",
     "feed": "4.2.2",
     "gray-matter": "4.0.3",
     "mdx-prism": "0.3.4",
