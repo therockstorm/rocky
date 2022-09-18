@@ -118,7 +118,7 @@ export const Experience = (): JSX.Element => (
             location: "San Francisco, CA",
             desc: [
               "Built commodities trading platform from ground up, complete with reactive, real-time market, PDF contract generation, and e-signing.",
-              "Secured with encryption in transit and at rest, A+ Qualys TLS score, and OWASP Top 10 mitigations.",
+              "Secured with encryption in transit and at rest, A+ Qualys TLS score, and OWASP Top 10 mitigation.",
             ],
           },
         ],
@@ -142,7 +142,7 @@ export const Experience = (): JSX.Element => (
             end: "Jan 2010",
             location: "Des Moines, IA",
             desc: [
-              "Led coding Katas of multiple 50+ developer groups teaching keyboard shortcuts, refactorings, test-driven development, pair-programming, and Linux shell commands.",
+              "Led code katas of multiple 50+ developer groups teaching keyboard shortcuts, refactoring, test-driven development, pair-programming, and Linux shell commands.",
               "Organized company's first Hackathons. After votes from 200+ employees, won both with customer analytics, predictive keyboard, touch screen gestures, and Tetris! Demoed results to CEO and staff.",
             ],
           },

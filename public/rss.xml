@@ -4,18 +4,11 @@
         <title>Rocky Warren | sudo README</title>
         <link>https://www.rocky.dev</link>
         <description>Rocky Warren's site. Principal Architect, Tech Lead, and Product Manager at Vertex Software. Previously at Dwolla and John Deere.</description>
-        <lastBuildDate>Mon, 08 Aug 2022 20:26:23 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 18 Sep 2022 14:31:35 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>2012-present Rocky Warren</copyright>
-        <item>
-            <title><![CDATA[Hashing vs Encryption]]></title>
-            <link>https://www.rocky.dev/hashing-vs-encryption</link>
-            <guid>https://www.rocky.dev/hashing-vs-encryption</guid>
-            <pubDate>Tue, 01 Jun 2021 00:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[Encryption is a two-way function. You can encrypt data, like a file, and then later decrypt it provided you have the proper encryption key. This is useful when you need to retrieve the ...]]></content:encoded>
-        </item>
         <item>
             <title><![CDATA[Death to (Synchronous) Standups]]></title>
             <link>https://www.rocky.dev/death-to-standups</link>
@@ -120,6 +113,13 @@
             <guid>https://www.rocky.dev/serverless-webhooks-dsmjs-talk</guid>
             <pubDate>Wed, 22 May 2019 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[In March, Dwolla updated its webhooks to a serverless architecture, improving their timeliness, configurability, cost and reliability. Watch the talk I gave at dsmJS to learn more about...]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Hashing vs Encryption]]></title>
+            <link>https://www.rocky.dev/hashing-vs-encryption</link>
+            <guid>https://www.rocky.dev/hashing-vs-encryption</guid>
+            <pubDate>Fri, 01 Jun 2018 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Encryption is a two-way function. You can encrypt data, like a file, and then later decrypt it provided you have the proper encryption key. This is useful when you need to retrieve the ...]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Go Learning Resources]]></title>
