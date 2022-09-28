@@ -1,11 +1,13 @@
 {
   "cSpell.words": [
+    "algoliasearch",
     "Brale",
     "ciphertexts",
     "CSPM",
     "Dwolla",
     "Fleetsmith",
     "hackathons",
+    "instantsearch",
     "Kandji",
     "katas",
     "microservices",
@@ -13,9 +15,12 @@
     "nosniff",
     "offboarding",
     "OWASP",
+    "postbuild",
     "Qualys",
+    "rehype",
     "SAMEORIGIN",
     "SIEM",
+    "tailwindcss",
     "Tetris",
     "ytimg"
   ]
