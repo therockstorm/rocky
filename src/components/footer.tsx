@@ -3,7 +3,7 @@ import React from "react";
 import { SocialMedia } from "../lib/constants";
 import { Container } from "./container";
 import { ExternalLink } from "./external-link";
-import { GitHub, Instagram, LinkedIn, Twitter } from "./icons";
+import { GitHub, LinkedIn, Twitter } from "./icons";
 
 export function Footer(): JSX.Element {
   return (
@@ -19,13 +19,6 @@ export function Footer(): JSX.Element {
           >
             <span className="sr-only">Twitter</span>
             <Twitter />
-          </ExternalLink>
-          <ExternalLink
-            href={SocialMedia.Instagram}
-            className="ml-6 text-gray-500 hover:text-gray-600"
-          >
-            <span className="sr-only">Instagram</span>
-            <Instagram />
           </ExternalLink>
           <ExternalLink
             href={SocialMedia.LinkedIn}

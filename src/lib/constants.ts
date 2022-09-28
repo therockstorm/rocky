@@ -11,7 +11,6 @@ export const BlogTitle = "sudo README";
 export const BlogDescription = "My personal blog.";
 export const SocialMedia = {
   Twitter: "https://twitter.com/therockstorm",
-  Instagram: "https://www.instagram.com/therockstorm/",
   LinkedIn: "https://www.linkedin.com/in/rockywarren",
   Github: "https://github.com/therockstorm",
 };
