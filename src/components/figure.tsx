@@ -57,6 +57,7 @@ import day17 from "../../assets/day-17.png";
 import daytonaSpeedway from "../../assets/daytona-speedway.jpg";
 import ddbIndexOverloading from "../../assets/ddb-index-overloading.png";
 import ddbManyToMany from "../../assets/ddb-many-to-many.png";
+import deepWork from "../../assets/deep-work.jpg";
 import derekAndI from "../../assets/derek-and-i.jpg";
 import dumbCar from "../../assets/dumb-car.jpg";
 import elk from "../../assets/elk.jpg";
@@ -219,6 +220,7 @@ type ImageType =
   | "daytona-speedway"
   | "ddb-index-overloading"
   | "ddb-many-to-many"
+  | "deep-work"
   | "derek-and-i"
   | "dumb-car"
   | "elk"
@@ -386,6 +388,7 @@ const Images: Record<ImageType, StaticImageData> = {
   "daytona-speedway": daytonaSpeedway,
   "ddb-index-overloading": ddbIndexOverloading,
   "ddb-many-to-many": ddbManyToMany,
+  "deep-work": deepWork,
   "derek-and-i": derekAndI,
   "dumb-car": dumbCar,
   elk: elk,

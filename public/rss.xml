@@ -4,11 +4,18 @@
         <title>Rocky Warren | sudo README</title>
         <link>https://www.rocky.dev</link>
         <description>Rocky Warren's site. Principal Architect, Tech Lead, and Product Manager at Vertex Software. Previously at Dwolla and John Deere.</description>
-        <lastBuildDate>Sun, 18 Sep 2022 14:31:35 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 07 Oct 2022 19:45:42 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>2012-present Rocky Warren</copyright>
+        <item>
+            <title><![CDATA[Deep Work]]></title>
+            <link>https://www.rocky.dev/deep-work</link>
+            <guid>https://www.rocky.dev/deep-work</guid>
+            <pubDate>Fri, 07 Oct 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[  Protected "maker", "flow", or "deep work" time is important to productivity. It's difficult for larger companies to change their culture around meetings, it's not for startups. Implem...]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Death to (Synchronous) Standups]]></title>
             <link>https://www.rocky.dev/death-to-standups</link>
