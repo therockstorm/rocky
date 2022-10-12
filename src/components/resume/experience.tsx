@@ -21,8 +21,8 @@ export const Experience = (): JSX.Element => (
               `Use Burp Suite to scan for vulnerabilities and penetration test applications and Slither and Echidna to statically analyze and fuzz smart contracts, reporting on and addressing findings.`,
               `Implemented and maintain Cloudflare Access and Gateway for zero trust application access and internet browsing for both office and remote employees.`,
               `Coordinate company-wide security training and engineering team OWASP Top 10 and SANS Top 25 vulnerability demonstrations.`,
+              `Encourage and, if possible, enforce secure best practices such as AWS access via only temporary credentials, password managers for employee secrets, AWS Secrets Manager for software secrets, and hardware security keys for Git SSH access.`,
               `Deploy Kandji to company endpoints to gather telemetry, manage software patches, and enforce security rules such as disk encryption and malware protection.`,
-              `Perform secure code reviews with an eye toward authentication, authorization, session management, data validation, error handling, logging, and encryption.`,
             ],
           },
           {
@@ -33,7 +33,6 @@ export const Experience = (): JSX.Element => (
             desc: [
               `Drive DevOps culture with automated identity and access management (IAM) and resource provisioning across multiple AWS accounts using AWS Organizations and AWS's Infrastructure as Code (IaC) tool, CDK.`,
               `Author ERC-20 compatible Solidity smart contracts, coordinate external code audits, and build automated multi-blockchain deployment infrastructure.`,
-              `Encourage and, if possible, enforce secure best practices such as AWS access via only temporary credentials, password managers for employee secrets, AWS Secrets Manager for software secrets, and hardware security keys for Git SSH access.`,
               `Architect and build cost-efficient, secure, and performant cloud infrastructure utilizing managed and serverless services running in multi-subnet VPCs protected by WAFs.`,
               `Rolled out SAML single sign-on company-wide with phishing-resistant hardware security key multi-factor authentication (MFA) and automatic identity provider (IdP) user provisioning.`,
               `Proposed and implemented multi-signature hardware wallet signing process for smart contract and multi-blockchain custodial wallet access control taking care to prevent locked assets.`,
