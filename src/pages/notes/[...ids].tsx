@@ -9,7 +9,9 @@ import { serialize } from "next-mdx-remote/serialize";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import React from "react";
 import readingTime from "reading-time";
+import katex from "rehype-katex";
 import externalLinks from "remark-external-links";
+import math from "remark-math";
 
 import { Container } from "../../components/container";
 import { Figure } from "../../components/figure";
@@ -84,8 +86,8 @@ export async function getStaticProps({
       readTime: readingTime(content),
       source: await serialize(content, {
         mdxOptions: {
-          remarkPlugins: [externalLinks],
-          rehypePlugins: [mdxPrism],
+          remarkPlugins: [externalLinks, math],
+          rehypePlugins: [katex, mdxPrism],
         },
         scope: data,
       }),

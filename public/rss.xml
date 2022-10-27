@@ -4,13 +4,20 @@
         <title>Rocky Warren | sudo README</title>
         <link>https://www.rocky.dev</link>
         <description>Rocky Warren's site. Principal Architect, Tech Lead, and Product Manager at Vertex Software. Previously at Dwolla and John Deere.</description>
-        <lastBuildDate>Fri, 07 Oct 2022 19:45:42 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Oct 2022 21:41:22 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>2012-present Rocky Warren</copyright>
         <item>
-            <title><![CDATA[Deep Work]]></title>
+            <title><![CDATA[Threshold Signature Schemes and Multi-Party Computation]]></title>
+            <link>https://www.rocky.dev/threshold-signature-schemes-and-multi-party-computation</link>
+            <guid>https://www.rocky.dev/threshold-signature-schemes-and-multi-party-computation</guid>
+            <pubDate>Thu, 27 Oct 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Background: digital signatures  Blockchains use digital signatures, which use key pairs: a private key (PK) and a public key. Through digital signatures, any person with a PK can sign t...]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Importance of Cultivating a Deep Work Culture]]></title>
             <link>https://www.rocky.dev/deep-work</link>
             <guid>https://www.rocky.dev/deep-work</guid>
             <pubDate>Fri, 07 Oct 2022 00:00:00 GMT</pubDate>

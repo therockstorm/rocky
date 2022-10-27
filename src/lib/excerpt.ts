@@ -7,6 +7,7 @@ export function excerpt(input: any): string {
     .slice(0, PruneLength * 2)
     .split("\n")
     .join(" ")
+    .replace(/\*\*/g, "")
     .replace(/\[(.+?)\]\(.+?\)/g, "$1")
     .replace(/(#+\s|-\s)/g, "")
     .replace(/`(.+?)`/g, "$1")

@@ -35,7 +35,7 @@ module.exports = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'report-sample' 'unsafe-eval'; style-src 'self' 'report-sample' 'unsafe-inline'; img-src 'self' data: i.ytimg.com; child-src www.youtube.com; connect-src 'self' *.algolia.net; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests;",
+              "default-src 'self' https://cdn.jsdelivr.net; script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'report-sample' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: i.ytimg.com; child-src www.youtube.com; connect-src 'self' *.algolia.net; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests;",
           },
         ],
       },
