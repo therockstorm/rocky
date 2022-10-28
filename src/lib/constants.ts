@@ -1,7 +1,7 @@
 export const Author = "Rocky Warren";
 export const SiteTitle = "Rocky Warren | sudo README";
 export const SiteDescription =
-  "Rocky Warren's site. Principal Architect, Tech Lead, and Product Manager at Vertex Software. Previously at Dwolla and John Deere.";
+  "Rocky Warren's site. Founding Principal Engineer at Brale. Previously at Vertex Software, Dwolla, and John Deere.";
 const isPublic = !process.env.NEXT_PUBLIC_SITE_URL?.includes("localhost");
 export const SiteUrl = `http${isPublic ? "s" : ""}://${
   process.env.NEXT_PUBLIC_SITE_URL
