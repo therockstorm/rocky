@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ExternalLink } from "../external-link";
-import { Link, LinkedIn } from "../icons";
+import { GitHub, Link, LinkedIn } from "../icons";
 
 export const Header = (): JSX.Element => (
   <>
@@ -27,6 +27,12 @@ export const Header = (): JSX.Element => (
           <LinkedIn className="h-5 w-5 mr-2" />
           <ExternalLink href="https://www.linkedin.com/in/rockywarren">
             linkedin.com/in/rockywarren
+          </ExternalLink>
+        </div>
+        <div className="flex items-center">
+          <GitHub className="h-5 w-5 mr-2" />
+          <ExternalLink href="https://github.com/therockstorm">
+            github.com/therockstorm
           </ExternalLink>
         </div>
       </div>

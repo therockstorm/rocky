@@ -1,7 +1,6 @@
 import React from "react";
 
 import { SiteTitle } from "../lib/constants";
-import { Footer } from "./footer";
 import { Meta } from "./meta";
 
 interface Props {
@@ -14,7 +13,6 @@ export function Layout({ children }: Props): JSX.Element {
       <Meta title={SiteTitle} />
       <div className="w-full h-full flex flex-col">
         <main className="flex-auto">{children}</main>
-        <Footer />
       </div>
     </>
   );

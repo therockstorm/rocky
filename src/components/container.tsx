@@ -6,7 +6,7 @@ interface Props {
 
 export function Container({ children }: Props): JSX.Element {
   return (
-    <div className="container mx-auto px-6 pb-2 max-w-3xl overflow-x-hidden">
+    <div className="container mx-auto px-6 pb-2 max-w-3xl overflow-x-hidden mb-6">
       {children}
     </div>
   );
