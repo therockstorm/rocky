@@ -116,6 +116,7 @@ import paradise from "../../assets/paradise.jpg";
 import pavement from "../../assets/pavement.jpg";
 import peace from "../../assets/peace.jpg";
 import perceivedKnowledgeVsTimeSpentLearning from "../../assets/perceived-knowledge-vs-time-spent-learning.png";
+import polynomials from "../../assets/polynomials.png";
 import prada from "../../assets/prada.jpg";
 import ramblinRose from "../../assets/ramblin-rose.jpg";
 import reaching from "../../assets/reaching.jpg";
@@ -279,6 +280,7 @@ type ImageType =
   | "pavement"
   | "peace"
   | "perceived-knowledge-vs-time-spent-learning"
+  | "polynomials"
   | "prada"
   | "ramblin-rose"
   | "reaching"
@@ -448,6 +450,7 @@ const Images: Record<ImageType, StaticImageData> = {
   peace: peace,
   "perceived-knowledge-vs-time-spent-learning":
     perceivedKnowledgeVsTimeSpentLearning,
+  polynomials: polynomials,
   prada: prada,
   "ramblin-rose": ramblinRose,
   reaching: reaching,

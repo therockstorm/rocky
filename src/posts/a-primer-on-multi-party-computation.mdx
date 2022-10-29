@@ -53,4 +53,9 @@ Consider the secret sharing scheme where $X$ is the secret to be shared, $P_i$ a
 
 Shamir's Secret Sharing is a popular scheme. In contrast to the scheme above, one may recover the secret with any $t$ out of $n$ shares instead of requiring all $n$. Based on the Lagrange interpolation theorem, the essential idea is that $t$ points are enough to uniquely determine a polynomial of degree less than or equal to $t - 1$. For instance, two points are sufficient to define a line, three are enough to represent a parabola, and so on. The method is to create a polynomial of degree $t - 1$ with the secret as the first coefficient; pick the remaining coefficients randomly. Then, find $n$ points on the curve and give one to each party. When at least $t$ out of the $n$ parties reveal their points, there is sufficient information to fit a $(t-1)$th degree polynomial, with the first coefficient being the secret. If this is unclear, [see this blog post](https://medium.com/wanchain-foundation/secure-multiparty-computation-and-shamirs-secret-sharing-on-wanchain-e502012b80ef) for an alternate explanation.
 
+<Figure
+  caption="It’s possible to draw an infinite number of polynomials of degree two through two points. Three points are required to determine it uniquely."
+  id="polynomials"
+/>
+
 Each MPC node receives only one PK share and uses it to construct partial transaction signatures to broadcast to the network. Even if a node is offline, loses PK access, or is malicious, it is still possible to reconstruct the complete transaction from the remaining nodes.
