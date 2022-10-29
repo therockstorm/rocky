@@ -1,17 +1,11 @@
 import { Feed } from "feed";
 import { writeFileSync } from "fs";
 
-import {
-  Author,
-  PublicSiteUrl,
-  SiteDescription,
-  SiteTitle,
-  SocialMedia,
-} from "./constants";
+import { Author, PublicSiteUrl, SiteDescription, SiteTitle } from "./constants";
 import { PostData } from "./posts";
 
 export function generateRSSFeed(posts: PostData[]): void {
-  const author = { name: Author, link: SocialMedia.Twitter };
+  const author = { name: Author };
   const feed = new Feed({
     author,
     copyright: `2012-present ${Author}`,
