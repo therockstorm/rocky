@@ -19,9 +19,7 @@ export const Header = (): JSX.Element => (
       <div className="flex justify-between flex-wrap">
         <div className="flex items-center">
           <Link className="h-5 w-5 mr-2" />
-          <ExternalLink href="https://www.rocky.dev">
-            https://rocky.dev
-          </ExternalLink>
+          <ExternalLink href="https://www.rocky.dev">rocky.dev</ExternalLink>
         </div>
         <div className="flex items-center">
           <LinkedIn className="h-5 w-5 mr-2" />
