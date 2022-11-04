@@ -10,7 +10,7 @@ interface Props {
 }
 
 export function Avatar({ showName = false, size = "sm" }: Props): JSX.Element {
-  const sz = size === "lg" ? "175em" : "50em";
+  const sz = size === "lg" ? "150" : "50";
   return showName ? (
     <div className="flex items-center space-x-2">
       <Image
