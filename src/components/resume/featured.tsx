@@ -4,7 +4,7 @@ import { ExternalLink } from "../external-link";
 import { Section } from "../section";
 
 export const Featured = (): JSX.Element => (
-  <Section title="Talks and Publications">
+  <Section className="print:hidden" title="Talks and Publications">
     {[
       {
         title: "3D Digital Twin Example Applications",

@@ -2,12 +2,13 @@ import React from "react";
 
 interface Props {
   readonly children: React.ReactNode;
+  readonly className?: string;
   readonly title: string;
 }
 
-export function Section({ title, children }: Props): JSX.Element {
+export function Section({ children, className, title }: Props): JSX.Element {
   return (
-    <section>
+    <section className={className ?? ""}>
       <h2>{title}</h2>
       {children}
     </section>

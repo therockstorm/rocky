@@ -4,7 +4,7 @@ import { Section } from "../section";
 import { Position } from "./position";
 
 export const Education = (): JSX.Element => (
-  <Section title="Education">
+  <Section className="print:hidden" title="Education">
     <Position
       company={"University of Iowa"}
       positions={[

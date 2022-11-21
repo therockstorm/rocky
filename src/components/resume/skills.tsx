@@ -4,7 +4,7 @@ import { Badge } from "../badge";
 import { Section } from "../section";
 
 export const Skills = (): JSX.Element => (
-  <Section title="Skills">
+  <Section className="print:hidden" title="Skills">
     <ul className="list-none">
       {/* Languages */}
       <Skill>JavaScript</Skill>

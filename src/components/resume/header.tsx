@@ -17,7 +17,7 @@ export const Header = (): JSX.Element => (
         languages and lead teams as a Founding Principal Engineer, Tech Lead,
         Architect, Product Manager, and Startup Co-founder.
       </p>
-      <div className="flex flex-col">
+      <div className="flex flex-wrap gap-x-6">
         <div className="flex items-center">
           <Link className="h-5 w-5 mr-2" />
           <ExternalLink href="https://www.rocky.dev">rocky.dev</ExternalLink>
@@ -25,13 +25,13 @@ export const Header = (): JSX.Element => (
         <div className="flex items-center">
           <LinkedIn className="h-5 w-5 mr-2" />
           <ExternalLink href="https://www.linkedin.com/in/rockywarren">
-            linkedin.com/in/rockywarren
+            rockywarren
           </ExternalLink>
         </div>
         <div className="flex items-center">
           <GitHub className="h-5 w-5 mr-2" />
           <ExternalLink href="https://github.com/therockstorm">
-            github.com/therockstorm
+            therockstorm
           </ExternalLink>
         </div>
       </div>
