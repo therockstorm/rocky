@@ -10,19 +10,16 @@ export const Certifications = (): JSX.Element => (
         title: "Certified Information Systems Security Professional (CISSP)",
         href: "https://www.isc2.org/Certifications/CISSP",
         start: "Nov 2022",
-        end: "Nov 2025",
       },
       {
         title: "AWS Certified Solutions Architect - Associate",
         href: "https://www.credly.com/badges/f08cd558-4917-437c-8f3c-4c997d80ddbf/public_url",
         start: "Apr 2020",
-        end: "Apr 2023",
       },
       {
         title: "Triplebyte Certified Software Engineer",
         href: "https://triplebyte.com/certificate/TFJ0QbG",
         start: "Jan 2017",
-        end: "No Expiration",
       },
     ].map((c, idx) => (
       <div key={idx}>
@@ -36,19 +33,15 @@ const Certification = ({
   title,
   href,
   start,
-  end,
-}: {
+}: Readonly<{
   title: string;
   href: string;
   start: string;
-  end: string;
-}) => (
+}>) => (
   <div>
-    <div className="flex justify-between">
+    <div className="flex justify-between flex-wrap">
       <ExternalLink href={href}>{title}</ExternalLink>
-      <span className="text-sm text-gray-500">
-        {start} - {end}
-      </span>
+      <span className="text-sm text-gray-500">{start}</span>
     </div>
   </div>
 );
