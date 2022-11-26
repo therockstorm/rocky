@@ -7,6 +7,15 @@ date: "2020-05-25"
 - [Synchronous and asynchronous triggers](https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html)
 - [Building well-architected serverless applications](https://aws.amazon.com/blogs/compute/building-well-architected-serverless-applications-introduction/) blog series
 - [Serverless Reference Architectures](https://www.jeremydaly.com/serverless-reference-architectures/)
+- Lambda@Edge allows running Lambdas,
+  1. Viewer request: before hitting CloudFront cache
+     - Authentication, check URL/cookie, etc.
+  1. Origin request: after cache but before forwarding to origin
+     - On cache miss. Dynamically select origin based on request headers, etc.
+  1. Origin response: after receiving request from origin
+     - Modify response headers, intercept/replace 4XX/5XX errors from origin, etc.
+  1. Viewer response: after cache
+     - Modify response headers before caching, etc.
 
 <div className="resp-container">
   <iframe

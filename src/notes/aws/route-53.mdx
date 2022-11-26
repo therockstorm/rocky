@@ -13,5 +13,8 @@ date: "2020-05-25"
   - Geolocation: route traffic based on location of users
   - Geoproximity: route traffic based on location of resources and optionally shift traffic using biases from resources in one location to another
   - Latency: route traffic to resources in region providing best latency
-  - Multivalue: Route 53 responds to DNS queries with up to eight healthy records selected at random
+  - Multi-value: Route 53 responds to DNS queries with up to eight healthy records selected at random
   - Weighted: route traffic to multiple resources in proportions you specify
+- Query logs
+  - Records each connection from client devices to domain
+  - DNS typically isn't monitored, so is a target for exfiltration attacks
