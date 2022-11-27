@@ -68,19 +68,36 @@ date: "2020-05-25"
 ## Elastic Load Balancer (ELB)
 
 - Use to distribute traffic across multiple targets in a single and across multiple AZs (if enabled)
+- Tight integration with Auto Scaling, WAF, ACM, etc.
 - To use in a VPC, need a minimum of two public subnets
 - 504 means there's likely an issue with your application
 - Instance health checks are shown as either `InService` or `OutOfService`
 - Get client IP using `X-Forwarded-For` header
 - Types
   - Application Load Balancer (ALB)
-    - Layer 7, allowing for things like path-based traffic routing
+    - Application layer 7, allowing for, e.g., path, query string, header, request method, etc. based routing
     - Preferred for most applications
     - Given DNS name, not IP
   - Network Load Balancer (NLB)
-    - Layer 4
-    - High performance
+    - Transport layer 4
+    - High performance (millions of requests per second)
     - Can assign a static IP
+    - Cannot associate security group with them
+    - Primarily selects target using flow hash algorithm based on protocol, source IP and port, destination IP and port, and TCP sequence number
+    - Each individual TCP connection is routed to a single target for the life of the connection
+  - Gateway Load Balancer
+    - Network layer 3 and Transport layer 4
+    - Deploy, scale, and manage virtual appliances, e.g., firewalls, IDS, IPS, etc.
   - Classic Load Balancer
     - Lower cost, legacy solution
     - Given DNS name, not IP
+- Listener is process that checks for connection requests using the protocol and port you configure
+  - Contains listener rules for which action (forward to, redirect to, or return fixed response) to take based on request
+  - Can forward to target groups
+- Target group is used to route requests to one or more registered targets (instances, Lambdas, etc.)
+- Access logs list all requests
+  - Disabled by default
+  - Pushes logs to S3 every 5 minutes
+  - Logs on best-effort basis
+  - Bucket and ELB must be in same region
+  - Bucket policy must allow ELB **AWS account** to write to it, varies by region and is available in documentation

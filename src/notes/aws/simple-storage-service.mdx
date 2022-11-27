@@ -29,10 +29,10 @@ date: "2020-05-25"
   - Object-level access is controlled via Access Control Lists (ACLs)
   - Cross-account object sharing via Bucket Policies, ACLs, or cross-account IAM roles. The latter is preferred, it enables API and Console access instead of only API access.
   - TLS encryption in-transit
-  - At rest aka server-side encryption (SSE)
-    - S3-managed keys (SSE-S3)
+  - At rest aka server-side encryption (SSE-S3)
+    - S3-managed keys (SSE-S3), each object has unique AES-256 key
     - Customer master keys stored in Key Management Service (SSE-KMS)
-    - Customer-provided keys (SSE-C)
+    - Customer-provided keys (SSE-C), key provided as part of request and S3 manages encrypt/decrypt options
     - Client-side encryption
 - Cross or same-region replication
   - Versioning must be enabled on both source and destination buckets
@@ -64,3 +64,16 @@ date: "2020-05-25"
 | Glacier Deep Archive | 99.99%       | Archive, lowest-cost                                                           | Per GB        | 180 days                | < 12 hours                    |
 
 Note: All storage classes provide 99.999999999% durability (11 9s)
+
+## Glacier
+
+- Extremely low-cost storage service providing secure and durable storage
+- Data stored in archives and grouped together into Vaults
+- IAM-controlled access, including vault-level polices
+- Can also create vault-level resource policies attached directly to vaults
+- SSE encryption
+- Can encrypt data before uploading
+- Vault lock allows easily deploying and enforcing compliance controls for vaults
+  - Immutable
+  - Supports WORM
+  - Gives lock ID when enabled

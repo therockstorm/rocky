@@ -1,0 +1,60 @@
+---
+title: Key Management Service (KMS)
+date: "2022-11-25"
+---
+
+- KMS keys are region-specific and consist of metadata and reference to key material
+  - You cannot extract, export, view, or manage key material. However, you can import your own.
+- AWS-managed
+  - No monthly charge
+  - Optional rotation
+  - Created, managed, and used on your behalf by AWS services integrated with KMS, e.g., S3 SSE, SQS, etc.
+  - Limited access to these keys, cannot delete them
+- Customer managed
+  - Monthly change
+  - Required rotation
+  - Full control
+- Behind the scenes, KMS has an interface and KMS hosts that communicate with backing HSMs
+- CMKs can encrypt 4KB of data max
+- Latency since it's going over a network
+- AWS recommends envelope encryption for larger datasets
+  1. Generate CMK
+  1. Generate data key using `generate-data-key`, receiving plaintext and ciphertext versions
+  1. Use plaintext version to encrypt data
+  1. Store ciphertext version along with encrypted data
+- To decrypt,
+  1. Call MKS to decrypt encrypted data key
+  1. Use decrypted data key to decrypt data
+- Key deletion scheduling 7-30 days
+  - Key cannot be used while scheduled for deletion
+  - Not immediate since it's potentially dangerous and irreversible
+  - Consider disabling if not sure if it'll be needed
+  - For EBS volumes, if master key is deleted, plaintext version of data key still exists in hypervisor memory. The next time the volume is attached to an instance, however, the attachment fails.
+- Asymmetric keys
+  - Use for encrypt/decrypt or sign/verify
+- Data key caching
+  - Reuse data keys instead of generating new one for each operation
+  - Security tradeoff for decreased latency or avoid limits
+  - plaintext and ciphertext keys stored in configurable cache
+- Key policies
+  - Resource policy for KMS keys
+  - No principal, including root, can access key unless explicitly allowed
+  - AWS will apply default if one isn't provided that gives account that owns key permission to use IAM policies to allow access to all KMS operations on the key
+  - Key admins can manage key, but cannot use it for cryptographic operations
+  - Key users can use key for cryptographic operations, but cannot manage it
+- Avoiding unmanageable CMKs
+  - Must contact AWS Support
+- Grants
+  - Revokable tokens with specific permissions
+  - Grant user: user which generated grant, already has access to CMK
+  - Grantee: user who uses generated grant
+- ViaService condition key
+  - Limits use of CMK to request from specified AWS services
+- When migrating EBS or RDS snapshots across regions, must select CMK in destination region
+  - Specific to RDS, if using envelop encryption with data keys, you will have to decrypt them prior to migrating
+- Multi-region keys
+  - Primary and replica keys, can only enable/disable key rotation on primary, only deleted after all replicas are deleted
+  - Replicas has same key ID, key material, key material origin, key spec and encryption algorithms, key usage, and automatic key rotation as primary, but exist in different regions
+- All operations with symmetric CMKs accept encryption context, optional key-value paris containing additional contextual information
+  - KMS uses encryption context as additional authenticated data (AAD)
+  - Decryption fails if encryption context doesn't match

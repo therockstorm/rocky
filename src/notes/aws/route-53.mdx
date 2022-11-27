@@ -18,3 +18,6 @@ date: "2020-05-25"
 - Query logs
   - Records each connection from client devices to domain
   - DNS typically isn't monitored, so is a target for exfiltration attacks
+- Supports DNSSEC, which adds digital signatures to DNS records to verify authenticity, prevents DNS spoofing aka cache poisoning
+  - Disadvantages including added complexity, limited TLD and DNS server support, and increased DNS query resolution time
+  - Enable in hosted zone, create KSK using KMS, and provide public key to domain registrar so it can be forwarded to TLD
