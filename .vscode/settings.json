@@ -1,6 +1,8 @@
 {
   "cSpell.words": [
+    "ADFS",
     "algoliasearch",
+    "awslogs",
     "Brale",
     "ciphertext",
     "ciphertexts",
@@ -9,6 +11,7 @@
     "DNSSEC",
     "Dwolla",
     "exfiltration",
+    "Fargate",
     "Fleetsmith",
     "FSMO",
     "Gbps",
@@ -31,6 +34,7 @@
     "Qualys",
     "rehype",
     "rockywarren",
+    "RTMP",
     "Runtimes",
     "SAMEORIGIN",
     "Shamir's",
