@@ -18,6 +18,8 @@ date: "2020-05-25"
   - By default, all inbound traffic is blocked and all outbound traffic is allowed
   - They are stateful, if you send a request from your instance, response traffic for request is allowed regardless of inbound rules. Similarly, responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
   - Only support allow rules, not deny
+  - Existing connections aren't affected by rule changes, only new ones (unlike NACLs, which take effect immediately)
+  - IP entries max default 300, can be increased to 1000
 - Instance metadata available at [http://169.254.169.254/latest/meta-data/](http://169.254.169.254/latest/meta-data/) and user data at [http://169.254.169.254/latest/user-data/](http://169.254.169.254/latest/user-data/)
   - Can be accessed within instance itself
   - ami-id, hostname, iam, instance-type, mac, profile, public-keys, security-groups, etc.

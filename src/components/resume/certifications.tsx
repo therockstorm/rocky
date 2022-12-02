@@ -7,6 +7,11 @@ export const Certifications = (): JSX.Element => (
   <Section title="Certifications">
     {[
       {
+        title: "AWS Certified Security – Specialty",
+        href: "https://www.credly.com/badges/e91aed74-17b4-4a6f-bd57-aa1c9c0df267/public_url",
+        start: "Dec 2022",
+      },
+      {
         title: "Certified Information Systems Security Professional (CISSP)",
         href: "https://www.isc2.org/Certifications/CISSP",
         start: "Nov 2022",

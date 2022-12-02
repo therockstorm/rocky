@@ -9,13 +9,13 @@ export const Header = (): JSX.Element => (
     <div>
       <p>
         A Certified Information Systems Security Professional (CISSP) and AWS
-        Certified Solutions Architect with over ten years of experience shipping
-        and maintaining tested, distributed, secure systems from thousand-line
-        microservices moving billions of dollars each year to multi-million line
-        GPS guidance systems. I deliver customer value utilizing
-        object-oriented, functional, statically-typed, dynamic, and database
-        languages and lead teams as a Founding Principal Engineer, Tech Lead,
-        Architect, Product Manager, and Startup Co-founder.
+        Certified Solutions Architect and Security Specialty with over ten years
+        of experience shipping and maintaining tested, distributed, secure
+        systems from thousand-line microservices moving billions of dollars each
+        year to multi-million line GPS guidance systems. I deliver customer
+        value utilizing object-oriented, functional, statically-typed, dynamic,
+        and database languages and lead teams as a Founding Principal Engineer,
+        Tech Lead, Architect, Product Manager, and Startup Co-founder.
       </p>
       <div className="flex flex-wrap gap-x-4">
         <div className="flex items-center">
