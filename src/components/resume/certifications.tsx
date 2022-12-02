@@ -17,7 +17,7 @@ export const Certifications = (): JSX.Element => (
         start: "Nov 2022",
       },
       {
-        title: "AWS Certified Solutions Architect - Associate",
+        title: "AWS Certified Solutions Architect",
         href: "https://www.credly.com/badges/f08cd558-4917-437c-8f3c-4c997d80ddbf/public_url",
         start: "Apr 2020",
       },
