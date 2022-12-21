@@ -38,7 +38,7 @@ const Post = ({ source, frontMatter, readTime, id }: Props): JSX.Element => {
   const title = frontMatter.title;
 
   return (
-    <Layout>
+    <Layout katex={Boolean(frontMatter.katex)}>
       <NextSeo
         canonical={url}
         description={description}

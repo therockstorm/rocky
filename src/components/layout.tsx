@@ -5,12 +5,13 @@ import { Meta } from "./meta";
 
 interface Props {
   readonly children: React.ReactNode;
+  readonly katex?: boolean;
 }
 
-export function Layout({ children }: Props): JSX.Element {
+export function Layout({ children, katex = false }: Props): JSX.Element {
   return (
     <>
-      <Meta title={SiteTitle} />
+      <Meta katex={katex} title={SiteTitle} />
       <div className="w-full h-full flex flex-col">
         <main className="flex-auto">{children}</main>
       </div>
