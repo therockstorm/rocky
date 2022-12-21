@@ -19,6 +19,7 @@ export interface Id {
 export interface FrontMatter {
   readonly date: string;
   readonly excerpt: string;
+  readonly katex: string;
   readonly title: string;
 }
 
