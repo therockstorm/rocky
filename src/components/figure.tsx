@@ -16,6 +16,7 @@ import bbq from "../../assets/bbq.jpg";
 import bearizona1 from "../../assets/bearizona-1.jpg";
 import bedrock1 from "../../assets/bedrock-1.jpg";
 import bedrock2 from "../../assets/bedrock-2.jpg";
+import beer from "../../assets/beer.jpg";
 import beignets from "../../assets/beignets.jpg";
 import bigBend from "../../assets/big-bend.jpg";
 import bigBend2 from "../../assets/big-bend-2.jpg";
@@ -180,6 +181,7 @@ type ImageType =
   | "bearizona-1"
   | "bedrock-1"
   | "bedrock-2"
+  | "beer"
   | "beignets"
   | "big-bend"
   | "big-bend-2"
@@ -349,6 +351,7 @@ const Images: Record<ImageType, StaticImageData> = {
   "bearizona-1": bearizona1,
   "bedrock-1": bedrock1,
   "bedrock-2": bedrock2,
+  beer: beer,
   beignets: beignets,
   "big-bend": bigBend,
   "big-bend-2": bigBend2,
