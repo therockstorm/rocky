@@ -62,7 +62,7 @@ Rather than using random examples from Scala projects in the wild, these are mea
   "hi" === "hi"
   ```
 
-- Use sealed traits for enumerations (until [Scala 3 comes out](https://dotty.epfl.ch/docs/reference/enums/enums.html)). Sealed traits can only be extended in the file they're declared so the compiler knows all subtypes and can issue warnings for non-exhaustive matches. [Details](https://stackoverflow.com/a/11203867).
+- Use sealed traits for enumerations (until [Scala 3 comes out](https://dotty.epfl.ch/docs/reference/enums/enums.html)). Sealed traits can only be extended in the file they're declared so the compiler knows all subtypes and can issue warnings for non-exhaustive matches. [Details](https://stackoverflow.com/questions/11203268/what-is-a-sealed-trait/11203867#11203867).
 
   ```scala
   sealed trait JobStatus { def value: Int }

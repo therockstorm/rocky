@@ -5,7 +5,7 @@ date: "2020-09-02"
 
 [2020-09-08 update](#2020-09-08-update): Use one GIN index instead of two, `websearch_to_tsquery`, add `LIMIT`, and store `TSVECTOR` as separate column. More details at the end of the article.
 
-I started investigating full-text search options recently. The use-case is real-time search over key-value pairs where the keys are strings and the values are either strings, numbers, or dates. It should enable full-text search over keys and values and range queries over numbers and dates with 1.5 million unique key-value pairs as the expected maximum search index size. The search company Algolia recommends an [end-to-end latency budget](https://blog.algolia.com/algolia-v-elasticsearch-latency/) of no more than 50ms, so we'll use that as our threshold.
+I started investigating full-text search options recently. The use-case is real-time search over key-value pairs where the keys are strings and the values are either strings, numbers, or dates. It should enable full-text search over keys and values and range queries over numbers and dates with 1.5 million unique key-value pairs as the expected maximum search index size. The search company Algolia recommends an [end-to-end latency budget](https://www.algolia.com/blog/engineering/algolia-v-elasticsearch-latency/) of no more than 50ms, so we'll use that as our threshold.
 
 ## PostgreSQL
 

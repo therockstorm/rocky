@@ -6,4 +6,5 @@
 yarn-error.log*
 
 /.next
+/input
 /node_modules

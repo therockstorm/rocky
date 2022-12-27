@@ -17,7 +17,7 @@ They allow you to upload an OpenAPI schema and generate a collection from it, bu
 
 A big problem with this tool, however, is that it generates new IDs for endpoints each time you run it. This makes diffs hard to follow and, more importantly, breaks documentation URLs. To workaround that, we use a [forked version](https://github.com/therockstorm/openapi-to-postman) that stores a sourcemap of the endpoints so the IDs remain stable.
 
-From there, we call [Update Schema](https://documenter.getpostman.com/view/631643/JsLs/?version=latest#41ec3c7c-1cea-40a4-8dbf-0fdd5e9fbffb) with the updated OpenAPI schema. This doesn't update Postman collections created from the schema, however, so we then call [Update Collection](https://documenter.getpostman.com/view/631643/JsLs/?version=latest#aa3701e8-7f99-b421-7d74-0d571b051f3c), which, thankfully, triggers the documentation to update.
+From there, we call [Update Schema](https://www.postman.com/postman/workspace/postman-public-workspace/request/12959542-f9544c35-d4e1-4013-b2c2-88425c1cbcd2) with the updated OpenAPI schema. This doesn't update Postman collections created from the schema, however, so we then call [Update Collection](https://www.postman.com/postman/workspace/postman-public-workspace/request/12959542-bc8b292b-ffbb-4c67-a2a1-2fc416e2aef8), which, thankfully, triggers the documentation to update.
 
 Now that our Postman collection, documentation, and code samples are updated, we use the OpenAPI generator to update our API clients and we're done.
 

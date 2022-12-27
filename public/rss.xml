@@ -4,7 +4,7 @@
         <title>Rocky Warren | sudo README</title>
         <link>https://www.rocky.dev</link>
         <description>Rocky Warren's site. Founding Principal Engineer at Brale. Previously at Vertex Software, Dwolla, and John Deere.</description>
-        <lastBuildDate>Sat, 24 Dec 2022 18:02:45 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 27 Dec 2022 16:18:33 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -13,8 +13,8 @@
             <title><![CDATA[Why I Quit Drinking]]></title>
             <link>https://www.rocky.dev/why-i-quit-drinking</link>
             <guid>https://www.rocky.dev/why-i-quit-drinking</guid>
-            <pubDate>Wed, 21 Dec 2022 00:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[  I love beer. However, on my son's first birthday, I stopped drinking with the goal of reassessing after four months. Here's why.  After having a couple beers, I don't feel like doing ...]]></content:encoded>
+            <pubDate>Sat, 24 Dec 2022 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[  I love beer. However, on my son's first birthday in October, I stopped drinking with the goal of reassessing after four months. I get asked why a lot.  After having a couple beers, I ...]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[A (Relatively Easy To Understand) Primer on Multi-Party Computation]]></title>

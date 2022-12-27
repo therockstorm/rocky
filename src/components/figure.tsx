@@ -504,7 +504,7 @@ const Images: Record<ImageType, StaticImageData> = {
 export function Figure({ caption, id }: Props): JSX.Element {
   return (
     <figure>
-      <Image src={Images[id]} alt={caption} placeholder="blur" />
+      <Image alt={caption} placeholder="blur" src={Images[id]} />
       <figcaption>{caption}</figcaption>
     </figure>
   );

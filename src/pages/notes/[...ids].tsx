@@ -34,7 +34,7 @@ const components = { Figure };
 
 const Note = ({ source, frontMatter, readTime, ids }: Props): JSX.Element => {
   const description = frontMatter.excerpt;
-  const id = head(ids) as string;
+  const id = ids.join("/");
   const url = `${SiteUrl}/notes/${id}`;
   const title = frontMatter.title;
 

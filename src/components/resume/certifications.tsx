@@ -23,7 +23,7 @@ export const Certifications = (): JSX.Element => (
       },
       {
         title: "Triplebyte Certified Software Engineer",
-        href: "https://triplebyte.com/certificate/TFJ0QbG",
+        href: "https://triplebyte.com/tb/rocky-warren-0ljjcpj/certificate/track/generalist",
         start: "Jan 2017",
       },
     ].map((c, idx) => (
