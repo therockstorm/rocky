@@ -13,6 +13,7 @@ import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
 import { Search } from "../components/search";
 import {
+  Author,
   PostsSearchIndex,
   SiteDescription,
   SiteTitle,
@@ -35,9 +36,10 @@ function Index({ posts }: Props): JSX.Element {
         canonical={SiteUrl}
         openGraph={{
           description: SiteDescription,
-          url: SiteUrl,
-          site_name: SiteTitle,
+          images: [],
+          siteName: SiteTitle,
           title: SiteTitle,
+          url: SiteUrl,
         }}
       />
       <Navigation />
@@ -45,20 +47,28 @@ function Index({ posts }: Props): JSX.Element {
         <header>
           <div className="flex space-x-3 items-center">
             <Avatar size="lg" />
-            <p className="prose lg:prose-lg prose-blue">
-              Rocky Warren&#39;s blog. Founding Principal Engineer at{" "}
-              <ExternalLink className="no-underline" href="https://brale.xyz/">
-                Brale
-              </ExternalLink>
-              . I{" "}
-              <ExternalLink
-                className="no-underline"
-                href="https://www.rockywarren.com/"
-              >
-                do other stuff
-              </ExternalLink>{" "}
-              too.
-            </p>
+            <div>
+              <h1 className="prose lg:prose-lg prose-blue inline">
+                {Author}&#39;s blog.
+              </h1>{" "}
+              <p className="prose lg:prose-lg prose-blue inline">
+                Founding Principal Engineer at{" "}
+                <ExternalLink
+                  className="no-underline"
+                  href="https://brale.xyz/"
+                >
+                  Brale
+                </ExternalLink>
+                . I{" "}
+                <ExternalLink
+                  className="no-underline"
+                  href="https://www.rockywarren.com/"
+                >
+                  do other stuff
+                </ExternalLink>{" "}
+                too.
+              </p>
+            </div>
           </div>
         </header>
         <Search index={PostsSearchIndex} />

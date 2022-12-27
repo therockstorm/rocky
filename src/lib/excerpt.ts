@@ -1,6 +1,7 @@
-const PruneLength = 185;
+// Recommend 110-160 characters
+const PruneLength = 157;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function excerpt(input: any): string {
   const e = `${input.content
     .trim()

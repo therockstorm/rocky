@@ -26,8 +26,8 @@ export const Certifications = (): JSX.Element => (
         href: "https://triplebyte.com/tb/rocky-warren-0ljjcpj/certificate/track/generalist",
         start: "Jan 2017",
       },
-    ].map((c, idx) => (
-      <div key={idx}>
+    ].map((c) => (
+      <div key={c.title}>
         <Certification {...c} />
       </div>
     ))}

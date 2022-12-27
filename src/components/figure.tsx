@@ -79,7 +79,6 @@ import guadalupeMountains from "../../assets/guadalupe-mountains.jpg";
 import gunshotVan from "../../assets/gunshot-van.jpg";
 import harleyCedarKey from "../../assets/harley-cedar-key.jpg";
 import helmetPeace from "../../assets/helmet-peace.jpg";
-import helmetSideways from "../../assets/helmet-sideways.jpg";
 import htx from "../../assets/htx.jpg";
 import hyperloop from "../../assets/hyperloop.jpg";
 import joshuaTree from "../../assets/joshua-tree.jpg";
@@ -244,7 +243,6 @@ type ImageType =
   | "gunshot-van"
   | "harley-cedar-key"
   | "helmet-peace"
-  | "helmet-sideways"
   | "htx"
   | "hyperloop"
   | "joshua-tree"
@@ -414,7 +412,6 @@ const Images: Record<ImageType, StaticImageData> = {
   "gunshot-van": gunshotVan,
   "harley-cedar-key": harleyCedarKey,
   "helmet-peace": helmetPeace,
-  "helmet-sideways": helmetSideways,
   htx: htx,
   hyperloop: hyperloop,
   "joshua-tree": joshuaTree,

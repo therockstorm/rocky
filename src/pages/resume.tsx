@@ -10,11 +10,11 @@ import { Featured } from "../components/resume/featured";
 import { Header } from "../components/resume/header";
 import { Recommendations } from "../components/resume/recommendations";
 import { Skills } from "../components/resume/skills";
-import { SiteDescription, SiteUrl } from "../lib/constants";
+import { Author, SiteDescription, SiteTitle, SiteUrl } from "../lib/constants";
 
 function Resume(): JSX.Element {
   const url = `${SiteUrl}/resume`;
-  const title = "Rocky Warren Resume";
+  const title = `Resume - ${Author}`;
 
   return (
     <Layout>
@@ -25,7 +25,7 @@ function Resume(): JSX.Element {
         openGraph={{
           description: SiteDescription,
           url,
-          site_name: title,
+          siteName: SiteTitle,
           title,
         }}
       />

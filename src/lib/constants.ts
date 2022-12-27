@@ -1,7 +1,6 @@
 export const Author = "Rocky Warren";
-export const SiteTitle = "Rocky Warren | sudo README";
-export const SiteDescription =
-  "Rocky Warren's site. Founding Principal Engineer at Brale. Previously at Vertex Software, Dwolla, and John Deere.";
+export const SiteTitle = `sudo README - ${Author}`;
+export const SiteDescription = `${Author}'s site. Founding Principal Engineer at Brale. Previously at Vertex Software, Dwolla, and John Deere.`;
 const isPublic = !process.env.NEXT_PUBLIC_SITE_URL?.includes("localhost");
 export const SiteUrl = `http${isPublic ? "s" : ""}://${
   process.env.NEXT_PUBLIC_SITE_URL
@@ -18,7 +17,7 @@ export const OpenGraph = {
     type: "website",
     locale: "en_US",
     url: SiteUrl,
-    site_name: Author,
+    siteName: SiteTitle,
   },
 };
 export const PostsSearchIndex = "PostsV2";

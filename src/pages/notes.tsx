@@ -8,7 +8,13 @@ import { Folder } from "../components/icons";
 import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
 import { Search } from "../components/search";
-import { NotesSearchIndex, SiteDescription, SiteUrl } from "../lib/constants";
+import {
+  Author,
+  NotesSearchIndex,
+  SiteDescription,
+  SiteTitle,
+  SiteUrl,
+} from "../lib/constants";
 import { getNotesData, NoteData } from "../lib/notes";
 import { buildNotesIndex } from "../lib/search";
 
@@ -29,7 +35,7 @@ function Notes({ notes }: Props): JSX.Element {
     {} as { [k: string]: string[] }
   );
   const url = `${SiteUrl}/notes`;
-  const title = "Rocky Warren Notes";
+  const title = `Notes - ${Author}`;
 
   return (
     <Layout>
@@ -40,12 +46,13 @@ function Notes({ notes }: Props): JSX.Element {
         openGraph={{
           description: SiteDescription,
           url,
-          site_name: title,
+          siteName: SiteTitle,
           title,
         }}
       />
       <Navigation />
       <Container>
+        <h1 className="prose lg:prose-lg prose-blue">Notes</h1>
         <Search index={NotesSearchIndex} />
         <ul>
           {Object.keys(tree)

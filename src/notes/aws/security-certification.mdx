@@ -3,7 +3,7 @@ title: Security Certification
 date: "2022-11-27"
 ---
 
-# Incident response
+## Incident response
 
 - Key compromise
   - Determine access associated with exposed key
@@ -26,7 +26,7 @@ date: "2022-11-27"
 - Stolen laptop use-case: modify `authorized_key` file of all EC2 instances
 - CloudTrail stores 90 days in console. After that, can use Athena to query S3.
 
-# Logging and monitoring
+## Logging and monitoring
 
 - VPC flow log format
 - Inspector scans target based on tag key-value pair
@@ -60,7 +60,7 @@ date: "2022-11-27"
     1.  Configure CloudTrail in all accounts to push logs to central account
   - To update log prefix, first modify S3 bucket policy and then update trail
 
-# Infrastructure security
+## Infrastructure security
 
 - DDoS mitigation: Shield, CloudFront, Auto-Scaling, Route53, WAF, CloudWatch
 - Direct Connect
@@ -82,7 +82,7 @@ date: "2022-11-27"
 - Can use host-based IDS for file integrity, integrate with CloudWatch for alerting
 - For IPS, install agent on instance and report to central SIEM server
 
-# Identity and access management
+## Identity and access management
 
 - Cross-account IAM role troubleshooting
   1. Verify `sts:AssumeRole` granted
@@ -96,7 +96,7 @@ date: "2022-11-27"
   - In AD, direction of trust is opposite direction of access
 - IAM role can be used across multiple services by modifying trust policy
 
-# Data protection
+## Data protection
 
 - ACM is regional, must be in same region as ELB and in US East (N. Virginia) for CloudFront
   - Cannot export public certificates created by ACM but can export private certificates

@@ -1,11 +1,12 @@
 import React from "react";
 
+import { Author } from "../../lib/constants";
 import { ExternalLink } from "../external-link";
 import { GitHub, Link, LinkedIn } from "../icons";
 
 export const Header = (): JSX.Element => (
   <>
-    <h1>Rocky Warren</h1>
+    <h1>{Author}</h1>
     <div>
       <p>
         A Certified Information Systems Security Professional (CISSP) and AWS

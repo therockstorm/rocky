@@ -19,7 +19,7 @@ import { Layout } from "../../components/layout";
 import { Navigation } from "../../components/navigation";
 import { PostBody } from "../../components/post-body";
 import { PostHeader } from "../../components/post-header";
-import { Author, SiteUrl } from "../../lib/constants";
+import { Author, SiteTitle, SiteUrl } from "../../lib/constants";
 import { toJsonLdString } from "../../lib/json-ld";
 import { FrontMatter, getContent, getNotesData, Id } from "../../lib/notes";
 
@@ -43,8 +43,15 @@ const Note = ({ source, frontMatter, readTime, ids }: Props): JSX.Element => {
       <NextSeo
         canonical={url}
         description={description}
-        openGraph={{ description, url, site_name: title, title }}
-        title={title}
+        openGraph={{
+          description,
+          url,
+          siteName: SiteTitle,
+          title,
+          type: "article",
+        }}
+        title={`${frontMatter.title} - ${Author}`}
+        twitter={{ cardType: "summary_large_image" }}
       />
       <ArticleJsonLd
         url={url}
@@ -53,7 +60,6 @@ const Note = ({ source, frontMatter, readTime, ids }: Props): JSX.Element => {
         datePublished={frontMatter.date}
         authorName={Author}
         publisherName={Author}
-        publisherLogo=""
         description={toJsonLdString(description)}
       />
       <Navigation />
