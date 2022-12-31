@@ -11,17 +11,9 @@ import { Container } from "../components/container";
 import { ExternalLink } from "../components/external-link";
 import { Layout } from "../components/layout";
 import { Navigation } from "../components/navigation";
-import { Search } from "../components/search";
-import {
-  Author,
-  PostsSearchIndex,
-  SiteDescription,
-  SiteTitle,
-  SiteUrl,
-} from "../lib/constants";
+import { Author, SiteDescription, SiteTitle, SiteUrl } from "../lib/constants";
 import { getPostsData, PostData } from "../lib/posts";
 import { generateRSSFeed } from "../lib/rss";
-import { buildPostsIndex } from "../lib/search";
 
 interface Props {
   readonly posts: PostData[];
@@ -71,7 +63,6 @@ function Index({ posts }: Props): JSX.Element {
             </div>
           </div>
         </header>
-        <Search index={PostsSearchIndex} />
         {posts.map((post) => (
           <Card key={post.title}>
             <CardTitle href={`/${post.id}`}>{post.title}</CardTitle>
@@ -89,6 +80,5 @@ export default Index;
 export function getStaticProps(): GetStaticPropsResult<Props> {
   const posts = getPostsData();
   generateRSSFeed(posts);
-  buildPostsIndex(posts);
   return { props: { posts } };
 }

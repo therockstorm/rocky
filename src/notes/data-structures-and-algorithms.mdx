@@ -208,7 +208,7 @@ public void depthFirstSearch(Node root) {
 
 public void breadthFirstSearch(Node root) {
   if (root == null) return;
-  LinkedList < Node > q = new LinkedList < Node > ();
+  LinkedList <Node> q = new LinkedList <Node> ();
   doWork(root);
   root.isVisited = true;
   q.add(root);

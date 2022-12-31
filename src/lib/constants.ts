@@ -20,5 +20,3 @@ export const OpenGraph = {
     siteName: SiteTitle,
   },
 };
-export const PostsSearchIndex = "PostsV2";
-export const NotesSearchIndex = "NotesV2";
