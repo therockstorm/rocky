@@ -7,7 +7,6 @@ import animalRights from "../../assets/animal-rights.jpg";
 import apolloStage1 from "../../assets/apollo-stage-1.jpg";
 import astronaut from "../../assets/astronaut.jpg";
 import autopsy from "../../assets/autopsy.jpg";
-import avatar from "../../assets/avatar.jpg";
 import awsNetwork from "../../assets/aws-network.png";
 import babeMagnet from "../../assets/babe-magnet.jpg";
 import backroads from "../../assets/backroads.jpg";
@@ -171,7 +170,6 @@ type ImageType =
   | "apollo-stage-1"
   | "astronaut"
   | "autopsy"
-  | "avatar"
   | "aws-network"
   | "babe-magnet"
   | "backroads"
@@ -340,7 +338,6 @@ const Images: Record<ImageType, StaticImageData> = {
   "apollo-stage-1": apolloStage1,
   astronaut: astronaut,
   autopsy: autopsy,
-  avatar: avatar,
   "aws-network": awsNetwork,
   "babe-magnet": babeMagnet,
   backroads: backroads,

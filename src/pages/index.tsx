@@ -44,21 +44,14 @@ function Index({ posts }: Props): JSX.Element {
                 {Author}&#39;s blog.
               </h1>{" "}
               <p className="prose lg:prose-lg prose-blue inline">
-                Founding Principal Engineer at{" "}
+                Founding Principal Software and Security Engineer at{" "}
                 <ExternalLink
                   className="no-underline"
                   href="https://brale.xyz/"
                 >
                   Brale
                 </ExternalLink>
-                . I{" "}
-                <ExternalLink
-                  className="no-underline"
-                  href="https://www.rockywarren.com/"
-                >
-                  do other stuff
-                </ExternalLink>{" "}
-                too.
+                .
               </p>
             </div>
           </div>
