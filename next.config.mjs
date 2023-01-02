@@ -1,8 +1,8 @@
+import rehypePrism from "@mapbox/rehype-prism";
 import nextMDX from "@next/mdx";
+import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import rehypePrism from "@mapbox/rehype-prism";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,6 +11,10 @@ const nextConfig = {
       {
         source: "/(.*)",
         headers: [
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "POST, GET",
+          },
           {
             key: "X-DNS-Prefetch-Control",
             value: "on",
