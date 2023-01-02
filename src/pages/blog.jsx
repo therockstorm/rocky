@@ -39,7 +39,7 @@ export default function ArticlesIndex({ articles }) {
   const path = usePathname();
 
   const description =
-    "Thoughts on software, security, and leadership. Oh, and motorcycling.";
+    "My thoughts on software, security, and leadership. Oh, and motorcycling.";
   const title = "Blog - Rocky Warren";
   const url = `${SITE_URL}${path}`;
   return (
