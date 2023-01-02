@@ -16,6 +16,10 @@ const nextConfig = {
             value: "POST, GET",
           },
           {
+            key: "Access-Control-Allow-Origin",
+            value: "https://www.rocky.dev",
+          },
+          {
             key: "X-DNS-Prefetch-Control",
             value: "on",
           },
