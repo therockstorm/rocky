@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Section } from "../section";
-import { Position } from "./position";
+import { Position } from "./Position";
+import { Section } from "./Section";
 
 export const Experience = (): JSX.Element => (
   <Section title="Experience">
@@ -163,6 +163,20 @@ export const Experience = (): JSX.Element => (
             end: "Dec 2007",
             location: "Iowa City, IA",
             desc: ["Created psychology studies and GUIs in DirectX and GDI+."],
+          },
+        ],
+      },
+      {
+        company: "Collins Aerospace (Raytheon)",
+        positions: [
+          {
+            title: "Software Developer",
+            start: "May 2005",
+            end: "Aug 2005",
+            location: "Cedar Rapids, IA",
+            desc: [
+              "Design and testing of Airbus A380's three-phase variable frequency power supply.",
+            ],
           },
         ],
       },

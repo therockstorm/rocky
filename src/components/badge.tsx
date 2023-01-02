@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import React from "react";
 
 interface Props {
@@ -15,8 +15,8 @@ export function Badge({
 }: Props): JSX.Element {
   return (
     <span
-      className={classNames(
-        "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-blue-700 text-white",
+      className={clsx(
+        "inline-flex items-center rounded-full bg-blue-700 px-2.5 py-0.5 text-xs font-medium leading-4 text-white",
         className
       )}
       onClick={onClick}

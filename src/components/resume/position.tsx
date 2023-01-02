@@ -16,7 +16,7 @@ export const Position = ({
   positions: Props[];
 }): JSX.Element => (
   <>
-    <h3>{company}</h3>
+    <h3 className="mt-2">{company}</h3>
     {positions.map(
       ({ title, start, end, location, desc }: Props, idx: number) => {
         return (

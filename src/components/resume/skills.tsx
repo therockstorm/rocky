@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Badge } from "../badge";
-import { Section } from "../section";
+import { Badge } from "../Badge";
+import { Section } from "./Section";
 
 export const Skills = (): JSX.Element => (
   <Section className="print:hidden" title="Skills">
-    <ul className="list-none">
+    <ul>
       {/* Languages */}
       <Skill>JavaScript</Skill>
       <Skill>TypeScript</Skill>
@@ -40,7 +40,7 @@ export const Skills = (): JSX.Element => (
 );
 
 const Skill = ({ children }: { children: React.ReactNode }) => (
-  <li className="inline mr-1">
+  <li className="mr-1 inline">
     <Badge>{children}</Badge>
   </li>
 );

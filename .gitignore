@@ -1,10 +1,11 @@
 .DS_Store
-.env.development.local
-.env.local
-.env.production.local
-.env.test.local
-yarn-error.log*
+.env*.local
+.vercel
+npm-debug.log*
 
-/.next
-/input
+/.next/
+/build
+/coverage
 /node_modules
+/out/
+/public/rss/

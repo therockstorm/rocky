@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ExternalLink } from "../external-link";
-import { Section } from "../section";
+import { ExternalLink } from "../ExternalLink";
+import { Section } from "./Section";
 
 export const Certifications = (): JSX.Element => (
   <Section title="Certifications">
@@ -44,7 +44,7 @@ const Certification = ({
   start: string;
 }>) => (
   <div>
-    <div className="flex justify-between flex-wrap">
+    <div className="flex flex-wrap justify-between">
       <ExternalLink href={href}>{title}</ExternalLink>
       <span className="text-sm text-gray-500">{start}</span>
     </div>

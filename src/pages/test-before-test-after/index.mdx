@@ -1,0 +1,56 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2012-08-03",
+  title: "Test Before > Test After",
+  description:
+    "By now, I hope we can all agree that unit tests are a good idea. I recently gave a presentation on why I think testing before writing production code (TDD) i...",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+By now, I hope we can all agree that unit tests are a good idea. I recently gave a presentation on why I think testing before writing production code (TDD) is better than testing after.
+
+## Code Quality
+
+Only writing code to fix failing tests yields:
+
+- Better tests
+- Testable code
+  - Decoupled
+  - Fast
+- Less rework
+- High test coverage
+  - Less debugger
+- Simple
+  - Less gold-plating
+
+## Continuous Integration
+
+Minimizing time in Red and committing on Green yields:
+
+- Compiling, tested code every ~10 minutes
+- Ability to revert to last Green quickly
+
+## Improved Interfaces
+
+Intelligent test names and coding from client's perspective yields
+
+- Self-documenting code with clean, natural interfaces
+
+```csharp
+// 👎
+GetLog().Debug().Message("My message.");
+Log(Priority.Debug, "My message.");
+```
+
+```csharp
+// 👍
+void Debug_LogsDebugMessage() {
+   Log.Debug("My message.");
+   // Some assert
+}
+```
+
+Testing after is work, TDD is fun!

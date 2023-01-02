@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ExternalLink } from "../external-link";
-import { Section } from "../section";
+import { ExternalLink } from "../ExternalLink";
+import { Section } from "./Section";
 
 export const Featured = (): JSX.Element => (
   <Section className="print:hidden" title="Talks and Publications">

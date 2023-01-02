@@ -1,0 +1,21 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2018-06-01",
+  title: "Hashing vs Encryption",
+  description:
+    "Encryption is a two-way function. You can encrypt data, like a file, and then later decrypt it provided you have the proper encryption key. This is useful wh...",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+Encryption is a two-way function. You can encrypt data, like a file, and then later decrypt it provided you have the proper encryption key. This is useful when you need to retrieve the original data.
+
+Hashing, on the other hand, is a one-way function. It scrambles the input data into a unique output and you cannot reverse this process to reveal the original data.
+
+How is a non-reversible operation useful? It's more secure for things like passwords. With encryption, the website server needs to have the encryption key to decrypt it. If the server gets hacked, the attackers could get this key and decrypt every user's password immediately.
+
+With hashing, there is no key. Websites don't actually need to know a user's password, they just need to know that what the user enters in the password field matches what is stored in the database. They can do this by taking the password the user enters, hashing it in the same way they hashed it when the user first set it, and making sure both match. If they do, you get to log in.
+
+If an attacker gets a list of hashed passwords, they'd have to generate a bunch of guesses, hash each one using the same algorithm, and compare the result to the hashed values one-by-one.

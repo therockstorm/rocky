@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Section } from "../section";
-import { Position } from "./position";
+import { Position } from "./Position";
+import { Section } from "./Section";
 
 export const Education = (): JSX.Element => (
   <Section className="print:hidden" title="Education">
