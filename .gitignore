@@ -7,5 +7,7 @@ npm-debug.log*
 /build
 /coverage
 /node_modules
-/out/
+/public/robots.txt
 /public/rss/
+/public/sitemap*.xml
+/out/

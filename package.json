@@ -36,11 +36,12 @@
   "devDependencies": {
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
-    "@typescript-eslint/eslint-plugin": "5.47.1",
-    "@typescript-eslint/parser": "5.47.1",
+    "@typescript-eslint/eslint-plugin": "5.48.0",
+    "@typescript-eslint/parser": "5.48.0",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "eslint-plugin-simple-import-sort": "8.0.0",
+    "next-sitemap": "3.1.44",
     "prettier": "2.8.1",
     "prettier-plugin-tailwindcss": "0.2.1",
     "sharp": "0.31.3",
@@ -52,6 +53,7 @@
     "dev": "next dev",
     "format": "prettier --write .",
     "lint": "next lint",
+    "postbuild": "next-sitemap",
     "start": "next start"
   }
 }
