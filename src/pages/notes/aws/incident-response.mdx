@@ -1,7 +1,13 @@
----
-title: Incident Response
-date: "2022-11-21"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-21",
+  title: "Incident Response",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Prevent: WAF, IAM, Network Firewall, KMS
 - Detect: CloudTrail, CloudWatch, Inspector, Detective

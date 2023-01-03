@@ -1,7 +1,13 @@
----
-title: EventBridge
-date: "2020-12-30"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-30",
+  title: "EventBridge",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Serverless pub/sub event bus for internal, cross-account, and AWS service events
 - Publish to bus (400/s), subscribe with fine-grained filter rules (100/bus), multiple targets and event matching

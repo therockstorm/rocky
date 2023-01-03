@@ -1,7 +1,13 @@
----
-title: Penetration Testing
-date: "2022-11-21"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-21",
+  title: "Penetration Testing",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Approved services without permission ([up-to-date list](https://aws.amazon.com/security/penetration-testing/))
   - EC2 including NAT Gateway and ELBs

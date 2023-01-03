@@ -1,7 +1,13 @@
----
-title: Debugging
-date: "2020-12-29"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-29",
+  title: "Debugging",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - gRPC
   - Get the server IP, with it,

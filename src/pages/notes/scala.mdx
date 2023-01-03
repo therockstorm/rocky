@@ -1,7 +1,13 @@
----
-title: Scala
-date: "2021-01-03"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2021-01-03",
+  title: "Scala",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - [Scala: The Good Parts](../scala-the-good-parts)
 - [Scala Learning Resources](../scala-learning-resources)

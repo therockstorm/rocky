@@ -1,7 +1,13 @@
----
-title: Directory Service
-date: "2022-11-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-25",
+  title: "Directory Service",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Managed service, create directories and let AWS experts manage HA, monitoring, backups, etc.
 - Can use AD un/pw to log into AWS accounts and access AWS resources

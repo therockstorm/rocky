@@ -1,7 +1,13 @@
----
-title: The Culture Code by Daniel Coyle
-date: "2021-01-03"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2021-01-03",
+  title: "The Culture Code by Daniel Coyle",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - [Amazon](https://www.amazon.com/Culture-Code-Secrets-Highly-Successful/dp/0804176981)
 - Challenged group of business students and group of kindergartners to build tallest possible structure using twenty pieces of spaghetti, yard of tape, yard of string, and marshmallow. Marshmallow had to end up on top

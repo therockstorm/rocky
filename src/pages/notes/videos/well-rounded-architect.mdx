@@ -1,7 +1,13 @@
----
-title: The Well-Rounded Architect by Patrick Kua
-date: "2020-12-31"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-31",
+  title: "The Well-Rounded Architect by Patrick Kua",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - [Link to video](https://www.oreilly.com/library/view/oreilly-software-architecture/9781491958490/video284896.html)
 - "Architecture represents significant design decisions that shape a system, where significant is measured by cost of change." Grady Booch

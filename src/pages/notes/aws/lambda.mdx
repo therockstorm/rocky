@@ -1,7 +1,13 @@
----
-title: Lambda
-date: "2020-05-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-05-25",
+  title: "Lambda",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)
 - [Synchronous and asynchronous triggers](https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html)

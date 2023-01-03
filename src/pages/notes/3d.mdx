@@ -1,7 +1,13 @@
----
-title: 3D
-date: "2021-08-18"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2021-08-18",
+  title: "3D",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - React renderer for threejs, [react-three-fiber](https://github.com/pmndrs/react-three-fiber)
 - WebGPU API in Rust, [wgpu](https://github.com/gfx-rs/wgpu)

@@ -1,6 +1,12 @@
----
-title: Artifact
-date: "2022-11-24"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-24",
+  title: "Artifact",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Portal with on-demand access to AWS security and compliance docs for, e.g., PCI-DSS, HIPPA, etc.

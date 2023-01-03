@@ -1,7 +1,13 @@
----
-title: A Guide to the Good Life by William B. Irvine
-date: "2020-12-28"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-28",
+  title: "A Guide to the Good Life by William B. Irvine",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Rating: 5/5
 - [Amazon](https://www.amazon.com/gp/product/0195374614)

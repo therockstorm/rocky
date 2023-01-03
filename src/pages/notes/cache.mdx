@@ -1,7 +1,13 @@
----
-title: Caching
-date: "2020-12-29"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-29",
+  title: "Caching",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Redis cache aside, external to internal cache fallback, hard and soft ttl, negative caching of errors, cache as serialized proto, coalesce requests before sending to cache, load test with caches disabled
 - Cache even dynamic data for couple secs

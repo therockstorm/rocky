@@ -1,7 +1,13 @@
----
-title: Security Hub
-date: "2022-11-21"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-21",
+  title: "Security Hub",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Single pane of glass for security alerts and insights, per region
 - Can also generate its own findings against rules for supported security standard (CIS AWS Foundation, PCI DSS, etc.) using AWS Config

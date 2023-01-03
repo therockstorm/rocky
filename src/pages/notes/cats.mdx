@@ -1,6 +1,12 @@
----
-title: Cats
-date: "2021-02-26"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2021-02-26",
+  title: "Cats",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - [Glossary](https://typelevel.org/cats/nomenclature.html)

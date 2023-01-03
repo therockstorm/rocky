@@ -1,7 +1,13 @@
----
-title: Simple Queue Service (SQS)
-date: "2020-05-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-05-25",
+  title: "Simple Queue Service (SQS)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Pull-based queue used to decouple infrastructure
 - 256 KB message size limit, buy can use Java SDK to send larger payloads to S3

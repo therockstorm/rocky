@@ -1,7 +1,13 @@
----
-title: Shape Up by Ryan Singer
-date: "2020-12-29"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-29",
+  title: "Shape Up by Ryan Singer",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Rating: 5/5
 - [Link to book](https://37signals.com/books/#shape-up)

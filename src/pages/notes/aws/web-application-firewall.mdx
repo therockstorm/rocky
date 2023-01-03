@@ -1,7 +1,13 @@
----
-title: Web Application Firewall (WAF)
-date: "2022-11-21"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-21",
+  title: "Web Application Firewall (WAF)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Block malicious and unauthorized traffic
 - Typical firewalls work at Layer 3 and 4

@@ -1,7 +1,13 @@
----
-title: Mean Time to Recovery (MTTR)
-date: "2020-12-31"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-31",
+  title: "Mean Time to Recovery (MTTR)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Blue/green deploy, roll forward
 - Timeouts/deadlines for all remote calls

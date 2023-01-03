@@ -1,7 +1,13 @@
----
-title: Tweets
-date: "2020-12-29"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-29",
+  title: "Tweets",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - A good page to bookmark listing both supported #lambda runtimes and bundled #AWS SDK versions #serverless https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
 - There are lots of AWS CLI commands. I have a shit memory. I use this tool. https://awsclibuilder.com
@@ -116,6 +122,3 @@ date: "2020-12-29"
 - Multi-tenant fairness: load shedding, rate limiting, and bin packing, https://aws.amazon.com/builders-library/fairness-in-multi-tenant-systems
 - A classic, https://blog.codinghorror.com/falling-into-the-pit-of-success/
 - I agree. https://jezenthomas.com/why-we-dont-do-daily-stand-ups-at-supercede/
-
-- Yet to post
-  - n/a

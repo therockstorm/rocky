@@ -1,7 +1,13 @@
----
-title: Systems Manager
-date: "2022-11-21"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-21",
+  title: "Systems Manager",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Group of services giving visibility into infrastructure, most using SSM Agent
 - SSM Agent

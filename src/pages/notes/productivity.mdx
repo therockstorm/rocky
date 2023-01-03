@@ -1,7 +1,13 @@
----
-title: Productivity
-date: "2021-02-16"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2021-02-16",
+  title: "Productivity",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Todo lists, inbox zero, avoid multi-tasking (attention residue/context switching) and distractions (tabs, notifications, social media)
 - Command line productivity (aliases, GitHub CLI, Alfred)

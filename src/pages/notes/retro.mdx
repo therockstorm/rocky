@@ -1,7 +1,13 @@
----
-title: Retro
-date: "2020-12-29"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-29",
+  title: "Retro",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Can we radically simplify and get same result?
 - What is biggest bottleneck on ticket? In process? In code base? On team? At company? How can you speed others up?

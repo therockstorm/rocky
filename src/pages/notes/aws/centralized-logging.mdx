@@ -1,7 +1,13 @@
----
-title: Centralized Logging
-date: "2022-11-22"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-22",
+  title: "Centralized Logging",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Send all logs to centralized logging AWS account so as number of accounts grow, only one need be forwarded to, e.g., Splunk, Datadog, etc.
 - Define log retention policy backed by lifecycle policies

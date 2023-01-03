@@ -1,7 +1,13 @@
----
-title: CloudFront
-date: "2022-11-23"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-23",
+  title: "CloudFront",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Without CDN, ways to scale include
   - Increasing size or number of servers

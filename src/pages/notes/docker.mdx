@@ -1,7 +1,13 @@
----
-title: Docker
-date: "2020-11-02"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-11-02",
+  title: "Docker",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 Stop and remove all Docker containers,
 

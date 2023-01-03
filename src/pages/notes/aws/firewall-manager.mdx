@@ -1,7 +1,13 @@
----
-title: Firewall Manager
-date: "2022-11-24"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-24",
+  title: "Firewall Manager",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Cross-account firewall management, requires AWS Organizations and AWS Config
 - Supports WAF, VPC security groups, network firewall, Route53 DNS firewall, Shield Advanced, and Palo Alto Cloud next-generation firewalls

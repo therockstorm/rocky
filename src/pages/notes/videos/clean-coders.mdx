@@ -1,7 +1,13 @@
----
-title: Clean Coders by Robert "Uncle Bob" Martin
-date: "2020-12-28"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-12-28",
+  title: `Clean Coders by Robert "Uncle Bob" Martin`,
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - [Link to videos](https://cleancoders.com/)
 - Naming

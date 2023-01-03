@@ -1,7 +1,13 @@
----
-title: Trusted Advisor
-date: "2022-11-21"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-21",
+  title: "Trusted Advisor",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Checks for cost optimizations, performance, security, fault tolerance, and service limits
 - Requires Business or Enterprise support plan for full list of checks

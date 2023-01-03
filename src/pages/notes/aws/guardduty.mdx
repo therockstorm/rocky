@@ -1,7 +1,13 @@
----
-title: GuardDuty
-date: "2022-11-21"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-21",
+  title: "GuardDuty",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - [Active finding types](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-active.html)
 - Only listens for CloudTrail, VPC Flow, and DNS logs

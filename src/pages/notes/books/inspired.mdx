@@ -1,7 +1,13 @@
----
-title: Inspired by Marty Cagan
-date: "2021-01-03"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2021-01-03",
+  title: "Inspired by Marty Cagan",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Rating: 5/5
 - [Amazon](https://www.amazon.com/INSPIRED-Create-Tech-Products-Customers/dp/1119387507)

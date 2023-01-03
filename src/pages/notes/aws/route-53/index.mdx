@@ -1,9 +1,17 @@
----
-title: Route 53
-date: "2020-05-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+import { Figure } from "@/components/Figure";
+import awsNetwork from "./aws-network.jpg";
 
-<Figure caption="AWS multi-region network" id="aws-network" />
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-05-25",
+  title: "Route 53",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+<Figure caption="AWS multi-region network" src={awsNetwork} />
 
 - Use to route traffic between AWS regions
 - Alias records provide Route 53-specific extension to DNS allowing you to route traffic to selected AWS resources such as S3 buckets

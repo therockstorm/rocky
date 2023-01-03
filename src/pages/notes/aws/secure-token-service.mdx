@@ -1,7 +1,13 @@
----
-title: Secure Token Service (STS)
-date: "2022-11-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-25",
+  title: "Secure Token Service (STS)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Request temporary, limited-privilege credentials for IAM or federated users
 - Identity federation

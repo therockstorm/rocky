@@ -1,7 +1,13 @@
----
-title: Cloud Hardware Security Module (HSM)
-date: "2022-11-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-25",
+  title: "Cloud Hardware Security Module (HSM)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Physical tamper-resistant device providing extra security for sensitive data
 - FIPS 140-2 Level 3 certified

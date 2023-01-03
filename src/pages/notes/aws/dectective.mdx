@@ -1,7 +1,13 @@
----
-title: Detective
-date: "2022-11-21"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-21",
+  title: "Detective",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Threat detection, continuously monitors for malicious and unauthorized activity
 - Uses CloudTrail, VPC Flow, and GuardDuty findings

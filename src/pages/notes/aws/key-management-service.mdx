@@ -1,7 +1,13 @@
----
-title: Key Management Service (KMS)
-date: "2022-11-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-25",
+  title: "Key Management Service (KMS)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - KMS keys are region-specific and consist of metadata and reference to key material
   - You cannot extract, export, view, or manage key material. However, you can import your own.

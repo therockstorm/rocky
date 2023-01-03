@@ -1,7 +1,13 @@
----
-title: The Hard Thing About Hard Things by Ben Horowitz
-date: "2020-01-16"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-01-16",
+  title: "The Hard Thing About Hard Things by Ben Horowitz",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Rating: 4/5
 - [Amazon](https://www.amazon.com/Hard-Thing-About-Things-Building-ebook/dp/B00DQ845EA)

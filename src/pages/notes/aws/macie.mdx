@@ -1,7 +1,13 @@
----
-title: Macie
-date: "2020-05-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-05-25",
+  title: "Macie",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Uses AI to analyze S3 and CloudTrail data to identify security issues (private keys, etc.), financial information, and personally identifiable information (PII)
 - Can create custom regex

@@ -1,7 +1,13 @@
----
-title: CloudTrail
-date: "2020-05-25"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2020-05-25",
+  title: "CloudTrail",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Monitors AWS API calls for auditing purposes
 - Enabled by default, but not stored forever, not all event types are logged, and you have few customization options

@@ -1,7 +1,13 @@
----
-title: Shield
-date: "2022-11-23"
----
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  author: "Rocky Warren",
+  date: "2022-11-23",
+  title: "Shield",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
 
 - Protection against most common network (layer 3) and transport (layer 4) DDoS attacks. Also works against application (layer 7) attacks.
 - Shield Advanced protects against large and sophisticated DDoS attacks with real-time visibility, comes with 24x7 access to DDoS Response Team (DRT) during ongoing attacks and cost protection
