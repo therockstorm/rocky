@@ -1,13 +1,14 @@
 import "@/styles/tailwind.css";
 import "focus-visible";
 
+import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { OPEN_GRAPH } from "@/lib/seo";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSeo {...OPEN_GRAPH} />

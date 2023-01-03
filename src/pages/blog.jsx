@@ -40,7 +40,7 @@ export default function ArticlesIndex({ articles }) {
 
   const description =
     "My thoughts on software, security, and leadership. Oh, and motorcycling.";
-  const title = "Blog - Rocky Warren";
+  const title = "sudo README - Rocky Warren";
   const url = `${SITE_URL}${path}`;
   return (
     <>
