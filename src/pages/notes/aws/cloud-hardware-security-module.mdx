@@ -1,0 +1,19 @@
+---
+title: Cloud Hardware Security Module (HSM)
+date: "2022-11-25"
+---
+
+- Physical tamper-resistant device providing extra security for sensitive data
+- FIPS 140-2 Level 3 certified
+- Used to provision cryptographic keys
+- Requires VPC
+- Separation of duties is inherent in CloudHSM design, AWS monitors health and network availability but is not involved in creation and management of key material
+- AWS load balances requests and distributes keys across other HSMs in cluster
+  - Recommend at least two HSMs across multiple AZs
+- Single tenant
+- Can integrate with RedShift & RDS for Oracle, etc.
+- Benefits over KMS
+  - Dedicated, 3rd-party validated HSM under your exclusive control (AWS cannot administer keys)
+  - Integration with applications using PKCS#11, JCE, CNG, and other standards
+  - High-performance in-VPC cryptographic acceleration (bulk crypto)
+  - Organization admin can export and share keys as needed

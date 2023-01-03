@@ -1,0 +1,10 @@
+---
+title: Caching
+date: "2020-12-29"
+---
+
+- Redis cache aside, external to internal cache fallback, hard and soft ttl, negative caching of errors, cache as serialized proto, coalesce requests before sending to cache, load test with caches disabled
+- Cache even dynamic data for couple secs
+- Write through with lazy loading and TTL
+- Use RDB and AOF persistence in Redis
+- When looking for things to cache, prioritize based on request time \* num requests

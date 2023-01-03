@@ -1,0 +1,73 @@
+---
+title: Clean Coders by Robert "Uncle Bob" Martin
+date: "2020-12-28"
+---
+
+- [Link to videos](https://cleancoders.com/)
+- Naming
+  - Don't give concrete names to abstract classes
+  - No disinformation, don't tolerate "drift" in responsibility
+  - Shouldn't have to read comments or code to understand or communicate intent
+  - Classes/variables are nouns, methods are verbs, enums are adjectives, bools are predicates
+  - Scope and name length are proportional
+    - Functions/classes are opposite, privates have long names and public are convenient, short names
+    - Derived classes have longer names
+- Functions
+  - ~10 lines
+  - Break if clauses into functions
+  - Should do only one thing from perspective of reader and shouldn't cross levels of abstraction
+  - Extract until you can't extract anymore...even in tests
+- Function Structure
+  - 3 argument max
+  - Prefer setters over passing many args in ctor
+  - No bool or NULL args, create two different functions
+  - No output args
+  - Only program defensively in public APIs, other code should use unit tests to make sure you're not passing NULL
+  - Step-down rule: most important, public, functions at the top, all function calls point down
+  - Switch statements depend on downstream modules. If any downstream module changes, switch will have to be recompiled
+    - Convert switch to polymorphism by pulling type into abstract base class
+  - Temporal coupling: dependent on order of things happening
+  - Command-Query separation: functions that change state should not return values and functions that return values should not change state
+    - Command has side effect (set), query does not (get)
+  - Tell objects what to do, don't ask about their state. The object knows its state and can make decisions based on what you tell it to do.
+  - No chains of queries (don't call methods on objects returned from previous method call)
+  - Write error handling code first
+  - NULL pattern is better than errors
+  - Prefer unchecked exceptions for unexpected conditions
+- Form
+  - Every comment is failure to express yourself in code
+  - Don't restate code
+  - Bury asserts in helper functions with good names
+  - 50-60 line files, maximum 500
+  - Blank lines after variable declarations, before and after loops/if/else
+  - K&R, 2 space indent
+  - Classes are collections of methods from outside looking in
+    - Use Tell Don't Ask to avoid getters/setters
+    - If they're needed, instead of exposing internals like GetGallonsOfGas, use GetPercentFuelRemaining, allows for polymorphism
+  - Data Structure: public variables, little to no methods, switch statements, protect from new methods
+  - Class: private variables, public methods, polymorphism, protect from new types
+  - Domain \<- DB Interface -\> DB: Have interfaces in domain that DBI implements
+  - Application shouldn't know about views in the same way
+- TDD Part 1
+  - Methods with lots of state should likely be classes
+  - Pull out even ternaries
+  - No production code without failing test
+  - Don't write more of unit test than is sufficient to fail
+  - Write only enough production code to make test pass
+- Architecture, Use Cases, and High Level Design
+  - Architecture is about usage/use cases, not framework
+  - Use cases only show inputs and outputs, don't say anything about delivery mechanism, SOA, etc.
+  - Uses cases have to deal with 3 types of objects, Entities (app-independent business rules), Boundaries (user inteferface, app-specific), and Interactors (use case, app-specific).
+  - MVC, routes, URLs, CSS, HTML, etc. live on delivery side of boundary
+  - Interactor objects use database abstraction objects, open/commit/rollback transactions
+  - Application side has EntityGateway interfaces implemented by data layer
+  - Everything points into the application, nothing points out
+  - Can test everything without database and web server, can independently deploy app
+  - Hard to change types in OO languages, prefer Strategy pattern in those cases
+  - Interactors aka Use Cases contain app specific business rules, implement one boundary and use another, typically use Command pattern with Execute method, orchestrates between boundaries and entities through request/response models, probably does validation on request model
+  - Entities contain app independent business rules
+  - Request/response models don't know anything about delivery mechanism
+  - Presenter takes response model and turns it into view model
+  - View models don't depend on or know about the web, but looks like it's built for it, represents what's on the page, bools, enums, etc.
+  - Hardly any logic at all in views
+  - Controllers construct request models and pass them to interactors via interface, interactor manipulates the entities to construct response models and pass them to presenters via interface, presenters create view models for views. Plugin architecture.

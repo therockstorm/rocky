@@ -1,0 +1,30 @@
+---
+title: Incident Response
+date: "2022-11-21"
+---
+
+- Prevent: WAF, IAM, Network Firewall, KMS
+- Detect: CloudTrail, CloudWatch, Inspector, Detective
+- Exposed access keys
+  - Determine access associated with key
+  - Invalidate credentials including temporary credentials by either adding a default deny or removing all policies from compromised user
+  - Restore access with new credentials
+  - Review AWS account to see which actions may have been performed, may need to restore data
+- Compromised EC2 instance
+  - Lock instance down
+  - Take EBS snapshot and memory dump
+  - Perform forensic analysis
+  - Terminate instance
+- Steps
+  - Prepare
+    - Enable CloudTrail, VPC flow, and application logs
+    - Use AWS Orgs to separate accounts and reduce blast radius
+  - Detect
+    - GuardDuty, Detective, CloudTrail/CloudWatch alarms for, e.g., multiple sign-in failures, launching of servers at 3 AM, etc.
+  - Contain
+    - CLI/SDKs to contain using predefined security group, e.g., contain malware spread
+  - Investigate
+    - CloudWatch logs, Config
+  - Recover
+    - Pre-built AMI, database restore, etc.
+  - Lessons Learned

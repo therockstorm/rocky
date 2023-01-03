@@ -1,0 +1,39 @@
+---
+title: Identity and Access Management (IAM)
+date: "2020-05-25"
+---
+
+- Global, created Users, Groups, Roles, and JSON Policies are available in all regions
+- [Actions, Resources, and Condition Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html)
+- Identity-based policies
+  - Attached to users, groups, or roles
+  - Specify what identity can do
+- Resource-based polices
+  - Attached to resources, e.g., S3 bucket, SQS queue, etc.
+  - Specify who has access and what actions they can perform
+- Policy evaluation
+  - Default deny
+  - Evaluate all applicable policies based on effective permissions (identity, session, and resource policies, SCPs, and permission boundaries)
+  - Deny if explicit deny exists
+  - Allow if explicit allow exists
+  - Deny
+- Identity account pattern
+  - Store all users and passwords in single account with roles to access other accounts
+  - Steps
+  1. Create user in identity account
+  1. Create cross-account roles in each account they have access to
+  1. In identity account, grant them permission to switch to role created above
+- External ID is data that you provide to AWS when you AssumeRole with security token service (STS)
+  - Used when 3rd party will assume this role
+  - Doesn't work via UI
+- Permission boundaries
+  - Limits maximum permissions that an identity-based policy can grant to an IAM entity
+- Version defaults to 2008-10-17 if not set, should always set to 2012-10-17
+- Principal defines, e.g., IAM user, federated user, IAM role, AWS service, or account
+  - Cannot be used in identity-based policies
+- NotPrincipal used with Deny explicitly denies access to all principals except those listed, also requires adding an allow in the identity-based policy of the users requiring access
+- Condition allows specification of when policy is in effect
+- Service roles are assumed by AWS services to perform actions on your behalf
+- Pass roles allow service to assume role and perform actions on your behalf
+  - User must have permissions to pass a role to the service
+  - Once a role is passed and associated with a resource, other users that have permission to operate the resource can use this role even if they don't have permission to pass it

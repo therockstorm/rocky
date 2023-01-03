@@ -1,0 +1,20 @@
+---
+title: Web Application Firewall (WAF)
+date: "2022-11-21"
+---
+
+- Block malicious and unauthorized traffic
+- Typical firewalls work at Layer 3 and 4
+- Supports CloudFront and ELB
+- WAF works at Layer 7 to stop SQL injection, XSS, etc.
+- Web ACL is centralized place for rules, rule statements, and associated configuration
+- Associations define which entity WAF is associated with (ALB, CloudFront, API Gateway, AppSync)
+- Rule statements
+  - Custom, e.g., block requests from country X, block requests to `/admin` or `?admin`, etc.
+    - Can combine multiple statements with AND, OR, NOT
+    - Allow, block, count, or CAPTCHA
+    - Configure either allow or block default rule
+  - Managed
+    - Paid and free
+    - Admin protection, bot control, SQL database, etc.
+- 10,000 rules per IP set and you can have multiple IP sets

@@ -1,0 +1,18 @@
+---
+title: Secure Token Service (STS)
+date: "2022-11-25"
+---
+
+- Request temporary, limited-privilege credentials for IAM or federated users
+- Identity federation
+  1. User logs in with un/pw
+  1. Credentials given to identity broker (IB)
+  1. IB validates against identity store, e.g., Active Directory
+  1. If valid, IB contacts STS
+  1. STS issues access key, secret key, and session token
+  1. User uses these to login to AWS Console or CLI
+- SAML
+  1. User opens identity provider (IdP) login page, enters un/pw, selects appropriate application
+  1. IdP validates credentials and permissions, returns user SAML assertion
+  1. User POSTs assertion to SaaS application, service provider validates assertion
+  1. Service provider creates temporary credentials and returns to user

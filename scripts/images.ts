@@ -1,20 +1,27 @@
 import { PathLike, readdirSync } from "fs";
-import { join, resolve } from "path";
+import { basename, join, resolve } from "path";
 import sharp from "sharp";
 
-const IN_PATH = join(__dirname, "..", "src", "images", "photos");
-const OUT_PATH = join(__dirname);
-
 async function resizeImages() {
-  for await (const f of getFiles(IN_PATH)) {
+  const src = join(__dirname, "..", "src", "images", "photos");
+  const dst = join(__dirname);
+  for await (const f of getFiles(src)) {
     try {
       await sharp(f)
         .resize({ width: 1080 })
         .toFormat("jpg", { mozjpeg: true })
-        .toFile(f.replace(IN_PATH, OUT_PATH));
+        .toFile(f.replace(src, dst));
     } catch (error) {
       handleError({ error, func: "resizeImage" });
     }
+  }
+}
+
+async function convertMdx() {
+  const src = join(__dirname, "..", "src", "pages", "notes");
+
+  for await (const f of getFiles(src)) {
+    console.log(basename(f));
   }
 }
 
@@ -34,4 +41,4 @@ function handleError({
   console.error(`${func} error: ${error}`);
 }
 
-resizeImages();
+convertMdx();
