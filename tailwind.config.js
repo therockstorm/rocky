@@ -58,7 +58,7 @@ module.exports = {
           "--tw-prose-bullets": theme("colors.zinc.900"),
           "--tw-prose-hr": theme("colors.zinc.100"),
           "--tw-prose-quote-borders": theme("colors.zinc.200"),
-          "--tw-prose-captions": theme("colors.zinc.400"),
+          "--tw-prose-captions": theme("colors.zinc.500"),
           "--tw-prose-code": theme("colors.zinc.700"),
           "--tw-prose-code-bg": theme("colors.zinc.300 / 0.2"),
           "--tw-prose-pre-code": theme("colors.zinc.100"),
@@ -78,7 +78,7 @@ module.exports = {
           "--tw-prose-invert-bullets": theme("colors.zinc.200"),
           "--tw-prose-invert-hr": theme("colors.zinc.700 / 0.4"),
           "--tw-prose-invert-quote-borders": theme("colors.zinc.500"),
-          "--tw-prose-invert-captions": theme("colors.zinc.500"),
+          "--tw-prose-invert-captions": theme("colors.zinc.400"),
           "--tw-prose-invert-code": theme("colors.zinc.300"),
           "--tw-prose-invert-code-bg": theme("colors.zinc.200 / 0.05"),
           "--tw-prose-invert-pre-code": theme("colors.zinc.100"),
@@ -119,7 +119,7 @@ module.exports = {
           },
 
           img: {
-            borderRadius: theme("borderRadius.3xl"),
+            borderRadius: theme("borderRadius.sm"),
           },
 
           a: {
