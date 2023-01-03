@@ -4,7 +4,6 @@ import { NextSeo } from "next-seo";
 
 import { Card } from "@/components/Card";
 import { SimpleLayout } from "@/components/SimpleLayout";
-import { formatDate } from "@/lib/formatDate";
 import { getAllNotes } from "@/lib/getAllNotes";
 import { SITE_URL } from "@/lib/seo";
 
@@ -23,7 +22,7 @@ export default function NotesIndex({ notes }: Props) {
   const path = usePathname();
 
   const description =
-    "My thoughts on software, security, and leadership. Oh, and motorcycling.";
+    "My notes on books, AWS, and other things I stumble across. Be warned: many lack polish.";
   const title = "Notes - Rocky Warren";
   const url = `${SITE_URL}${path}`;
   return (
@@ -41,7 +40,7 @@ export default function NotesIndex({ notes }: Props) {
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
             {notes.map((note) => (
-              <Note key={note.slug} note={note} />
+              <NoteIndex key={note.slug} note={note} />
             ))}
           </div>
         </div>
@@ -59,29 +58,14 @@ export async function getStaticProps() {
   };
 }
 
-function Note({ note }: Readonly<{ note: Note }>) {
+function NoteIndex({ note }: Readonly<{ note: Note }>) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
-      <Card className="md:col-span-3">
+      <Card className="md:col-span-4">
         <Card.Title href={`/notes/${note.slug}`}>{note.title}</Card.Title>
-        <Card.Eyebrow
-          as="time"
-          dateTime={note.date}
-          className="md:hidden"
-          decorate
-        >
-          {formatDate(note.date)}
-        </Card.Eyebrow>
         <Card.Description>{note.description}</Card.Description>
         <Card.Cta>Read note</Card.Cta>
       </Card>
-      <Card.Eyebrow
-        as="time"
-        dateTime={note.date}
-        className="mt-1 hidden md:block"
-      >
-        {formatDate(note.date)}
-      </Card.Eyebrow>
     </article>
   );
 }

@@ -29,8 +29,8 @@ export const Position = ({
               </div>
             </div>
             <ul>
-              {desc.map((d, i) => (
-                <li key={i}>{d}</li>
+              {desc.map((d, idx) => (
+                <li key={idx}>{d}</li>
               ))}
             </ul>
           </div>

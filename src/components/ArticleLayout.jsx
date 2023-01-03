@@ -5,14 +5,16 @@ import { ArticleJsonLd, NextSeo } from "next-seo";
 import { Container } from "@/components/Container";
 import { Prose } from "@/components/Prose";
 import { formatDate } from "@/lib/formatDate";
-import { SITE_URL, toJsonLdString } from "@/lib/seo";
+import { AUTHOR, SITE_URL, toJsonLdString } from "@/lib/seo";
 
 export function ArticleLayout({ children, meta, isRssFeed = false }) {
   const path = usePathname();
-
   if (isRssFeed) return children;
 
-  const description = meta.description;
+  const noteDesc = path.startsWith("/notes/")
+    ? `${AUTHOR}'s ${meta.title} notes.`
+    : "";
+  const description = meta.description ? meta.description : noteDesc;
   const title = `${meta.title} - ${meta.author}`;
   const url = `${SITE_URL}${path}`;
   return (

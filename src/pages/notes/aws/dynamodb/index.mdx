@@ -42,7 +42,7 @@ export default (props) => <ArticleLayout meta={meta} {...props} />;
   - One-To-Many via Composite SK, table can be queried by pk and starts_with, between, >, < etc.
   - Index Overloading
 
-    <Figure caption="DynamoDB index overloading" src="ddbIndexOverloading" />
+    <Figure caption="DynamoDB index overloading" src={ddbIndexOverloading} />
 
     - One table, one GSI - Table
       can be queried by ID for accounts and todo entities - GSI can be queried for
@@ -50,7 +50,7 @@ export default (props) => <ArticleLayout meta={meta} {...props} />;
 
   - Many-To-Many
 
-    <Figure caption="DynamoDB many-to-many" src="ddbManyToMany" />
+    <Figure caption="DynamoDB many-to-many" src={ddbManyToMany} />
 
     - One table, one GSI - Table can be
       queried by ID for accounts and todo entities and for todos per account - GSI

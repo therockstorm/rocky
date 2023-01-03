@@ -52,36 +52,6 @@ function SocialLink({ icon, ...props }) {
   );
 }
 
-// function Newsletter() {
-//   return (
-//     <form
-//       action="/thank-you"
-//       className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
-//     >
-//       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-//         <FontAwesomeIcon className="h-6 w-6 flex-none" icon={faEnvelope} />
-//         <span className="ml-3">Stay up to date</span>
-//       </h2>
-//       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-//         Get notified when I publish something new, unsubscribe at any time. No
-//         spam. Ever.
-//       </p>
-//       <div className="mt-6 flex">
-//         <input
-//           type="email"
-//           placeholder="Email address"
-//           aria-label="Email address"
-//           required
-//           className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-500 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10 sm:text-sm"
-//         />
-//         <Button type="submit" className="ml-4 flex-none">
-//           Join
-//         </Button>
-//       </div>
-//     </form>
-//   );
-// }
-
 function Resume() {
   let resume = [
     {
@@ -142,8 +112,8 @@ function Resume() {
         <span className="ml-3">Work</span>
       </h2>
       <ol className="mt-6 space-y-4">
-        {resume.map((role, roleIndex) => (
-          <li key={roleIndex} className="flex gap-4">
+        {resume.map((role, idx) => (
+          <li key={idx} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
               <Image
                 src={role.logo}
@@ -199,17 +169,23 @@ function Photos() {
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
+        {[
+          { image: image1, alt: "Haleakala National Park" },
+          { image: image2, alt: "Rome, Italy" },
+          { image: image3, alt: "Chain of Craters Road" },
+          { image: image4, alt: "Santa Elena Canyon" },
+          { image: image5, alt: "Maligne Lake" },
+        ].map(({ alt, image }, idx) => (
           <div
             key={image.src}
             className={clsx(
               "relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl",
-              rotations[imageIndex % rotations.length]
+              rotations[idx % rotations.length]
             )}
           >
             <Image
               src={image}
-              alt=""
+              alt={alt}
               sizes="(min-width: 640px) 18rem, 11rem"
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -270,7 +246,6 @@ export default function Home({ articles }) {
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            {/* <Newsletter /> */}
             <Resume />
           </div>
         </div>

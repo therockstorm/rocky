@@ -12,8 +12,8 @@ const RECOMMENDATIONS = [
 export const Recommendations = (): JSX.Element => (
   <Section title="Recommendations">
     <ul>
-      {RECOMMENDATIONS.map((r, i) => (
-        <li key={i}>{r}</li>
+      {RECOMMENDATIONS.map((r, idx) => (
+        <li key={idx}>{r}</li>
       ))}
     </ul>
   </Section>
