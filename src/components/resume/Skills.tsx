@@ -9,31 +9,32 @@ export const Skills = (): JSX.Element => (
       {/* Languages */}
       <Skill>JavaScript</Skill>
       <Skill>TypeScript</Skill>
-      <Skill>Elixir</Skill>
-      <Skill>Solidity</Skill>
       <Skill>Scala</Skill>
       <Skill>C#</Skill>
       <Skill>Python</Skill>
       <Skill>Shell/Bash</Skill>
       <Skill>Java</Skill>
+      <Skill>Elixir</Skill>
+      <Skill>Solidity</Skill>
       <Skill>Rust</Skill>
       {/* Data */}
-      <Skill>PostgreSQL</Skill>
       <Skill>SQS</Skill>
+      <Skill>PostgreSQL</Skill>
       <Skill>DynamoDB</Skill>
-      <Skill>Kafka</Skill>
-      <Skill>AWS Lambda</Skill>
-      <Skill>Athena</Skill>
       <Skill>Akka</Skill>
+      <Skill>AWS Lambda</Skill>
+      <Skill>Kafka</Skill>
       <Skill>Redis</Skill>
       <Skill>gRPC</Skill>
       {/* Miscellaneous */}
       <Skill>React</Skill>
-      <Skill>Cloud SIEM</Skill>
-      <Skill>Phoenix</Skill>
+      <Skill>Cyber Security</Skill>
       <Skill>Docker</Skill>
+      <Skill>Cloud SIEM</Skill>
+      <Skill>DevSecOps</Skill>
       <Skill>REST API Design</Skill>
       <Skill>Distributed Systems</Skill>
+      <Skill>Cloud Security</Skill>
       <Skill>Threat Modelling</Skill>
     </ul>
   </Section>

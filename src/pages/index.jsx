@@ -224,7 +224,7 @@ export default function Home({ articles }) {
   const path = usePathname();
 
   const description =
-    "I’m Rocky Warren, a software and security engineer based in Denver. Away from my keyboard, I've ridden across the United States on a motorcycle, across Canada on a train, and twice across Iowa on a bicycle.";
+    "I’m Rocky Warren, a software and security engineer based in Denver. Away from my keyboard, I've ridden across the United States on a motorcycle, across Canada on a train, and across Iowa on a bicycle.";
   const t = "Principal engineer and aspiring dad of the year.";
   const title = `Rocky Warren - ${t}`;
   const url = `${SITE_URL}${path}`;
