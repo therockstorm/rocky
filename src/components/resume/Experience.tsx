@@ -16,7 +16,7 @@ export const Experience = (): JSX.Element => (
             location: "Remote",
             desc: [
               `Authored and maintain SOC2-audited business continuity, disaster recovery, and incident response plans.`,
-              `Encrypt sensitive data client-side using 256-bit AES-GCM envelope encryption backed by AWS KMS, random initialization vectors, and tagged ciphertexts to ease quarterly rotation. Searchable fields leverage HMAC SHA-512 hashes.`,
+              `Encrypt sensitive data using 256-bit AES-GCM envelope encryption backed by AWS KMS, random initialization vectors, and tagged ciphertexts to ease quarterly rotation. Searchable fields leverage HMAC SHA-512 hashes.`,
               `Lead regular Threat Model and tabletop exercises to determine risks and create mitigation plans. Leverage NIST SP 800-30 and MITRE ATT&CK frameworks for threat sources and events.`,
               `Set up ingestion of application, CloudTrail, GuardDuty, VPC flow, Route53, and load balancer access logs into Datadog. Over 95% of cloud security posture management (CSPM) rule findings passing for PCI, SOC 2, and GDPR with plans to reach 100%. Use security information and event management (SIEM) to alert on both new findings and anomalous activity.`,
               `Use Nessus, Burp Suite, and Metasploit to scan for vulnerabilities and penetration test applications. Use Slither and Echidna to statically analyze and fuzz smart contracts, reporting on and addressing findings.`,
