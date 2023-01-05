@@ -167,7 +167,7 @@ export const Experience = (): JSX.Element => (
         ],
       },
       {
-        company: "Collins Aerospace (Raytheon)",
+        company: "Collins Aerospace/Raytheon",
         positions: [
           {
             title: "Software Developer",

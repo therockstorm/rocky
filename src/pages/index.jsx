@@ -97,7 +97,7 @@ function Resume() {
       end: "2007",
     },
     {
-      company: "Collins Aerospace (Raytheon)",
+      company: "Collins Aerospace/Raytheon",
       title: "Intern",
       logo: collins,
       start: "2005",
@@ -150,8 +150,8 @@ function Resume() {
           </li>
         ))}
       </ol>
-      <Button variant="secondary" className="group mt-6 w-full">
-        <Link href="/resume">View full Resume</Link>
+      <Button href="/resume" className="group mt-6 w-full" variant="secondary">
+        View full Resume
       </Button>
     </div>
   );

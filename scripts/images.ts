@@ -3,10 +3,12 @@ import { join, resolve } from "path";
 import sharp from "sharp";
 
 async function resizeImages() {
-  const src = join(__dirname, "..", "..");
-  const dst = join(__dirname);
+  const src = join(__dirname);
+  const dst = join(__dirname, "..", "out");
   for await (const f of getFiles(src)) {
     try {
+      if (!f.endsWith(".jpg")) continue;
+
       await sharp(f)
         .resize({ width: 1080 })
         .toFormat("jpg", { mozjpeg: true })
