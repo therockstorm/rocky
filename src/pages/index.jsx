@@ -98,7 +98,7 @@ function Resume() {
     },
     {
       company: "Collins Aerospace/Raytheon",
-      title: "Intern",
+      title: "Software Engineer Intern",
       logo: collins,
       start: "2005",
       end: "2005",

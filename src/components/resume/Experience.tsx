@@ -170,7 +170,7 @@ export const Experience = (): JSX.Element => (
         company: "Collins Aerospace/Raytheon",
         positions: [
           {
-            title: "Software Developer",
+            title: "Software Engineer Intern",
             start: "May 2005",
             end: "Aug 2005",
             location: "Cedar Rapids, IA",
