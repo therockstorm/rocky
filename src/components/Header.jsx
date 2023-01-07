@@ -150,11 +150,11 @@ function ModeToggle() {
       onClick={toggleMode}
     >
       <FontAwesomeIcon
-        className="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:text-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:text-teal-600"
+        className="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-700 dark:hidden"
         icon={faSunBright}
       />
       <FontAwesomeIcon
-        className="hidden h-6 w-6 text-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:text-zinc-500 [@media_not_(prefers-color-scheme:dark)]:text-teal-500"
+        className="hidden h-6 w-6 text-zinc-500 transition dark:block"
         icon={faMoonStars}
       />
     </button>
