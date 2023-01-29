@@ -1,6 +1,5 @@
 import { faEnvelope } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 import { Button } from "@/components/Button";
@@ -16,8 +15,8 @@ export function Newsletter({
   title = "Stay up to date",
   subtitle = "Get notified when I publish. Unsubscribe at any time.",
 }: Props) {
-  const router = useRouter();
   const [email, setEmail] = React.useState("");
+  const [subscribed, setSubscribed] = React.useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,7 +25,7 @@ export function Newsletter({
       body: JSON.stringify({ email }),
       method: "POST",
     });
-    if (res.status === 200) router.push("/thank-you");
+    if (res.status === 200) setSubscribed(true);
     else console.error(res.status, await res.json());
   }
 
@@ -44,6 +43,11 @@ export function Newsletter({
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
         {subtitle}
       </p>
+      {subscribed && (
+        <p className="mt-2 text-sm text-green-700 dark:text-green-500">
+          Thanks for subscribing!
+        </p>
+      )}
       <div className="mt-6 flex">
         <input
           aria-label="Email address"
