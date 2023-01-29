@@ -1,0 +1,79 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2021-02-02",
+  title: "Running Linux GUI Apps in Docker on Mac",
+  description:
+    "Run Linux apps in Docker on Mac using an X Window system to avoid cross compiling dependencies or to sandbox an app.",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+Why would you want to run Linux apps in Docker on a Mac? Maybe there's a Linux program you love or you want the added security of sandboxing an app. Or maybe, as was the case with me, you're developing a C++ program targeting Linux and don't want to cross compile your dependencies.
+
+The following steps get the CLion IDE running in a Docker container created during the project's build process. It uses [XQuartz](https://www.xquartz.org/), a version of the X Window system that runs on macOS, along with [socat](https://linux.die.net/man/1/socat).
+
+1. Download the Linux version of CLion
+1. Each time dependencies change, run `create_dev_container.sh` to create a Docker image and container. The script assumes `~/dev` is your code directory. If you use something different, edit the script or run it as `CODE_DIR=<your_dir> ./create_dev_container.sh`
+1. Run `start_dev_container.sh` to start the container and exec bash inside of it
+1. From inside the container, run `/home/dev/clion-XXX/bin/clion.sh` to start CLion. If this fails, ensure your container contains a JRE by either manually running `apt install default-jre` or adding it to the Dockerfile.
+1. Either select "Evaluate for free" or enter your activation code
+1. Open your project
+1. Build it and enjoy code completion, etc.!
+1. If you make changes to settings they'll be lost each time you create a new container. To save them, run `docker cp my_project:/root/.CLionXXX/ ~/dev` and import them next time you start CLion in a fresh container.
+
+```shell create_dev_container.sh
+NAME=my_project
+EXISTING_IMAGE_ID=$(docker ps --all --filter "name=$NAME" --format "{{.Image}}")
+
+if [[ -n "$EXISTING_IMAGE_ID" ]]; then
+  read -p "$NAME already exists. Delete it? " answer
+
+  while true
+  do
+    case $answer in
+    [yY]* ) docker stop $NAME > /dev/null 2>&1
+            docker rm $NAME > /dev/null 2>&1
+            docker rmi $EXISTING_IMAGE_ID
+            break;;
+    * )     echo "exiting"
+            exit;;
+    esac
+  done
+else
+  echo "$NAME does not exist, creating..."
+fi
+
+# Build your docker container
+./build.sh
+
+CODE_DIR=${CODE_DIR:-~/dev/}
+IP_ADDRESS=$(ifconfig en0 | grep "inet " | cut -d " " -f 2)
+IMAGE_ID=$(docker images --format "{{.ID}}" build/local/my-project:latest)
+
+echo "Creating container using image ID $IMAGE_ID, mapping IP address $IP_ADDRESS, and mounting $CODE_DIR..."
+docker create -it -e DISPLAY=$IP_ADDRESS:0 -v $CODE_DIR:/home/dev/ $IMAGE_ID bash
+
+GENERATED_NAME=$(docker ps --all --filter "ancestor=$IMAGE_ID" --format "{{.Names}}")
+echo "Renaming $GENERATED_NAME to $NAME..."
+docker rename $GENERATED_NAME $NAME
+
+echo "\nContainer created, run ./start_dev_container.sh to exec bash inside of it."
+```
+
+```shell start_dev_container.sh
+NAME=my_project
+
+APP=socat
+brew ls --versions $APP > /dev/null 2>&1 || brew install $APP
+APP=xquartz
+brew cask ls --versions $APP > /dev/null 2>&1 || brew cask install $APP
+
+if [ "$(lsof -nP -i4TCP:6000 | grep -c LISTEN)" -eq 0 ]; then
+  socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
+fi
+
+open -a Xquartz
+docker start $NAME > /dev/null 2>&1
+docker exec -it $NAME bash
+```

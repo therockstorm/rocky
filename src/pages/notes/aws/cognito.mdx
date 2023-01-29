@@ -1,0 +1,15 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2020-05-25",
+  title: "Cognito",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- Provides authentication, authorization, and user management for web and mobile apps
+- Identity broker handling interaction between application and Web Identity Providers (WIP)
+- User authenticates and receives token from WIP and exchanges token for temporary AWS credentials used to assume an IAM role
+- User Pools handle registration, authentication, password reset, etc.
+- Identity Pools authorize access to AWS resources

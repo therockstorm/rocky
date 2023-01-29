@@ -1,0 +1,84 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2020-05-25",
+  title: "Simple Storage Service (S3)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- [Storage Lens](https://aws.amazon.com/blogs/aws/s3-storage-lens/)
+- Object storage, in contrast to EBS
+- Bucket names must be globally unique
+- Limits
+  - Each object can range from zero bytes to five TB bytes with unlimited overall storage
+  - Each account has a soft limit of 100 and hard limit of 1000 buckets
+- Consistency
+  - Read after write for new objects
+  - Eventual for updates and deletes
+- Security
+  - Buckets are private by default
+  - Bucket-level access is controlled via Bucket Policies
+    - Enables allowing from specific IPs or VPCs, entire internet, only HTTPS connections, require encryption, etc.
+    - Useful for centralizing logs from, e.g., CloudTrail, VPC Flow, etc.
+      - In central account, set other account ARN (`root`) as `Principal`
+      - Also need IAM user policy in other account in order to allow access to the bucket
+      - Canned ACLs: set of predefined grants, specified with the `x-amz-acl` header
+        - `private` (default), owner `FULL_CONTROL`, others have no rights
+        - `public-read` owner `FULL_CONTROL`, others have read read
+        - `public-read-write` owner `FULL_CONTROL`, others have read read/write
+        - `bucket-owner-read` owner `FULL_CONTROL`, bucket owner has read
+        - `bucket-owner-full-control` owner and bucket owner `FULL_CONTROL`
+    - If you mistakenly lock yourself out of a bucket, use the root account to edit/delete the policy
+  - Object-level access is controlled via Access Control Lists (ACLs)
+  - Cross-account object sharing via Bucket Policies, ACLs, or cross-account IAM roles. The latter is preferred, it enables API and Console access instead of only API access.
+  - TLS encryption in-transit
+  - At rest aka server-side encryption (SSE-S3)
+    - S3-managed keys (SSE-S3), each object has unique AES-256 key
+    - Customer master keys stored in Key Management Service (SSE-KMS)
+    - Customer-provided keys (SSE-C), key provided as part of request and S3 manages encrypt/decrypt options
+    - Client-side encryption
+- Cross or same-region replication
+  - Versioning must be enabled on both source and destination buckets
+  - Only new/updated files are replicated after enabling
+  - Deletes are not replicated
+- Versioning
+  - Protects against overwriting and accidental deletion
+  - Can still "permanently delete"
+  - Once enabled, can only be suspended, not disabled
+  - Applies to all objects in the bucket, not a subset
+- Lifecycle Policies automate moving objects and/or object versions between storage classes
+- Object lock, write once read many (WORM)
+  - Requires bucket versioning
+  - Ransomware protection
+  - Retention modes, can set per object
+    - Governance: can be overridden by specific IAM roles
+    - Compliance: cannot be overridden, even by root
+- S3 Transfer Acceleration uploads files first to CloudFront edge locations (Amazon's content delivery network or CDN) and then over AWS's backbone network to your bucket (or origin in CloudFront language)
+
+## S3 Storage Classes
+
+| Name                 | Availability | Use Case                                                                       | Retrieval Fee | Minimum Duration Charge | First-Byte Latency            |
+| -------------------- | ------------ | ------------------------------------------------------------------------------ | ------------- | ----------------------- | ----------------------------- |
+| Standard             | 99.99%       | General purpose                                                                | N/a           | N/a                     | Milliseconds                  |
+| Intelligent Tiering  | 99.9%        | Unknown or changing access, AWS moves between storage classes saving you money | N/a           | 30 days                 | Milliseconds                  |
+| Standard-IA          | 99.9%        | Infrequent access                                                              | Per GB        | 30 days                 | Milliseconds                  |
+| One Zone-IA          | 99.5%        | Infrequent access, lower-cost, reproducible data                               | Per GB        | 30 days                 | Milliseconds                  |
+| Glacier              | 99.99%       | Archive, low-cost                                                              | Per GB        | 90 days                 | Configurable minutes to hours |
+| Glacier Deep Archive | 99.99%       | Archive, lowest-cost                                                           | Per GB        | 180 days                | < 12 hours                    |
+
+Note: All storage classes provide 99.999999999% durability (11 9s)
+
+## Glacier
+
+- Extremely low-cost storage service providing secure and durable storage
+- Data stored in archives and grouped together into Vaults
+- IAM-controlled access, including vault-level polices
+- Can also create vault-level resource policies attached directly to vaults
+- SSE encryption
+- Can encrypt data before uploading
+- Vault lock allows easily deploying and enforcing compliance controls for vaults
+  - Immutable
+  - Supports WORM
+  - Gives lock ID when enabled

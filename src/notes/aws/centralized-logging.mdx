@@ -1,8 +1,0 @@
----
-title: Centralized Logging
-date: "2022-11-22"
----
-
-- Send all logs to centralized logging AWS account so as number of accounts grow, only one need be forwarded to, e.g., Splunk, Datadog, etc.
-- Define log retention policy backed by lifecycle policies
-- If configured via S3 bucket, add aws:SourceArn condition key to limit access to only your other account resources

@@ -1,0 +1,17 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2022-11-24",
+  title: "Firewall Manager",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- Cross-account firewall management, requires AWS Organizations and AWS Config
+- Supports WAF, VPC security groups, network firewall, Route53 DNS firewall, Shield Advanced, and Palo Alto Cloud next-generation firewalls
+- \$\$\$ so IaC may make more sense
+- Benefits
+  - Simplifies firewall management and managed rule deployment across accounts
+  - Ensures compliance with existing and new apps
+  - Centrally deploy VPC protections

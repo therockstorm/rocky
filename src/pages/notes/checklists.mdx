@@ -1,0 +1,19 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2021-12-15",
+  title: "Checklists",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- Pull request
+  - Meets acceptance criteria
+  - Verified it works from a customer's point of view
+  - Added a detailed description for the change along with test instructions
+  - Added integration tests
+  - Self-reviewed ensuring no typos, TODOs, commented LOCs, debug code, extra whitespace, unnecessary duplication, clear naming, etc.
+  - Sanitized and validated external data
+  - Attempted to simplify tricky areas of code. If still not clear, added GitHub comment or, for issues needed rationale, proceeded it as a code comment.
+  - Considered performance and security implications

@@ -1,0 +1,32 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2022-11-22",
+  title: "Client VPN",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- VPN: extends private network across public network enabling users to send and receive data as if connected to private network
+- AWS Client VPN: allows users to securely access AWS and on-premises resources
+- Mutual authentication or two-way authentication: entities authenticate each other before communicating
+  - Can happen through CA, client, and server certificates
+- Authentication options include Active Directory (user-based), mutual (certificate-based), and SSO via SAML (user-based)
+- Hosting your own VPN server comes with challenges
+  - HA
+  - Patch management including VPN software itself
+  - Performance optimizations
+  - VPN configuration
+- Destination will see VPN server IP, not source IP
+- To create AWS Client VPN
+  1. Generate certificates
+  1. Upload to ACM
+  1. Create Client VPN endpoint
+  - Client IPv4 CIDR from which to assign IP addresses
+  1. Association with VPC subnet
+  1. Authorization rules
+  1. Download client configuration file
+  1. Prepend DNS name
+- Site to site (S2S): two domains communicate securely over untrusted network, could be between, e.g., AWS and Azure
+  - Virtual private gateway (VPG) out of VPC for HA and custom gateway in the other domain

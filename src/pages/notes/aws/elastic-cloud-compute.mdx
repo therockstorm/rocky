@@ -1,0 +1,110 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2020-05-25",
+  title: "Elastic Compute Cloud (EC2)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- Pricing models
+  - On-Demand: fixed-rate by hour or second, no commitments
+  - Spot: bid on spare compute for up to 90% off On-Demand prices, can be interrupted
+  - Reserved: capacity reservation for one to three year term providing up to 75% off On-Demand prices
+  - Dedicated Hosts: physical server dedicated to you, useful for server-bound licenses, purchased On-Demand or Reserved
+  - [Comparison site](https://ec2.shop/)
+- Tenancy
+  - Shared: EC2 VM launched on shared, multi-tenant hardware, noisy neighbor potential
+  - Dedicated instance: single customer hardware, but may be running multiple EC2 VMs, starting and stopping may start on different server
+  - Dedicated host: Single customer, single server
+- Instance Store volumes are ephemeral, they can be restarted, but cannot be stopped, will lose data if the underlying host fails, and cannot be kept after termination. Prefer EBS.
+- Security Groups
+  - By default, all inbound traffic is blocked and all outbound traffic is allowed
+  - They are stateful, if you send a request from your instance, response traffic for request is allowed regardless of inbound rules. Similarly, responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
+  - Only support allow rules, not deny
+  - Existing connections aren't affected by rule changes, only new ones (unlike NACLs, which take effect immediately)
+  - IP entries max default 300, can be increased to 1000
+- Instance metadata available at [http://169.254.169.254/latest/meta-data/](http://169.254.169.254/latest/meta-data/) and user data at [http://169.254.169.254/latest/user-data/](http://169.254.169.254/latest/user-data/)
+  - Can be accessed within instance itself
+  - ami-id, hostname, iam, instance-type, mac, profile, public-keys, security-groups, etc.
+  - When roles are associated with EC2 instance, a set of temporary credentials are made available via the instance metadata service
+    - Can block access with instance-level firewalls like iptables or simply don't allow instance access to those that don't need it
+- Placement Groups
+  - Clustered: low latency and high throughput networking, each is in close proximity in the same AZ
+  - Spread: individual critical instances, each is on separate racks and can be multi-AZ
+  - Partitioned: large distributed and replicated workloads with multiple instances, each partition is on separate racks and can be multi-AZ
+- Networking
+  - Elastic Network Interface (ENI) for basic networking
+  - Enhanced Network Adapter (ENA) for speeds between 10 and 100 Gbps
+  - Elastic Fabric Adapter (EFA) for high-performance computing (HPC), machine learning (ML), or OS bypass
+- Key pairs
+  - Key pairs are added at instance creation to `~/.ssh/authorized_keys`
+  - Deleting the key pair from the AWS console does **not** delete it from the instance
+  - Creating an AMI of an instance that has a key and launching a new instance using that AMI and a new key pair, the new will append to `authorized_keys`
+  - Manual process to remove keys from `authorized_keys` file of each instance where it exists
+
+## Elastic Block Store (EBS)
+
+- Uses network attached storage (NAT)
+- Options to nullify data
+  - Wipe data prior to instance termination using, e.g., `dd`
+  - AWS wipes data immediately before EBS is reused
+  - At drive EOL, AWS decommissions via NIST 800-88 or DoD 5220.22-M
+- By default, root volumes are deleted when the instance is terminated but additional volumes are not
+- Always in the same availability zone (AZ) as the running instance
+- Volume Types
+  - SSD
+    - General Purpose (gp2), balances price and performance, max 16,000 IOPS
+    - Provisioned IOPS (io1), high performance designed for databases
+  - HDD
+    - Throughput Optimized (st1), frequently accessed big data, data warehouses, and log processing
+    - Cold (sc1), lowest cost for less frequency accessed data
+- Snapshots
+  - Preferably taken on stopped instances, but not required
+  - Stored on S3 and incremental, only blocks changed since last snapshot are saved
+  - Automatically encrypted if volume is encrypted
+  - Can only share snapshots with other accounts or make public if unencrypted
+- To move a volume from one AZ or Region to another
+  1. Create a snapshot
+  2. If unencrypted, optionally copy snapshot as encrypted
+  3. Create an AMI from the snapshot
+  4. If moving to a new region, copy AMI to desired region
+  5. Use the AMI to launch an instance in desired AZ
+
+## Elastic Load Balancer (ELB)
+
+- Use to distribute traffic across multiple targets in a single and across multiple AZs (if enabled)
+- Tight integration with Auto Scaling, WAF, ACM, etc.
+- To use in a VPC, need a minimum of two public subnets
+- 504 means there's likely an issue with your application
+- Instance health checks are shown as either `InService` or `OutOfService`
+- Get client IP using `X-Forwarded-For` header
+- Types
+  - Application Load Balancer (ALB)
+    - Application layer 7, allowing for, e.g., path, query string, header, request method, etc. based routing
+    - Preferred for most applications
+    - Given DNS name, not IP
+  - Network Load Balancer (NLB)
+    - Transport layer 4
+    - High performance (millions of requests per second)
+    - Can assign a static IP
+    - Cannot associate security group with them
+    - Primarily selects target using flow hash algorithm based on protocol, source IP and port, destination IP and port, and TCP sequence number
+    - Each individual TCP connection is routed to a single target for the life of the connection
+  - Gateway Load Balancer
+    - Network layer 3 and Transport layer 4
+    - Deploy, scale, and manage virtual appliances, e.g., firewalls, IDS, IPS, etc.
+  - Classic Load Balancer
+    - Lower cost, legacy solution
+    - Given DNS name, not IP
+- Listener is process that checks for connection requests using the protocol and port you configure
+  - Contains listener rules for which action (forward to, redirect to, or return fixed response) to take based on request
+  - Can forward to target groups
+- Target group is used to route requests to one or more registered targets (instances, Lambdas, etc.)
+- Access logs list all requests
+  - Disabled by default
+  - Pushes logs to S3 every 5 minutes
+  - Logs on best-effort basis
+  - Bucket and ELB must be in same region
+  - Bucket policy must allow ELB **AWS account** to write to it, varies by region and is available in documentation

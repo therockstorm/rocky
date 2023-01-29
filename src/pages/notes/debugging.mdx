@@ -1,0 +1,22 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2020-12-29",
+  title: "Debugging",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- gRPC
+  - Get the server IP, with it,
+    - Use BloomRPC or Insomnia to hit service directly
+    - SSH into instance and run `netcat` against the port, `nc -zv [localhost](http://localhost)6565`
+    - Hit the admin port and its health check
+    - If all else fails, add a bunch of logging
+- IntelliJ
+  - `sbt clean`
+  - Build > Rebuild Project (required sometimes because running `sbt` on the command line steps on IntelliJ cache)
+  - File > Invalidate Caches > Restart
+  - Close IntelliJ, delete `.idea` folder, and re-import project
+  - Nuclear option: **make sure all changes are committed**, close IntelliJ, run `git clean -xdf` (deletes everything not in the `git` index), and re-import project

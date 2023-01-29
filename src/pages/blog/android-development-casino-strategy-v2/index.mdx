@@ -1,0 +1,107 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2012-06-27",
+  title: "Android Development: Casino Strategy v2.0",
+  description:
+    "The first feature I wanted to add after I published v1.0 was the ability to change between Blackjack strategy cards by swiping rather than selecting from a m...",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+The first feature I wanted to add after I published [v1.0](./android-development-casino-strategy-v1) was the ability to change between Blackjack strategy cards by swiping rather than selecting from a menu. I found an example of a [View Pager](https://web.archive.org/web/20151226234959/http://code.google.com/p/viewpagerexample/source/browse/trunk/AwesomePager/src/com/geekyouup/paug/awesomepager/AwesomePagerActivity.java) that was exactly what I needed. Modifying it to fit my app was trivial. Note: since I'm developing using API 7, I needed the [SDK Tools](https://developer.android.com/studio/releases/sdk-tools) in order to get the View Pager working.
+
+My next idea was to add a "Share" button so if the app helped users win, they could tell their friends. It turned out to be much easier than I thought and this Stack Overflow answer explains how to add a [Share Intent](https://stackoverflow.com/questions/6814268/android-share-on-facebook-twitter-mail-ecc).
+
+That took care of Blackjack, but since the app is called Casino Strategy, I figured it needed more casino games. I started by adding a new Activity with a list of games for the user to select. I wanted this new Activity to launch on start-up and and the answer lies in [intent filters](https://stackoverflow.com/questions/3631982/change-applications-starting-activity).
+
+In `AndroidManifest.xml`,
+
+```xml
+<activity
+  android:name=".MainActivity"
+  android:label="@string/app_name" >
+  <intent-filter>
+    <action android:name="android.intent.action.MAIN" />
+    <category android:name="android.intent.category.LAUNCHER" />
+  </intent-filter>
+</activity>
+<activity
+  android:name=".BlackjackActivity"
+  android:label="@string/app_name" >
+</activity>
+```
+
+To switch to the other activities,
+
+```java src/MainActivity.java
+public static final int BLACKJACK = 0;
+private final Map<Integer,Class<?>> mIntentMap = new HashMap<Integer,Class<?>>();
+
+@Override
+public void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  mIntentMap.put(BLACKJACK, BlackjackActivity.class);
+  setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.games_array)));
+  ListView lv = getListView();
+  lv.setTextFilterEnabled(true);
+  lv.setOnItemClickListener(new OnItemClickListener() {
+    public void onItemClick(AdapterView<?> parent, View view,
+      int position, long id) {
+      Class<?> cls = mIntentMap.get(position);
+      if (null != cls) {
+        Intent intent = new Intent(CasinoStrategyActivity.this, cls);
+        if (null != intent) startActivity(intent);
+      }
+    }
+  });
+}
+```
+
+To populate the list adapter, I'm using a string array. With only one game it's overkill, but it will soon make sense.
+
+In `res/values/strings.xml`,
+
+```xml
+<string-array name="games_array">
+  <item>Blackjack</item>
+</string-array>
+```
+
+My second favorite casino game is Craps so it was next. Rather than creating a fancy graphic, the optimal strategy can easily be expressed in text. Adding a new game is a few easy steps:
+
+1. Add a new Activity class to the src folder
+1. Register that new Activity in AndroidManifest.xml
+1. Add a new `<Integer, Class>` pair to the map in MainActivity.java
+1. Add a new string to games_array
+
+Here are some of the interesting parts:
+
+```java src/CrapsActivity.java
+public class CrapsActivity extends GameActivity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.text_view);
+    setText(R.id.text_view, R.string.craps);
+    setText(R.id.text_view_title, R.string.craps_title);
+  }
+}
+```
+
+```xml res/layout/text_view.xml
+<TextView
+  android:id="@+id/text_view_title"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:textSize="22sp" />
+<TextView
+  android:id="@+id/text_view"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:textSize="18sp" />
+```
+
+Notice that CrapsActivity extends GameActivity instead of Activity. Since my Share Intent is used by all games, I moved it to a base class that Blackjack and Craps extend.
+
+I added Roulette in an almost identical way as Craps.

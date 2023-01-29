@@ -1,0 +1,25 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2020-12-31",
+  title: "The Well-Rounded Architect by Patrick Kua",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- [Link to video](https://www.oreilly.com/library/view/oreilly-software-architecture/9781491958490/video284896.html)
+- "Architecture represents significant design decisions that shape a system, where significant is measured by cost of change." Grady Booch
+- Responsible for and nurture architecture
+- Rated from 1 to 5 (just starting, improving, capable, well-known, industry leader),
+  - Leader - consistency, find alignment, shepard everyone in right direction
+  - Developer - first hand observer, experience side-effects, discovering system constraints, sit with team
+  - Systems focused - build systems, not software, deployability, monitoring, error triaging, repeatable, reliable
+  - Entrepreneur - cost/benefit, fail fast
+  - Strategic technologist - build your own tech radar
+  - Communicator - reach/differentiation/cost/benefit/investment/risk/return/opportunity when talking with those outside eng
+- Make expectations clear up front
+- Ask for opinions and past experience, have brainstorming sessions
+- Put interfaces in components you want to protect from change, implement them in other components, if you accept an interface, should use all methods defined
+- Good architect maximizes number of decisions **not** made. Keep your options open around decisions having nothing to do with business requirements. These include frameworks, databases, web servers, utility libraries, dependency injection, and the like. Good system architecture makes these ancillary and deferrable, does not depend on those decisions, allows them to be made at latest possible moment, without significant impact.
+- Good architecture allows system to be born as monolith, deployed in single file, then grow into set of independently deployable units, and then all the way to independent services and/or micro-services. Later, as things change, should allow reversing back down into monolith.

@@ -1,48 +1,46 @@
+import Head from "next/head";
+import { usePathname } from "next/navigation";
 import { NextSeo } from "next-seo";
 
-import { Container } from "../components/container";
-import { Layout } from "../components/layout";
-import { Navigation } from "../components/navigation";
-import { Certifications } from "../components/resume/certifications";
-import { Education } from "../components/resume/education";
-import { Experience } from "../components/resume/experience";
-import { Featured } from "../components/resume/featured";
-import { Header } from "../components/resume/header";
-import { Recommendations } from "../components/resume/recommendations";
-import { Skills } from "../components/resume/skills";
-import { SiteDescription, SiteUrl } from "../lib/constants";
+import { Prose } from "@/components/Prose";
+import { Certifications } from "@/components/resume/Certifications";
+import { Education } from "@/components/resume/Education";
+import { Experience } from "@/components/resume/Experience";
+import { Recommendations } from "@/components/resume/Recommendations";
+import { Skills } from "@/components/resume/Skills";
+import { Summary } from "@/components/resume/Summary";
+import { SimpleLayout } from "@/components/SimpleLayout";
+import { AUTHOR, SITE_URL } from "@/lib/seo";
 
-function Resume(): JSX.Element {
-  const url = `${SiteUrl}/resume`;
-  const title = "Rocky Warren Resume";
+export default function Resume() {
+  const path = usePathname();
 
+  const description = `${AUTHOR}'s Resume.`;
+  const title = `Resume - ${AUTHOR}`;
+  const url = `${SITE_URL}${path}`;
   return (
-    <Layout>
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <NextSeo
-        title={title}
-        description={SiteDescription}
         canonical={url}
-        openGraph={{
-          description: SiteDescription,
-          url,
-          site_name: title,
-          title,
-        }}
+        description={description}
+        openGraph={{ description, title, url }}
+        title={title}
       />
-      <Navigation />
-      <Container>
-        <main className="prose lg:prose-lg prose-blue resume print:my-8">
-          <Header />
-          <Skills />
-          <Recommendations />
-          <Experience />
-          <Education />
-          <Featured />
-          <Certifications />
-        </main>
-      </Container>
-    </Layout>
+      <SimpleLayout download title={AUTHOR}>
+        <Prose className="prose-sm">
+          <main>
+            <Summary />
+            <Skills />
+            <Recommendations />
+            <Certifications />
+            <Experience />
+            <Education />
+          </main>
+        </Prose>
+      </SimpleLayout>
+    </>
   );
 }
-
-export default Resume;

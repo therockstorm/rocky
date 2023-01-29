@@ -1,0 +1,14 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2020-05-25",
+  title: "Redshift",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- Use for Online Analytics Processing (OLAP) workloads
+- Single AZ
+- Backups enabled by default with one day retention period extendable up to 35 days
+- Maintains at least three copies of data (original, replica, and backup in S3)

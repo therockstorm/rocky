@@ -1,0 +1,30 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+import { Figure } from "@/components/Figure";
+import awsNetwork from "./aws-network.jpg";
+
+export const meta = {
+  date: "2020-05-25",
+  title: "Route 53",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+<Figure caption="AWS multi-region network" src={awsNetwork} />
+
+- Use to route traffic between AWS regions
+- Alias records provide Route 53-specific extension to DNS allowing you to route traffic to selected AWS resources such as S3 buckets
+- Routing Policies
+  - Simple: use for single resource, e.g., web server serving content for example.com. If multiple IPs are provided, Route 53 returns them in random order.
+  - Failover: use for active-passive failover, if health checks fail in one region, traffic is routed to healthy region
+  - Geolocation: route traffic based on location of users
+  - Geoproximity: route traffic based on location of resources and optionally shift traffic using biases from resources in one location to another
+  - Latency: route traffic to resources in region providing best latency
+  - Multi-value: Route 53 responds to DNS queries with up to eight healthy records selected at random
+  - Weighted: route traffic to multiple resources in proportions you specify
+- Query logs
+  - Records each connection from client devices to domain
+  - DNS typically isn't monitored, so is a target for exfiltration attacks
+- Supports DNSSEC, which adds digital signatures to DNS records to verify authenticity, prevents DNS spoofing aka cache poisoning
+  - Disadvantages including added complexity, limited TLD and DNS server support, and increased DNS query resolution time
+  - Enable in hosted zone, create KSK using KMS, and provide public key to domain registrar so it can be forwarded to TLD

@@ -1,0 +1,28 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2020-11-02",
+  title: "Docker",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+Stop and remove all Docker containers,
+
+```shell
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
+
+Delete images from a particular repository,
+
+```shell
+docker images | awk '{print $1":"$2}' | grep local/my-service | xargs -n1 docker rmi
+```
+
+Delete containers using a particular image,
+
+```shell
+docker ps -a | awk '{print $1,$2}' | grep node:12-alpine | awk '{print $1}' | xargs -I {} docker rm {}
+```

@@ -1,0 +1,31 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+import { Figure } from "@/components/Figure";
+import settings from "./settings.jpg";
+
+export const meta = {
+  date: "2023-01-13",
+  title: "Getting MMS Working on GrapheneOS With Google Fi",
+  description: `Solve "MMS delivery failure; please contact Google Fi Support", "Account access only" and "Your SIM card couldn't be read" errors on GrapheneOS with Google Fi.`,
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+I recently installed [GrapheneOS](https://grapheneos.org/) on my Pixel and enjoy the privacy protection. I use Google Fi and could send MMS messages just fine. But when someone else in the group would send a message, I would see the error "MMS delivery failure; please contact Google Fi Support". Google Fi tech support was unable to help since I'm using a non-standard version of Android. Here's the solution.
+
+First, I left the owner profile untouched and installed Sandboxed Google Play into a new profile; this will not work. When you attempt to activate Google Fi, you'll see the error "Account access only." From [this support page](https://support.google.com/fi/answer/6260066?hl=en&authuser=0), a troubleshooting step mentions that only the device owner can activate Google Fi service.
+
+Installing Sandboxed Google Play onto the owner profile got me further, but I'd see "Your SIM card couldn't be read." The final piece to the puzzle is to go to **Settings** > **Network & internet** and toggle on the **Enable privileged eSIM management** setting. Now that I know what to search for, I found [this discussion thread](https://discuss.grapheneos.org/d/2281-questions-new-user-in-advance-esim-privileged-management) and [this documentation](https://grapheneos.org/usage#sandboxed-google-play-esim) explaining this in more detail.
+
+<Figure alt="Android settings" small src={settings} />
+
+Once toggled, open the Google Fi app to complete activation. If you're still having issues, follow these steps,
+
+1. Open Google Fi's **App Info** > **Storage & cache**
+1. Press **Clear cache** and **Clear storage**
+1. Back up a screen and press **Force stop**
+1. Open **Settings** > **System** > **Reset options**
+1. Press **Erase downloaded SIMs**
+1. Reboot the device
+1. Open the Google Fi app and activate
+
+Once activated, you can toggle **Enable privileged eSIM management** back off. I hope this helps. Enjoy MMS and group texting!

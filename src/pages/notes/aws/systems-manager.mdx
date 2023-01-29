@@ -1,0 +1,52 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2022-11-21",
+  title: "Systems Manager",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- Group of services giving visibility into infrastructure, most using SSM Agent
+- SSM Agent
+  - Can be installed and configured on EC2 and on-premises instances, or VMs
+  - Preinstalled by default on Amazon Linux 1 and 2, Ubuntu Server 16.04, 18.04, and 20.04
+- Compliance: shows if you have missing patches
+- Run command
+  - Run command across instances and collect output
+  - Different "documents" to choose from, e.g., run shell script, configure Docker, Ansible playbooks, Windows updates, etc.
+- Parameter store
+  - Provides central store for config or passwords
+  - String, StringList, and SecureString, must use `--with-decryption` in CLI for SecureString.
+- Sessions Manager
+  - Connect to instances through browser or CLI without SSH
+  - Uses IAM as centralized access control, no need to open port 22, have public IP, or VPN
+  - Allows logging and auditing of sessions
+- Patch Manager
+  - Scan for missing patches based on patch baseline, display them, and then apply security and other patches
+  - Custom and managed
+  - Can create patch baselines with different classifications, auto-approval delays, severities, etc.
+  -
+- Maintenance window
+  - Schedule recurring or one-time maintenance windows for patching
+  - Applied to patch baselines
+- Automation
+  - Simplifies common EC2 and other AWS resource maintenance and deployment tasks, e.g., attach IAM role, create AMI, etc.
+- Inventory
+  - Visibility into EC2 and on-premises instances for things like anti-virus, apps installed and versions, etc.
+  - To centralize, send all data to S3 and use Athena
+- State Manager
+  - Status of different associations, e.g., patching, inventory, etc.
+- CloudWatch Unified Agent
+  - Allows for centralized logging
+  - Keeping logs on instance has disadvantages
+    - Need instance access to view them
+    - Lost if terminated
+    - Cannot easily alarm on certain conditions
+  - To install,
+    - IAM role with `CloudWatchAgentServer` policy
+    - Create EC2 instance using role
+    - Install CloudWatch Agent
+    - Run CloudWatch Agent configuration Wizard
+    - Start Unified CloudWatch Agent

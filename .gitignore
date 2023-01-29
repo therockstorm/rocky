@@ -1,9 +1,14 @@
 .DS_Store
-.env.development.local
-.env.local
-.env.production.local
-.env.test.local
-yarn-error.log*
+.env*.local
+.vercel
+npm-debug.log*
 
-/.next
+/.next/
+/build
+/coverage
 /node_modules
+/public/robots.txt
+/public/rss/
+/public/sitemap*.xml
+/out/
+/results/lighthouse_pwa.svg

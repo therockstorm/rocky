@@ -1,0 +1,49 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2012-03-07",
+  title: "Linux Bash Aliases",
+  description:
+    'Bash aliases are essentially keyboard shortcuts or abbreviations for longer command sequences. If, for example, we include alias lm="ls -l | more" in ~/.bash...',
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+Bash aliases are essentially keyboard shortcuts or abbreviations for longer command sequences. If, for example, we include `alias lm="ls -l | more"` in `~/.bashrc`, typing `lm` gets automatically replaced with `ls -l | more`. Here are some of my aliases and helper functions,
+
+```bash
+alias ..='cd ..'
+alias get='sudo apt-get install'
+alias pb='hg push --rev .' # Push current branch with Mercurial
+alias aliases='sudo gedit $HOME/.bash_aliases && source $HOME/.bash_aliases' # Open aliases for editing and source afterward
+
+google() {
+  search=""
+  echo "$1"
+  for term in $*; do
+    search="$search%20$term"
+  done
+  xdg-open "http://www.google.com/search?q=$search"
+}
+
+extract() {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2) tar xvjf $1;;
+      *.tar.gz) tar xvzf $1;;
+      *.bz2) bunzip2 $1;;
+      *.rar) rar x $1;;
+      *.gz) gunzip $1;;
+      *.tar) tar xvf $1;;
+      *.tbz2) tar xvjf $1;;
+      *.tgz) tar xvzf $1;;
+      *.zip) unzip $1;;
+      *.Z) uncompress $1;;
+      *.7z) 7z x $1;;
+      *) echo "don't know how to extract '$1'..." ;;
+    esac
+  else
+    echo "'$1' is not a valid file!"
+  fi
+}
+```

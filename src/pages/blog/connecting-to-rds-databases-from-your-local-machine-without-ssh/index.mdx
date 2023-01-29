@@ -1,0 +1,72 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+import { Figure } from "@/components/Figure";
+import secretsManager from "./secrets-manager.png";
+
+export const meta = {
+  date: "2023-01-12",
+  title: "Connecting to Private RDS Databases From Your Local Machine",
+  description:
+    "Connect to Relational Database Service (RDS) database instances in private Virtual Private Cloud (VPC) subnets from a local machine using EC2 bastion hosts (jump boxes).",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+The following shows you how to connect to Relational Database Service (RDS) database instances in private Virtual Private Cloud (VPC) subnets from a local machine using EC2 bastion hosts and AWS Systems Manager (SSM) instead of using SSH directly. It assumes,
+
+1. You have an EC2 instance running.
+1. You have security groups configured so the EC2 instance has access to the RDS database.
+
+If either of those isn't the case, follow those two steps in [this article](https://aws.amazon.com/premiumsupport/knowledge-center/rds-connect-ec2-bastion-host/) and then head back here.
+
+If you let AWS store your database secrets in **Secrets Manager** when creating the database, all connection information is in the secret.
+
+## From the AWS Console
+
+1. From the **Secrets Manager Console**, select to database secret.
+1. Select **Retrieve secret value**, you'll need **host**, **dbname**, **username**, and **password** in the following steps.
+   <Figure alt="Secrets Manager" src={secretsManager} />
+1. From the **EC2 Console**, connect to the EC2 instance with access to your database using **Session Manager**.
+1. From the launched terminal, run the following. This is specific to PostgreSQL, but you run equivalent commands for your database.
+
+   ```bash
+   # Install postgresql
+   sudo amazon-linux-extras install -y postgresql14
+
+   # Connect using the values copied in step 2
+   # After entering it, you'll be prompted for the password
+   psql -h [YOUR_HOST] -d [YOUR_DB_NAME] -U [YOUR_USERNAME] -W
+   ```
+
+   ```sql
+   -- List tables
+   \dt
+
+   -- Run your favorite queries
+   SELECT * FROM [YOUR_TABLE];
+   ```
+
+You're connected! But we can do better.
+
+## From the command line
+
+1. Run the following to see if you have `session-manager-plugin` installed. If you don't, [run the commands here](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#install-plugin-macos-signed) to install it.
+
+   ```bash
+   session-manager-plugin --version
+   ```
+
+1. To start the SSM session, you need the EC2 instance ID. You can either get it from the AWS Console, or run the following with appropriate filters if you have lots of instances. The following assumes you have [jq](https://stedolan.github.io/jq/) installed and have instance tags.
+   ```bash
+   aws ec2 describe-instances \
+     --profile [YOUR_PROFILE] \
+     --filter Name=tag:[YOUR_TAG_KEY],Values=[YOUR_TAG_VALUE] \
+     | jq -r '.Reservations[].Instances[].InstanceId'
+   ```
+1. Given the EC2 instance ID, run the following to start the session,
+   ```bash
+   aws ssm start-session \
+     --profile [YOUR_PROFILE] \
+     --target [YOUR_INSTANCE_ID]
+   ```
+
+You're connected from your own terminal! Now, run the commands in step 4 above to connect to your database and start executing queries.

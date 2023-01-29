@@ -5,6 +5,7 @@ module.exports = {
     "next",
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
+    "plugin:typescript-sort-keys/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -12,12 +13,20 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react", "simple-import-sort"],
+  plugins: [
+    "@typescript-eslint",
+    "react",
+    "simple-import-sort",
+    "typescript-sort-keys",
+  ],
   rules: {
     "no-await-in-loop": "warn",
     "no-return-await": "warn",
+    "react/jsx-sort-props": "warn",
+    "react/sort-prop-types": "warn",
     "require-await": "warn",
     "simple-import-sort/imports": "warn",
+    "sort-keys": "warn",
   },
   settings: { react: { version: "detect" } },
 };

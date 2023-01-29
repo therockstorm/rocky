@@ -1,0 +1,27 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2020-05-25",
+  title: "Relational Database Service (RDS)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- Supports SQLServer, MySQL, MariaDB, Postgres, Oracle, and Aurora databases
+- Use for Online Transaction Processing (OLTP) workloads
+- Managed by AWS, you cannot SSH into the machines
+- Automated Backups and Snapshots
+- Read Replicas
+  - Use to improve performance
+  - Can be multi-AZ and in different regions
+  - Must have backups enabled
+  - SQLServer not supported
+- Use Multi-AZ primarily for disaster recovery
+- Encryption at rest is supported using KMS
+- Aurora
+  - Two copies of data stored in a minimum of three AZs
+  - Aurora replicas support automated failover
+  - Can share Snapshots with other accounts
+  - Backups enabled by default
+  - Aurora Serverless available for infrequent, intermittent, or unpredictable workloads

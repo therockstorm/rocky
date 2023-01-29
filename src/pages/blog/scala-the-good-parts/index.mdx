@@ -1,0 +1,413 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+import { LearningScalaSeries } from "@/components/LearningScalaSeries";
+import { Figure } from "@/components/Figure";
+import scalaClassHierarchy from "./scala-class-hierarchy.jpg";
+import scalaCollectionsHierarchy from "./scala-collections-hierarchy.jpg";
+import scalaForTheImpatient from "./scala-for-the-impatient.jpg";
+
+export const meta = {
+  date: "2020-03-02",
+  title: "Scala: The Good Parts",
+  description:
+    "Scala allows you to accomplish tasks in different ways. I recently gave a talk explaining some of the more readable, maintainable approaches while attempting...",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+<LearningScalaSeries />
+
+Scala allows you to accomplish tasks in different ways. I recently gave a talk explaining some of the more readable, maintainable approaches while attempting to add detail so the slides could stand on their own. The excellent [reveal.js](https://github.com/hakimel/reveal.js) framework lets you create presentations in Markdown. This blog is also in Markdown, so through the power of copy/paste, here it is.
+
+---
+
+Scala Overview, Benefits Over Java
+
+- Created by Martin Odersky 17 years ago
+- Runs on the JVM
+- Can create Java objects, call their methods, and inherit from them in Scala and vice versa
+- Java collection interoperability
+
+  ```scala
+  import scala.jdk.CollectionConverters._
+
+  val javaList = java.util.Arrays.asList("Hi")
+  val scalaList = javaList.asScala
+  scalaList.foreach(println(_)) // Use any Scala collection methods
+  val backToJava = scalaList.asJava
+  ```
+
+- Type inference
+
+  ```java
+  List<String> msgs = Arrays.asList("Hi"); // This Java code...
+  ```
+
+  ```scala
+  val msgs = List("Hi") // ..becomes this Scala code
+  ```
+
+- Concise
+
+  ```java
+  // This Java code...
+  public class Person {
+    private String name;
+    public String getName() { return name; }
+    public String toString() { ... }
+    public boolean equals() { ... }
+    public int hashCode() { ... }
+  }
+  Map<String, Integer> map  = new HashMap<String, Integer>() {{
+    put("a", 0);
+    put("b", 2);
+  }};
+  ```
+
+  ```scala
+  // ...becomes this Scala code
+  case class Person(name: String)
+  val map = Map("a" -> 0, "b" -> 1)
+  ```
+
+- Concurrency
+  - Immutability by default enables safe concurrency and parallelism
+  - Parallel collections, concurrent distribution with actors, asynchrony with futures
+- Traits
+  - Java interfaces with optional behavior, allows for safe multiple-inheritance
+- Pattern Matching
+  - More powerful `switch`, match against class hierarchies, sequences, and more
+- Higher-order Functions
+  - Use functions anywhere and pass them to anything with type safety
+- `Option` instead of `null`, no more `NullPointerException`!
+- Functional paradigms and excellent collection methods
+  - `map`, `flatMap`, `filter`, `head`, `headOption`, `isEmpty`, `foreach`, `contains`, `find`, `zip`, `zipWithIndex`, `reduce`, `fold`, `sum`, `count`, `groupBy`, `mkString`, `sortBy`
+- Automatically returns last statement without explicit `return`, no semicolons
+
+  ```scala
+  def doubleIt(n: Int) = n * 2 // Returns `n * 2`, infers return Int type
+  ```
+
+- `if` statements are expressions, can have results
+
+  ```scala
+  // Java's ternary (`int x = condition ? result : defaultVal`) in Scala
+  val x = if (condition) result else defaultVal
+  ```
+
+- Powerful imports
+
+  ```scala
+  // Rename import
+  import java.util.{HashMap => JavaHashMap}
+  // Ignore HashMap, import everything else
+  import java.util.{HashMap => _, _}
+
+  // Follows scoping rules
+  def someFn() = {
+      import cats.implicits.toShow
+      ??? // Aside: This is valid Scala, throws NotImplementedError if hit
+  }
+  ```
+
+---
+
+Declaring variables
+
+```scala
+val items = Seq("1", "2") // Type inferred
+val typed: Seq[String] = Seq("1", "2") // Can optionally provide type
+var mutable = 5 // Int, prefer val over var
+var small: Short = 5 // Short, need type or inferred as Int
+val big = 5L // Long, need L or inferred as Int
+val bigger = 5.0F // Float, need F or inferred as Double
+val biggest = 5.0 // Double
+val javaType = new java.math.BigDecimal(5) // Java interop
+val byte: Byte = 0xa // Byte using hex notation, need type or inferred as Int
+val char = 'D' // Char
+val nothing = () // Unit, similar to void in Java
+lazy val deferred = ??? // Initialization deferred until first access
+```
+
+---
+
+Classes
+
+```scala
+class Counter {
+  private val myValue = 2 // No accessors generated
+  val value = 1 // Only getter generated
+  var mutableValue = 0 // Getter and setter generated, prefer val to var
+}
+
+class Person(val name: String) { // Primary constructor
+  // Constructor body, initialize things here
+
+  def this() { // Auxiliary constructor
+    this("unnamed") // Must call primary constructor
+  }
+}
+```
+
+---
+
+Traits
+
+- Like Java interfaces, but can have implementation
+- Only difference between Scala class: cannot have constructor parameters
+
+```scala
+// Optionally sealed, barring extension outside file, useful for enums
+trait Logger {
+  def log(msg: String): Unit // Abstract method
+  def info(msg: String): Unit = println(msg) // Implementation provided
+}
+
+// Mix as many traits into class as you like, constructed left to right
+class Logged(name: String) extends Person(name) with Logger {
+  // Must implement abstract methods
+ override def log(msg: String): Unit = ???
+ def logName(): Unit = info(name) // Using implementation in trait
+}
+```
+
+---
+
+Objects
+
+- Use for Singletons or home for misc values/functions
+- Can extend classes or traits, cannot have constructor parameters
+- Commonly used as "companion object" to classes for static functions
+
+```scala
+object Accounts { // Singleton
+  private var lastNum = 0
+  def uniqueNum(): Int = {
+    lastNum += 1;
+    lastNum
+  }
+}
+
+class Person private(val name: String)
+// Companion object
+object Person {
+  // apply is special, called as `val p = Person("Rocky")`
+  def apply(name: String): Person = new Person(name)
+  // Called as Person.staticFn() as in Java
+  def staticFn() = ???
+}
+```
+
+---
+
+Trait Initialization Order Gotcha
+
+```scala
+trait MyTrait {
+ // scalafix error: abstract val in trait
+ // Use def, lazy val, or move to object instead
+ val foo: Int // Defaults to 0
+ val bar = foo * 2 // Initialized prior to foo getting set to 20 by MyObject
+}
+
+object MyObject extends MyTrait {
+ val foo = 20
+}
+
+MyObject.bar // 0 instead of 40 as expected!
+```
+
+---
+
+Case Classes
+
+- Special kind of class, immutable with implementations for
+  - `toString`, `equals`, `hashCode`
+  - `apply`, making `new` unnecessary on creation
+  - `unapply` for pattern matching
+  - `copy` for immutable modifications
+
+```scala
+case class Person(name: String, age: Option[Int]) // No new required
+val r = Person("Rocky", None) // Calls apply
+println(r) // Person(Rocky,None)
+val b = r.copy(name = "Bob") // New object, r unchanged
+println(r == b) // false
+println(r == r.copy()) // true
+```
+
+---
+
+<Figure caption="Scala's class hierarchy" src={scalaClassHierarchy} />
+
+---
+
+Option
+
+- A much better `null`
+- Calling `get` if value is `None` results in exception, no better than `NullPointerException`
+- Instead, handle both `Some` and `None` cases explicitly
+
+```scala
+val maybeName: Option[String] = Some("Rocky")
+maybeName match { // Good, but verbose
+  case Some(n) => println(n.toUppercase)
+  case None => println("N/a")
+}
+println(maybeName.fold("N/a")(_.toUpperCase)) // Better, but can be unclear
+println(maybeName.map(_.toUpperCase).getOrElse("N/a")) // Best for clarity
+
+// Wrap potentially null values in Option
+val maybeVal: Option[Int] = Option(javaMethodThatMayReturnNull())
+
+// Conditionally set val with Option.when
+val maybeId: Option[UUID] = Option.when(req.hasId)(req.getId)
+```
+
+---
+
+Try
+
+```scala
+try someFn() catch { // Standard try with pattern matching catch
+  case ex: IOException => ???
+  case t: Throwable => ???
+}
+
+// Try type can be chained
+val res: Try[Int] = Try(someFn())
+  .flatMap(d => Try(someFn()) // Without flatMap, res would be Try[Try[Int]]
+    .map(d / _)
+  )
+res match { // Good, but verbose
+ case Success(a) => println(a)
+ case Failure(ex) => println(ex.getMessage)
+}
+res // Better, but can be unclear
+ .fold(ex => println(ex.getMessage), println(_))
+res // Best for clarity and to pattern match
+ .map(println(_))
+ .recover { case ex: IOException => println(ex.getMessage) }
+
+// To only need to handle failed case
+res.failed.map(ex => println(ex.getMessage))
+```
+
+---
+
+Either
+
+```scala
+// Return either an error or Widget
+def getById(id: UUID): Future[Either[NotFoundError, Widget]] =
+  database
+    .run("...")
+    .map(_.toRight(NotFoundError()))
+
+// Handling the Either at service boundary
+implicit class FromEither[T](future: Future[Either[NotFoundError, T]]) {
+  def completeWith(obj: T) =
+    future.onComplete { // With pattern matching
+      case Success(Right(res))  => // Successful future with Widget
+        res
+      case Success(Left(error)) => // Successful future with Error
+        throw fromServiceEx(error)
+      case Failure(error)       => // Failed future
+        throw error
+    }
+  // Same as above using map/fold
+  def completeWith(obj: T) =
+   future
+    .map(_.fold(
+      error => throw fromServiceEx(error)), // Successful future with Error
+      res => res) // Successful future with Widget
+    )
+    .recover { case error => throw error } // Failed future
+}
+```
+
+---
+
+<Figure
+  caption="Scala immutable collections hierarchy"
+  src={scalaCollectionsHierarchy}
+/>
+
+- Prefer immutable, they're safer and still performant
+- `Map`: key/value pairs, similar to Java's `HashMap`
+
+  ```scala
+  val myMap = Map("a" -> 0, "b" -> 1)
+  myMap("b") // 1
+  // Looping over map, also shows string interpolation
+  myMap.foreach{ case (k, v) => println(s"$k -> $v") }
+  ```
+
+- `Tuple`: aggregates of values, useful for multiple returns in class's private methods. Prefer `case class` return types for public methods for readability.
+
+  ```scala
+  val myTuple = (1, 3.14, "Fred")
+  myTuple._2 // 3.14
+  ```
+
+- `Seq`: general purpose, similar to Java's `List`
+
+  ```scala
+  val mySeq = Seq(3, 2, 1)
+  mySeq
+    .filter(_ > 1)
+    .sorted
+    .zipWithIndex
+    .foreach { case (v, idx) =>  print(s"$v at $idx ") }
+    // 2 at 0 3 at 1
+  ```
+
+- `Set`: distinct elements, similar to Java's `HashSet`
+- `IndexedSeq`: fast random access and count, similar to Java's `Array`
+- `List`: fast beginning and end operations, similar to Java's `LinkedList`
+
+---
+
+Pattern Matching
+
+- Preferable to casting via `asInstanceOf`, `isInstanceOf`
+
+```scala
+obj match { // Type matching
+  case x: Int | Long if x < 10 => x // Multi-match with if guards
+  case s: String => Integer.parseInt(s) // No cast needed, s is now String
+  case _ => 0 // Default case, often required to avoid MatchError
+}
+
+Seq(0, 1, 2) match { // Collection matching
+  case Seq(x, y) => s"$x $y" // List equivalent, case x :: y :: Nil
+  case Seq(0, _*) => "0 ..." // List equivalent, case 0 :: tail
+  case _ => "Not matched"
+}
+
+person match { // Case class/Option matching
+  case Person("Rocky", age) => println(s"Rocky is $age")
+  case Person(name, Some(_)) => println(name)
+  case _ => println("Not matched")
+}
+```
+
+---
+
+Additional Reading
+
+<a
+  className="no-underline"
+  href="https://horstmann.com/scala/"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <Figure
+    caption="Scala for the Impatient - Cay S. Horstmann"
+    small
+    src={scalaForTheImpatient}
+  />
+</a>
+
+---
+
+For more on learning Scala, check out my [Scala Learning Resources](./scala-learning-resources).

@@ -1,0 +1,13 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2022-11-25",
+  title: "Single Sign On (SSO)",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- Can add 3rd party apps and use AWS credentials to sign into them with per-user app permissions
+- Integrates with CLI v2, no need for `~/.aws/credentials` file
+- Requires AWS Organizations

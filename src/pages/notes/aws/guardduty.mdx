@@ -1,0 +1,14 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2022-11-21",
+  title: "GuardDuty",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+- [Active finding types](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-active.html)
+- Only listens for CloudTrail, VPC Flow, and DNS logs
+- Can add trusted IPs from penetration testing servers, etc. and add known bad IPs to threat list
+- Use Accounts tab to forward findings to Master account
