@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { usePathname } from "next/navigation";
 import { ArticleJsonLd, NextSeo } from "next-seo";
+import { OpenGraphMedia } from "next-seo/lib/types";
 
 import { Container } from "@/components/Container";
 import { Newsletter } from "@/components/Newsletter";
@@ -12,6 +13,7 @@ type Meta = Readonly<{
   author?: string;
   date: string;
   description: string;
+  images?: readonly OpenGraphMedia[];
   title: string;
 }>;
 
@@ -32,7 +34,7 @@ export function ArticleLayout({ children, isRssFeed = false, meta }: Props) {
   const description = meta.description ? meta.description : noteDesc;
   const title = `${meta.title} - ${author}`;
   const url = `${SITE_URL}${path}`;
-  const images = [
+  const images = meta.images ?? [
     {
       alt: title,
       url: `${SITE_URL}/api/og?title=${encodeURIComponent(meta.title)}`,
