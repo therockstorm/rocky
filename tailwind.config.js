@@ -23,6 +23,9 @@ module.exports = {
             "blockquote p:last-of-type::after": {
               content: "none",
             },
+            h1: {
+              lineHeight: "2",
+            },
           },
         },
       }),
