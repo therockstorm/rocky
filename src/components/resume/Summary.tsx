@@ -36,7 +36,7 @@ export function Summary(): JSX.Element {
         </SocialLink>
         <SocialLink
           aria-label="Subscribe to RSS"
-          href="https://www.rocky.dev"
+          href="https://www.rocky.dev?utm_source=rocky&utm_medium=web&utm_content=resume"
           icon={faLink}
         >
           rocky.dev

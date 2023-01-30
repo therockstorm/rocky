@@ -19,7 +19,7 @@ const projects = [
     description:
       "Securely share passwords and sensitive files over email or store them in insecure locations like cloud or USB drives.",
     link: {
-      href: "https://www.privacyprotect.dev",
+      href: "https://www.privacyprotect.dev?utm_source=rocky&utm_medium=web&utm_content=projects",
       label: "privacyprotect.dev",
     },
     logo: privacyProtect,
