@@ -31,7 +31,7 @@ export function Newsletter({
 
   return (
     <form
-      className={`rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 ${
+      className={`not-prose rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 ${
         className ?? ""
       }`}
       onSubmit={handleSubmit}
