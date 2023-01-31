@@ -3,20 +3,28 @@ import { join, resolve } from "path";
 import sharp from "sharp";
 
 async function resizeImages() {
-  const src = join(__dirname, "..", "src", "images", "photos");
-  const dst = join(__dirname, "..", "out");
-  for await (const f of getFiles(src)) {
-    try {
-      if (!f.endsWith(".jpg")) continue;
+  const src = join(
+    __dirname,
+    "aod.jpg"
+    // "..",
+    // "src",
+    // "images",
+    // "logos",
+    // "masterpieces-reimagined.png"
+  );
+  // const dst = join(__dirname);
+  // for await (const f of getFiles(src)) {
+  // try {
+  // if (!f.endsWith(".png")) continue;
 
-      await sharp(f)
-        .resize({ width: 1080 })
-        .toFormat("jpg", { mozjpeg: true })
-        .toFile(f.replace(src, dst));
-    } catch (error) {
-      handleError({ error, func: "resizeImage" });
-    }
-  }
+  await sharp(src)
+    .resize({ width: 128 })
+    .toFormat("png")
+    .toFile("./scripts/logo.png");
+  // } catch (error) {
+  //   handleError({ error, func: "resizeImage" });
+  // }
+  // }
 }
 
 // async function convertMdx() {
