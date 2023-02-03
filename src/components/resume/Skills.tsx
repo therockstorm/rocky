@@ -12,6 +12,8 @@ export function Skills(): JSX.Element {
         <Skill>TypeScript</Skill>
         <Skill>Python</Skill>
         <Skill>Scala</Skill>
+        <Skill>React</Skill>
+        <Skill>NextJS</Skill>
         <Skill>Java</Skill>
         <Skill>C#</Skill>
         <Skill>Bash</Skill>
@@ -28,7 +30,6 @@ export function Skills(): JSX.Element {
         <Skill>AWS RDS</Skill>
         <Skill>DevOps</Skill>
         <Skill>DynamoDB</Skill>
-        <Skill>React</Skill>
         <Skill>Svelte</Skill>
         <Skill>Cybersecurity</Skill>
         <Skill>Docker</Skill>
