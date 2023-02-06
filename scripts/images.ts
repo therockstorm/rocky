@@ -1,5 +1,4 @@
-import { PathLike, readdirSync } from "fs";
-import { join, resolve } from "path";
+import { join } from "path";
 import sharp from "sharp";
 
 async function resizeImages() {
@@ -82,20 +81,20 @@ async function resizeImages() {
 //   }
 // }
 
-async function* getFiles(dir: PathLike): AsyncGenerator<string> {
-  const files = readdirSync(dir, { withFileTypes: true });
-  for (const f of files) {
-    const res = resolve(dir.toString(), f.name);
-    if (f.isDirectory()) yield* getFiles(res);
-    else yield res;
-  }
-}
+// async function* getFiles(dir: PathLike): AsyncGenerator<string> {
+//   const files = readdirSync(dir, { withFileTypes: true });
+//   for (const f of files) {
+//     const res = resolve(dir.toString(), f.name);
+//     if (f.isDirectory()) yield* getFiles(res);
+//     else yield res;
+//   }
+// }
 
-function handleError({
-  error,
-  func,
-}: Readonly<{ error: unknown; func: string }>) {
-  console.error(`${func} error: ${error}`);
-}
+// function handleError({
+//   error,
+//   func,
+// }: Readonly<{ error: unknown; func: string }>) {
+//   console.error(`${func} error: ${error}`);
+// }
 
 resizeImages();

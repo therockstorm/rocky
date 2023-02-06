@@ -2,6 +2,7 @@ import glob from "fast-glob";
 import { join } from "path";
 
 export type Article = Readonly<{
+  canonical?: string;
   component: React.ComponentType<Readonly<{ isRssFeed?: boolean }>>;
   date: string;
   description: string;
@@ -10,11 +11,11 @@ export type Article = Readonly<{
 }>;
 
 export async function getAllArticles(): Promise<Article[]> {
-  const articleFilenames = await glob(["*.mdx", "*/index.mdx"], {
+  const fileNames = await glob(["*.mdx", "*/index.mdx"], {
     cwd: join(process.cwd(), "src/pages/blog"),
   });
 
-  return (await Promise.all(articleFilenames.map(importArticle)))
+  return (await Promise.all(fileNames.map(importArticle)))
     .filter((a) => !a.draft)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }

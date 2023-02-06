@@ -4,16 +4,9 @@ import { NextSeo } from "next-seo";
 
 import { Card } from "@/components/Card";
 import { SimpleLayout } from "@/components/SimpleLayout";
-import { getAllArticles } from "@/lib/articles";
+import { Article, getAllArticles } from "@/lib/articles";
 import { formatDate } from "@/lib/date";
 import { AUTHOR, BLOG_DESC, SITE_URL } from "@/lib/seo";
-
-type Article = Readonly<{
-  date: string;
-  description: string;
-  slug: string;
-  title: string;
-}>;
 
 type Props = Readonly<{
   articles: readonly Article[];

@@ -11,6 +11,7 @@ import { AUTHOR, SITE_URL, toJsonLdString } from "@/lib/seo";
 
 type Meta = Readonly<{
   author?: string;
+  canonical?: string;
   date: string;
   description: string;
   images?: readonly OpenGraphMedia[];
@@ -34,6 +35,7 @@ export function ArticleLayout({ children, isRssFeed = false, meta }: Props) {
   const description = meta.description ? meta.description : noteDesc;
   const title = `${meta.title} - ${author}`;
   const url = `${SITE_URL}${path}`;
+  const canonical = meta.canonical ?? url;
   const images = meta.images ?? [
     {
       alt: title,
@@ -46,7 +48,7 @@ export function ArticleLayout({ children, isRssFeed = false, meta }: Props) {
         <title>{title}</title>
       </Head>
       <NextSeo
-        canonical={url}
+        canonical={canonical}
         description={description}
         openGraph={{ description, images, title, type: "article", url }}
         title={title}
