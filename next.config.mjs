@@ -51,7 +51,7 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self' vitals.vercel-insights.com; script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'report-sample' 'unsafe-inline'; img-src 'self' data: i.ytimg.com; child-src www.youtube.com; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests;",
+              "default-src 'self'; script-src 'self' 'report-sample' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'report-sample' 'unsafe-inline'; img-src 'self' data: i.ytimg.com; child-src www.youtube.com; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests;",
           },
         ],
         source: "/(.*)",
