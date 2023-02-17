@@ -23,16 +23,14 @@ export function Summary(): JSX.Element {
           href="https://github.com/therockstorm"
           icon={faGithub}
         >
-          <div className="print:hidden">GitHub</div>
-          <div className="hidden print:block">github.com/therockstorm</div>
+          github.com/therockstorm
         </SocialLink>
         <SocialLink
           aria-label="Follow on LinkedIn"
           href="https://www.linkedin.com/in/rockywarren/"
           icon={faLinkedin}
         >
-          <div className="print:hidden">LinkedIn</div>
-          <div className="hidden print:block">linkedin.com/in/rockywarren</div>
+          linkedin.com/in/rockywarren
         </SocialLink>
         <SocialLink
           aria-label="Subscribe to RSS"
