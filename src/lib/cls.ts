@@ -1,3 +1,3 @@
-export function cls(...classes: string[]) {
+export function cls(...classes: readonly string[]) {
   return classes.filter(Boolean).join(" ");
 }

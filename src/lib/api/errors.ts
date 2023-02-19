@@ -14,7 +14,7 @@ export const ERRORS = {
 };
 
 export type ApiErrorReq = Readonly<{
-  errors?: Readonly<{ detail: string }>[];
+  errors?: readonly Readonly<{ detail: string }>[];
   res: NextApiResponse;
   status: StatusCode;
 }>;

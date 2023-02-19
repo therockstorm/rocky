@@ -6,7 +6,7 @@ import iowa from "@/images/logos/iowa.png";
 import { Role, RoleProps } from "./Role";
 import { Section } from "./Section";
 
-const EDUCATION: RoleProps[] = [
+const EDUCATION: readonly RoleProps[] = [
   {
     company: "University of Iowa",
     logo: iowa,

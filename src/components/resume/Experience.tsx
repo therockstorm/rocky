@@ -12,7 +12,7 @@ import vertex from "@/images/logos/vertex.png";
 import { Role, RoleProps } from "./Role";
 import { Section } from "./Section";
 
-const EXPERIENCE: RoleProps[] = [
+const EXPERIENCE: readonly RoleProps[] = [
   {
     company: "Brale",
     logo: brale,

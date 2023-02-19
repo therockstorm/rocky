@@ -2,11 +2,11 @@ import { Feed } from "feed";
 import { mkdir, writeFile } from "fs/promises";
 import ReactDOMServer from "react-dom/server";
 
-import { Article, getAllArticles } from "./articles";
+import { getAllArticles } from "./articles";
 import { AUTHOR, BLOG_DESC, SITE_URL } from "./seo";
 
 export async function generateRssFeed() {
-  const articles: Article[] = await getAllArticles();
+  const articles = await getAllArticles();
   const author = { name: AUTHOR };
 
   const feed = new Feed({

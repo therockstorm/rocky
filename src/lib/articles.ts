@@ -10,7 +10,7 @@ export type Article = Readonly<{
   title: string;
 }>;
 
-export async function getAllArticles(): Promise<Article[]> {
+export async function getAllArticles(): Promise<readonly Article[]> {
   const fileNames = await glob(["*.mdx", "*/index.mdx"], {
     cwd: join(process.cwd(), "src/pages/blog"),
   });
