@@ -7,7 +7,7 @@ import theme from "shiki/themes/light-plus.json" assert { type: "json" };
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: { scrollRestoration: true },
+  experimental: { mdxRs: true, scrollRestoration: true },
   headers() {
     return [
       {

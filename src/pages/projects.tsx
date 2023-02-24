@@ -2,6 +2,8 @@ import { faLink } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 import Image from "next/image";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { usePathname } from "next/navigation";
 import { NextSeo } from "next-seo";
 

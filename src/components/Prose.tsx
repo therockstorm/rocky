@@ -10,7 +10,7 @@ export function Prose({ children, className }: Props) {
     <div
       className={clsx(
         className,
-        "prose prose-blue max-w-none prose-a:no-underline hover:prose-a:text-blue-700 dark:prose-invert dark:hover:prose-a:text-blue-400"
+        "prose prose-blue max-w-none dark:prose-invert prose-a:no-underline hover:prose-a:text-blue-700 dark:hover:prose-a:text-blue-400"
       )}
     >
       {children}

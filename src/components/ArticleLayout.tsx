@@ -1,4 +1,7 @@
 import Head from "next/head";
+// Running `next dev` didn't fix it for me, https://github.com/vercel/next.js/pull/45919#issuecomment-1442623920
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { usePathname } from "next/navigation";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { OpenGraphMedia } from "next-seo/lib/types";
