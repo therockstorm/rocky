@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import React from "react";
 
 import brale from "@/images/logos/brale.png";
+import clipboardHealth from "@/images/logos/clipboard-health.png";
 import collins from "@/images/logos/collins.png";
 import crucible from "@/images/logos/crucible.png";
 import deere from "@/images/logos/deere.png";
@@ -13,6 +14,19 @@ import { Role, RoleProps } from "./Role";
 import { Section } from "./Section";
 
 const EXPERIENCE: readonly RoleProps[] = [
+  {
+    company: "Clipboard Health",
+    logo: clipboardHealth,
+    roles: [
+      {
+        desc: [],
+        end: "Present",
+        location: "Remote",
+        start: dayjs("2023-03"),
+        title: "Engineering",
+      },
+    ],
+  },
   {
     company: "Brale",
     logo: brale,

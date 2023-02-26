@@ -5,9 +5,9 @@ import { METHODS, withErrorHandling } from "@/lib/api/middleware";
 import { required } from "@/lib/required";
 
 const FORM_ID = 3991281;
-const CONVERT_KEY_API_KEY = required(
-  "CONVERT_KEY_API_KEY",
-  process.env.CONVERT_KEY_API_KEY
+const CONVERT_KIT_API_KEY = required(
+  "CONVERT_KIT_API_KEY",
+  process.env.CONVERT_KIT_API_KEY
 );
 
 export default withErrorHandling(
@@ -25,7 +25,7 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
     `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`,
     {
       body: JSON.stringify({
-        api_key: CONVERT_KEY_API_KEY,
+        api_key: CONVERT_KIT_API_KEY,
         email: body.email,
       }),
       headers: { ["Content-Type"]: "application/json; charset=utf-8" },

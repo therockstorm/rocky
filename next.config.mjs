@@ -56,19 +56,6 @@ const nextConfig = {
         ],
         source: "/(.*)",
       },
-      {
-        headers: [
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET",
-          },
-          {
-            key: "Access-Control-Allow-Origin",
-            value: "https://www.privacyprotect.dev",
-          },
-        ],
-        source: "/api/og/pp(.*)",
-      },
     ];
   },
   pageExtensions: ["mdx", "ts", "tsx"],
