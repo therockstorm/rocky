@@ -20,6 +20,7 @@ export default function handler(req: NextRequest) {
             width: "100%",
           }}
         >
+          {/* bg-gradient-to-bl from-blue-50 to-blue-200 */}
           <div tw="flex h-full w-full flex-col items-center justify-center text-center">
             <svg
               height={400}

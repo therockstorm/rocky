@@ -41,7 +41,7 @@ const EXPERIENCE: readonly RoleProps[] = [
           `Coordinate company-wide security training and engineering team OWASP Top 10 and SANS Top 25 vulnerability demonstrations.`,
           `Deploy Kandji to company endpoints to gather telemetry, manage software patches, and enforce security rules such as disk encryption and malware protection.`,
         ],
-        end: "Present",
+        end: dayjs("2023-03"),
         location: "Remote",
         start: dayjs("2022-08"),
         title: "Principal Software and Security Engineer",

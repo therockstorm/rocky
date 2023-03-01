@@ -17,7 +17,7 @@ export function Summary(): JSX.Element {
         and database languages. I lead teams as a Founding Principal Engineer,
         Tech Lead, Architect, Product Manager, and Startup Co-founder.
       </p>
-      <ul className="not-prose flex gap-x-6 pl-0" role="list">
+      <ul className="not-prose flex flex-wrap gap-6 pl-0" role="list">
         <SocialLink
           aria-label="Follow on GitHub"
           href="https://github.com/therockstorm"
