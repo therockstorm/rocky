@@ -15,6 +15,7 @@ import { Container } from "@/components/Container";
 import { Newsletter } from "@/components/Newsletter";
 import { SocialLink } from "@/components/SocialLink";
 import brale from "@/images/logos/brale.png";
+import clipboardHealth from "@/images/logos/clipboard-health.jpg";
 import collins from "@/images/logos/collins.png";
 import crucible from "@/images/logos/crucible.png";
 import deere from "@/images/logos/deere.png";
@@ -33,8 +34,15 @@ import { AUTHOR, SITE_URL } from "@/lib/seo";
 
 const RESUME = [
   {
-    company: "Brale",
+    company: "Clipboard Health",
     end: "Present",
+    logo: clipboardHealth,
+    start: "2023",
+    title: "Engineering",
+  },
+  {
+    company: "Brale",
+    end: "2023",
     logo: brale,
     start: "2022",
     title: "Founding Principal Engineer",

@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import React from "react";
 
 import brale from "@/images/logos/brale.png";
-import clipboardHealth from "@/images/logos/clipboard-health.png";
+import clipboardHealth from "@/images/logos/clipboard-health.jpg";
 import collins from "@/images/logos/collins.png";
 import crucible from "@/images/logos/crucible.png";
 import deere from "@/images/logos/deere.png";
