@@ -1,8 +1,6 @@
 import { RadioGroup } from "@headlessui/react";
 import clsx from "clsx";
 import Link from "next/link";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { usePathname } from "next/navigation";
 import React from "react";
 
