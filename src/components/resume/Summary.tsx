@@ -15,7 +15,7 @@ export function Summary(): JSX.Element {
         year to multi-million line GPS guidance systems. I deliver customer
         value utilizing object-oriented, functional, statically-typed, dynamic,
         and database languages. I lead teams as a Founding Principal Engineer,
-        Tech Lead, Architect, Product Manager, and Startup Co-founder.
+        Architect, Product Manager, and Startup Co-founder.
       </p>
       <ul className="not-prose flex flex-wrap gap-6 pl-0" role="list">
         <SocialLink
