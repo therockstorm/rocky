@@ -10,6 +10,7 @@ import { SimpleLayout } from "@/components/SimpleLayout";
 import masterpiecesReimagined from "@/images/logos/masterpieces-reimagined.png";
 import privacyProtect from "@/images/logos/privacy-protect.png";
 import rockyDev from "@/images/logos/rocky-dev.png";
+import startupIntel from "@/images/logos/startup-intel.png";
 import webhooks from "@/images/logos/webhooks.png";
 import windTurbine from "@/images/logos/wind-turbine.png";
 import { AUTHOR, SITE_URL } from "@/lib/seo";
@@ -37,13 +38,13 @@ const projects = [
   },
   {
     description:
-      "The site you're on right now. It's (over)built with NextJS, Tailwind, and MDX and deployed on Vercel.",
+      "Life is too short for bullshit jobs. Discover startups that matter to wisely invest the 2,000 hours a year you spend at work.",
     link: {
-      href: "https://github.com/therockstorm/rocky",
-      label: "github.com",
+      href: "https://www.startupintel.dev?utm_source=rocky&utm_medium=web&utm_content=projects",
+      label: "startupintel.dev",
     },
-    logo: rockyDev,
-    name: "rocky.dev",
+    logo: startupIntel,
+    name: "StartupIntel",
   },
   {
     description:
@@ -54,6 +55,16 @@ const projects = [
     },
     logo: webhooks,
     name: "Serverless Webhooks",
+  },
+  {
+    description:
+      "The site you're on right now. It's (over)built with NextJS, Tailwind, and MDX and deployed on Vercel.",
+    link: {
+      href: "https://github.com/therockstorm/rocky",
+      label: "github.com",
+    },
+    logo: rockyDev,
+    name: "rocky.dev",
   },
   {
     description:

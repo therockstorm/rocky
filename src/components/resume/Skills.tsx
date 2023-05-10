@@ -39,7 +39,6 @@ export function Skills(): JSX.Element {
         <Skill>Redis</Skill>
         <Skill>DevSecOps</Skill>
         <Skill>Continuous Delivery</Skill>
-        <Skill>DevSecOps</Skill>
         <Skill>REST APIs</Skill>
         <Skill>Threat Models</Skill>
         <Skill>Distributed Systems</Skill>
