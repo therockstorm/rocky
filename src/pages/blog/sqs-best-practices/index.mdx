@@ -1,0 +1,57 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2023-05-20",
+  title: "SQS Best Practices",
+  description:
+    "Best practices for working with AWS's simple queue service (SQS)",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+## Context
+
+AWS [**Simple Queue Service**](https://aws.amazon.com/sqs/) (**SQS**) provides fully managed message queuing for microservices, distributed systems, and serverless applications.
+
+## Best practices
+
+### Consume messages in a separate thread or process
+
+Node is single threaded; it can only operate on one task at a time. Creating a separate process creates isolation, preventing API availability issues if, for example, consumers spike CPU or memory usage.
+
+### Consumers should be idempotent
+
+Both EventBridge and SQS provide “at-least once” message delivery. That means duplicate messages **WILL**, at some point, happen. Consumers must handle this gracefully. A simple way to avoid duplicate writes is to use producer-provided IDs that consumers use to deduplicate messages.
+
+### Process messages quickly or set the proper configuration
+
+From [AWS’s SQS Best Practices](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/working-with-messages.html#processing-messages-timely-manner):
+
+> Setting the visibility timeout depends on how long it takes your application to process and delete a message. For example, if your application requires 10 seconds to process a message and you set the visibility timeout to 15 minutes, you must wait for a relatively long time to attempt to process the message again if the previous processing attempt fails. Alternatively, if your application requires 10 seconds to process a message but you set the visibility timeout to only 2 seconds, a duplicate message is received by another consumer while the original consumer is still working on the message.
+
+If using the [sqs-consumer](https://github.com/bbc/sqs-consumer) library and you know how long it takes to process a message batch, configure the [visibility timeout](https://bbc.github.io/sqs-consumer/interfaces/ConsumerOptions.html#visibilityTimeout). Otherwise, configure the [heartbeat interval](https://bbc.github.io/sqs-consumer/interfaces/ConsumerOptions.html#heartbeatInterval).
+
+### Configure a **dead-letter queue** (**DLQ**) with maximum message retention (14 days)
+
+[Details](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/working-with-messages.html#processing-messages-timely-manner). If a consumer fails to process a message N number of times (configured via SQS’s `maxReceiveCount`), the message is sent to the DLQ. This prevents “poison pill” messages from continuously failing, which negatively affects consumer throughput.
+
+### Avoid automatically consuming DLQs
+
+If you consume DLQ messages and delete them, they’re gone forever. Instead, set the maximum 14 day message retention. This provides a safe place for messages to sit while you root cause the issue causing messages to end up there. Once a fix is deployed, you can then consume DLQ messages to bring your service’s data up-to-date.
+
+### Handle partial batch responses
+
+If your handler returns without error, sqs-consumer deletes the messages from the queue. Throwing an error, however, fails an entire batch. To delete them instead, return a list of successful messages from the handler. For Lambdas, [see this](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#services-sqs-batchfailurereporting).
+
+### For Lambda, set visibility timeout to 6x the function timeout and redrive policy to at least 5
+
+> To allow your function time to process each batch of records, set the source queue's [visibility timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html) to at least six times the [timeout that you configure](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-common-summary) on your function. The extra time allows for Lambda to retry if your function is throttled while processing a previous batch.
+
+> To give messages a better chance to be processed before sending them to the dead-letter queue, set the `maxReceiveCount` on the source queue's redrive policy to at least **5**.
+
+[Source](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-queueconfig)
+
+## References
+
+- [Working with Amazon SQS messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/working-with-messages.html)
+- [Using Lambda with Amazon SQS](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
