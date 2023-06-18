@@ -12,7 +12,7 @@ export function Badge({
   className,
   onClick,
   ...rest
-}: Props): JSX.Element {
+}: Props): React.JSX.Element {
   return (
     <span
       className={clsx(

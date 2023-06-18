@@ -29,7 +29,7 @@ export function Role({
   printHidden,
   roles,
   showDuration = false,
-}: RoleProps): JSX.Element {
+}: RoleProps): React.JSX.Element {
   const rs = Object.entries(roles);
 
   return (

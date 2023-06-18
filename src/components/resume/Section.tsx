@@ -6,7 +6,11 @@ type Props = Readonly<{
   title: string;
 }>;
 
-export function Section({ children, className, title }: Props): JSX.Element {
+export function Section({
+  children,
+  className,
+  title,
+}: Props): React.JSX.Element {
   const id = React.useId();
 
   return (

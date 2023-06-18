@@ -8,7 +8,7 @@ type Props<T extends React.ElementType> = Readonly<{ as?: T; title: string }>;
 export function Heading<T extends React.ElementType = "h2">({
   as,
   title,
-}: Props<T>): JSX.Element {
+}: Props<T>): React.JSX.Element {
   const Component = as || "h2";
   const id = paramCase(title);
   return (

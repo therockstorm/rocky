@@ -9,7 +9,7 @@ const RECOMMENDATIONS = [
   `Technical Lead and Manager: "He's a one-man wrecking crew, one of the most productive engineers I've worked with."`,
 ];
 
-export function Recommendations(): JSX.Element {
+export function Recommendations(): React.JSX.Element {
   return (
     <Section className="print:hidden" title="Recommendations">
       <ul className="my-0">

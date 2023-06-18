@@ -1,6 +1,6 @@
 import { BlogSeries } from "@/components/BlogSeries";
 
-export function LearningScalaSeries(): JSX.Element {
+export function LearningScalaSeries(): React.JSX.Element {
   return (
     <BlogSeries
       options={[

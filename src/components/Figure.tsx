@@ -7,7 +7,7 @@ type Props = Readonly<
   } & ({ alt: string } | { caption: string })
 >;
 
-export function Figure({ small, src, ...rest }: Props): JSX.Element {
+export function Figure({ small, src, ...rest }: Props): React.JSX.Element {
   const alt = "alt" in rest ? rest.alt : rest.caption;
   const caption = "caption" in rest ? rest.caption : undefined;
 

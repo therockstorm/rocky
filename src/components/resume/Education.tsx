@@ -16,13 +16,13 @@ const EDUCATION: readonly RoleProps[] = [
         end: dayjs("2007-12"),
         location: "Iowa City, IA",
         start: dayjs("2003-08"),
-        title: "Bachelor of Science, Computer Software Engineering",
+        title: "Bachelor of Science, Computer Engineering",
       },
     ],
   },
 ];
 
-export function Education(): JSX.Element {
+export function Education(): React.JSX.Element {
   return (
     <Section className="print:hidden" title="Education">
       {EDUCATION.map((e) => (

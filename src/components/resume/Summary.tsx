@@ -4,7 +4,7 @@ import React from "react";
 
 import { SocialLink } from "@/components/SocialLink";
 
-export function Summary(): JSX.Element {
+export function Summary(): React.JSX.Element {
   return (
     <div>
       <p>

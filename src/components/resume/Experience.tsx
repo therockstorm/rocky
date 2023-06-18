@@ -198,7 +198,7 @@ const EXPERIENCE: readonly RoleProps[] = [
   },
 ];
 
-export function Experience(): JSX.Element {
+export function Experience(): React.JSX.Element {
   return (
     <Section title="Experience">
       {EXPERIENCE.map((e) => (

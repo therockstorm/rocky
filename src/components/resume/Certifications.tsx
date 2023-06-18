@@ -27,7 +27,7 @@ const CERTIFICATIONS = [
   },
 ];
 
-export function Certifications(): JSX.Element {
+export function Certifications(): React.JSX.Element {
   return (
     <Section title="Certifications">
       {CERTIFICATIONS.map((c) => (

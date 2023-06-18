@@ -4,7 +4,7 @@ import { Badge } from "@/components/Badge";
 
 import { Section } from "./Section";
 
-export function Skills(): JSX.Element {
+export function Skills(): React.JSX.Element {
   return (
     <Section className="print:hidden" title="Skills">
       <ul className="my-0">

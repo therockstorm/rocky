@@ -12,7 +12,7 @@ export function ExternalLink({
   className,
   href,
   ...rest
-}: Props): JSX.Element {
+}: Props): React.JSX.Element {
   return (
     <Link
       className={className ?? "no-underline"}
