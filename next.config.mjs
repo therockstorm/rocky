@@ -3,11 +3,10 @@ import nextMDX from "@next/mdx";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import theme from "shiki/themes/light-plus.json" assert { type: "json" };
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: { mdxRs: true, scrollRestoration: true },
+  experimental: { scrollRestoration: true },
   headers() {
     return [
       {
@@ -58,7 +57,7 @@ const nextConfig = {
       },
     ];
   },
-  pageExtensions: ["mdx", "ts", "tsx"],
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
   redirects() {
     return [
@@ -287,7 +286,7 @@ const withMDX = nextMDX({
   options: {
     rehypePlugins: [rehypeKatex],
     remarkPlugins: [
-      [remarkCodeHike, { showCopyButton: true, theme }],
+      [remarkCodeHike, { showCopyButton: true, theme: "light-plus" }],
       remarkGfm,
       remarkMath,
     ],
