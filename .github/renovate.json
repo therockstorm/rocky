@@ -7,7 +7,7 @@
     "config:js-app",
     "group:allNonMajor",
     "npm:unpublishSafe",
-    "schedule:weekly"
+    "schedule:monthly"
   ],
   "hostRules": [
     {
