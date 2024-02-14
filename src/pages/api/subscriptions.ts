@@ -7,7 +7,7 @@ import { required } from "@/lib/required";
 const FORM_ID = 3991281;
 const CONVERT_KIT_API_KEY = required(
   "CONVERT_KIT_API_KEY",
-  process.env.CONVERT_KIT_API_KEY
+  process.env.CONVERT_KIT_API_KEY,
 );
 
 export default withErrorHandling(
@@ -16,7 +16,7 @@ export default withErrorHandling(
 
     return res.status(415).send({});
   },
-  [METHODS.post]
+  [METHODS.post],
 );
 
 async function post(req: NextApiRequest, res: NextApiResponse) {
@@ -30,7 +30,7 @@ async function post(req: NextApiRequest, res: NextApiResponse) {
       }),
       headers: { ["Content-Type"]: "application/json; charset=utf-8" },
       method: "POST",
-    }
+    },
   );
   console.log(await result.json());
 

@@ -7,7 +7,7 @@ export async function getAllNotes() {
   });
 
   return (await Promise.all(fileNames.map(importNote))).sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 }
 

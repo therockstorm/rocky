@@ -9,7 +9,7 @@ type Method = (typeof methods)[number];
 
 export function withErrorHandling(
   handler: NextApiHandler,
-  methods: readonly Method[]
+  methods: readonly Method[],
 ) {
   return async function (req: NextApiRequest, res: NextApiResponse) {
     try {

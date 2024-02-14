@@ -40,7 +40,7 @@ export default function handler(req: NextRequest) {
           </div>
         </div>
       ),
-      { height: 627, width: 1200 }
+      { height: 627, width: 1200 },
     );
   } catch (error) {
     console.error(error);

@@ -55,7 +55,7 @@ export function Role({
               <div
                 className={clsx(
                   i === 0 && "-mt-6",
-                  role.printHidden && "print:hidden"
+                  role.printHidden && "print:hidden",
                 )}
                 key={id}
               >
@@ -74,7 +74,7 @@ export function Role({
                     {ds.map(([dId, d], j) => (
                       <li
                         className={clsx(
-                          i === rs.length - 1 && j === ds.length - 1 && "-mb-6"
+                          i === rs.length - 1 && j === ds.length - 1 && "-mb-6",
                         )}
                         key={dId}
                       >

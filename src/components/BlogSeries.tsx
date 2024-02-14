@@ -17,7 +17,7 @@ type Props = Readonly<{
 export function BlogSeries({ options, title }: Props) {
   const path = usePathname();
   const [selected, setSelected] = React.useState<Option>(
-    options.find((o) => o.path === path) ?? options[0]
+    options.find((o) => o.path === path) ?? options[0],
   );
 
   function optionClass({
@@ -27,7 +27,7 @@ export function BlogSeries({ options, title }: Props) {
     return clsx(
       checked ? "border-transparent" : "border-zinc-300",
       active ? "border-blue-500 ring-2 ring-blue-500" : "",
-      "relative block cursor-pointer rounded-lg border bg-white dark:bg-zinc-800 px-6 py-2 focus:outline-none sm:flex sm:justify-between"
+      "relative block cursor-pointer rounded-lg border bg-white dark:bg-zinc-800 px-6 py-2 focus:outline-none sm:flex sm:justify-between",
     );
   }
 
@@ -63,7 +63,7 @@ export function BlogSeries({ options, title }: Props) {
                     className={clsx(
                       active ? "border" : "border-2",
                       checked ? "border-blue-500" : "border-transparent",
-                      "pointer-events-none absolute -inset-px rounded-lg"
+                      "pointer-events-none absolute -inset-px rounded-lg",
                     )}
                   />
                 </>

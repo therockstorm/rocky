@@ -17,7 +17,7 @@ export function Badge({
     <span
       className={clsx(
         "inline-flex items-center rounded-full bg-blue-700 px-2 py-0.5 text-xs font-medium leading-4 text-white",
-        className
+        className,
       )}
       onClick={onClick}
       {...rest}

@@ -4,7 +4,7 @@ import sharp from "sharp";
 async function resizeImages() {
   const src = join(
     __dirname,
-    "aod.jpg"
+    "aod.jpg",
     // "..",
     // "src",
     // "images",

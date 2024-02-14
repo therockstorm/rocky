@@ -104,7 +104,7 @@ function NavItem({
           "relative block px-3 py-2 transition",
           isActive
             ? "text-blue-600 dark:text-blue-500"
-            : "hover:text-blue-700 dark:hover:text-blue-400"
+            : "hover:text-blue-700 dark:hover:text-blue-400",
         )}
         href={href}
       >
@@ -143,7 +143,7 @@ function ModeToggle() {
     disableTransitionsTemporarily();
 
     const darkModeMediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
+      "(prefers-color-scheme: dark)",
     );
     const isSystemDarkMode = darkModeMediaQuery.matches;
     const isDarkMode = document.documentElement.classList.toggle("dark");
@@ -192,7 +192,7 @@ function AvatarContainer({
     <div
       className={clsx(
         className,
-        "h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10"
+        "h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10",
       )}
       {...props}
     />
@@ -219,7 +219,7 @@ function Avatar({
         alt={AUTHOR}
         className={clsx(
           "rounded-full bg-zinc-100 object-cover dark:bg-zinc-800",
-          large ? "h-16 w-16" : "h-9 w-9"
+          large ? "h-16 w-16" : "h-9 w-9",
         )}
         placeholder="blur"
         priority
@@ -255,7 +255,7 @@ export function Header() {
       const scrollY = clamp(
         window.scrollY,
         0,
-        document.body.scrollHeight - window.innerHeight
+        document.body.scrollHeight - window.innerHeight,
       );
 
       if (isInitial.current) {
@@ -307,7 +307,7 @@ export function Header() {
 
       setProperty(
         "--avatar-image-transform",
-        `translate3d(${x}rem, 0, 0) scale(${scale})`
+        `translate3d(${x}rem, 0, 0) scale(${scale})`,
       );
 
       const borderScale = 1 / (toScale / scale);
@@ -317,7 +317,7 @@ export function Header() {
       setProperty("--avatar-border-transform", borderTransform);
       setProperty(
         "--avatar-border-opacity",
-        (scale === toScale ? 1 : 0).toString()
+        (scale === toScale ? 1 : 0).toString(),
       );
     }
 

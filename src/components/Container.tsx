@@ -10,7 +10,7 @@ type Ref = HTMLDivElement;
 
 export const Container = React.forwardRef<Ref, Props>(function Container(
   { children, ...props },
-  ref
+  ref,
 ) {
   return (
     <ContainerOuter ref={ref} {...props}>
@@ -26,7 +26,7 @@ export const ContainerOuter = React.forwardRef<Ref, Props>(
         <div className="mx-auto max-w-7xl lg:px-8">{children}</div>
       </div>
     );
-  }
+  },
 );
 
 export const ContainerInner = React.forwardRef<Ref, Props>(
@@ -40,5 +40,5 @@ export const ContainerInner = React.forwardRef<Ref, Props>(
         <div className="mx-auto max-w-2xl lg:max-w-5xl">{children}</div>
       </div>
     );
-  }
+  },
 );

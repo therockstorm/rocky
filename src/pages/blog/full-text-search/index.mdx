@@ -46,7 +46,7 @@ const seedDb = async () => {
   });
   const columns = new pgp.helpers.ColumnSet(
     ["key_str", "val_str", "val_int", "val_date"],
-    { table: "search_idx" }
+    { table: "search_idx" },
   );
 
   const getNextData = (_, pageIdx) =>
@@ -58,7 +58,7 @@ const seedDb = async () => {
             val_str: faker.lorem.words(),
             val_int: Math.floor(faker.random.float()),
             val_date: faker.date.past(),
-          }))
+          })),
     );
 
   console.debug(
@@ -66,9 +66,9 @@ const seedDb = async () => {
       t.sequence((idx) =>
         getNextData(t, idx).then((data) => {
           if (data) return t.none(pgp.helpers.insert(data, columns));
-        })
-      )
-    )
+        }),
+      ),
+    ),
   );
 };
 
@@ -146,9 +146,9 @@ writeFileSync(
         val: faker.lorem.words(),
         valInt: Math.floor(faker.random.float()),
         valDate: faker.date.past(),
-      })
+      }),
     )
-    .join("\n")
+    .join("\n"),
 );
 ```
 
@@ -172,7 +172,7 @@ const seedIndex = async () => {
       onDrop(doc) {
         b.abort();
       },
-    })
+    }),
   );
 };
 
