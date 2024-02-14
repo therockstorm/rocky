@@ -57,7 +57,7 @@ export default function About() {
                 </p>
 
                 <p>
-                  I{"'"}m Rocky Warren, a software and security engineer based
+                  I{"'"}m Rocky Warren, a software engineer based
                   in Denver, loving the startup life. Away from work, I{"'"}m
                   with my wife and son, hopefully outside or planning our next
                   adventure. Sometimes that adventure takes us across the
