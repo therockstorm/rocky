@@ -1,0 +1,75 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2024-02-15",
+  title: "How High is Your Technical Debt's Interest?",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+**Iteration speed** is crucial to startup success. Companies tend to add processes and get slower as they grow. You must actively combat this tendency.
+
+Iterating faster beats iterating with higher quality. Why? Speed means more iterations, and you learn with each iteration. Therefore, as iteration speed increases, learning rate increases.
+
+Fast iteration applies to both the planning phase (e.g., seeking early feedback on **technical design documents** (**TDD**)) and the delivery phase (e.g., shipping projects early using milestones/[vertical slices](https://en.wikipedia.org/wiki/Vertical_slice)).
+
+Sometimes, faster iteration means accepting more risk. Generally, engineers tend toward safety. Instead, you should weigh the cost of guardrails. While warranted in some cases, in others, the time spent building them costs more than the risks they mitigate.
+
+You should encourage sharing nascent (or "fat marker" to borrow design terminology) ideas and documents early as a way of receiving feedback, learning, and iterating.
+
+When in doubt, iterate (on [work that matters](https://staffeng.com/guides/work-on-what-matters/)) faster.
+
+The remainder of this post explains my path to this conclusion.
+
+---
+
+[The Perils of Prudence: Sometimes, being prudent is the riskiest strategy of all](https://pivotal.substack.com/p/the-perils-of-prudence) provides the following takeaway:
+
+> Almost everybody in the startup ecosystem agrees that speed is a good thing. Almost nobody acts like it.
+> We’ve been socialized to believe that going too fast is risky. We fear launching too soon; we abhor looking sloppy; we shy away from criticism; we look for side-quests; we think ‘one more feature’ will save us; we bike-shed. All these tendencies slow us down, but we think they reduce our chance of failure, and more importantly, the appearance of failure.
+> We forget that for startups, not going fast is riskier still.
+
+The conclusion, however, is flimsy.
+
+The post starts with Robert Falcon Scott and Roald Amundsen's race to the South Pole in 1911.
+
+> spend as little time as possible on the journey
+
+So far, so good. The author then details Amundsen's preparation for the journey in the "Digression: Trickle Down Speedonomics" section:
+
+> over the winter before the polar dash, Amundsen's team laboriously reviewed every single piece of gear they would carry
+
+According to [Encyclopedia Britannica](https://www.britannica.com/biography/Roald-Amundsen), Amundsen even made a preliminary trip to deposit food and supplies along the first part of his route. In the remainder of the article, however, the author seemingly ignores the time spent preparing and preaches speed as the remedy for all ills.
+
+> Sprint the marathon
+
+I'm left wondering if you should rush into delivery before you have a plan. Do you, for example, get rid of TDDs because they slow you down?
+
+---
+
+[How Big Things Get Done: The Surprising Factors That Determine the Fate of Every Project, from Home Renovations to Space Exploration and Everything In Between](https://www.amazon.com/How-Big-Things-Get-Done/dp/0593239512) focuses mostly on infrastructure projects like roads, high-speed rail, and nuclear reactors, but mentions large IT projects too. A key point is to:
+
+> Plan slow, act fast
+
+In planning, you're pushing the project's vision to the point where it is sufficiently researched, analyzed, tested, and detailed so you have a reliable roadmap. During planning, you carefully consider purposes, goals, and risks, explore and test alternatives, sketch ideas, and build MVPs. It's an iterative process and helps correct the *illusion of explanatory depth* of the planner: when forced to, for example, build an MVP, it pushes you to explain and make sense of the project to yourself and others.
+
+In delivery, you implement the plan. While it's tempting to think planning is a waste of time and jump straight to delivery, this often leads to problems that should've been identified and dealt with in planning. You end up putting out fires rather than having a smooth delivery.
+
+Careful planning and fast delivery minimize the _window of doom_, which is the possibility of [black swan events](https://en.wikipedia.org/wiki/Black_swan_theory) derailing the project.
+
+While I agree planning is imperative, "plan slow" misses the mark for software projects at a tech startup.
+
+---
+
+While I don't recommend [The Geek Way: The Radical Mindset that Drives Extraordinary Results](https://www.amazon.com/Geek-Way-Radical-Transforming-Business/dp/0316436704), a speed-related insight was that, rather than The Perils of Prudence article's seeming suggestion to "go fast at everything," the **speed of iteration** is what's key.
+
+Focusing on iteration speed led me to [Boyd's Law of Iteration](https://blog.codinghorror.com/boyds-law-of-iteration/) (it's short, give it a read). Colonel John Boyd was a United States Air Force fighter pilot and one of the best dogfighters in history. He had a theory:
+
+> Boyd decided the primary determinant to winning dogfights was not observing, orienting, planning, or acting better. The primary determinant to winning dogfights was observing, orienting, planning, and acting _faster_. In other words, how quickly one could iterate. _Speed of iteration_, Boyd suggested, _beats quality of iteration_.
+
+The article gives a number of software examples I won't repeat here.
+
+Iterating faster beats iterating with higher quality. Why? Speed means more iterations, and you learn with each iteration. Therefore, as iteration speed increases, learning rate increases.
+
+Designers use "fat marker sketches" during prototyping since they're intentionally too thick to draw more than the bare bones of a design. Encourage sharing "fat marker" ideas and documents earlier as a way of receiving feedback, learning, and iterating.

@@ -1,0 +1,29 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2024-02-15",
+  title: "How High is Your Technical Debt's Interest?",
+  description: "",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+Moving fast is a crucial competitive advantage. However, this speed is sometimes translated to "ship as fast as possible and only fix the mess you create when it's so painful you can't ignore it anymore."
+
+Startups *should* trade some technical debt for short-term speed, especially for risky bets with a high likelihood of failure (e.g., non-ideal test coverage, manual processes instead of automation). However, other forms of technical debt compound quickly with time and become more expensive to unwind. **Problems arise when teams lump these into the same bucket.**
+
+Focusing exclusively on short-term speed can mean wind up being slower over longer time horizons. Compound this short-term focus across many choices, and it creates a competitive disadvantage while, in the moment, you believe you're going fast.
+
+Distinguish between two kinds of technical debt:
+
+- Low-interest debt that remains flat or compounds slowly over time.
+- High-interest debt that, when left unchecked, causes you to get slower over time.
+
+Interest increases as the number of people impacted by the decision/interface increases. People also often look at existing code/decisions to inform future decisions without fully understanding the context of the original decision and what costs may be associated with it. This copying can perpetuate bad practices, increasing debt interest.
+
+The following are examples of high interest technical debt:
+
+- Pagination: I've seen pagination discouraged as premature optimization. The result? APIs with huge response sizes. Adding pagination up-front would take hours. Delaying it could mean a worse customer experience and breaking API changes or a redesigned UI once it's added.
+- Multiple cloud providers: Tooling, such as zero-downtime deploys and secure secrets management, must be developed separately for each cloud vendor used. Multiple vendors also passes costs onto Security and DevOps teams, who have to review the security practices for each platform, understand best practices, and mitigate areas of concern.
+
+It's up to engineers to prevent debt from growing. Technical design documents and pull requests provide choke points for preventing high-interest technical debt, enabling accelerating speed.
