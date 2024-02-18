@@ -40,7 +40,6 @@ export function Skills(): React.JSX.Element {
         <Skill>DevSecOps</Skill>
         <Skill>Continuous Delivery</Skill>
         <Skill>REST APIs</Skill>
-        <Skill>Threat Models</Skill>
         <Skill>Distributed Systems</Skill>
       </ul>
     </Section>
