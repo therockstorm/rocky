@@ -21,7 +21,7 @@ Node is single threaded; it can only operate on one task at a time. Creating a s
 
 ### Consumers should be idempotent
 
-Both EventBridge and SQS provide “at-least once” message delivery. That means duplicate messages **WILL**, at some point, happen. Consumers must handle this gracefully. A simple way to avoid duplicate writes is to use producer-provided IDs that consumers use to deduplicate messages.
+Both EventBridge and SQS provide "at-least once" message delivery. That means duplicate messages **WILL**, at some point, happen. Consumers must handle this gracefully. A simple way to avoid duplicate writes is to use producer-provided IDs that consumers use to deduplicate messages.
 
 ### Process messages quickly or set the proper configuration
 
@@ -33,7 +33,7 @@ If using the [sqs-consumer](https://github.com/bbc/sqs-consumer) library and you
 
 ### Configure a **dead-letter queue** (**DLQ**) with maximum message retention (14 days)
 
-[Details](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/working-with-messages.html#processing-messages-timely-manner). If a consumer fails to process a message N number of times (configured via SQS’s `maxReceiveCount`), the message is sent to the DLQ. This prevents “poison pill” messages from continuously failing, which negatively affects consumer throughput.
+[Details](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/working-with-messages.html#processing-messages-timely-manner). If a consumer fails to process a message N number of times (configured via SQS’s `maxReceiveCount`), the message is sent to the DLQ. This prevents "poison pill" messages from continuously failing, which negatively affects consumer throughput.
 
 ### Avoid automatically consuming DLQs
 
