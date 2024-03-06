@@ -18,12 +18,6 @@ export function Skills(): React.JSX.Element {
         <Skill>C#</Skill>
         <Skill>Bash</Skill>
         <Skill>Shell</Skill>
-        <Skill>Go</Skill>
-        <Skill>Elixir</Skill>
-        <Skill>Rust</Skill>
-        <Skill>C++</Skill>
-        <Skill>HTML</Skill>
-        <Skill>CSS</Skill>
         <Skill>Kafka</Skill>
         <Skill>PostgreSQL</Skill>
         <Skill>AWS ECS</Skill>
