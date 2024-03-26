@@ -25,6 +25,8 @@ export function Skills(): React.JSX.Element {
         <Skill>DevOps</Skill>
         <Skill>DynamoDB</Skill>
         <Skill>Svelte</Skill>
+        <Skill>Pricing Strategy</Skill>
+        <Skill>Dynamic Pricing</Skill>
         <Skill>Cybersecurity</Skill>
         <Skill>Docker</Skill>
         <Skill>Cloud Security</Skill>
