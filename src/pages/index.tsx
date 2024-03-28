@@ -36,7 +36,7 @@ const RESUME = [
     end: "Present",
     logo: clipboardHealth,
     start: "2023",
-    title: "Engineering",
+    title: "Senior Staff Engineer",
   },
   {
     company: "Brale",
