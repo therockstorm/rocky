@@ -102,7 +102,7 @@ type Props = Readonly<{ articles: readonly ArticleType[] }>;
 export default function Home({ articles }: Props) {
   const path = usePathname();
 
-  const description = `I'm ${AUTHOR}, a software engineer based in Denver. I take notes. This site is a collection of those potentially helpful to others. I've ridden across the United States on a motorcycle, across Canada on a train, and across Iowa on a bicycle.`;
+  const description = `I'm ${AUTHOR}, a software engineer based in Denver. I've ridden across the United States on a motorcycle, across Canada on a train, and across Iowa on a bicycle. I also take notes. This site is a collection of those potentially helpful to others.`;
   const title = `Software engineer, aspiring father of the year.`;
   const url = `${SITE_URL}${path}`;
   return (
