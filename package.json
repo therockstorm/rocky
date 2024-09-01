@@ -18,7 +18,7 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "eslint-plugin-typescript-sort-keys": "2.3.0",
     "next-sitemap": "4.2.3",
-    "npm-check-updates": "16.14.20",
+    "npm-check-updates": "17.1.0",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "0.6.5",
     "sharp": "0.33.4",
