@@ -13,7 +13,7 @@ import { Container } from "@/components/Container";
 import { Newsletter } from "@/components/Newsletter";
 import { SocialLink } from "@/components/SocialLink";
 import brale from "@/images/logos/brale.png";
-import clipboardHealth from "@/images/logos/clipboard-health.jpg";
+import clipboardHealth from "@/images/logos/clipboard.jpg";
 import collins from "@/images/logos/collins.png";
 import crucible from "@/images/logos/crucible.png";
 import deere from "@/images/logos/deere.png";
@@ -32,7 +32,7 @@ import { AUTHOR, SITE_URL } from "@/lib/seo";
 
 const RESUME = [
   {
-    company: "Clipboard Health",
+    company: "Clipboard",
     end: "Present",
     logo: clipboardHealth,
     start: "2023",

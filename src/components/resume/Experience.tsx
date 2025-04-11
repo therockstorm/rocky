@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import React from "react";
 
 import brale from "@/images/logos/brale.png";
-import clipboardHealth from "@/images/logos/clipboard-health.jpg";
+import clipboard from "@/images/logos/clipboard.jpg";
 import collins from "@/images/logos/collins.png";
 import crucible from "@/images/logos/crucible.png";
 import deere from "@/images/logos/deere.png";
@@ -15,8 +15,8 @@ import { Section } from "./Section";
 
 const EXPERIENCE: readonly RoleProps[] = [
   {
-    company: "Clipboard Health",
-    logo: clipboardHealth,
+    company: "Clipboard",
+    logo: clipboard,
     roles: [
       {
         desc: [],
