@@ -13,7 +13,7 @@ import { Container } from "@/components/Container";
 import { Newsletter } from "@/components/Newsletter";
 import { SocialLink } from "@/components/SocialLink";
 import brale from "@/images/logos/brale.png";
-import clipboardHealth from "@/images/logos/clipboard.jpg";
+import clipboard from "@/images/logos/clipboard.png";
 import collins from "@/images/logos/collins.png";
 import crucible from "@/images/logos/crucible.png";
 import deere from "@/images/logos/deere.png";
@@ -34,7 +34,7 @@ const RESUME = [
   {
     company: "Clipboard",
     end: "Present",
-    logo: clipboardHealth,
+    logo: clipboard,
     start: "2023",
     title: "Senior Staff Engineer",
   },
