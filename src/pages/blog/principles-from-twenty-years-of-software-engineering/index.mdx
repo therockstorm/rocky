@@ -1,0 +1,127 @@
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const meta = {
+  date: "2026-01-20",
+  title: "Principles From Twenty Years of Software Engineering",
+  description:
+    "A Senior Staff Engineer's work principles from twenty years as a software engineer.",
+};
+
+export default (props) => <ArticleLayout meta={meta} {...props} />;
+
+Twenty years ago, after a poorly managed internship at Collins Aerospace/Raytheon, I switched from Electrical Engineering to Computer Science and never looked back.
+
+I'm among the lucky.
+
+> I get up every morning and tap dance to work. —Warren Buffett
+
+I'm a Senior Staff Engineer at [Clipboard](https://www.clipboardworks.com/). The following are principles I've learned.
+
+## 1. [Choose boring technology](https://boringtechnology.club/)
+
+Boring technology is proven, understood, documented, and instrumented. Boring technology is in the LLM training data.
+
+Introducing new technology to a team of any nontrivial size has a high cost.
+
+"Good system design" is often boring: you use the existing event bus, the standardized caching layer, and the working deployment mechanism.
+
+If you want to do interesting work, reach for interesting problems, and solve them in the simplest way.
+
+## 2. [Don’t fix all your bugs](https://blog.codinghorror.com/not-all-bugs-are-worth-fixing/)
+
+There is infinite work. In twenty years, I've never once "caught up."
+
+There is always another bug to fix, another feature to add, more technical debt to pay off.
+
+Will LLMs solve this? I don't think so. Every line of code is a potential bug, and LLMs adore writing code.
+
+What matters is prioritization. [Eat That Frog](https://www.amazon.com/Eat-That-Frog-Great-Procrastinating/dp/162656941X) by Brian Tracy is my favorite book on the subject.
+
+High-performing engineers protect their time for long, uninterrupted deep work. Delegate. Say no to low-impact work.
+
+## 3. Write less code
+
+The fastest code to write, read, and maintain is no code.
+
+Maybe you:
+
+- Used a built-in feature.
+- Configured something instead of building it.
+- Reused a service instead of reinventing it.
+- Removed a feature instead of polishing it.
+
+If you must write code, simplify. Write as little as possible. Over-engineering is easy (and sometimes fun in the moment).
+
+Break projects into deliverable milestones. Then stop shipping milestones once you're hitting your success criteria.
+
+“Product requirements” are suggestions. There are often cheaper ways to achieve the same outcome, and often, engineering is better positioned to propose them.
+
+A huge amount of engineering “work” is optional once you get comfortable asking:
+
+- "Do we need that feature?"
+- "Can we scope this down or apply the [Pareto principle](https://en.wikipedia.org/wiki/Pareto_principle)?"
+
+## 4. [Read the docs](https://www.pluralsight.com/resources/blog/cloud/the-career-changing-art-of-reading-the-docs)
+
+Most senior engineers read the bare minimum to solve their problem, missing out on so much of what is possible.
+
+Consistency beats intensity. Read a bit each day or week. The learning compounds.
+
+Go ahead, read the [Claude Code docs](https://code.claude.com/docs/en/overview).
+
+## 5. Fast now is slow later...and sometimes that's still the right move
+
+[Product-market fit really is all that matters](https://pmarchive.com/guide_to_startups_part4.html). I've worked at companies that redesigned their homepages three times, assuming it was the missing ingredient to win customers. It's not the website. Just like it's not the tech stack or how clean your code is.
+
+Before you have product-market fit, your priority is speed of iteration. Sometimes that means taking on [prudent technical debt](https://martinfowler.com/bliki/TechnicalDebtQuadrant.html). If the product catches on and you took on debt to get there, now is the time to pay it off.
+
+Technical debt is a tool. Understand the interest rate, track the balance, and have a repayment plan.
+
+When it's time to pay back, exterminate it.
+
+Bad code is contagious. Humans copy/paste it and:
+
+> Agents will happily be the Roomba that rolls over dog poop and drags it all over your house. —[Steve Krenzel](https://bits.logic.inc/p/ai-is-forcing-us-to-write-good-code)
+
+## 6. Commit to the least-worst architecture
+
+Architecture is mostly choosing which pain you want. Monoliths were great. And then terrible. Then microservices. Then serverless. Are we back to monoliths?
+
+There isn't a correct answer. There’s only:
+
+- Your team.
+- Your constraints.
+- Your actual problem.
+
+> Never shoot for the best architecture, but rather the least worst architecture. —[Neal Ford and Mark Richards](https://www.amazon.com/Fundamentals-Software-Architecture-Comprehensive-Characteristics/dp/1492043451)
+
+## 7. Writing is thinking
+
+Writing is how you turn vague intention into something you and others can critique. You don't understand something until you can explain it. Even better, teach it to others!
+
+Writing and teaching:
+
+- Expose gaps in your understanding.
+- Force you to structure thoughts.
+- Turn individual knowledge into shared knowledge.
+
+Write docs. Give talks. Pair. Review thoughtfully. Mentor juniors. Explain decisions. If only selfishly, because you'll get smarter doing it.
+
+## 8. [Deprecate yourself](https://jmmv.dev/2021/04/always-be-quitting.html)
+
+Staff engineers typically have significant autonomy. Each project's goal is to reach stability and then hand it off, so I'm available for higher-leverage problems.
+
+The best way to do this is to make yourself less necessary.
+
+Deprecating yourself means:
+
+- Writing down what you know and where the project is headed.
+- Writing quality, documented libraries for clients.
+- Building tooling for others to run the project (e.g., automated status updates and troubleshooting).
+- Trust, but verify your replacement.
+
+## Closing thought: your job is to create optionality
+
+Keep your systems boring, read and write docs, and teach. When you have to write code, settle on the least-worst architecture and don't be afraid of a little debt. So long as you can prioritize and clean up the poop before the Roomba gets to it, you can eventually deprecate yourself.
+
+Who could ask for more?
